@@ -29,7 +29,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('employee','JoinUserDeptController');
 
     Route::get('/json-departments', 'JoinUserDeptController@departments');
-
+    
+    //------TEST COMMENT------------------------
 
     //------------------FORM RELATED ROUTES---------------------------
     Route::get('/manageformtype', function(){

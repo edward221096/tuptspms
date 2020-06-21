@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="543e54a1-2f72-4c34-8a51-a7d767051d46" name="Default Changelist" comment="" />
+    <list default="true" id="543e54a1-2f72-4c34-8a51-a7d767051d46" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfassprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfassprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfastprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfastprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +53,9 @@
     <favorites_list name="tuptspms">
       <favorite_root url="file://$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
     </favorites_list>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/../LARAVEL SYSTEM/package.json" />
@@ -143,6 +168,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -333,6 +359,11 @@
       <workItem from="1592224106700" duration="1291000" />
       <workItem from="1592225519826" duration="2922000" />
       <workItem from="1592283261740" duration="6631000" />
+      <workItem from="1592561440761" duration="2632000" />
+      <workItem from="1592624554111" duration="901000" />
+      <workItem from="1592646945627" duration="8132000" />
+      <workItem from="1592663090561" duration="1142000" />
+      <workItem from="1592714467889" duration="2561000" />
     </task>
     <servers />
   </component>

@@ -83,6 +83,7 @@ TO DECEMBER 2020.</u></b></span></p>
         <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="">
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
+                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>
                 <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
                 <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                 <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
@@ -98,8 +99,8 @@ TO DECEMBER 2020.</u></b></span></p>
             </thead>
             @foreach($ipcrcsassocp as $row)
                 <tbody>
-
                     <tr>
+                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
                     <td style="text-align: left; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->actual_accomplishment_desc !!}</td>
@@ -107,7 +108,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     <tr style="background-color: rgb(255, 255, 255);">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="Q" class="form-control form-control-sm" value="Q" id="Q" style="width: 50px">
+                                <select name="Q" class="form-control form-control-sm q-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -118,7 +119,18 @@ TO DECEMBER 2020.</u></b></span></p>
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="E" class="form-control form-control-sm" value="E" id="E" style="width: 50px">
+                                <select name="E" class="form-control form-control-sm e-value" style="width: 50px">
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
+                            <div class="form-label-group">
+                                <select name="T" class="form-control form-control-sm t-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -130,32 +142,14 @@ TO DECEMBER 2020.</u></b></span></p>
 
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="T" class="form-control form-control-sm" value="T" id="T" style="width: 50px">
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </td>
-
-                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
-                            <div class="form-label-group">
-                                <select name="A" class="form-control form-control-sm" value="A" id="A" style="width: 50px">
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
+                                <input type="number" class="form-control form-control-sm a-value" name="A" style="width: 50px" readonly>
                             </div>
                         </td>
 
                         <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                     </tr>
                 </tbody>
-            @endforeach
+                @endforeach
         </table>
         <br>
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
@@ -424,7 +418,6 @@ TO DECEMBER 2020.</u></b></span></p>
                                 COMMENTS / FEEDBACKS / RECOMMENDATIONS:&nbsp;
                             </span>
                             </b>
-                            <b><span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span></b>
                         </p>
                     </td>
                 </tr>
@@ -435,7 +428,5 @@ TO DECEMBER 2020.</u></b></span></p>
 
     </div>
     </body>
-
-
-
 @endsection
+

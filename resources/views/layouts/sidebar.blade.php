@@ -366,6 +366,15 @@
 
         modal.find('.modal-body #empid').val(empid);
     })
+
+    //GET THE AVERAGE PER ROW
+    $(".q-value, .e-value, .t-value").change(function(){
+        let currentRow = $(this).closest('tr');
+        let EValue = parseInt(currentRow.find('.e-value').val());
+        let QValue = parseInt(currentRow.find('.q-value').val());
+        let TValue = parseInt(currentRow.find('.t-value').val());
+        currentRow.find('.a-value').val((EValue  + QValue + TValue ) / 3);
+    });
 </script>
 </html>
 

@@ -107,7 +107,18 @@ TO DECEMBER 2020.</u></b></span></p>
                     <tr style="background-color: rgb(255, 255, 255);">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="Q" class="form-control form-control-sm" value="Q" id="Q" style="width: 50px">
+                                <select name="Q" class="form-control form-control-sm q-value" style="width: 50px">
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option va`lue="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
+                            <div class="form-label-group">
+                                <select name="E" class="form-control form-control-sm e-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -118,7 +129,7 @@ TO DECEMBER 2020.</u></b></span></p>
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="E" class="form-control form-control-sm" value="E" id="E" style="width: 50px">
+                                <select name="T" class="form-control form-control-sm t-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -130,25 +141,7 @@ TO DECEMBER 2020.</u></b></span></p>
 
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="T" class="form-control form-control-sm" value="T" id="T" style="width: 50px">
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </td>
-
-                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
-                            <div class="form-label-group">
-                                <select name="A" class="form-control form-control-sm" value="A" id="A" style="width: 50px">
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
+                                <input type="number" class="form-control form-control-sm a-value" name="A" style="width: 50px" readonly>
                             </div>
                         </td>
 
@@ -305,7 +298,7 @@ TO DECEMBER 2020.</u></b></span></p>
             </table>
 
             <br>
-            
+
             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                 <b>
             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;">

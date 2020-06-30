@@ -285,12 +285,12 @@ TO DECEMBER 2020.</u></b></span></p>
                     style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt; height: 2.9pt;"
                 >
                     <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">Total Weighted Score</span></b>
+                        <b style="box-sizing: border-box;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">Total Weighted Score</span></b>
                     </p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;" colspan="4">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                        <span style="font-family: Arial, sans-serif; font-size: 10pt;">&nbsp;</span>
+                            <input type="number" class="form-control form-control-sm" id="total-weighted-score" name="total_weighted_score" readonly>
                     </p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;">
@@ -442,27 +442,33 @@ TO DECEMBER 2020.</u></b></span></p>
     </div>
     </body>
     <script type="text/javascript">
-        //GET THE AVERAGE PER ROW
+        //COMPUTE THE AVERAGE PER ROW
         $(".q-value, .e-value, .t-value").change(function(){
             let currentRow = $(this).closest('tr');
-            let EValue = parseInt(currentRow.find('.e-value').val());
-            let QValue = parseInt(currentRow.find('.q-value').val());
-            let TValue = parseInt(currentRow.find('.t-value').val());
+            let EValue = parseFloat(currentRow.find('.e-value').val());
+            let QValue = parseFloat(currentRow.find('.q-value').val());
+            let TValue = parseFloat(currentRow.find('.t-value').val());
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / 3);
             currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
             currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
 
              computeAvg();
+             computeWeightedScore();
         });
 
-        function computeAvg(){
+        function roundToTwo(num) {
+            return +(Math.round(num + "e+2")  + "e-2");
+        }
+
+        //COMPUTE AVERAGE FOR EACH FUNCTION
+        function computeAvg() {
             // For Core Functions
             const corevalues = document.getElementsByClassName("a-value-core")
             let avg = 0
             let total = 0
             let count = 0
-            for(let x = 0 ; x < corevalues.length ; x++){
-                if(corevalues[x].value !== ""){
+            for (let x = 0; x < corevalues.length; x++) {
+                if (corevalues[x].value !== "") {
                     count++
                     total = total + parseFloat(corevalues[x].value)
                 }
@@ -475,8 +481,8 @@ TO DECEMBER 2020.</u></b></span></p>
             total = 0
             count = 0
             const supvalues = document.getElementsByClassName("a-value-support")
-            for(let x = 0 ; x < supvalues.length ; x++){
-                if(supvalues[x].value !== ""){
+            for (let x = 0; x < supvalues.length; x++) {
+                if (supvalues[x].value !== "") {
                     count++
                     total = total + parseFloat(supvalues[x].value)
                 }
@@ -489,8 +495,8 @@ TO DECEMBER 2020.</u></b></span></p>
             total = 0
             count = 0
             const resvalues = document.getElementsByClassName("a-value-research")
-            for(let x = 0 ; x < resvalues.length ; x++){
-                if(resvalues[x].value !== ""){
+            for (let x = 0; x < resvalues.length; x++) {
+                if (resvalues[x].value !== "") {
                     count++
                     total = total + parseFloat(resvalues[x].value)
                 }
@@ -499,6 +505,18 @@ TO DECEMBER 2020.</u></b></span></p>
             $('#research-total-average').val(isNaN(avg) ? "" : avg)
         }
 
+        //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
+        // The weighted score will not do the computation
+        function computeWeightedScore(){
+            let weightedscore = 0
+            let ACoreValue = $("#core-total-average").val()
+            let ASuppValue = $("#support-total-average").val()
+            let AResValue = $("#research-total-average").val()
+
+            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue) + parseFloat(AResValue)
+
+            $('#total-weighted-score').val(weightedscore)
+        }
 
 
         // //Dynamic compute average

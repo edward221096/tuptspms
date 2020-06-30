@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="543e54a1-2f72-4c34-8a51-a7d767051d46" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Organization.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Organization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -375,7 +365,8 @@
       <workItem from="1592714467889" duration="4162000" />
       <workItem from="1593099597441" duration="2759000" />
       <workItem from="1593324260114" duration="6287000" />
-      <workItem from="1593487345097" duration="18887000" />
+      <workItem from="1593487345097" duration="19227000" />
+      <workItem from="1593513442561" duration="6017000" />
     </task>
     <servers />
   </component>

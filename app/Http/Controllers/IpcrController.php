@@ -12,9 +12,10 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Associate Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
     }
@@ -24,7 +25,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Assistant Professor')
             ->get();
@@ -36,7 +37,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Professor')
             ->get();
@@ -48,7 +49,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Instructor')
             ->get();
@@ -60,7 +61,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Associate Professor')
             ->get();
@@ -72,7 +73,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
             ->get();
@@ -84,7 +85,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Instructor')
             ->get();
@@ -96,7 +97,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Professor')
             ->get();
@@ -108,7 +109,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Associate Professor')
             ->get();
@@ -120,7 +121,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
             ->get();
@@ -132,7 +133,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Professor')
             ->get();
@@ -145,7 +146,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id', '=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
             ->get();
@@ -157,7 +158,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id', '=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Admin')
             ->get();
@@ -169,7 +170,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id', '=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Associate Professor')
             ->get();
@@ -181,7 +182,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id', '=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Assistant Professor')
             ->get();
@@ -193,7 +194,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id', '=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Professor')
             ->get();
@@ -205,7 +206,7 @@ class IpcrController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Instructor')
             ->get();

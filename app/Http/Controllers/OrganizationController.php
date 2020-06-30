@@ -37,6 +37,7 @@ class OrganizationController extends Controller
         $section -> section_name = request('section_name');
         $section -> save();
 
+
         return redirect('/manageorganization');
     }
 

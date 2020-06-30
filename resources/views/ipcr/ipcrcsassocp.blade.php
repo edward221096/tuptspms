@@ -44,9 +44,9 @@
         <br>
     </div>
     <div>
+        <!-- Getting the currently logged user -->
         <p style="margin: 0cm 0cm 10pt; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;margin-bottom:0cm;margin-bottom:.0001pt;text-align:
-justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>NAME
-OF EMPLOYEE/OFFICIAL,</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>COLLEGE SEC - ASSOCIATE PROFESSOR.,</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>OFFICE/DEPARTMENT/COLLEGE/SECTOR</u></b></span><span style="font-family: Arial; font-size: 10pt;">,
+justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->name}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->role}}</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>OFFICE/DEPARTMENT/COLLEGE/SECTOR</u></b></span><span style="font-family: Arial; font-size: 10pt;">,
 Technological University of the Philippines - Taguig, commits to deliver and
 agree to be rated on the attainment of the following targets in accordance with
 the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;"><b><u>JANUARY
@@ -97,7 +97,9 @@ TO DECEMBER 2020.</u></b></span></p>
                 <td style="text-align: center; width: 47px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
             </tr>
             </thead>
+            <script>let functionIDs = []</script>
             @foreach($ipcrcsassocp as $row)
+
                 <tbody>
                     <tr>
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
@@ -142,7 +144,15 @@ TO DECEMBER 2020.</u></b></span></p>
 
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <input type="number" class="form-control form-control-sm a-value" name="A" style="width: 50px" readonly>
+                            @if($row->function_name == 'Core Function')
+                                    <input type="number" class="form-control form-control-sm a-value-core" name="a_value_core" style="width: 50px" readonly>
+
+                                @elseif($row->function_name == 'Support Function')
+                                    <input type="number" class="form-control form-control-sm a-value-support" name="a_value_support" style="width: 50px" readonly>
+                                @endif
+                                @if($row->function_name == 'Research and Extension Services')
+                                    <input type="number" class="form-control form-control-sm a-value-research" name="a_value_res" style="width: 50px" readonly>
+                                @endif
                             </div>
                         </td>
 
@@ -150,6 +160,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     </tr>
                 </tbody>
                 @endforeach
+
         </table>
         <br>
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
@@ -157,6 +168,8 @@ TO DECEMBER 2020.</u></b></span></p>
                 <span style="font-size: 13.3333px;"><b>RATINGS</b></span>
             </font>
         </div>
+
+        <ul id="avgdisplay"></ul>
         <table
             width=""
             style="
@@ -204,7 +217,8 @@ TO DECEMBER 2020.</u></b></span></p>
                     </div>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                    <!-- Total Rating for Function -->
+                        <input type="number" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -225,7 +239,8 @@ TO DECEMBER 2020.</u></b></span></p>
                     </div>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                    <!-- Total Rating for Function -->
+                    <input type="number" class="form-control form-control-sm" id="support-total-average" name="support_total_average" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -249,9 +264,8 @@ TO DECEMBER 2020.</u></b></span></p>
                     </p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                        <span style="font-family: Arial, sans-serif; font-size: 10pt;">&nbsp;</span>
-                    </p>
+                    <!-- Total Rating for Function -->
+                    <input type="number" class="form-control form-control-sm" id="research-total-average" name="research_total_average" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
@@ -425,8 +439,101 @@ TO DECEMBER 2020.</u></b></span></p>
             </table>
             <br />
         </div>
-
     </div>
     </body>
+    <script type="text/javascript">
+        //GET THE AVERAGE PER ROW
+        $(".q-value, .e-value, .t-value").change(function(){
+            let currentRow = $(this).closest('tr');
+            let EValue = parseInt(currentRow.find('.e-value').val());
+            let QValue = parseInt(currentRow.find('.q-value').val());
+            let TValue = parseInt(currentRow.find('.t-value').val());
+            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / 3);
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
+            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
+
+             computeAvg();
+        });
+
+        function computeAvg(){
+            // For Core Functions
+            const corevalues = document.getElementsByClassName("a-value-core")
+            let avg = 0
+            let total = 0
+            let count = 0
+            for(let x = 0 ; x < corevalues.length ; x++){
+                if(corevalues[x].value !== ""){
+                    count++
+                    total = total + parseFloat(corevalues[x].value)
+                }
+            }
+            avg = (total / count) * 0.65
+            $('#core-total-average').val(isNaN(avg) ? "" : avg)
+
+            // For Support Functons
+            avg = 0
+            total = 0
+            count = 0
+            const supvalues = document.getElementsByClassName("a-value-support")
+            for(let x = 0 ; x < supvalues.length ; x++){
+                if(supvalues[x].value !== ""){
+                    count++
+                    total = total + parseFloat(supvalues[x].value)
+                }
+            }
+            avg = total / count * 0.2275
+            $('#support-total-average').val(isNaN(avg) ? "" : avg)
+
+            // For Research Services
+            avg = 0
+            total = 0
+            count = 0
+            const resvalues = document.getElementsByClassName("a-value-research")
+            for(let x = 0 ; x < resvalues.length ; x++){
+                if(resvalues[x].value !== ""){
+                    count++
+                    total = total + parseFloat(resvalues[x].value)
+                }
+            }
+            avg = total / count * 0.1225
+            $('#research-total-average').val(isNaN(avg) ? "" : avg)
+        }
+
+
+
+        // //Dynamic compute average
+        //
+        // let filteredids = []
+        // functionIDs.forEach((id)=>{
+        //     if(!filteredids.includes(id)) filteredids.push(id)
+        // })
+        //
+        // let avgdisplay = ""
+        // filteredids.forEach((id)=>{
+        //     avgdisplay = avgdisplay + `<li>(function Name) Average: <span id="avg${id}"></span></li>`
+        // })
+        //
+        // $('#avgdisplay').html(avgdisplay)
+        //
+        // function dynamicComputeAvg(){
+        //
+        //     functionIDs.forEach((id)=>{
+        //         const values = document.getElementsByClassName(`function${id}`)
+        //         let avg = 0
+        //         let total = 0
+        //         let count = 0
+        //         for(let x = 0 ; x < values.length ; x++){
+        //             if(values[x].value != ""){
+        //                 count++
+        //                 total = total + parseFloat(values[x].value)
+        //             }
+        //         }
+        //
+        //         avg = total / count
+        //         $(`#avg${id}`).text(isNaN(avg) ? "" : avg)
+        //     })
+        //
+        // }
+    </script>
 @endsection
 

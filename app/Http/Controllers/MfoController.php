@@ -23,12 +23,12 @@ class MfoController extends Controller
                 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc',
                 'mfos.actual_accomplishment_desc', 'mfos.remarks', 'mfos.role')
             ->paginate(10);
+
         return view ('sidebar.manageevaluationforms', compact('mfo'));
     }
 
-
-
     public function store(){
+
         $formtype = Form::FirstOrCreate([
            'form_type' => request('form_type')
         ]);
@@ -116,15 +116,15 @@ class MfoController extends Controller
         $mfo -> actual_accomplishment_desc = $request->input('actual_accomplishment_desc');
         $mfo -> remarks = $request -> input ('remarks');
         $mfo -> save();
-
         return redirect('/manageevaluationforms');
     }
 
     public function destroy(Request $request){
+
         if(Mfo::count() > 1){
             Mfo::destroy($request->mfoid);
         }
-        return back();
+//        return back();
     }
 
     public function show()

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\DB;
 
 use App\Division;
 use App\Department;
@@ -91,6 +92,7 @@ class RegisterController extends Controller
             'dept_id'=> $data['dept_id'],
             'section_id'=> $data['section_id']
         ]);
+
     }
 
     /**
@@ -104,7 +106,6 @@ class RegisterController extends Controller
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
-
         return redirect($this->redirectPath())->with('message', 'Your message');
     }
 }

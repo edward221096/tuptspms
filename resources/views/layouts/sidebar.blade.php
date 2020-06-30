@@ -11,6 +11,9 @@
     <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
     <title>TUP-Taguig SPMS</title>
 
+    <script src="{{asset('jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -220,11 +223,6 @@
 </div>
 </body>
 
-<!-- /#wrapper -->
-
-<script src="{{asset('jquery/jquery.min.js')}}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
 
@@ -366,15 +364,6 @@
 
         modal.find('.modal-body #empid').val(empid);
     })
-
-    //GET THE AVERAGE PER ROW
-    $(".q-value, .e-value, .t-value").change(function(){
-        let currentRow = $(this).closest('tr');
-        let EValue = parseInt(currentRow.find('.e-value').val());
-        let QValue = parseInt(currentRow.find('.q-value').val());
-        let TValue = parseInt(currentRow.find('.t-value').val());
-        currentRow.find('.a-value').val((EValue  + QValue + TValue ) / 3);
-    });
 </script>
 </html>
 

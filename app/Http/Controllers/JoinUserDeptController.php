@@ -62,15 +62,18 @@ class JoinUserDeptController extends Controller
         $employee -> dept_id = $request->input('dept_id');
         $employee -> section_id = $request->input('section_id');
         $employee -> update();
+
         return redirect('/employee');
     }
 
     public function destroy(Request $request)
     {
+        DB::enableQueryLog();
         if(User::count() > 1){
             User::destroy($request->empid);
         }
-        return redirect('/employee');
+        dd(DB::getQueryLog());
+//        return redirect('/employee');
     }
 
     public function departments(Request $request){

@@ -18,6 +18,7 @@ class FormController extends Controller
     }
 
     public function store(){
+
         $formtype = new Form();
         $formtype -> form_type = request('form_type');
         $formtype -> save();
@@ -37,6 +38,7 @@ class FormController extends Controller
 
         $formtype = Form::find($request->formtype_id);
         $formtype -> update($request->all());
+
         return back();
     }
 

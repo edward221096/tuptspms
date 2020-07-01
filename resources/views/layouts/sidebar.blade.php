@@ -80,6 +80,7 @@
             <a href="manageformtype" class="list-group-item list-group-item-action bg-light">Manage Form Type</a>
             <a href="managefunctionstype" class="list-group-item list-group-item-action bg-light">Manage Functions</a>
             <a href="manageevaluationforms" class="list-group-item list-group-item-action bg-light">Manage Evaluation Forms</a>
+            <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
             <a href="employee" class="list-group-item list-group-item-action bg-light">Manage Employee</a>
             <a href="#evaluationforms" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                 <span class="menu-collapsed">Evaluation Forms</span>
@@ -225,8 +226,6 @@
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
-
-
 
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

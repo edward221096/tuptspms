@@ -111,7 +111,6 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                             <!-- Add Information Button-->
                             <input class="btn btn-primary btn-sm" type="submit" value="Submit">
                         </div>
@@ -163,7 +162,6 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-default btn-sm" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
                         </div>
                     </div>
@@ -185,11 +183,10 @@
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <div class="modal-body">
-                        <label>Are you sure do you want to delete this Organization Group?</label>
+                        <label>Please confirm if you want to delete this organization group</label>
                         <input type="hidden" name="section_id" id="section_id">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-default btn-sm" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

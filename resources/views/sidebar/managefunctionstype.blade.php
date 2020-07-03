@@ -73,7 +73,6 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                             <!-- Add Information Button-->
                             <input class="btn btn-primary btn-sm" type="submit" value="Submit">
                         </div>
@@ -103,7 +102,6 @@
                             <input type="text" class="form-control" name="function_name" id="function_name">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
                         </div>
                     </div>
@@ -125,11 +123,10 @@
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <div class="modal-body">
-                        <label>Are you sure do you want to delete this Function type?</label>
+                        <label>Please confirm if you want to delete this function type</label>
                         <input type="hidden" name="funcid" id="funcid">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Yes</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

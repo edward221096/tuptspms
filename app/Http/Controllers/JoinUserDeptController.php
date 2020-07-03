@@ -68,12 +68,10 @@ class JoinUserDeptController extends Controller
 
     public function destroy(Request $request)
     {
-        DB::enableQueryLog();
         if(User::count() > 1){
             User::destroy($request->empid);
         }
-        dd(DB::getQueryLog());
-//        return redirect('/employee');
+        return redirect('/employee');
     }
 
     public function departments(Request $request){

@@ -108,11 +108,10 @@
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
                         <div class="modal-body">
-                            <label>Are you sure do you want to delete this Information</label>
+                            <label>Please confirm if you want to delete this information</label>
                             <input type="hidden" name="mfoid" id="mfoid">
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
-                                <button type="submit" class="btn btn-primary btn-sm">Yes</button>
+                                <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
                             </div>
                         </div>
                     </form>

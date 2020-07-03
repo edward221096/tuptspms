@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('employee','JoinUserDeptController');
 
     Route::get('/json-departments', 'JoinUserDeptController@departments');
-    
+
     //------TEST COMMENT------------------------
 
     //------------------FORM RELATED ROUTES---------------------------
@@ -69,12 +69,45 @@ Route::group(['middleware' => ['auth']], function () {
     //FOR SEARCH DATA ORGANIZATION
     Route::get('/searchorganization', 'OrganizationController@search');
 
+    //------------------ EVALUATION PERIOD RELATED ROUTES---------------------------
+    Route::get('/manageevaluationperiod', function () {
+        return view('sidebar.manageevaluationperiod');
+    });
+
+    //FOR GET EVALUATION PERIOD
+    route::get('/manageevaluationperiod', 'EvaluationPeriodController@index');
+
+    //FOR INSERT DATA EVALUATION PERIOD
+    route::post('/storeevaluationperiod', 'EvaluationPeriodController@store');
+
+    //FOR UPDATE AND DELETE DATA EVALUATION PERIOD
+    route::resource('/evaluationperiod', 'EvaluationPeriodController');
+
+    //------------------MANAGE EVALUATION FORM (MFO) RELATED ROUTES---------------------------
+    //FOR GET THE VALUES OF MFOS
+    Route::get('/manageevaluationforms', 'MfoController@index');
+
+    //FOR INSERT DATA MFOS
+    Route::post('/storemfo','MfoController@store');
+
+    //FOR SEARCH DATA MFOS
+    Route::get('/searchmfo', 'MfoController@search');
+
+    //EDIT MFO FORM
+    Route::get('/editevaluationforms', function () {
+        return view('sidebar.editevaluationforms');
+    });
+
+    Route::resource('manageevaluationforms', 'MfoController');
+
     //------------------EVALUATION FORM RELATED ROUTES---------------------------
     Route::get('/ipcrcsassocp', function () {
         return view('ipcr.ipcrcsassocp');
     });
 
     Route::get('/ipcrcsassocp', 'IpcrController@getipcrcsassocp');
+
+    Route::post('/storedata', 'IpcrController@storeipcrcsassocp');
 
     Route::get('/ipcrcsassisp', function () {
         return view('ipcr.ipcrcsassisp');
@@ -174,22 +207,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfulladmin', 'IpcrController@getipcrfulladmin');
 
-    //------------------MANAGE EVALUATION FORM (MFO) RELATED ROUTES---------------------------
-    //FOR GET THE VALUES OF MFOS
-    Route::get('/manageevaluationforms', 'MfoController@index');
-
-    //FOR INSERT DATA MFOS
-    Route::post('/storemfo','MfoController@store');
-
-    //FOR SEARCH DATA MFOS
-    Route::get('/searchmfo', 'MfoController@search');
-
-    //EDIT MFO FORM
-    Route::get('/editevaluationforms', function () {
-        return view('sidebar.editevaluationforms');
-    });
-
-    Route::resource('manageevaluationforms', 'MfoController');
 
     Route::get('/home', 'HomeController@index')->name('home');
 });

@@ -2,23 +2,106 @@
 
 namespace App\Http\Controllers;
 
+use App\Form;
+use App\Rating;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use App\TestRatings;
 
 class IpcrController extends Controller
 {
+    //IPCRASSOCP VIEW
     public function getipcrcsassocp(){
         $ipcrcsassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Associate Professor')
             ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
     }
+
+    public static function getEvaluationStartDate(){
+        $startdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy(DB::raw('date(evaluation_startdate)'), 'desc')
+            ->limit('1')
+            ->get();
+
+        return $startdate;
+    }
+
+    public static function getEvaluationEndDate(){
+        $enddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy(DB::raw('date(evaluation_startdate)'), 'desc')
+            ->limit('1')
+            ->get();
+
+        return $enddate;
+    }
+
+    //STORE IPCRCSASSOCP
+    public function storeipcrcsassocp(Request $request)
+    {
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+//        var_dump($store);
+            DB::table('ratings')->insert($store);
+
+            return redirect('/ipcrcsassocp');
+            }
+
 
     public function getipcrcsassisp(){
         $ipcrcsassisp = DB::table('mfos')

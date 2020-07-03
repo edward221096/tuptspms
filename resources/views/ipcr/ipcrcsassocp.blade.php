@@ -2,8 +2,36 @@
 @section('ipcrcsassocp')
 
     <body>
+    <!-- STORE ALL THE USER DATA TO RATING TABLE -->
+    <form method="POST" action="/storedata">
+        {{ csrf_field() }}
+        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
+        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
+        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
+        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->section_id}}" name="section_id[]">
+        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->role}}" name="ratee_role[]">
+        @foreach(\App\Http\Controllers\IpcrController::getEvaluationStartDate() as $getstartdate)
+            <input type="hidden" value="{{ $getstartdate ->evaluation_startdate }}" name="evaluation_startdate[]">
+        @endforeach
 
-    <label>Status: For Review</label>
+        @foreach(\App\Http\Controllers\IpcrController::getEvaluationEndDate() as $getenddate)
+            <input type="hidden" value="{{ $getenddate ->evaluation_enddate }}" name="evaluation_enddate[]">
+        @endforeach
+
+{{--        <input type="hidden" value="{{ \Illuminate\Support\Facades\DB::table('evaluationperiods')--}}
+{{--            ->select('evaluation_enddate')--}}
+{{--            ->where('evaluation_period_status', '=', 'Open')--}}
+{{--            ->orderBy('evaluation_enddate', 'desc')--}}
+{{--            ->limit('1')--}}
+{{--            ->get() }}" name="evaluation_enddate[]">--}}
+    <label>
+        Evaluation Form Status:
+        <select name="evaluationform_status[]" class="form-control form-control-sm">
+            <option value="For Review and Approval">For Review and Approval</option>
+            <option value="For Re-evaluation">For Re-evaluation</option>
+            <option value="Approved">Approved</option>
+        </select>
+    </label>
     <div>
         <table width="" style="font-family: 'Times New Roman';; font-size: medium; border-collapse: collapse">
             <tbody>
@@ -49,8 +77,22 @@
 justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->name}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->role}}</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>OFFICE/DEPARTMENT/COLLEGE/SECTOR</u></b></span><span style="font-family: Arial; font-size: 10pt;">,
 Technological University of the Philippines - Taguig, commits to deliver and
 agree to be rated on the attainment of the following targets in accordance with
-the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;"><b><u>JANUARY
-TO DECEMBER 2020.</u></b></span></p>
+the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;">
+                <b>
+                    <u>
+<!-- TO DISPLAY THE EVALUATION PERIOD START AND END DATE -->
+                        @foreach(\App\Http\Controllers\EvaluationPeriodController::getEvaluationPeriod() as $getStartMonth)
+                            {{ $getStartMonth->evaluation_startdate }} {{ $getStartMonth->start_year}}
+                        @endforeach
+                            TO
+
+                        @foreach(\App\Http\Controllers\EvaluationPeriodController::getEvaluationPeriod() as $getEndMonth)
+                            {{ $getEndMonth->evaluation_enddate }} {{ $getStartMonth->end_year }}
+                        @endforeach
+                    </u>
+                </b>
+            </span>
+        </p>
         <br>
     </div>
     <div><span style="font-family: Arial;">____________________</span></div>
@@ -58,7 +100,7 @@ TO DECEMBER 2020.</u></b></span></p>
     <div>
         <br>
     </div>
-    <div><span style="font-size: 10pt; font-family: Arial;">Date: <input name="date" value="<?= date('Y-m-d',time()) ;?>"></span></div>
+    <div><span style="font-size: 10pt; font-family: Arial;">Date: <input name="date" value="<?= date('Y-m-d',time()) ;?>" readonly></span></div>
     <div>
         <br>
     </div>
@@ -97,9 +139,11 @@ TO DECEMBER 2020.</u></b></span></p>
                 <td style="text-align: center; width: 47px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
             </tr>
             </thead>
-            <script>let functionIDs = []</script>
-            @foreach($ipcrcsassocp as $row)
 
+            @foreach($ipcrcsassocp as $row)
+                <input type="hidden" value="{{$row->form_id}}" name="form_id[]">
+                <input type="hidden" value="{{$row->function_name}}" name="function_name[]">
+                <input type="hidden" value="{{$row->id}}" name="mfo_id[]">
                 <tbody>
                     <tr>
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
@@ -110,7 +154,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     <tr style="background-color: rgb(255, 255, 255);">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="Q" class="form-control form-control-sm q-value" style="width: 50px">
+                                <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -121,7 +165,7 @@ TO DECEMBER 2020.</u></b></span></p>
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="E" class="form-control form-control-sm e-value" style="width: 50px">
+                                <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -132,7 +176,7 @@ TO DECEMBER 2020.</u></b></span></p>
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="T" class="form-control form-control-sm t-value" style="width: 50px">
+                                <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -144,15 +188,15 @@ TO DECEMBER 2020.</u></b></span></p>
 
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                            @if($row->function_name == 'Core Function')
-                                    <input type="number" class="form-control form-control-sm a-value-core" name="a_value_core" style="width: 50px" readonly>
-
-                                @elseif($row->function_name == 'Support Function')
-                                    <input type="number" class="form-control form-control-sm a-value-support" name="a_value_support" style="width: 50px" readonly>
+                            @if($row->function_name == 'Core Functions')
+                                    <input type="number" class="form-control form-control-sm a-value-core" name="A[]" style="width: 50px" readonly>
+                                @elseif($row->function_name == 'Support Functions')
+                                    <input type="number" class="form-control form-control-sm a-value-support" name="A[]" style="width: 50px" readonly>
                                 @endif
                                 @if($row->function_name == 'Research and Extension Services')
-                                    <input type="number" class="form-control form-control-sm a-value-research" name="a_value_res" style="width: 50px" readonly>
+                                    <input type="number" class="form-control form-control-sm a-value-research" name="A[]" style="width: 50px" readonly>
                                 @endif
+
                             </div>
                         </td>
 
@@ -160,15 +204,26 @@ TO DECEMBER 2020.</u></b></span></p>
                     </tr>
                 </tbody>
                 @endforeach
-
         </table>
-        <br>
+        <div>
+            <script>
+                $(document).ready(function(){
+                    $(".btn-reset").click(function(){
+                        $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
+                    });
+                });
+            </script>
+            <br>
+            <button type="button" class="btn btn-secondary btn-sm btn-reset">Clear Fields</button>
+            <br>
+            <br>
+        </div>
+
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
             <font face="Arial">
                 <span style="font-size: 13.3333px;"><b>RATINGS</b></span>
             </font>
         </div>
-
         <ul id="avgdisplay"></ul>
         <table
             width=""
@@ -240,7 +295,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" class="form-control form-control-sm" id="support-total-average" name="support_total_average" readonly>
+                    <input type="number" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -265,7 +320,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" class="form-control form-control-sm" id="research-total-average" name="research_total_average" readonly>
+                    <input type="number" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
@@ -290,7 +345,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;" colspan="4">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                            <input type="number" class="form-control form-control-sm" id="total-weighted-score" name="total_weighted_score" readonly>
+                            <input type="number" class="form-control form-control-sm" id="total-weighted-score" name="total_weighted_score[]" readonly>
                     </p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;">
@@ -301,7 +356,7 @@ TO DECEMBER 2020.</u></b></span></p>
             </tr>
             </tbody>
         </table>
-        <div><br /></div>
+
         <div>
             <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
@@ -351,14 +406,14 @@ TO DECEMBER 2020.</u></b></span></p>
                     <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
-                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature"></span>
+                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]"></span>
                         </span>
                         </p>
                     </td>
                     <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                            &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature">
+                            &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]">
                         </span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
@@ -367,7 +422,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 <tr style="mso-yfti-irow: 1;">
                     <td style="border: solid #ababab 1pt; border-top: none; mso-border-top-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="ratee_role" value="{{Auth::User()->role}}" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" value="{{Auth::User()->role}}" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -385,7 +440,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role" value="" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" value="" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -393,7 +448,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 <tr style="mso-yfti-irow: 2; mso-yfti-lastrow: yes;">
                     <td style="border: solid #ababab 1pt; border-top: none; mso-border-top-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date: <input type="text" class="form-control form-control-sm" name="ratee_date" value="" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date: <input type="date" class="form-control form-control-sm" name="ratee_date[]" value="<?= date('Y-m-d',time()) ;?>" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -411,7 +466,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date:&nbsp;<input type="text" class="form-control form-control-sm" name="rater_date" value="" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -429,7 +484,7 @@ TO DECEMBER 2020.</u></b></span></p>
                             <span style="font-size: 12pt; font-family: 'Times New Roman', serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">&nbsp;</span>
                             <b>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                                COMMENTS / FEEDBACKS / RECOMMENDATIONS:&nbsp; <textarea class="form-control" rows="5" name="rater_comments"></textarea>
+                                COMMENTS / FEEDBACKS / RECOMMENDATIONS:&nbsp; <textarea class="form-control" rows="5" name="rater_comments[]"></textarea>
                             </span>
                             </b>
                         </p>
@@ -438,8 +493,13 @@ TO DECEMBER 2020.</u></b></span></p>
                 </tbody>
             </table>
             <br />
+
+            <div>
+                <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
+            </div>
         </div>
     </div>
+    </form>
     </body>
     <script type="text/javascript">
         //COMPUTE THE AVERAGE PER ROW
@@ -517,41 +577,6 @@ TO DECEMBER 2020.</u></b></span></p>
 
             $('#total-weighted-score').val(weightedscore)
         }
-
-
-        // //Dynamic compute average
-        //
-        // let filteredids = []
-        // functionIDs.forEach((id)=>{
-        //     if(!filteredids.includes(id)) filteredids.push(id)
-        // })
-        //
-        // let avgdisplay = ""
-        // filteredids.forEach((id)=>{
-        //     avgdisplay = avgdisplay + `<li>(function Name) Average: <span id="avg${id}"></span></li>`
-        // })
-        //
-        // $('#avgdisplay').html(avgdisplay)
-        //
-        // function dynamicComputeAvg(){
-        //
-        //     functionIDs.forEach((id)=>{
-        //         const values = document.getElementsByClassName(`function${id}`)
-        //         let avg = 0
-        //         let total = 0
-        //         let count = 0
-        //         for(let x = 0 ; x < values.length ; x++){
-        //             if(values[x].value != ""){
-        //                 count++
-        //                 total = total + parseFloat(values[x].value)
-        //             }
-        //         }
-        //
-        //         avg = total / count
-        //         $(`#avg${id}`).text(isNaN(avg) ? "" : avg)
-        //     })
-        //
-        // }
     </script>
 @endsection
 

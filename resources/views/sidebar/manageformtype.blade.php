@@ -53,7 +53,7 @@
 
     <!-- START OF ADD MODAL -->
     <div class="modal fade" id="addformtype" tabindex="-1" role="dialog" aria-labelledby="addformtype" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="addformtype">Add Form Type</h5>
@@ -66,14 +66,13 @@
                     <div class="modal-body">
                         <!-- Form Type-->
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label for="form_type">Form Type</label>
                                 <input type="text" class="form-control form-control-sm" name="form_type"
                                        placeholder="Form Type"  required autocomplete="form_type">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                             <!-- Add Information Button-->
                             <input class="btn btn-primary btn-sm" type="submit" value="Submit">
                         </div>
@@ -86,7 +85,7 @@
 
     <!-- START OF EDIT Modal -->
     <div class="modal fade" id="editformtype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="myModalLabel">Edit Form Type</h5>
@@ -98,12 +97,11 @@
                     {{csrf_field()}}
                     <div class="modal-body">
                         <input type="hidden" name="formtype_id" id="formtype_id">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="form_type">Form Type</label>
                             <input type="text" class="form-control" name="form_type" id="form_type">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
                         </div>
                     </div>
@@ -125,11 +123,10 @@
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <div class="modal-body">
-                        <label>Are you sure do you want to delete this Form type?</label>
+                        <label>Please confirm if you want to delete this form type</label>
                         <input type="hidden" name="formtype_id" id="formtype_id">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Yes</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

@@ -199,11 +199,10 @@
                     @csrf
                     @method("DELETE")
                     <div class="modal-body">
-                        <label>Are you sure do you want to delete this Employee?</label>
+                        <label>Please confirm if you want to delete this Employee information</label>
                         <input type="hidden" name="empid" id="empid">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-default btn-sm" data-dismiss="modal">No</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Yes</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

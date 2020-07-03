@@ -196,6 +196,7 @@
         </nav>
 
     @yield('employee')
+    @yield('manageevaluationperiod')
     @yield('manageevaluationforms')
     @yield('manageformtype')
     @yield('managefunctionstype')
@@ -363,6 +364,39 @@
 
         modal.find('.modal-body #empid').val(empid);
     })
+
+    //EDIT MODAL IN MANAGE EVALUATION PERIOD
+    $('#editevaluationperiod').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let evalperiodid = button.data('myevalperiodid');
+        let evalstartdate = button.data('myevalstartdate');
+        let evalenddate = button.data('myevalenddate');
+        let evalstatus = button.data('myevalstatus');
+
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+        modal.find('.modal-body #evaluation_startdate').val(evalstartdate);
+        modal.find('.modal-body #evaluation_enddate').val(evalenddate);
+        modal.find('.modal-body #evaluation_period_status').val(evalstatus);
+    })
+
+    //EDIT MODAL IN MANAGE EVALUATION PERIOD
+    $('#deleteevalperiod').on('show.bs.modal', function (event) {
+        let button = $(event.relatedTarget);
+        let evalperiodid = button.data('myevalperiodid');
+
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+
+    })
+
+    //RESET VALUE OF MODAL INPUT FIELDS
+    $('.modal').on('hidden.bs.modal', function(){
+        $(this).find('form')[0].reset();
+    });
+
 </script>
 </html>
 

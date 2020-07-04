@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="543e54a1-2f72-4c34-8a51-a7d767051d46" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/TestRatings.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_07_02_104816_create_testratings_table.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EvaluationPeriodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EvaluationPeriodController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_07_01_132456_create_evaluationperiods_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_07_01_132456_create_evaluationperiods_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -37,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +60,7 @@
     </favorites_list>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -394,7 +384,9 @@
       <workItem from="1593652046639" duration="24620000" />
       <workItem from="1593682168698" duration="5828000" />
       <workItem from="1593689010462" duration="7866000" />
-      <workItem from="1593740788370" duration="17082000" />
+      <workItem from="1593740788370" duration="17753000" />
+      <workItem from="1593829247286" duration="6665000" />
+      <workItem from="1593856800346" duration="5685000" />
     </task>
     <servers />
   </component>

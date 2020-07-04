@@ -82,6 +82,7 @@
             <a href="manageevaluationforms" class="list-group-item list-group-item-action bg-light">Manage Evaluation Forms</a>
             <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
             <a href="employee" class="list-group-item list-group-item-action bg-light">Manage Employee</a>
+            <a href="myevaluationform" class="list-group-item list-group-item-action bg-light">My Evaluation Form</a>
             <a href="#evaluationforms" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                 <span class="menu-collapsed">Evaluation Forms</span>
             </a>

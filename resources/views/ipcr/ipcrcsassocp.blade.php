@@ -17,13 +17,6 @@
         @foreach(\App\Http\Controllers\IpcrController::getEvaluationEndDate() as $getenddate)
             <input type="hidden" value="{{ $getenddate ->evaluation_enddate }}" name="evaluation_enddate[]">
         @endforeach
-
-{{--        <input type="hidden" value="{{ \Illuminate\Support\Facades\DB::table('evaluationperiods')--}}
-{{--            ->select('evaluation_enddate')--}}
-{{--            ->where('evaluation_period_status', '=', 'Open')--}}
-{{--            ->orderBy('evaluation_enddate', 'desc')--}}
-{{--            ->limit('1')--}}
-{{--            ->get() }}" name="evaluation_enddate[]">--}}
     <label>
         Evaluation Form Status:
         <select name="evaluationform_status[]" class="form-control form-control-sm">
@@ -185,16 +178,15 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                 </select>
                             </div>
                         </td>
-
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                             @if($row->function_name == 'Core Functions')
-                                    <input type="number" class="form-control form-control-sm a-value-core" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 50px" readonly>
                                 @elseif($row->function_name == 'Support Functions')
-                                    <input type="number" class="form-control form-control-sm a-value-support" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 50px" readonly>
                                 @endif
                                 @if($row->function_name == 'Research and Extension Services')
-                                    <input type="number" class="form-control form-control-sm a-value-research" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 50px" readonly>
                                 @endif
 
                             </div>
@@ -206,14 +198,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 @endforeach
         </table>
         <div>
-            <script>
-                $(document).ready(function(){
-                    $(".btn-reset").click(function(){
-                        $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
-                    });
-                });
-            </script>
             <br>
+            <input type="reset" class="btn btn-secondary btn-sm btn-reset" value="Clear Fields">
             <button type="button" class="btn btn-secondary btn-sm btn-reset">Clear Fields</button>
             <br>
             <br>
@@ -502,6 +488,13 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </form>
     </body>
     <script type="text/javascript">
+        //CLEAR AVERAGE FIELDS AND RESET
+        $(document).ready(function(){
+            $(".btn-reset").click(function(){
+                $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
+            });
+        });
+
         //COMPUTE THE AVERAGE PER ROW
         $(".q-value, .e-value, .t-value").change(function(){
             let currentRow = $(this).closest('tr');
@@ -512,13 +505,14 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
             currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
 
+            // setFourNumberDecimal();
              computeAvg();
              computeWeightedScore();
         });
-
-        function roundToTwo(num) {
-            return +(Math.round(num + "e+2")  + "e-2");
-        }
+        //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
+        // function setFourNumberDecimal(el) {
+        //     el.value = parseFloat(el.value).toFixed(4);
+        // };
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {

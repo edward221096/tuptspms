@@ -80,12 +80,12 @@
             <a href="manageformtype" class="list-group-item list-group-item-action bg-light">Manage Form Type</a>
             <a href="managefunctionstype" class="list-group-item list-group-item-action bg-light">Manage Functions</a>
             <a href="manageevaluationforms" class="list-group-item list-group-item-action bg-light">Manage Evaluation Forms</a>
-            <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
             <a href="employee" class="list-group-item list-group-item-action bg-light">Manage Employee</a>
-            <a href="myevaluationform" class="list-group-item list-group-item-action bg-light">My Evaluation Form</a>
             <a href="#evaluationforms" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
                 <span class="menu-collapsed">Evaluation Forms</span>
             </a>
+
+
             <!-- Submenu content -->
             <div id='evaluationforms' class="collapse sidebar-submenu">
                 <!-- ADD THE IPCR FORM SIDEBAR HERE -->
@@ -147,6 +147,56 @@
                 <a href="ipcrfulladmin" class="list-group-item list-group-item-action bg-light">
                     <span class="menu-collapsed">IPCR (Fulltime - Admin)</span>
                 </a>
+
+
+            </div>
+
+            <a href="#opcr" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
+                <span class="menu-collapsed">OPCR Forms</span>
+            </a>
+
+            <!-- Submenu content OPCR -->
+            <div id='opcr' class="collapse sidebar-submenu">
+                <!-- ADD THE OPCR FORM SIDEBAR HERE -->
+                <a href="opcraccounting" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR Accounting</span>
+                </a>
+                <a href="opcradre" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR ADRE</span>
+                </a>
+                <a href="opcrbudget" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR BUDGET</span>
+                </a>
+                <a href="opcrcashier" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR CASHIER</span>
+                </a>
+                <a href="opcrido" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR IDO</span>
+                </a>
+                <a href="opcrindustrybased" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR Industry-Based</span>
+                </a>
+                <a href="opcrmedicalserv" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR Medical Services</span>
+                </a>
+                <a href="opcrpdo" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR PDO</span>
+                </a>
+                <a href="opcrprocurement" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR Procurement</span>
+                </a>
+                <a href="opcrqaa" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR QAA</span>
+                </a>
+
+                <a href="opcrrecords" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR Records</span>
+                </a>
+
+                <a href="opcruitc" class="list-group-item list-group-item-action bg-light">
+                    <span class="menu-collapsed">OPCR UITC</span>
+                </a>
+
             </div>
         </div>
     </div>
@@ -197,7 +247,6 @@
         </nav>
 
     @yield('employee')
-    @yield('manageevaluationperiod')
     @yield('manageevaluationforms')
     @yield('manageformtype')
     @yield('managefunctionstype')
@@ -219,6 +268,18 @@
     @yield('ipcrfprofessor')
     @yield('ipcrfinstructor')
     @yield('ipcrfulladmin')
+    @yield('opcraccounting')
+    @yield('opcradre')
+    @yield('opcrbudget')
+    @yield('opcrcashier')
+    @yield('opcrido')
+    @yield('opcrindustrybased')
+    @yield('opcrmedicalserv')
+    @yield('opcrpdo')
+    @yield('opcrprocurement')
+    @yield('opcrqaa')
+    @yield('opcrrecords')
+    @yield('opcruitc')
 
     <!-- /#page-content-wrapper -->
 
@@ -228,6 +289,8 @@
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
+
+
 
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -365,39 +428,5 @@
 
         modal.find('.modal-body #empid').val(empid);
     })
-
-    //EDIT MODAL IN MANAGE EVALUATION PERIOD
-    $('#editevaluationperiod').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let evalperiodid = button.data('myevalperiodid');
-        let evalstartdate = button.data('myevalstartdate');
-        let evalenddate = button.data('myevalenddate');
-        let evalstatus = button.data('myevalstatus');
-
-        var modal = $(this);
-
-        modal.find('.modal-body #evalperiodid').val(evalperiodid);
-        modal.find('.modal-body #evaluation_startdate').val(evalstartdate);
-        modal.find('.modal-body #evaluation_enddate').val(evalenddate);
-        modal.find('.modal-body #evaluation_period_status').val(evalstatus);
-    })
-
-    //EDIT MODAL IN MANAGE EVALUATION PERIOD
-    $('#deleteevalperiod').on('show.bs.modal', function (event) {
-        let button = $(event.relatedTarget);
-        let evalperiodid = button.data('myevalperiodid');
-
-        var modal = $(this);
-
-        modal.find('.modal-body #evalperiodid').val(evalperiodid);
-
-    })
-
-    //RESET VALUE OF MODAL INPUT FIELDS
-    $('.modal').on('hidden.bs.modal', function(){
-        $(this).find('form')[0].reset();
-    });
-
 </script>
 </html>
-

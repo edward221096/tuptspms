@@ -101,6 +101,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('manageevaluationforms', 'MfoController');
 
     //------------------EVALUATION FORM RELATED ROUTES---------------------------
+    //------------------IPCR---------------------------------------
     Route::get('/ipcrcsassocp', function () {
         return view('ipcr.ipcrcsassocp');
     });
@@ -206,6 +207,77 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('/ipcrfulladmin', 'IpcrController@getipcrfulladmin');
+
+    //----OPCR FORMS--------------
+
+    Route::get('/opcraccounting', function () {
+        return view('opcr.opcraccounting');
+    });
+
+    Route::get('/opcraccounting', 'OpcrController@getopcraccounting');
+
+    Route::get('/opcradre', function () {
+        return view('opcr.opcradre');
+    });
+
+    Route::get('/opcradre', 'OpcrController@getopcradre');
+
+    Route::get('/opcrbudget', function () {
+        return view('opcr.opcrbudget');
+    });
+
+    Route::get('/opcrbudget', 'OpcrController@getopcrbudget');
+
+    Route::get('/opcrcashier', function () {
+        return view('opcr.opcrcashier');
+    });
+
+    Route::get('/opcrcashier', 'OpcrController@getopcrcashier');
+
+    Route::get('/opcrido', function () {
+        return view('ipcr.opcrido');
+    });
+
+    Route::get('/opcrido', 'OpcrController@getopcrido');
+
+    Route::get('/opcrindustrybased', function () {
+        return view('opcr.opcrindustrybased');
+    });
+
+    Route::get('/opcrindustrybased', 'OpcrController@getopcrindustrybased');
+
+    Route::get('/opcrmedicalserv', function () {
+        return view('opcr.opcrmedicalserv');
+    });
+
+    Route::get('/opcrmedicalserv', 'OpcrController@getopcrmedicalserv');
+
+    Route::get('/opcrpdo', function () {
+        return view('opcr.opcrpdo');
+    });
+
+    Route::get('/opcrpdo', 'OpcrController@getopcrpdo');
+
+    Route::get('/opcrprocurement', function () {
+        return view('opcr.opcrprocurement');
+    });
+
+    Route::get('/opcrprocurement', 'OpcrController@getopcrprocurement');
+
+    Route::get('/opcrqaa', 'OpcrController@getopcrqaa');
+
+    Route::get('/opcrrecords', function () {
+        return view('opcr.opcrrecords');
+    });
+
+    Route::get('/opcrrecords', 'OpcrController@getopcrrecords');
+
+
+    Route::get('/opruitc', function () {
+        return view('opcr.opruitc');
+    });
+
+    Route::get('/opcruitc', 'OpcrController@getopcruitc');
 
 
     Route::get('/home', 'HomeController@index')->name('home');

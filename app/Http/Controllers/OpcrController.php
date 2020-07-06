@@ -27,7 +27,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'ADREA')
+            ->Where('dept_name', '=', 'ADREA')
             ->get();
         return view ('opcr.opcradre', compact('opcradre'));
     }
@@ -39,7 +39,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Budget')
+            ->Where('dept_name', '=', 'Budget')
             ->get();
         return view ('opcr.opcrbudget', compact('opcrbudget'));
     }
@@ -51,7 +51,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Faculty')
+            ->Where('dept_name', '=', 'Faculty')
             ->get();
         return view ('opcr.opcrfaculty', compact('opcrfaculty'));
     }
@@ -63,7 +63,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Cashier')
+            ->Where('dept_name', '=', 'Cashier')
             ->get();
         return view ('opcr.opcrcashier', compact('opcrcashier'));
     }
@@ -75,7 +75,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'IDO')
+            ->Where('dept_name', '=', 'IDO')
             ->get();
         return view ('opcr.opcrido', compact('opcrido'));
     }
@@ -87,7 +87,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Industry-Based')
+            ->Where('dept_name', '=', 'Industry-Based')
             ->get();
         return view ('opcr.opcrindustrybased', compact('opcrindustrybased'));
     }
@@ -99,7 +99,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Medical Serrvices')
+            ->Where('dept_name', '=', 'Medical Serrvices')
             ->get();
         return view ('opcr.opcrmedicalserv', compact('opcrmedicalserv'));
     }
@@ -111,7 +111,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'PDO')
+            ->Where('dept_name', '=', 'PDO')
             ->get();
         return view ('opcr.opcrpdo', compact('opcrpdo'));
     }
@@ -123,7 +123,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Procurement')
+            ->Where('dept_name', '=', 'Procurement')
             ->get();
         return view ('opcr.opcrprocurement', compact('opcrprocurement'));
     }
@@ -135,7 +135,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'QAA')
+            ->Where('dept_name', '=', 'QAA')
             ->get();
         return view ('opcr.opcrqaa', compact('opcrqaa'));
     }
@@ -147,7 +147,7 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'Records')
+            ->Where('dept_name', '=', 'Records')
             ->get();
         return view ('opcr.opcrrecords', compact('opcrrecords'));
     }
@@ -160,8 +160,8 @@ class OpcrController extends Controller
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
-            ->Where('role', '=', 'UITC')
+            ->Where('dept_name', '=', 'UITC')
             ->get();
         return view('opcr.opcruitc', compact('opcruitc'));
-        }
     }
+}

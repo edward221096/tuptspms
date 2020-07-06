@@ -76,6 +76,9 @@
         <div class="sidebar-heading">Navigation </div>
         <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action bg-light">User Profile</a>
+            <a href="myevaluationforms" class="list-group-item list-group-item-action bg-light">My Evaluation Forms</a>
+            <a href="myteamevaluationforms" class="list-group-item list-group-item-action bg-light">My Team Evaluation Forms</a>
+            <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
             <a href="manageorganization" class="list-group-item list-group-item-action bg-light">Manage Organization</a>
             <a href="manageformtype" class="list-group-item list-group-item-action bg-light">Manage Form Type</a>
             <a href="managefunctionstype" class="list-group-item list-group-item-action bg-light">Manage Functions</a>
@@ -251,6 +254,9 @@
     @yield('manageformtype')
     @yield('managefunctionstype')
     @yield('manageorganization')
+    @yield('myevaluationforms')
+    @yield('myteamevaluationforms')
+    @yield('manageevaluationperiod')
     @yield('ipcrcsassocp')
     @yield('ipcrcsassisp')
     @yield('ipcrcsinstructor')

@@ -76,6 +76,9 @@
         <div class="sidebar-heading">Navigation </div>
         <div class="list-group list-group-flush">
             <a href="#" class="list-group-item list-group-item-action bg-light">User Profile</a>
+            <a href="myevaluationforms" class="list-group-item list-group-item-action bg-light">My Evaluation Forms</a>
+            <a href="myteamevaluationforms" class="list-group-item list-group-item-action bg-light">My Team Evaluation Forms</a>
+            <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
             <a href="manageorganization" class="list-group-item list-group-item-action bg-light">Manage Organization</a>
             <a href="manageformtype" class="list-group-item list-group-item-action bg-light">Manage Form Type</a>
             <a href="managefunctionstype" class="list-group-item list-group-item-action bg-light">Manage Functions</a>
@@ -164,10 +167,10 @@
                 <a href="opcradre" class="list-group-item list-group-item-action bg-light">
                     <span class="menu-collapsed">OPCR ADRE</span>
                 </a>
-                <a href="budget" class="list-group-item list-group-item-action bg-light">
+                <a href="opcrbudget" class="list-group-item list-group-item-action bg-light">
                     <span class="menu-collapsed">OPCR BUDGET</span>
                 </a>
-                <a href="opcrfaculty" class="list-group-item list-group-item-action bg-light">
+                <a href="opcrcashier" class="list-group-item list-group-item-action bg-light">
                     <span class="menu-collapsed">OPCR CASHIER</span>
                 </a>
                 <a href="opcrido" class="list-group-item list-group-item-action bg-light">
@@ -251,6 +254,9 @@
     @yield('manageformtype')
     @yield('managefunctionstype')
     @yield('manageorganization')
+    @yield('myevaluationforms')
+    @yield('myteamevaluationforms')
+    @yield('manageevaluationperiod')
     @yield('ipcrcsassocp')
     @yield('ipcrcsassisp')
     @yield('ipcrcsinstructor')
@@ -271,7 +277,7 @@
     @yield('opcraccounting')
     @yield('opcradre')
     @yield('opcrbudget')
-    @yield('opcrfaculty')
+    @yield('opcrcashier')
     @yield('opcrido')
     @yield('opcrindustrybased')
     @yield('opcrmedicalserv')

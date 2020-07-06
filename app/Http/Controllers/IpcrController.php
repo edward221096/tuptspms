@@ -52,6 +52,7 @@ class IpcrController extends Controller
     //STORE IPCRCSASSOCP
     public function storeipcrcsassocp(Request $request)
     {
+        //to get the value of evaluation start date and store it
         $evalstartdate = DB::table('evaluationperiods')
             ->select('evaluation_startdate')
             ->where('evaluation_period_status', '=', 'Open')
@@ -59,6 +60,7 @@ class IpcrController extends Controller
             ->limit('1')
             ->get();
 
+        //to get the value of evaluation end date and store it
         $evalenddate = DB::table('evaluationperiods')
             ->select('evaluation_enddate')
             ->where('evaluation_period_status', '=', 'Open')
@@ -66,10 +68,14 @@ class IpcrController extends Controller
             ->limit('1')
             ->get();
 
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
         $store = [];
         for($x=0; $x<count($request->mfo_id); $x++){
             $store[] = [
                 'user_id' => $request->user_id[0],
+                'form_sequence_id' => $formseqid + 1,
                 'form_id' => $request->form_id[0],
                 'division_id' => $request->division_id[0],
                 'dept_id' => $request->dept_id[0],

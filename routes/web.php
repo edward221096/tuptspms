@@ -30,7 +30,19 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/json-departments', 'JoinUserDeptController@departments');
 
-    //------TEST COMMENT------------------------
+    //------------------MY EVALUATION FORMS RELATED ROUTES---------------------------
+    Route::get('/myevaluationforms', function(){
+        return view('sidebar.myevaluationforms');
+    });
+
+    Route::get('/myevaluationforms', 'MyEvaluationFormController@index');
+
+    //------------------MY TEAM EVALUATION FORMS RELATED ROUTES---------------------------
+    Route::get('/myteamevaluationforms', function(){
+        return view('sidebar.myteamevaluationforms');
+    });
+
+
 
     //------------------FORM RELATED ROUTES---------------------------
     Route::get('/manageformtype', function(){

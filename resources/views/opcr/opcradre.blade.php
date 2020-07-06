@@ -205,7 +205,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 >
                     <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                         <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                            Core Administrative Functions, General Administration and Support to Operations (80%)&nbsp;<br style="box-sizing: border-box;" />
+                            Research Program Core Administrative Functions, General Administration and Support to Operations (80%)&nbsp;<br style="box-sizing: border-box;" />
                         
                         </b>
                         <br />
@@ -221,14 +221,9 @@ TO DECEMBER 2020.</u></b></span></p>
             <tr style="box-sizing: border-box;">
                 <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
                     <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                        <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <b style="box-sizing: border-box; font-weight: bolder;">
-                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Support Functions for Higher and Advanced Education Programs, Research Programs, Technical Advisory</span>
-                            </b>
-                            <span style="box-sizing: border-box; color: black;"></span>
-                        </p>
+                        
                         <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Extension Programs (20%)</span></b>
+                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">IPCR Rating (20%)</span></b>
                         </p>
                     </div>
                 </td>
@@ -237,7 +232,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                        <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
+                        <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 1 QO in research/extension; choose all for admin; with Graduate</span>
                     </p>
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                         <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span>
@@ -245,34 +240,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     </p>
                 </td>
             </tr>
-            <tr style="box-sizing: border-box; height: 2.9pt;">
-                <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                    <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span></b>
-                        <span style="box-sizing: border-box; color: black;"></span>
-                    </p>
-                    <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Final Average Rating</span></b>
-                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
-                    </p>
-                </td>
-                <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                        <span style="font-family: Arial, sans-serif; font-size: 10pt;">&nbsp;</span>
-                    </p>
-                </td>
-                <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                    <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
-                        <p style="box-sizing: border-box; margin: 6pt 0cm;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
-                        </p>
-                        <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span></p>
-                    </div>
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                        <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
-                    </p>
-                </td>
-            </tr>
+           
             <tr style="box-sizing: border-box;">
                 <td
                     width="514"

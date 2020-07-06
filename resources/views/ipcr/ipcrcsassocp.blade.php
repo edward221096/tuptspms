@@ -1,6 +1,11 @@
 @extends('layouts.sidebar')
 @section('ipcrcsassocp')
 
+    <style>
+        input[type="number"]{
+            width:73px
+        }
+    </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
     <form method="POST" action="/storedata">
@@ -129,7 +134,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>Q</b></span></td>
                 <td style="text-align: center; width: 49px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>E</b></span></td>
                 <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>T</b></span></td>
-                <td style="text-align: center; width: 47px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
+                <td style="text-align: center; width: 73px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
             </tr>
             </thead>
 
@@ -181,12 +186,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                             @if($row->function_name == 'Core Functions')
-                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
                                 @elseif($row->function_name == 'Support Functions')
-                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
                                 @if($row->function_name == 'Research and Extension Services')
-                                    <input type="number" oninput="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 50px" readonly>
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 73px" readonly>
                                 @endif
 
                             </div>
@@ -199,8 +204,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         </table>
         <div>
             <br>
-            <input type="reset" class="btn btn-secondary btn-sm btn-reset" value="Clear Fields">
-            <button type="button" class="btn btn-secondary btn-sm btn-reset">Clear Fields</button>
+            <input type="button" class="btn btn-secondary btn-sm btn-reset" value="Reset All Values">
             <br>
             <br>
         </div>
@@ -259,7 +263,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                     <!-- Total Rating for Function -->
-                        <input type="number" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -281,7 +285,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
+                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -306,7 +310,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" readonly>
+                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
@@ -331,7 +335,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;" colspan="4">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                            <input type="number" class="form-control form-control-sm" id="total-weighted-score" name="total_weighted_score[]" readonly>
+                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" readonly>
                     </p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;">
@@ -505,14 +509,23 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
             currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
 
-            // setFourNumberDecimal();
-             computeAvg();
+            computeAvg();
              computeWeightedScore();
+             $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
+            setFourNumberDecimal();
         });
-        //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
-        // function setFourNumberDecimal(el) {
-        //     el.value = parseFloat(el.value).toFixed(4);
-        // };
+
+        //CONDITIONAL FORMATTING COLORS
+        $('.total-weighted-score-color').change(function(){
+            let totalweightedscore = document.getElementById('total-weighted-score')
+
+            if(totalweightedscore.value < 3.0000){
+                totalweightedscore.style.color = "red";
+            }
+            else {
+                totalweightedscore.style.color = "green";
+            }
+        })
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {
@@ -570,6 +583,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue) + parseFloat(AResValue)
 
             $('#total-weighted-score').val(weightedscore)
+        }
+
+        //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
+        function setFourNumberDecimal(el) {
+            el.value = parseFloat(el.value).toFixed(4);
         }
     </script>
 @endsection

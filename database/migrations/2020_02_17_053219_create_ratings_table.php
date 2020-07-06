@@ -15,6 +15,7 @@ class CreateRatingsTable extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('form_sequence_id')->nullable();
             $table->bigInteger('user_id');
             $table->bigInteger('form_id');
             $table->bigInteger('division_id');

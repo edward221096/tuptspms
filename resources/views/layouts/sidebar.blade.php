@@ -258,6 +258,7 @@
     @yield('myteamevaluationforms')
     @yield('manageevaluationperiod')
     @yield('ipcrcsassocp')
+    @yield('editipcrcsassocp')
     @yield('ipcrcsassisp')
     @yield('ipcrcsinstructor')
     @yield('ipcrcsprofessor')

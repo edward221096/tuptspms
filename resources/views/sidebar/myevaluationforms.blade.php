@@ -11,7 +11,7 @@
         <table class="table table-striped">
             <thead>
             <tr style="font-size: 11pt;">
-{{--                <th>FORM NO.</th>--}}
+                <th>FORM NO.</th>
                 <th>FORM TYPE</th>
                 <th>NAME</th>
                 <th>ROLE</th>
@@ -26,7 +26,7 @@
             <tbody>
             @foreach($myevaluationform as $row)
                 <tr>
-{{--                    <td>{{$row->form_sequence_id}}</td>--}}
+                    <td>{{$row->id}}</td>
                     <td>{{$row->form_type}}</td>
                     <td>{{$row->name}}</td>
                     <td>{{$row->ratee_role}}</td>
@@ -36,9 +36,8 @@
                     <td>{{$row->evaluation_startdate}} to {{$row->evaluation_enddate}}</td>
                     <td>{{$row->evaluationform_status}}</td>
                     <td>
-                            <!-- DELETE FORM TYPE BUTTON -->
-                                <a href="#" class="btn btn-primary btn-sm"
-                                   data-toggle="modal" data-target="#">View</a>
+                            <!-- EDIT FORM TYPE BUTTON -->
+                        <a href="{{action('MyEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                     </td>
                 </tr>
             @endforeach

@@ -13,20 +13,6 @@ use App\TestRatings;
 
 class IpcrController extends Controller
 {
-    //IPCRASSOCP VIEW
-    public function getipcrcsassocp(){
-        $ipcrcsassocp = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'College Sec - Associate Professor')
-            ->orderBy('functions.id')
-            ->get();
-        return view ('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
-    }
-
     public static function getEvaluationStartDate(){
         $startdate = DB::table('evaluationperiods')
             ->select('evaluation_startdate')
@@ -47,6 +33,37 @@ class IpcrController extends Controller
             ->get();
 
         return $enddate;
+    }
+
+    public static function getUserdata(){
+        $user_id = Auth::User()->id;
+
+        $userdata = DB::table('users')
+            ->join('sections', 'sections.id', '=', 'users.section_id')
+            ->join('departments', 'departments.id', '=', 'users.dept_id')
+            ->join('divisions', 'divisions.id', '=', 'users.division_id')
+            ->select('sections.section_name', 'departments.dept_name', 'divisions.division_name')
+            ->where('users.id', '=', $user_id)
+            ->limit('1')
+            ->get();
+
+        return $userdata;
+    }
+
+    //IPCRASSOCP VIEW
+    public function getipcrcsassocp(){
+
+        $ipcrcsassocp = DB::table('mfos')
+            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
+            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('form_type', '=', 'IPCR')
+            ->Where('role', '=', 'College Sec - Associate Professor')
+            ->orderBy('functions.id')
+            ->get();
+        return view ('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
     }
 
     //STORE IPCRCSASSOCP
@@ -75,12 +92,16 @@ class IpcrController extends Controller
         for($x=0; $x<count($request->mfo_id); $x++){
             $store[] = [
                 'user_id' => $request->user_id[0],
-                'form_sequence_id' => $formseqid + 1,
+                'form_sequence_id' => $getlastratingid + 1,
                 'form_id' => $request->form_id[0],
                 'division_id' => $request->division_id[0],
                 'dept_id' => $request->dept_id[0],
                 'section_id' => $request->section_id[0],
                 'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
                 'function_name' => $request->function_name[$x],
                 'Q1' => $request->Q[$x],
                 'E2' => $request->E[$x],

@@ -8,4 +8,5 @@ class Rating extends Model
 {
     protected $table = "ratings";
     public $timestamps = false;
+    public $fillable = ['user_id'];
 }

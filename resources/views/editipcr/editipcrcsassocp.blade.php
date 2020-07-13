@@ -1,35 +1,37 @@
-@extends('layouts.sidebar')
-@section('ipcrcsassocp')
-
+    @extends('layouts.sidebar')
+    @section('editipcrcsassocp')
     <style>
         input[type="number"]{
             width:73px
         }
     </style>
     <body>
-    <!-- STORE ALL THE USER DATA TO RATING TABLE -->
-    <form method="POST" action="/storedata">
+    @foreach($ratingsinglevalue as $row)
+    <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
+    <form action="{{route('updatemyipcr.update', [$row->form_sequence_id])}}" method="post">
+        {{method_field('PATCH')}}
         {{ csrf_field() }}
-        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
-        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
-        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
-        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->section_id}}" name="section_id[]">
-        <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->role}}" name="ratee_role[]">
-        @foreach(\App\Http\Controllers\IpcrController::getEvaluationStartDate() as $getstartdate)
-            <input type="hidden" value="{{ $getstartdate ->evaluation_startdate }}" name="evaluation_startdate[]">
-        @endforeach
+        <input type="hidden" value="{{ $row->user_id }}" name="user_id[]">
+        <input type="hidden" value="{{ $row->division_id}}" name="division_id[]">
+        <input type="hidden" value="{{ $row->dept_id }}" name="dept_id[]">
+        <input type="hidden" value="{{ $row->section_id }}" name="section_id[]">
+        <input type="hidden" value="{{ $row->ratee_role }}" name="ratee_role[]">
+        <input type="hidden" value="{{ $row->evaluation_startdate }}" name="evaluation_startdate[]">
+        <input type="hidden" value="{{ $row->evaluation_enddate }}" name="evaluation_enddate[]">
+        <input type="hidden" value="{{ $row->form_id}}" name="form_id[]">
+        <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id">
 
-        @foreach(\App\Http\Controllers\IpcrController::getEvaluationEndDate() as $getenddate)
-            <input type="hidden" value="{{ $getenddate ->evaluation_enddate }}" name="evaluation_enddate[]">
-        @endforeach
+
     <label>
         Evaluation Form Status:
         <select name="evaluationform_status[]" class="form-control form-control-sm">
-            <option selected value="For Review and Approval">For Review and Approval</option>
-            <option disabled value="For Re-evaluation">For Re-evaluation</option>
-            <option disabled value="Approved">Approved</option>
+            <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">{{$row->evaluationform_status}}</option>
+            <option value="For Review and Approval">For Review and Approval</option>
+            <option value="For Re-evaluation">For Re-evaluation</option>
+            <option value="Approved">Approved</option>
         </select>
     </label>
+    @endforeach
     <div>
         <table width="" style="font-family: 'Times New Roman';; font-size: medium; border-collapse: collapse">
             <tbody>
@@ -72,22 +74,25 @@
     <div>
         <!-- Getting the currently logged user -->
         <p style="margin: 0cm 0cm 10pt; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;margin-bottom:0cm;margin-bottom:.0001pt;text-align:
-justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->name}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{Auth::User()->role}}</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>
-                        @foreach(\App\Http\Controllers\IpcrController::getUserdata() as $getdata) {{ $getdata->division_name }} / {{$getdata->dept_name}} / {{$getdata->section_name}} @endforeach</u></b></span><span style="font-family: Arial; font-size: 10pt;">,
+justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>
+                        @foreach($userdata as $row)
+                        {{$row->name}},
+                        </u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{$row->ratee_role}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"></span><span style="font-family: Arial; font-size: 10pt;"><b><u>
+                        {{$row->division_name}} / {{$row->dept_name}} / {{$row->section_name}}
+                    </u></b></span><span style="font-family: Arial; font-size: 10pt;">,
 Technological University of the Philippines - Taguig, commits to deliver and
 agree to be rated on the attainment of the following targets in accordance with
 the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;">
+                @endforeach
                 <b>
                     <u>
 <!-- TO DISPLAY THE EVALUATION PERIOD START AND END DATE -->
-                        @foreach(\App\Http\Controllers\EvaluationPeriodController::getEvaluationPeriod() as $getStartMonth)
-                            {{ $getStartMonth->evaluation_startdate }} {{ $getStartMonth->start_year}}
-                        @endforeach
+                        @foreach($ratingsinglevalue as $row)
+                            {{ $row->evaluation_startmonth }} {{ $row->evaluation_startyear }}
                             TO
-
-                        @foreach(\App\Http\Controllers\EvaluationPeriodController::getEvaluationPeriod() as $getEndMonth)
-                            {{ $getEndMonth->evaluation_enddate }} {{ $getStartMonth->end_year }}
+                            {{ $row->evaluation_endmonth }} {{ $row->evaluation_endyear }}
                         @endforeach
+
                     </u>
                 </b>
             </span>
@@ -111,7 +116,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             <tr style="background-color: rgb(255, 255, 255);">
                 <td style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171); width: 373px;">
-                    <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b>{{Auth::User()->name}}</b></span>
+                    @foreach($userdata as $row)
+                    <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b>{{ $row->name }}</b></span>
+                    @endforeach
                     <br><span style="font-family: Arial; font-size: 12pt;"><b>Name of Evaluator</b></span>
                     <br><span style="font-size: 10pt; font-family: Arial;">Position/Designation</span></td>
             </tr>
@@ -121,7 +128,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </div>
     <div>
 
-        <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="">
+        <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="0">
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
                 <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>
@@ -139,17 +146,17 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             </thead>
 
-            @foreach($ipcrcsassocp as $row)
-                <input type="hidden" value="{{$row->form_id}}" name="form_id[]">
-                <input type="hidden" value="{{$row->function_name}}" name="function_name[]">
-                <input type="hidden" value="{{$row->id}}" name="mfo_id[]">
+            @foreach($ratingsmultiplevalue as $row)
+                <input type="hidden" value="{{ $row->id }}" name="rating_id[]">
+                <input type="hidden" value="{{ $row->mfo_id}}" name="mfo_id[]">
+                <input type="hidden" value="{{ $row->function_name}}" name="function_name[]">
                 <input type="hidden" value="{!! $row->mfo_desc !!}" name="mfo_desc[]">
                 <input type="hidden" value="{!! $row->success_indicator_desc !!}" name="success_indicator_desc[]">
                 <input type="hidden" value="{!! $row->actual_accomplishment_desc !!}" name="actual_accomplishment_desc[]">
                 <input type="hidden" value="{!! $row->remarks !!}" name="remarks[]">
                 <tbody>
                     <tr>
-                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
+                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name  !!} </td>
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
                     <td style="text-align: left; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->actual_accomplishment_desc !!}</td>
@@ -158,6 +165,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
+                                    <option selected value="{{ $row->Q1 }}">{{ $row->Q1 }}</option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -169,6 +177,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
+                                    <option selected value="{{ $row->E2 }}">{{ $row->E2 }}</option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -180,6 +189,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
+                                    <option selected value="{{ $row->T3 }}">{{ $row->T3 }}</option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -190,13 +200,17 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                            @if($row->function_name == 'Core Functions')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Support Functions')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
+{{--                                <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core a-value-support a-value-research" name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>--}}
+                                @if(trim($row->function_name === 'Core Functions'))
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core"
+                                           name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
+                                @elseif(trim($row->function_name === 'Support Functions'))
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support"
+                                           name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
                                 @endif
-                                @if($row->function_name == 'Research and Extension Services')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 73px" readonly>
+                                @if(trim($row->function_name === 'Research and Extension Services'))
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research"
+                                           name="A[]" value="{{ $row->A4}}" style="width: 73px" readonly>
                                 @endif
 
                             </div>
@@ -205,7 +219,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                     </tr>
                 </tbody>
-                @endforeach
+        @endforeach
         </table>
         <div>
             <br>
@@ -213,13 +227,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <br>
             <br>
         </div>
-
+        @foreach($ratingsinglevalue as $row)
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
             <font face="Arial">
                 <span style="font-size: 13.3333px;"><b>RATINGS</b></span>
             </font>
         </div>
-        <ul id="avgdisplay"></ul>
         <table
             width=""
             style="
@@ -268,7 +281,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                     <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" value="{{$row->core_total_average}}" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -290,7 +303,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
+                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" value="{{$row->support_total_average}}" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -315,7 +328,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <!-- Total Rating for Function -->
-                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" readonly>
+                    <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" value="{{$row->research_total_average}}" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
@@ -340,7 +353,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;" colspan="4">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" readonly>
+                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" value="{{$row->total_weighted_score}}" readonly>
                     </p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; height: 2.9pt;">
@@ -351,9 +364,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             </tbody>
         </table>
-        <br>
+
         <div>
-            <table width="" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
                     <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
@@ -395,20 +408,20 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;"><br /></span>
                 </b>
             </p>
-            <table width="" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
                     <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
-                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]"></span>
+                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{$row->ratee_esignature}}"></span>
                         </span>
                         </p>
                     </td>
                     <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                            &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" readonly>
+                            &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
                         </span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
@@ -417,7 +430,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <tr style="mso-yfti-irow: 1;">
                     <td style="border: solid #ababab 1pt; border-top: none; mso-border-top-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" value="{{Auth::User()->role}}" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" value="{{$row->ratee_role}}" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -435,7 +448,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" value="" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" value="{{$row->rater_role}}"></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -443,7 +456,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <tr style="mso-yfti-irow: 2; mso-yfti-lastrow: yes;">
                     <td style="border: solid #ababab 1pt; border-top: none; mso-border-top-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date: <input type="date" class="form-control form-control-sm" name="ratee_date[]" value="<?= date('Y-m-d',time()) ;?>" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date: <input type="date" class="form-control form-control-sm" name="ratee_date[]" value="{{$row->ratee_date}}" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -461,7 +474,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="{{$row->rater_date}}"></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -479,7 +492,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             <span style="font-size: 12pt; font-family: 'Times New Roman', serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">&nbsp;</span>
                             <b>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                                COMMENTS / FEEDBACKS / RECOMMENDATIONS:&nbsp; <textarea class="form-control" rows="5" name="rater_comments[]"></textarea>
+                                COMMENTS / FEEDBACKS / RECOMMENDATIONS:&nbsp; <textarea class="form-control" rows="5" name="rater_comments[]">{{$row->rater_comments}}</textarea>
                             </span>
                             </b>
                         </p>
@@ -490,10 +503,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <br />
 
             <div>
-                <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
+                <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Update">
             </div>
         </div>
     </div>
+    @endforeach
     </form>
     </body>
     <script type="text/javascript">
@@ -505,7 +519,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         });
 
         //COMPUTE THE AVERAGE PER ROW
-        $(".q-value, .e-value, .t-value").click(function(){
+        $(".q-value, .e-value, .t-value").change(function(){
             let currentRow = $(this).closest('tr');
             let EValue = parseFloat(currentRow.find('.e-value').val());
             let QValue = parseFloat(currentRow.find('.q-value').val());
@@ -542,7 +556,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             for (let x = 0; x < corevalues.length; x++) {
                 if (corevalues[x].value !== "") {
                     count++
-                    total = total + parseFloat(corevalues[x].value)
+                    total = total + parseFloat(corevalues[x]    .value)
                 }
             }
             avg = (total / count) * 0.65
@@ -596,4 +610,3 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         }
     </script>
 @endsection
-

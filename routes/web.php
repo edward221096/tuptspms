@@ -122,6 +122,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedata', 'IpcrController@storeipcrcsassocp');
 
+    Route::get('/editipcrcsassocp', function () {
+        return view('editipcr.editipcrcsassocp');
+    });
+
+    Route::resource('updatemyipcr', 'MyEvaluationFormController');
+
+    Route::get('editipcrcsassocp/{id}', [
+        'uses' => 'MyEvaluationFormController@editipcrcsassocp'
+    ]);
+
+    Route::post('updateipcrcsassocp', 'MyEvaluationFormController@updateipcrcsassocp');
+
     Route::get('/ipcrcsassisp', function () {
         return view('ipcr.ipcrcsassisp');
     });

@@ -65,7 +65,7 @@ class MfoController extends Controller
      */
     public function edit($id)
     {
-//        $mfo = Mfo::find($id);
+
         $mfo = Mfo::with(['functiontype', 'departments', 'forms'])->find($id);
 
 

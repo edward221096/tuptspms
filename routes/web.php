@@ -21,6 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('/sidebar', function () {
+        return view('layouts.sidebar');
+    });
+
     //------------------EMPLOYEE RELATED ROUTES---------------------------
     Route::get('/employee', function () {
         return view('sidebar.employee');

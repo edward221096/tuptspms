@@ -1,320 +1,477 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
+<html lang="en">
 <head>
-
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
     <title>TUP-Taguig SPMS</title>
 
-    <script src="{{asset('jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('js/app.js')}}"></script>
-
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
+    <!-- Theme style -->
+    <link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
+    <!-- jQuery -->
+    <script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src=" {{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 
+{{--    <script src="{{asset('jquery/jquery.min.js')}}"></script>--}}
+{{--    <script src="{{asset('js/app.js')}}"></script>--}}
 
+<!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
     <style>
-        body {
-            overflow-x: hidden;
-        }
-
-        #sidebar-wrapper {
-            min-height: 100vh;
-            margin-left: -15rem;
-            -webkit-transition: margin .25s ease-out;
-            -moz-transition: margin .25s ease-out;
-            -o-transition: margin .25s ease-out;
-            transition: margin .25s ease-out;
-        }
-
-        #sidebar-wrapper .sidebar-heading {
-            padding: 0.875rem 1.25rem;
-            font-size: 1.2rem;
-        }
-
-        #sidebar-wrapper .list-group {
-            width: 15rem;
-        }
-
-        #page-content-wrapper {
-            min-width: 100vw;
-        }
-
-        #wrapper.toggled #sidebar-wrapper {
-            margin-left: 0;
-        }
-
-        @media (min-width: 768px) {
-            #sidebar-wrapper {
-                margin-left: 0;
-            }
-
-            #page-content-wrapper {
-                min-width: 0;
-                width: 100%;
-            }
-
-            #wrapper.toggled #sidebar-wrapper {
-                margin-left: -15rem;
-            }
+        .main-sidebar{
+            width: 265px;
         }
     </style>
 
 </head>
-<body>
-<div class="d-flex" id="wrapper">
+<body class="hold-transition sidebar-dark-red sidebar-mini">
+<div class="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-        <div class="sidebar-heading">Navigation </div>
-        <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-light">User Profile</a>
-            <a href="myevaluationforms" class="list-group-item list-group-item-action bg-light">My Evaluation Forms</a>
-            <a href="myteamevaluationforms" class="list-group-item list-group-item-action bg-light">My Team Evaluation Forms</a>
-            <a href="manageevaluationperiod" class="list-group-item list-group-item-action bg-light">Manage Evaluation Period</a>
-            <a href="manageorganization" class="list-group-item list-group-item-action bg-light">Manage Organization</a>
-            <a href="manageformtype" class="list-group-item list-group-item-action bg-light">Manage Form Type</a>
-            <a href="managefunctionstype" class="list-group-item list-group-item-action bg-light">Manage Functions</a>
-            <a href="manageevaluationforms" class="list-group-item list-group-item-action bg-light">Manage Evaluation Forms</a>
-            <a href="employee" class="list-group-item list-group-item-action bg-light">Manage Employee</a>
-            <a href="#evaluationforms" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
-                <span class="menu-collapsed">Evaluation Forms</span>
-            </a>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
 
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <!-- For the Logout and Name -->
+            @guest
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+            @else
 
-            <!-- Submenu content -->
-            <div id='evaluationforms' class="collapse sidebar-submenu">
-                <!-- ADD THE IPCR FORM SIDEBAR HERE -->
-                <a href="ipcrcsassocp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (College Sec - Associate Professor)</span>
-                </a>
-                <a href="ipcrcsassisp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (College Sec - Assistant Professor)</span>
-                </a>
-                <a href="ipcrcsprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (College Sec - Professor)</span>
-                </a>
-                <a href="ipcrcsinstructor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (College Sec - Instructor)</span>
-                </a>
-                <a href="ipcrfafassocp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Admin Function - Associate Professor)</span>
-                </a>
-                <a href="ipcrfafassisp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Admin Function - Assistant Professor)</span>
-                </a>
-                <a href="ipcrfafinstructor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Admin Function - Instructor)</span>
-                </a>
-                <a href="ipcrfafprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Admin Function - Professor)</span>
-                </a>
-                <a href="ipcrfqfassocp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Quasi Function - Associate Professor)</span>
-                </a>
-                <a href="ipcrfqfassisp" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Quasi Function - Assistant Professor)</span>
-                </a>
-
-                <a href="ipcrfqfprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Quasi Function - Professor)</span>
-                </a>
-
-                <a href="ipcrfqfinstructor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Faculty with Quasi Function - Instructor)</span>
-                </a>
-
-                <a href="ipcrfassprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Fulltime - Associate Professor)</span>
-                </a>
-
-                <a href="ipcrfastprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Fulltime - Assistant Professor)</span>
-                </a>
-
-                <a href="ipcrfprofessor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Fulltime - Professor)</span>
-                </a>
-
-                <a href="ipcrfinstructor" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Fulltime - Instructor)</span>
-                </a>
-
-                <a href="ipcrfulladmin" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">IPCR (Fulltime - Admin)</span>
-                </a>
-
-
-            </div>
-
-            <a href="#opcr" data-toggle="collapse" aria-expanded="false" class="bg-light list-group-item list-group-item-action flex-column align-items-start">
-                <span class="menu-collapsed">OPCR Forms</span>
-            </a>
-
-            <!-- Submenu content OPCR -->
-            <div id='opcr' class="collapse sidebar-submenu">
-                <!-- ADD THE OPCR FORM SIDEBAR HERE -->
-                <a href="opcraccounting" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR Accounting</span>
-                </a>
-                <a href="opcradre" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR ADRE</span>
-                </a>
-                <a href="opcrbudget" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR BUDGET</span>
-                </a>
-                <a href="opcrcashier" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR CASHIER</span>
-                </a>
-                <a href="opcrido" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR IDO</span>
-                </a>
-                <a href="opcrindustrybased" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR Industry-Based</span>
-                </a>
-                <a href="opcrmedicalserv" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR Medical Services</span>
-                </a>
-                <a href="opcrpdo" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR PDO</span>
-                </a>
-                <a href="opcrprocurement" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR Procurement</span>
-                </a>
-                <a href="opcrqaa" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR QAA</span>
-                </a>
-
-                <a href="opcrrecords" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR Records</span>
-                </a>
-
-                <a href="opcruitc" class="list-group-item list-group-item-action bg-light">
-                    <span class="menu-collapsed">OPCR UITC</span>
-                </a>
-
-            </div>
-        </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Toggle Navigation</button>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <!-- For the Logout and Name -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            @endguest
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-5">
+        <!-- Brand Logo -->
+        <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
+        <a href="home" class="brand-link">
+            <img type="image/png" src="{!! asset('images/tuptlogo.png') !!} " alt="TUP-T Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">TUP-TAGUIG SPMS</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar" style="width: 265px; !important;">
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Evaluation Forms
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="myevaluationforms" class="nav-link">
+                                    <i class="fa fa-sticky-note nav-icon"></i>
+                                    <p>My Evaluation Forms</p>
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fa fa-list-ul nav-icon"></i>
+                                    <p>My Team Evaluation Forms</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-user-secret"></i>
+                            <p>
+                                Admin
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="manageevaluationperiod" class="nav-link">
+                                    <i class="fa fa-calendar-alt nav-icon"></i>
+                                    <p>Manage Evaluation Period</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="manageorganization" class="nav-link">
+                                    <i class="fa fa-sitemap nav-icon"></i>
+                                    <p>Manage Organization</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="manageevaluationforms" class="nav-link">
+                                    <i class="fas fa-edit nav-icon"></i>
+                                    <p>Manage Evaluation Forms</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="employee" class="nav-link">
+                                    <i class="fa fa-user-circle nav-icon"></i>
+                                    <p>Manage Employee</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon"></i>
+                            <p>
+                                IPCR
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="ipcrcsassocp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>College Secretary</p>
+                                    <br>
+                                    <p>Associate Professor</p>
+                                </a>
+                                <a href="ipcrcsassisp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>College Secretary</p>
+                                    <br>
+                                    <p>Assistant Professor</p>
+                                </a>
+                                <a href="ipcrcsprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>College Secretary</p>
+                                    <br>
+                                    <p>Professor</p>
+                                </a>
+                                <a href="ipcrcsinstructor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>College Secretary</p>
+                                    <br>
+                                    <p>Instructor</p>
+                                </a>
+                                <a href="ipcrfafassocp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Admin Function</p>
+                                    <br>
+                                    <p>Associate Professor</p>
+                                </a>
+                                <a href="ipcrfafassisp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Admin Function</p>
+                                    <br>
+                                    <p>Assistant Professor</p>
+                                </a>
+                                <a href="ipcrfafprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Admin Function</p>
+                                    <br>
+                                    <p>Professor</p>
+                                </a>
+                                <a href="ipcrfafinstructor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Admin Function</p>
+                                    <br>
+                                    <p>Instructor</p>
+                                </a>
+                                <a href="ipcrfqfassocp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Quasi Function</p>
+                                    <br>
+                                    <p>Associate Professor</p>
+                                </a>
+                                <a href="ipcrfqfassisp" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Quasi Function</p>
+                                    <br>
+                                    <p>Assistant Professor</p>
+                                </a>
+                                <a href="ipcrfqfprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Quasi Function</p>
+                                    <br>
+                                    <p>Professor</p>
+                                </a>
+                                <a href="ipcrfqfinstructor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Faculty with Quasi Function</p>
+                                    <br>
+                                    <p>Instructor</p>
+                                </a>
+                                <a href="ipcrfassprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Fulltime Associate Professor</p>
+                                </a>
+                                <a href="ipcrfastprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Fulltime Assistant Professor</p>
+                                </a>
+                                <a href="ipcrfprofessor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Fulltime Professor</p>
+                                </a>
+                                <a href="ipcrfinstructor" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Fulltime Instructor</p>
+                                </a>
+                                <a href="ipcrfulladmin" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Fulltime Admin</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview menu-close">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon"></i>
+                            <p>
+                                OPCR
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="opcraccounting" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Accounting</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcradre" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>ADRE</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrbudget" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Budget</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrcashier" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Cashier</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrido" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>IDO</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrindustrybased" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Industry Based</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrmedicalserv" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Medical Services</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrpdo" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>PDO</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrprocurement" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Procurement</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrqaa" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>QAA</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcrrecords" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>Records</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="opcruitc" class="nav-link">
+                                    <i class="far fa-circle navbar-icon"></i>
+                                    <p>UITC</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="col-sm-12">
+                </div><!-- /.col -->
+                <div class="col-sm-12">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{route('home')}}"></a></li>
+                    </ol>
+                </div><!-- /.col -->
+
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <!-- /.content-wrapper -->
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <p style="font-weight: bold"> Welcome to Technological University of the Philippines - Taguig Strategic Performance Management System (SPMS)</p>
+                                <br>
+                                <p style="font-weight: bold">As a normal user (Faculty or Staff):</p>
+                                1. Please wait for the evaluation period to be OPEN by Planning Department before answering the IPCR forms based on your role
+                                <br>
+                                2. If the evaluation period is OPEN. You can navigate to IPCR then click the form based on your role to start the evaluation
+                                <br>
+                                3. If you are done with the evaluation. You can navigate to Evaluation Forms > My Evaluation Forms to see the previous and recent evaluation forms and its status
+                                <br>
+                                <br>
+                                <p style="font-weight: bold">As a Section Head and Above</p>
+                                1. You can go to My Team Evaluation Forms to check your OPCR and IPCR forms as well as the IPCR form of your team
+                                <br>
+                                2. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+                                <br>
+                                <br>
+                                <p style="font-weight: bold">As a Planning Officer</p>
+                                1. You can navigate to Admin > Manage Evaluation Period to set evaluation period start and end date and status
+                                <br>
+                                2. You can navigate to Manage > Organization > to view, add, edit and delete organization (Division, Department, Section)
+                                <br>
+                                3. You can navigate to Manage Evaluation Forms to view, add, edit and delete content or questions for each evaluation forms
+                                <br>
+                                4. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+
+                                @yield('employee')
+                                @yield('manageevaluationforms')
+                                @yield('manageorganization')
+                                @yield('manageevaluationperiod')
+                                @yield('myevaluationforms')
+                                @yield('myteamevaluationforms')
+                                @yield('ipcrcsassocp')
+                                @yield('editipcrcsassocp')
+                                @yield('ipcrcsassisp')
+                                @yield('ipcrcsinstructor')
+                                @yield('ipcrcsprofessor')
+                                @yield('ipcrfafassocp')
+                                @yield('ipcrfafassisp')
+                                @yield('ipcrfafinstructor')
+                                @yield('ipcrfafprofessor')
+                                @yield('ipcrfqfassocp')
+                                @yield('ipcrfqfassisp')
+                                @yield('ipcrfqfprofessor')
+                                @yield('ipcrfqfinstructor')
+                                @yield('ipcrfassprofessor')
+                                @yield('ipcrfastprofessor')
+                                @yield('ipcrfprofessor')
+                                @yield('ipcrfinstructor')
+                                @yield('ipcrfulladmin')
+                                @yield('opcraccounting')
+                                @yield('opcradre')
+                                @yield('opcrbudget')
+                                @yield('opcrcashier')
+                                @yield('opcrido')
+                                @yield('opcrindustrybased')
+                                @yield('opcrmedicalserv')
+                                @yield('opcrpdo')
+                                @yield('opcrprocurement')
+                                @yield('opcrqaa')
+                                @yield('opcrrecords')
+                                @yield('opcruitc')
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
-
-    @yield('employee')
-    @yield('manageevaluationforms')
-    @yield('manageformtype')
-    @yield('managefunctionstype')
-    @yield('manageorganization')
-    @yield('myevaluationforms')
-    @yield('myteamevaluationforms')
-    @yield('manageevaluationperiod')
-    @yield('ipcrcsassocp')
-    @yield('ipcrcsassisp')
-    @yield('ipcrcsinstructor')
-    @yield('ipcrcsprofessor')
-    @yield('ipcrfafassocp')
-    @yield('ipcrfafassisp')
-    @yield('ipcrfafinstructor')
-    @yield('ipcrfafprofessor')
-    @yield('ipcrfqfassocp')
-    @yield('ipcrfqfassisp')
-    @yield('ipcrfqfprofessor')
-    @yield('ipcrfqfinstructor')
-    @yield('ipcrfassprofessor')
-    @yield('ipcrfastprofessor')
-    @yield('ipcrfprofessor')
-    @yield('ipcrfinstructor')
-    @yield('ipcrfulladmin')
-    @yield('opcraccounting')
-    @yield('opcradre')
-    @yield('opcrbudget')
-    @yield('opcrcashier')
-    @yield('opcrido')
-    @yield('opcrindustrybased')
-    @yield('opcrmedicalserv')
-    @yield('opcrpdo')
-    @yield('opcrprocurement')
-    @yield('opcrqaa')
-    @yield('opcrrecords')
-    @yield('opcruitc')
-
-    <!-- /#page-content-wrapper -->
-
+            <!-- /.content -->
+        </div>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
     </div>
 </div>
 </body>
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
-
-
-
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-
-    // Hide submenus
-    $('#body-row .collapse').collapse('hide');
-
-    // Collapse/Expand icon
-    $('#collapse-icon').addClass('fa-angle-double-left');
-
-    // Collapse click
-    $('[data-toggle=sidebar-colapse]').click(function() {
-        SidebarCollapse();
-    });
-
-    <!-- FOR MODAL JQUERY -->
     //EDIT MODAL IN MANAGEFUNCTIONSTYPE VIEW
     $('#editfunction').on('show.bs.modal', function (event) {
 

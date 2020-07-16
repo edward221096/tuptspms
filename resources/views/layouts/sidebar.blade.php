@@ -31,7 +31,7 @@
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         .main-sidebar{
-            width: 265px;
+            width: 270px;
         }
     </style>
 
@@ -93,7 +93,7 @@
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar" style="width: 265px; !important;">
+        <div class="sidebar" style="width: 270px; !important;">
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -565,6 +565,42 @@
         var modal = $(this);
 
         modal.find('.modal-body #empid').val(empid);
+    })
+
+    //EDIT MY EVALUATION PERIOD
+    $('#editevaluationperiod').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var evalperiodid = button.data('myevalperiodid');
+        var evalstartdate = button.data('myevalstartdate');
+        var evalenddate = button.data('myevalenddate');
+        var status = button.data('myevalstatus')
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+        modal.find('.modal-body #evaluation_startdate').val(evalstartdate);
+        modal.find('.modal-body #evaluation_enddate').val(evalenddate);
+        modal.find('.modal-body #evaluation_period_status').val(status);
+    })
+
+    //DELETE MY EVALUATION PERIOD
+    $('#deleteevalperiod').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var evalperiodid = button.data('myevalperiodid');
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+    })
+
+    //DELETE MY EVALUATION FORM RECORD
+    $('#deletemyvaluationform').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var formseqid = button.data('myformseqid');
+        var modal = $(this);
+
+        modal.find('.modal-body #form_sequence_id').val(formseqid);
     })
 </script>
 </html>

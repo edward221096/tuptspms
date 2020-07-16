@@ -146,7 +146,14 @@ class MyEvaluationFormController extends Controller
         return redirect('/myevaluationforms');
     }
 
-    public function delete(){
+    public function destroy(Request $request)
+    {
+        if(Rating::count() > 1){
+            Rating::where('form_sequence_id',  $request->form_sequence_id)->delete();
+        }
+
+        return back();
 
     }
+
 }

@@ -44,9 +44,9 @@ class EvaluationPeriodController extends Controller
     }
 
     public function destroy(Request $request){
-        if(EvaluationPeriod::count() > 1){
-            EvaluationPeriod::destroy($request->evalperiodid);
-        }
+
+        EvaluationPeriod::destroy($request->evalperiodid);
+
         return redirect('/manageevaluationperiod');
 
     }

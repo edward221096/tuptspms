@@ -6,8 +6,23 @@
 @section('employee')
 
     <div class="container-fluid">
-        <h3 class="mt-4">Manage Employees</h3>
-        <p>Employee Table</p>
+        <h3 class="mt-4">TUP-Taguig Employees</h3>
+        <p>Manage Employee Information</p>
+
+        <!-- SEARCH EMPLOYEE -->
+        <label>Search for Employee</label>
+        <form action="/searchemployee" method="GET">
+            <div class="input-group">
+                <input type="search" class="form-control form-control-sm" name="search"
+                       placeholder="Search">
+                <span class="input-group-prepend">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            Search
+                        </button>
+                    <a href="{{route('employee.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
+                    </span>
+            </div>
+        </form>
         <!-- SHOW DATA IN A TABLE-->
         <table class="table table-striped">
             <thead>
@@ -73,7 +88,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('employee.update', [$row->id])}}" method="POST">
+                <form action="{{route('employee.update', 'test')}}" method="POST">
                     {{method_field('PATCH')}}
                     {{csrf_field()}}
                     <div class="modal-body">
@@ -195,14 +210,14 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="employee/{{$row->id}}" method="POST">
+                <form action="{{route('employee.destroy', 'test')}}" method="POST">
                     @csrf
                     @method("DELETE")
                     <div class="modal-body">
-                        <label>Please confirm if you want to delete this Employee information</label>
+                        <label style="font-weight: normal;">Please confirm if you want to delete this Employee information</label>
                         <input type="hidden" name="empid" id="empid">
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

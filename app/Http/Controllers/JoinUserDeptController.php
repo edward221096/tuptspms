@@ -11,7 +11,7 @@ use App\User;
 
 class JoinUserDeptController extends Controller
 {
-    function index()
+    public function index()
     {
         $employee = DB::table('divisions')
                     ->join('users', 'users.division_id', '=', 'divisions.id')
@@ -73,6 +73,23 @@ class JoinUserDeptController extends Controller
         }
         return redirect('/employee');
     }
+
+    public function search(Request $request){
+        $search = $request -> get('search');
+
+        $employee = DB::table('divisions')
+            ->join('users', 'users.division_id', '=', 'divisions.id')
+            ->join('departments', 'users.dept_id', '=', 'departments.id')
+            ->join('sections', 'users.section_id', '=', 'sections.id')
+            ->select('users.id', 'users.division_id', 'users.dept_id', 'users.section_id', 'users.name', 'users.username',
+                'users.email', 'users.role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name', 'users.status')
+            ->where('users.name', 'like','%'.$search.'%')
+            ->orderBy('users.id', 'asc')
+            ->paginate(10);
+
+        return view('sidebar.employee', ['employee' => $employee]);
+    }
+
 
     public function departments(Request $request){
         $division_id = $request->Input('division_id');

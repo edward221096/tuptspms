@@ -2,8 +2,8 @@
 @section('manageevaluationperiod')
 
     <div class="container-fluid">
-        <h3 class="mt-4">Manage Evaluation Period</h3>
-        <p>Evaluation Period Table</p>
+        <h3 class="mt-4">Evaluation Period</h3>
+        <p>Manage Evaluation Period</p>
 
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addevaluationperiod">
             Add
@@ -109,7 +109,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{route('evaluationperiod.update', [$row->id])}}" method="POST">
+                <form action="{{route('evaluationperiod.update', 'test')}}" method="POST">
                     {{method_field('PATCH')}}
                     {{csrf_field()}}
                     <div class="modal-body">
@@ -161,14 +161,14 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="evaluationperiod/{{$row->id}}" method="POST">
+                <form action="{{route('evaluationperiod.destroy', 'test')}}" method="POST">
                     @csrf
                     @method("DELETE")
                     <div class="modal-body">
-                        <label>Are you sure do you want to delete this Evaluation Period?</label>
+                        <label style="font-weight: normal;">Are you sure do you want to delete this Evaluation Period?</label>
                         <input type="hidden" name="evalperiodid" id="evalperiodid">
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">Yes</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

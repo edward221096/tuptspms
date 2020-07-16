@@ -11,28 +11,26 @@
     <div class="container-fluid">
         <h3 class="mt-4">Organization</h3>
         <p>Manage TUP-Taguig Organization</p>
-        <!--ADD DEPARTMENT BUTTON -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addorganization">
-            Add
-        </button>
-
-        <div>
-            <br>
-        </div>
 
         <!-- SEARCH ORGANIZATION -->
+        <label>Search for Division/Department or Area/Section</label>
         <form action="/searchorganization" method="GET">
             <div class="input-group">
                 <input type="search" class="form-control form-control-sm" name="search"
-                       placeholder="Search for Division, Department or Area/Section Name">
+                       placeholder="Search">
                 <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary btn-sm">
                             Search
                         </button>
+                    <a href="{{route('manageorganization.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
                     </span>
             </div>
         </form>
-
+        <br>
+        <!--ADD DEPARTMENT BUTTON -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addorganization">
+            Add
+        </button>
 
         <table class="table table-striped">
             <thead>
@@ -183,10 +181,10 @@
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <div class="modal-body">
-                        <label>Please confirm if you want to delete this organization group</label>
+                        <label style="font-weight: normal;">Please confirm if you want to delete this organization group</label>
                         <input type="hidden" name="section_id" id="section_id">
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
                         </div>
                     </div>
                 </form>

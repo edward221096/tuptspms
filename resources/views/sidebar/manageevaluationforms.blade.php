@@ -24,27 +24,23 @@
 
                 <!-- Add IPCR and OPCR Forms Modal -->
 
-        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addmfo">
-            Add
-        </button>
-
-        <div>
-            <br>
-        </div>
-
-        <form action="/searchmfo" method="GET">
+        <label>Search Questions per IPCR Role or per Department</label>
+        <form action="/search" method="GET">
             <div class="input-group">
                 <input type="search" class="form-control form-control-sm" name="search"
-                       placeholder="Search MFO per Department">
+                       placeholder="Search">
                 <span class="input-group-prepend">
                         <button type="submit" class="btn btn-primary btn-sm">
                             Search
                         </button>
+                    <a href="{{route('manageevaluationforms.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
                     </span>
             </div>
         </form>
-
         <br>
+        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addmfo">
+            Add
+        </button>
 
         <form method="GET" action="/manageevaluationforms">
             <table class="table table-striped">
@@ -108,10 +104,10 @@
                         {{csrf_field()}}
                         {{method_field('DELETE')}}
                         <div class="modal-body">
-                            <label>Please confirm if you want to delete this information</label>
+                            <label style="font-weight: normal;">Please confirm if you want to delete this information</label>
                             <input type="hidden" name="mfoid" id="mfoid">
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-danger btn-sm">Confirm</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
                             </div>
                         </div>
                     </form>
@@ -237,8 +233,7 @@
                 </div>
             </div>
         </div>
-
-
+    <br>
     </div>
 <script>
     tinymce.init({

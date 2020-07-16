@@ -141,8 +141,11 @@ class MfoController extends Controller
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('departments.dept_name', 'like', '%'.$search.'%')
+            ->select('mfos.id', 'mfos.role', 'forms.form_type', 'departments.dept_name', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('mfos.role', 'like', '%'.$search.'%')
+            ->orWhere('departments.dept_name', 'like', '%'.$search.'%')
+            ->orderBy('mfos.role', 'asc')
+            ->orderBy('departments.dept_name', 'asc')
             ->paginate(10);
         return view ('sidebar.manageevaluationforms', ['mfo'=>$mfo]);
     }

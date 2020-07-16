@@ -38,6 +38,9 @@
                     <td>
                             <!-- EDIT FORM TYPE BUTTON -->
                         <a href="{{action('MyEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        <a href="#" class="btn btn-danger btn-sm"
+                           data-myformseqid="{{$row->id}}"
+                           data-toggle="modal" data-target="#deletemyvaluationform">Delete</a>
                     </td>
                 </tr>
             @endforeach
@@ -45,54 +48,27 @@
         </table>
     </div>
 
-{{--    <!-- START OF EDIT Modal -->--}}
-{{--    <div class="modal fade" id="editformtype" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">--}}
-{{--        <div class="modal-dialog modal-sm" role="document">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h5 class="modal-title" id="myModalLabel">Edit Form Type</h5>--}}
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--                <form action="{{route('manageformtype.update', [$row->id])}}" method="post">--}}
-{{--                    {{method_field('PATCH')}}--}}
-{{--                    {{csrf_field()}}--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <input type="hidden" name="formtype_id" id="formtype_id">--}}
-{{--                        <div class="form-group col-md-12">--}}
-{{--                            <label for="form_type">Form Type</label>--}}
-{{--                            <input type="text" class="form-control" name="form_type" id="form_type">--}}
-{{--                        </div>--}}
-{{--                        <div class="modal-footer">--}}
-{{--                            <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--    <!-- START OF DELETE MODAL -->--}}
-{{--    <div class="modal fade" id="deleteformtype" tabindex="-1" role="dialog" aria-labelledby="deleteformtypelabel">--}}
-{{--        <div class="modal-dialog" role="document">--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <h5 class="modal-title" id="deleteformtypelabel">Confirmation</h5>--}}
-{{--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>--}}
-{{--                    </button>--}}
-{{--                </div>--}}
-{{--                <form method="POST" action="{{route('manageformtype.destroy', [$row->id])}}">--}}
-{{--                    {{csrf_field()}}--}}
-{{--                    {{method_field('DELETE')}}--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <label>Please confirm if you want to delete this form type</label>--}}
-{{--                        <input type="hidden" name="formtype_id" id="formtype_id">--}}
-{{--                        <div class="modal-footer">--}}
-{{--                            <button type="submit" class="btn btn-danger btn-sm">Confirm</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <!-- START OF DELETE MODAL -->
+    <div class="modal fade" id="deletemyvaluationform" tabindex="-1" role="dialog" aria-labelledby="deletemyvaluationformlabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletemyvaluationformlabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" action="{{ route('myevaluationform.destroy', 'test')}}">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                    <div class="modal-body">
+                        <label style="font-weight: normal;">Please confirm if you want to delete this evaluation form</label>
+                        <input type="hidden" name="form_sequence_id" id="form_sequence_id">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">Confirm</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

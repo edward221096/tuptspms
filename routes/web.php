@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/json-departments', 'JoinUserDeptController@departments');
 
+    Route::get('/searchemployee', 'JoinUserDeptController@search');
+
     //------------------MY EVALUATION FORMS RELATED ROUTES---------------------------
     Route::get('/myevaluationforms', function(){
         return view('sidebar.myevaluationforms');
@@ -45,8 +47,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/myteamevaluationforms', function(){
         return view('sidebar.myteamevaluationforms');
     });
-
-
 
     //------------------FORM RELATED ROUTES---------------------------
     Route::get('/manageformtype', function(){
@@ -106,8 +106,8 @@ Route::group(['middleware' => ['auth']], function () {
     //FOR INSERT DATA MFOS
     Route::post('/storemfo','MfoController@store');
 
-    //FOR SEARCH DATA MFOS
-    Route::get('/searchmfo', 'MfoController@search');
+    //FOR SEARCH DATA DEPARTMENT OR IPCR ROLE MFOS
+    Route::get('/search', 'MfoController@search');
 
     //EDIT MFO FORM
     Route::get('/editevaluationforms', function () {
@@ -137,6 +137,8 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
 
     Route::post('updateipcrcsassocp', 'MyEvaluationFormController@updateipcrcsassocp');
+
+    Route::resource('myevaluationform', 'MyEvaluationFormController');
 
     Route::get('/ipcrcsassisp', function () {
         return view('ipcr.ipcrcsassisp');

@@ -31,7 +31,7 @@
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         .main-sidebar{
-            width: 265px;
+            width: 270px;
         }
     </style>
 
@@ -93,7 +93,7 @@
         </a>
 
         <!-- Sidebar -->
-        <div class="sidebar" style="width: 265px; !important;">
+        <div class="sidebar" style="width: 270px; !important;">
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">

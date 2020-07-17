@@ -48,6 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
         return view('sidebar.myteamevaluationforms');
     });
 
+    Route::get('myteamevaluationforms', 'MyTeamEvaluationFormController@index');
+
+    Route::resource('myteamevaluationforms', 'MyTeamEvaluationFormController');
+
     //------------------FORM RELATED ROUTES---------------------------
     Route::get('/manageformtype', function(){
         return view('sidebar.manageformtype');
@@ -145,6 +149,8 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('/ipcrcsassisp', 'IpcrController@getipcrcsassisp');
+
+    Route::post('/storedata', 'IpcrController@storeipcrcsassisp');
 
     Route::get('/ipcrcsinstructor', function () {
         return view('ipcr.ipcrcsinstructor');

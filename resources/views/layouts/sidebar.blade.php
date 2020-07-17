@@ -128,7 +128,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="myteamevaluationforms" class="nav-link">
                                     <i class="fa fa-list-ul nav-icon"></i>
                                     <p>My Team Evaluation Forms</p>
                                 </a>
@@ -538,6 +538,7 @@
         var empid = button.data('myempid');
         var name = button.data('myname');
         var username = button.data('myusername');
+        var password = button.data('mypassword')
         var email = button.data('myemail');
         var status = button.data('mystatus')
         var role = button.data('myrole');
@@ -549,6 +550,7 @@
         modal.find('.modal-body #empid').val(empid);
         modal.find('.modal-body #name').val(name);
         modal.find('.modal-body #username').val(username);
+        modal.find('.modal-body #password').val(password);
         modal.find('.modal-body #email').val(email);
         modal.find('.modal-body #status').val(status);
         modal.find('.modal-body #role').val(role);

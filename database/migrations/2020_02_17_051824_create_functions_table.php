@@ -21,10 +21,11 @@ class CreateFunctionsTable extends Migration
         });
 
         DB::table('functions')->insert([
-            ['id' => 1, 'function_name' => 'Core Functions'],
+            ['id' => 1, 'function_name' => 'Core Administrative Functions'],
             ['id'=> 2, 'function_name'=> 'Support Functions'],
-            ['id'=> 3, 'function_name'=> 'Research and Extension Services'],
-            ['id'=> 4, 'function_name'=> 'IPCR Ratings']
+            ['id'=> 3, 'function_name'=> 'Higher and Advanced Education Program'],
+            ['id'=> 4, 'function_name'=> 'Research Program'],
+            ['id'=> 5, 'function_name'=> 'Technical Advisory Extension Program']
         ]);
 
     }

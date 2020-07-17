@@ -53,7 +53,7 @@
                     <th>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</th>
                     <th>QUALITY + OBJECTIVES
                         (TARGETS + MEASURES)</th>
-                    <th>ACTUAL ACCOMPLISHMENTS</th>
+{{--                    <th>ACTUAL ACCOMPLISHMENTS</th>--}}
                     <th>REMARKS</th>
                     <th>ACTIONS</th>
                 </tr>
@@ -67,7 +67,7 @@
                         <td>{{$row->role}}</td>
                         <td>{!! $row->mfo_desc !!}</td>
                         <td>{!! $row->success_indicator_desc !!}</td>
-                        <td>{!! $row->actual_accomplishment_desc !!}</td>
+{{--                        <td>{!! $row->actual_accomplishment_desc !!}</td>--}}
                         <td>{!! $row->remarks !!}
                         <td>
 {{--                                <a href="#" class="btn btn-secondary btn-sm"--}}
@@ -193,7 +193,7 @@
                             <!-- MFO TEXTAREA -->
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="mfo_desc">Major Final Output/Programs/Projects/Activities (PAP)</label>
+                                    <label for="mfo_desc">Organizational Outcomes/Key Result Area</label>
                                     <textarea class="form-control" rows="5" name="mfo_desc"></textarea>
                                 </div>
                             </div>
@@ -201,18 +201,18 @@
                             <!-- SUCCESS_INDICATOR TEXT AREA -->
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-                                    <label for="success_indicator_desc">Success Indicators (Targets + Measures)</label>
+                                    <label for="success_indicator_desc">Quality + Objectives (Targets + Measures)</label>
                                     <textarea class="form-control" rows="5" name="success_indicator_desc"></textarea>
                                 </div>
                             </div>
 
                             <!-- ACTUAL ACCOMPLISHMENT TEXT AREA -->
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="actual_accomplishment_desc">Actual Accomplishment</label>
-                                    <textarea class="form-control" rows="5" name="actual_accomplishment_desc"></textarea>
-                                </div>
-                            </div>
+{{--                            <div class="form-row">--}}
+{{--                                <div class="form-group col-md-12">--}}
+{{--                                    <label for="actual_accomplishment_desc">Actual Accomplishments</label>--}}
+{{--                                    <textarea class="form-control" rows="5" name="actual_accomplishment_desc"></textarea>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <!-- REMARKS TEXT AREA -->
                             <div class="form-row">

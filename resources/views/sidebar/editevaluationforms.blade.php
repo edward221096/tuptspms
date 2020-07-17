@@ -30,7 +30,7 @@
                     <input type="hidden" name="_method" value="PATCH"/>
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label for="form">Form</label>
+                            <label for="form" style="font-weight: bold">Form</label>
                             <select name="form_type" class="form-control form-control-sm">
                                 <!-- GET THE CURRENT DATA IN DROP DOWN -->
                                 @foreach(App\Form::orderBy('id')->where('id', '=', $mfo->form_id)->get() as $selectedformtype)
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="function">Function</label>
+                            <label for="function" style="font-weight: bold">Function</label>
                             <select name="function_name" id="function_name" class="form-control form-control-sm">
                                 <!-- GET THE CURRENT DATA IN DROP DOWN -->
                                 @foreach(App\FunctionType::orderBy('id')->where('id', '=', $mfo->function_id)->get() as $selectedfunctiontype)
@@ -59,7 +59,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-6">
-                            <label for="department">Department</label>
+                            <label for="department" style="font-weight: bold">Department</label>
                             <select name="dept_name" id="dept_name" class="form-control form-control-sm">
                                 <!-- GET THE CURRENT DATA IN DROP DOWN -->
                                 @foreach(App\Department::orderBy('id')->where('id', '=', $mfo->dept_id)->get() as $selecteddeptname)
@@ -72,12 +72,15 @@
                         </div>
 
                         <div class="form-group col-md-6">
-                            <label for="role">Role</label>
+                            <label for="role" style="font-weight: bold">Role</label>
                             <select name="role" class="form-control form-control-sm" value="text">
+                                @foreach(\Illuminate\Support\Facades\DB::table('mfos')->where('id', '=', $id)->get() as $selectedrole)
+                                    <option selected value="{{$selectedrole->role}}">{{$selectedrole->role}}</option>
+                                @endforeach
                                 <option>Division Head</option>
                                 <option>Department Head</option>
                                 <option>Division Head</option>
-                                <option selected>Staff</option>
+                                <option>Staff</option>
                                 <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                 <option>College Sec - Associate Professor</option>
                                 <option>College Sec - Assistant Professor</option>
@@ -104,7 +107,7 @@
                     <!-- MFO TEXTBOX -->
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="mfo_desc">Major Final Output/Programs/Projects/Activities (PAP)</label>
+                            <label for="mfo_desc" style="font-weight: bold">Organizational Outcomes/Key Results Area</label>
                             <textarea class="mfo_desc" name="mfo_desc" rows="5">{{$mfo->mfo_desc}}</textarea>
                         </div>
                     </div>
@@ -112,23 +115,23 @@
                     <!-- SUCCESS_INDICATOR TEXTBOX -->
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="success_indicator_desc">Success Indicators (Targets + Measures)</label>
+                            <label for="success_indicator_desc" style="font-weight: bold">Quality Objectives (Targets + Measures)</label>
                             <textarea class="form-control" rows="5" name="success_indicator_desc">{{$mfo->success_indicator_desc}}</textarea>
                         </div>
                     </div>
 
                     <!-- ACTUAL ACCOMPLISHMENT TEXTBOX -->
-                    <div class="form-row">
-                        <div class="form-group col-md-12">
-                            <label for="actual_accomplishment_desc">Actual Accomplishment</label>
-                            <textarea class="form-control" rows="5" name="actual_accomplishment_desc">{{$mfo->actual_accomplishment_desc}}</textarea>
-                        </div>
-                    </div>
+{{--                    <div class="form-row">--}}
+{{--                        <div class="form-group col-md-12">--}}
+{{--                            <label for="actual_accomplishment_desc" style="font-weight: bold">Actual Accomplishments</label>--}}
+{{--                            <textarea class="form-control" rows="5" name="actual_accomplishment_desc">{{$mfo->actual_accomplishment_desc}}</textarea>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <!-- REMARKS TEXT AREA -->
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="remarks">Remarks</label>
+                            <label for="remarks" style="font-weight: bold;">Remarks</label>
                             <textarea class="form-control" rows="5" name="remarks">{{$mfo->remarks}}</textarea>
                         </div>
                     </div>

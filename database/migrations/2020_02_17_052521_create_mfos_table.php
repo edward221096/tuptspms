@@ -18,10 +18,10 @@ class CreateMfosTable extends Migration
             $table->bigInteger('function_id')->unsigned();
             $table->bigInteger('dept_id')->unsigned();
             $table->bigInteger('form_id')->unsigned();
-            $table->mediumText('mfo_desc');
+            $table->mediumText('mfo_desc')->nullable();
             $table->string('role')->nullable();
-            $table->mediumText('success_indicator_desc');
-            $table->mediumText('actual_accomplishment_desc');
+            $table->mediumText('success_indicator_desc')->nullable();
+            $table->mediumText('actual_accomplishment_desc')->nullable();
             $table->mediumText('alloted_budget')->nullable();
             $table->mediumText('persons_accountable')->nullable();
             $table->mediumText('remarks')->nullable();

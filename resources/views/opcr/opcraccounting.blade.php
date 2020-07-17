@@ -83,6 +83,7 @@ TO DECEMBER 2020.</u></b></span></p>
         <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="">
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
+                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>
                 <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
                 <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                 <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
@@ -101,6 +102,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 <tbody>
 
                     <tr>
+                        <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
                     <td style="text-align: left; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->actual_accomplishment_desc !!}</td>
@@ -109,7 +111,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     <tr style="background-color: rgb(255, 255, 255);">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="Q" class="form-control form-control-sm" value="Q" id="Q" style="width: 50px">
+                                <select name="Q" class="form-control form-control-sm q-value" id="Q" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -120,19 +122,7 @@ TO DECEMBER 2020.</u></b></span></p>
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="E" class="form-control form-control-sm" value="E" id="E" style="width: 50px">
-                                    <option value="5">5</option>
-                                    <option value="4">4</option>
-                                    <option value="3">3</option>
-                                    <option value="2">2</option>
-                                    <option value="1">1</option>
-                                </select>
-                            </div>
-                        </td>
-
-                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
-                            <div class="form-label-group">
-                                <select name="T" class="form-control form-control-sm" value="T" id="T" style="width: 50px">
+                                <select name="E" class="form-control form-control-sm e-value" id="E" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -144,13 +134,23 @@ TO DECEMBER 2020.</u></b></span></p>
 
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="A" class="form-control form-control-sm" value="A" id="A" style="width: 50px">
+                                <select name="T" class="form-control form-control-sm t-value" style="width: 50px">
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
                                     <option value="2">2</option>
                                     <option value="1">1</option>
                                 </select>
+                            </div>
+                        </td>
+
+                        <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
+                            <div class="form-label-group">
+                                @if($row->function_name == 'Core Functions')
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
+                                @elseif($row->function_name == 'Support Functions')
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
+                                @endif
                             </div>
                         </td>
 
@@ -213,7 +213,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     </div>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /><input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly></p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -234,7 +234,7 @@ TO DECEMBER 2020.</u></b></span></p>
                     </div>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                    <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /><input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average" readonly></p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                     <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -259,7 +259,7 @@ TO DECEMBER 2020.</u></b></span></p>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                        <span style="font-family: Arial, sans-serif; font-size: 10pt;">&nbsp;</span>
+                        <span style="font-family: Arial, sans-serif; font-size: 10pt;"><input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" readonly></span>
                     </p>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
@@ -419,4 +419,80 @@ TO DECEMBER 2020.</u></b></span></p>
 
     </div>
     </body>
+
+    <script>
+        //COMPUTE THE AVERAGE PER ROW
+        $(".q-value, .e-value, .t-value").click(function(){
+            let currentRow = $(this).closest('tr');
+            let EValue = parseFloat(currentRow.find('.e-value').val());
+            let QValue = parseFloat(currentRow.find('.q-value').val());
+            let TValue = parseFloat(currentRow.find('.t-value').val());
+            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / 3);
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
+
+            computeAvg();
+            computeWeightedScore();
+            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
+            setFourNumberDecimal();
+        });
+
+        //CONDITIONAL FORMATTING COLORS
+        $('.total-weighted-score-color').change(function(){
+            let totalweightedscore = document.getElementById('total-weighted-score')
+
+            if(totalweightedscore.value < 3.0000){
+                totalweightedscore.style.color = "red";
+            }
+            else {
+                totalweightedscore.style.color = "green";
+            }
+        })
+
+        //COMPUTE AVERAGE FOR EACH FUNCTION
+        function computeAvg() {
+            // For Core Functions
+            const corevalues = document.getElementsByClassName("a-value-core")
+            let avg = 0
+            let total = 0
+            let count = 0
+            for (let x = 0; x < corevalues.length; x++) {
+                if (corevalues[x].value !== "") {
+                    count++
+                    total = total + parseFloat(corevalues[x].value)
+                }
+            }
+            avg = (total / count) * 0.80
+            $('#core-total-average').val(isNaN(avg) ? "" : avg)
+
+            // For Support Functons
+            avg = 0
+            total = 0
+            count = 0
+            const supvalues = document.getElementsByClassName("a-value-support")
+            for (let x = 0; x < supvalues.length; x++) {
+                if (supvalues[x].value !== "") {
+                    count++
+                    total = total + parseFloat(supvalues[x].value)
+                }
+            }
+            avg = total / count * 0.20
+            $('#support-total-average').val(isNaN(avg) ? "" : avg)
+        }
+        // The weighted score will not do the computation
+        function computeWeightedScore(){
+            let weightedscore = 0
+            let ACoreValue = $("#core-total-average").val()
+            let ASuppValue = $("#support-total-average").val()
+
+            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+
+            $('#total-weighted-score').val(weightedscore)
+        }
+
+        //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
+        function setFourNumberDecimal(el) {
+            el.value = parseFloat(el.value).toFixed(4);
+        }
+    </script>
+
 @endsection

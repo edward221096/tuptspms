@@ -105,7 +105,7 @@ class MyEvaluationFormController extends Controller
             $test[] = [
                 'id' => $request->input('rating_id')[$x],
                 'user_id' => $request->user_id[0],
-                'form_sequence_id' => $request->form_sequence_id[0],
+                'form_sequence_id' => $request->form_sequence_id[0] + 1,
                 'form_id' => $request->form_id[0],
                 'division_id' => $request->division_id[0],
                 'dept_id' => $request->dept_id[0],

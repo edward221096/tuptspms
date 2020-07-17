@@ -1,6 +1,5 @@
 @extends('layouts.sidebar')
 @section('ipcrcsassocp')
-
     <style>
         input[type="number"]{
             width:73px
@@ -31,10 +30,11 @@
         </select>
     </label>
     <div>
+    </div>
         <table width="" style="font-family: 'Times New Roman';; font-size: medium; border-collapse: collapse">
             <tbody>
             <tr style="background-color: rgb(255, 255, 255)">
-                <td rowspan="4" style="width: 101px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><b><br></b></td>
+                <td rowspan="4" style="width: 101px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><img style="width: 100px; height: 100px;" type="image/png" src="{!! asset('images/tuptlogo.png') !!} " alt="TUP-T Logo"></td>
                 <td rowspan="4" style="text-align: center; width: 983px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><span style="font-size: 10pt; font-family: Arial"><b>TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - TAGUIG CAMPUS</b></span>
                     <br><span style="color: rgb(34, 34, 34); font-family: Arial; font-size: 10pt; text-align: left; background-color: rgb(255, 255, 255); display: inline !important">14 East Service Road Western Bicutan Taguig, 1630 Metro Manila</span><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 14px; text-align: left; background-color: rgb(255, 255, 255); display: inline !important"><br></span><span style="font-size: 10pt; font-family: Arial">(02) 8823 2457</span>
                     <br><span style="font-size: 10pt; font-family: Arial">Email: planning@tup.edu.ph | Website: www.tup.edu.ph</span></td>
@@ -68,7 +68,6 @@
             </tbody>
         </table>
         <br>
-    </div>
     <div>
         <!-- Getting the currently logged user -->
         <p style="margin: 0cm 0cm 10pt; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;margin-bottom:0cm;margin-bottom:.0001pt;text-align:
@@ -111,7 +110,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             <tr style="background-color: rgb(255, 255, 255);">
                 <td style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171); width: 373px;">
-                    <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b>{{Auth::User()->name}}</b></span>
+                    <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b></b></span>
                     <br><span style="font-family: Arial; font-size: 12pt;"><b>Name of Evaluator</b></span>
                     <br><span style="font-size: 10pt; font-family: Arial;">Position/Designation</span></td>
             </tr>
@@ -124,7 +123,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="">
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
-                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>
+{{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
                 <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
                 <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                 <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
@@ -140,21 +139,21 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </thead>
 
             @foreach($ipcrcsassocp as $row)
-                <input type="hidden" value="{{$row->form_id}}" name="form_id[]">
-                <input type="hidden" value="{{$row->function_name}}" name="function_name[]">
-                <input type="hidden" value="{{$row->id}}" name="mfo_id[]">
-                <input type="hidden" value="{!! $row->mfo_desc !!}" name="mfo_desc[]">
-                <input type="hidden" value="{!! $row->success_indicator_desc !!}" name="success_indicator_desc[]">
-                <input type="hidden" value="{!! $row->actual_accomplishment_desc !!}" name="actual_accomplishment_desc[]">
-                <input type="hidden" value="{!! $row->remarks !!}" name="remarks[]">
+                <input type="hidden" value="{{ $row->form_id }}" name="form_id[]">
+                <input type="hidden" value="{{ $row->function_name }}" name="function_name[]">
+                <input type="hidden" value="{{ $row->id }}" name="mfo_id[]">
+                <input type="hidden" value="{{ $row->mfo_desc }}" name="mfo_desc[]">
+                <input type="hidden" value="{{ $row->success_indicator_desc }}" name="success_indicator_desc[]">
+{{--                <input type="hidden" value="{{ $row->actual_accomplishment_desc }}" name="actual_accomplishment_desc[]">--}}
+                <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                 <tbody>
                     <tr>
-                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>
-                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
-                    <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                    <td style="text-align: left; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->actual_accomplishment_desc !!}</td>
+{{--                    <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>--}}
+                    <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
+                    <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
+                        <td style=" vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
                     </tr>
-                    <tr style="background-color: rgb(255, 255, 255);">
+                    <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
@@ -190,19 +189,19 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                            @if($row->function_name == 'Core Functions')
+                            @if($row->function_name == 'Core Administrative Functions')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Support Functions')
+                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Support Functions')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
-                                @if($row->function_name == 'Research and Extension Services')
+                                @if($row->function_name == 'Research Program' || $row->function_name == 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 73px" readonly>
                                 @endif
 
                             </div>
                         </td>
 
-                        <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
+                        <td style="vertical-align: top; text-align: top; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                     </tr>
                 </tbody>
                 @endforeach
@@ -401,7 +400,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
-                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]"></span>
+                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{ Auth::User()->name }}" readonly></span>
                         </span>
                         </p>
                     </td>

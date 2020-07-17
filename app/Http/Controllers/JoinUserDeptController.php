@@ -18,7 +18,8 @@ class JoinUserDeptController extends Controller
                     ->join('departments', 'users.dept_id', '=', 'departments.id')
                     ->join('sections', 'users.section_id', '=', 'sections.id')
                     ->select('users.id', 'users.division_id', 'users.dept_id', 'users.section_id', 'users.name', 'users.username',
-                        'users.email', 'users.role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name', 'users.status')
+                        'users.email', 'users.role', 'divisions.division_name', 'departments.dept_name',
+                        'sections.section_name', 'users.status', 'users.password')
                     ->orderBy('users.id', 'asc')
                     ->paginate(10);
                     return view ('sidebar.employee', compact('employee'));

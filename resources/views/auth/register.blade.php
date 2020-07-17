@@ -257,7 +257,7 @@
                             <select name="role" class="form-control form-control-sm" value="text">
                                 <option>Division Head</option>
                                 <option>Department Head</option>
-                                <option>Division Head</option>
+                                <option>Section Head</option>
                                 <option selected>Staff</option>
                                 <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                 <option>College Sec - Associate Professor</option>

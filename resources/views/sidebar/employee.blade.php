@@ -1,11 +1,5 @@
-<style>
-
-
-</style>
 @extends('layouts.sidebar')
 @section('employee')
-
-    <div class="container-fluid">
         <h3 class="mt-4">TUP-Taguig Employees</h3>
         <p>Manage Employee Information</p>
 
@@ -24,7 +18,7 @@
             </div>
         </form>
         <!-- SHOW DATA IN A TABLE-->
-        <table class="table table-striped">
+        <table class="table table-striped" style="font-size: 15px;">
             <thead>
             <tr>
                 <th>ID</th>
@@ -77,7 +71,6 @@
             </tbody>
         </table>
         {{$employee->links()}}
-    </div>
 
     <!-- EDIT MODAL -->
     <div class="modal fade" id="editemployee" tabindex="-1" role="dialog" aria-labelledby="editemployeelabel">
@@ -134,7 +127,7 @@
                                     <option>Super Admin</option>
                                     <option>Division Head</option>
                                     <option>Department Head</option>
-                                    <option>Division Head</option>
+                                    <option>Section Head</option>
                                     <option selected>Staff</option>
                                     <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                     <option>College Sec - Associate Professor</option>

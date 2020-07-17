@@ -128,7 +128,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="myteamevaluationforms" class="nav-link">
                                     <i class="fa fa-list-ul nav-icon"></i>
                                     <p>My Team Evaluation Forms</p>
                                 </a>
@@ -563,6 +563,7 @@
         var empid = button.data('myempid');
         var name = button.data('myname');
         var username = button.data('myusername');
+        var password = button.data('mypassword')
         var email = button.data('myemail');
         var status = button.data('mystatus')
         var role = button.data('myrole');
@@ -574,6 +575,7 @@
         modal.find('.modal-body #empid').val(empid);
         modal.find('.modal-body #name').val(name);
         modal.find('.modal-body #username').val(username);
+        modal.find('.modal-body #password').val(password);
         modal.find('.modal-body #email').val(email);
         modal.find('.modal-body #status').val(status);
         modal.find('.modal-body #role').val(role);
@@ -590,6 +592,42 @@
         var modal = $(this);
 
         modal.find('.modal-body #empid').val(empid);
+    })
+
+    //EDIT MY EVALUATION PERIOD
+    $('#editevaluationperiod').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var evalperiodid = button.data('myevalperiodid');
+        var evalstartdate = button.data('myevalstartdate');
+        var evalenddate = button.data('myevalenddate');
+        var status = button.data('myevalstatus')
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+        modal.find('.modal-body #evaluation_startdate').val(evalstartdate);
+        modal.find('.modal-body #evaluation_enddate').val(evalenddate);
+        modal.find('.modal-body #evaluation_period_status').val(status);
+    })
+
+    //DELETE MY EVALUATION PERIOD
+    $('#deleteevalperiod').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var evalperiodid = button.data('myevalperiodid');
+        var modal = $(this);
+
+        modal.find('.modal-body #evalperiodid').val(evalperiodid);
+    })
+
+    //DELETE MY EVALUATION FORM RECORD
+    $('#deletemyvaluationform').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var formseqid = button.data('myformseqid');
+        var modal = $(this);
+
+        modal.find('.modal-body #form_sequence_id').val(formseqid);
     })
 </script>
 </html>

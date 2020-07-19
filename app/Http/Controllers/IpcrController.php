@@ -209,184 +209,1177 @@ class IpcrController extends Controller
         return redirect('/ipcrcsassocp');
     }
 
+    //IPCRCSPROFESSOR VIEW
     public function getipcrcsprofessor(){
+
         $ipcrcsprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
     }
 
+    //STORE IPCRCSPROFESSOR
+    public function storeipcrcsprofessor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrcsprofessor');
+    }
+
+    //IPCRCSINSTRUCTOR VIEW
     public function getipcrcsinstructor(){
+
         $ipcrcsinstructor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'College Sec - Instructor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
     }
 
+    //STORE IPCRCSINSTRUCTOR
+    public function storeipcrcsinstructor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrcsinstructor');
+    }
+
+    //IPCRCSfafassocp VIEW
     public function getipcrfafassocp(){
+
         $ipcrfafassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Associate Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp'));
     }
 
+    //STORE IPCRFAFASSOCP
+    public function storeipcrfafassocp(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfafassocp');
+    }
+
+    //IPCRCSfafassisp VIEW
     public function getipcrfafassisp(){
+
         $ipcrfafassisp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
     }
 
-    public function getipcrfafinstructor(){
-        $ipcrfafinstructor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Admin Function - Instructor')
+    //STORE IPCRFAFASSISP
+    public function storeipcrfafassisp(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfafassisp');
     }
 
+    //IPCRCSfafprofessor VIEW
     public function getipcrfafprofessor(){
+
         $ipcrfafprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
     }
 
+    //STORE IPCRFAFprofessor
+    public function storeipcrfafprofessor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfafprofessor');
+    }
+
+//IPCRCSfafinstructor VIEW
+    public function getipcrfafinstructor(){
+
+        $ipcrfafinstructor = DB::table('mfos')
+            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
+            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('form_type', '=', 'IPCR')
+            ->Where('role', '=', 'Faculty with Admin Function - Instructor')
+            ->orderBy('functions.id')
+            ->get();
+        return view ('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
+    }
+
+    //STORE IPCRFAFinstructor
+    public function storeipcrfafinstructor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfafinstructor');
+    }
+
+//IPCRCSfqfassocp VIEW
     public function getipcrfqfassocp(){
+
         $ipcrfqfassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Associate Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp'));
     }
 
+    //STORE IPCRfqfassocp
+    public function storeipcrfqfassocp(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfqfassocp');
+    }
+
+    //IPCRCSfqfassisp VIEW
     public function getipcrfqfassisp(){
+
         $ipcrfqfassisp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
     }
 
+    //STORE IPCRfqfassisp
+    public function storeipcrfqfassisp(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfqfassisp');
+    }
+
+    //IPCRCSfqfprofessor VIEW
     public function getipcrfqfprofessor(){
+
         $ipcrfqfprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Professor')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
     }
 
-    public function getipcrfqfinstructor()
+    //STORE IPCRfqfprofessor
+    public function storeipcrfqfprofessor(Request $request)
     {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfqfprofessor');
+    }
+
+    //IPCRCSfqfinstructor VIEW
+    public function getipcrfqfinstructor(){
+
         $ipcrfqfinstructor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
+            ->orderBy('functions.id')
             ->get();
-        return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
+        return view ('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
     }
 
+    //STORE IPCRfqfinstructor
+    public function storeipcrfqfinstructor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfqfinstructor');
+    }
+
+    //IPCRfulladmin VIEW
     public function getipcrfulladmin(){
+
         $ipcrfulladmin = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Admin')
+            ->orderBy('functions.id')
             ->get();
-        return view('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
+        return view ('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
     }
 
+    //STORE IPCRfulladmin
+    public function storeipcrfulladmin(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfulladmin');
+    }
+
+    //IPCRfassprofessor VIEW
     public function getipcrfassprofessor(){
+
         $ipcrfassprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Associate Professor')
+            ->where('functions.function_name', '!=', 'Core Administrative Functions')
+            ->orderBy('functions.id')
             ->get();
-        return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
+        return view ('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
     }
 
+    //STORE IPCRfassprofessor
+    public function storeipcrfassprofessor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfassprofessor');
+    }
+
+//IPCRfastprofessor VIEW
     public function getipcrfastprofessor(){
+
         $ipcrfastprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Assistant Professor')
+            ->where('functions.function_name', '!=', 'Core Administrative Functions')
+            ->orderBy('functions.id')
             ->get();
-        return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
+        return view ('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
     }
 
+    //STORE IPCRfastprofessor
+    public function storeipcrfastprofessor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfastprofessor');
+    }
+
+//IPCRfprofessor VIEW
     public function getipcrfprofessor(){
+
         $ipcrfprofessor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Professor')
+            ->where('functions.function_name', '!=', 'Core Administrative Functions')
+            ->orderBy('functions.id')
             ->get();
-        return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
+        return view ('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
     }
 
+    //STORE IPCRfprofessor
+    public function storeipcrfprofessor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfprofessor');
+    }
+
+    //IPCRfinstructor VIEW
     public function getipcrfinstructor(){
+
         $ipcrfinstructor = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
             ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Fulltime - Instructor')
+            ->where('functions.function_name', '!=', 'Core Administrative Functions')
+            ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
+    }
+
+    //STORE IPCRfinstructor
+    public function storeipcrfinstructor(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for($x=0; $x<count($request->mfo_id); $x++){
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request-> remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/ipcrfinstructor');
     }
 }

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72df8746-5ece-41b1-9858-5578d559ca0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" afterDir="false" />
@@ -561,15 +560,14 @@
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_051824_create_functions_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_052521_create_mfos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_052521_create_mfos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsprofessor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafassocp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfafinstructor.blade.php" afterDir="false" />
@@ -584,7 +582,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfqfprofessor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrfaculty.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editemployee.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
@@ -1083,17 +1080,17 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views" />
-      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
-      <recent name="C:\laravel\tuptspms\resources\views\auth" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views\ipcr" />
       <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
       <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
       <recent name="C:\laravel\blog\resources\views\admin" />
       <recent name="C:\laravel\blog\resources\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
+      <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1298,6 +1295,10 @@
       <workItem from="1594868974603" duration="17835000" />
       <workItem from="1594903838609" duration="3648000" />
       <workItem from="1594953498201" duration="20315000" />
+      <workItem from="1594983114443" duration="15412000" />
+      <workItem from="1595035312788" duration="17016000" />
+      <workItem from="1595070057489" duration="9126000" />
+      <workItem from="1595126311377" duration="986000" />
     </task>
     <servers />
   </component>
@@ -1336,9 +1337,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1594707234289" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594900989209">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595080028117">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594900989209" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595080028117" />
   </component>
 </project>

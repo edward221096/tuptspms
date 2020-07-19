@@ -158,9 +158,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrcsinstructor', 'IpcrController@getipcrcsinstructor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrcsinstructor');
+
     Route::get('/ipcrcsprofessor', function () {
         return view('ipcr.ipcrcsprofessor');
     });
+
+    Route::post('/storedata', 'IpcrController@storeipcrcsprofessor');
 
     Route::get('/ipcrcsprofessor', 'IpcrController@getipcrcsprofessor');
 
@@ -170,11 +174,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfafassocp', 'IpcrController@getipcrfafassocp');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfafassocp');
+
     Route::get('/ipcrfafassisp', function () {
         return view('ipcr.ipcrfafassisp');
     });
 
     Route::get('/ipcrfafassisp', 'IpcrController@getipcrfafassisp');
+
+    Route::post('/storedata', 'IpcrController@storeipcrfafassisp');
 
     Route::get('/ipcrfafinstructor', function () {
         return view('ipcr.ipcrfafinstructor');
@@ -182,11 +190,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfafinstructor', 'IpcrController@getipcrfafinstructor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfafinstructor');
+
     Route::get('/ipcrfafprofessor', function () {
         return view('ipcr.ipcrfafprofessor');
     });
 
     Route::get('/ipcrfafprofessor', 'IpcrController@getipcrfafprofessor');
+
+    Route::post('/storedata', 'IpcrController@storeipcrfafprofessor');
 
     Route::get('/ipcrfqfassocp', function () {
         return view('ipcr.ipcrfqfassocp');
@@ -194,12 +206,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfqfassocp', 'IpcrController@getipcrfqfassocp');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfqfassocp');
+
     Route::get('/ipcrfqfassisp', function () {
         return view('ipcr.ipcrfqfassisp');
     });
 
     Route::get('/ipcrfqfassisp', 'IpcrController@getipcrfqfassisp');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfqfassisp');
 
     Route::get('/ipcrfqfprofessor', function () {
         return view('ipcr.ipcrfqfprofessor');
@@ -207,11 +222,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfqfprofessor', 'IpcrController@getipcrfqfprofessor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfqfprofessor');
+
     Route::get('/ipcrfqfinstructor', function () {
         return view('ipcr.ipcrfqfinstructor');
     });
 
     Route::get('/ipcrfqfinstructor', 'IpcrController@getipcrfqfinstructor');
+
+    Route::post('/storedata', 'IpcrController@storeipcrfqfinstructor');
 
     Route::get('/ipcrfassprofessor', function () {
         return view('ipcr.ipcrfassprofessor');
@@ -219,11 +238,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfassprofessor', 'IpcrController@getipcrfassprofessor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfassprofessor');
+
     Route::get('/ipcrfastprofessor', function () {
         return view('ipcr.ipcrfassprofessor');
     });
 
     Route::get('/ipcrfastprofessor', 'IpcrController@getipcrfastprofessor');
+
+    Route::post('/storedata', 'IpcrController@storeipcrfastprofessor');
 
     Route::get('/ipcrfprofessor', function () {
         return view('ipcr.ipcrfprofessor');
@@ -231,18 +254,24 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/ipcrfprofessor', 'IpcrController@getipcrfprofessor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfprofessor');
+
     Route::get('/ipcrfinstructor', function () {
         return view('ipcr.ipcrfinstructor');
     });
 
     Route::get('/ipcrfinstructor', 'IpcrController@getipcrfinstructor');
 
+    Route::post('/storedata', 'IpcrController@storeipcrfinstructor');
+
 
     Route::get('/ipcrfulladmin', function () {
-        return view('ipcr.ipcrfassprofessor');
+        return view('ipcr.ipcrfulladmin');
     });
 
     Route::get('/ipcrfulladmin', 'IpcrController@getipcrfulladmin');
+
+    Route::post('/storedata', 'IpcrController@storeipcrfulladmin');
 
     //----OPCR FORMS--------------
 

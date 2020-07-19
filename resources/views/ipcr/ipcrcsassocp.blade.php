@@ -4,6 +4,7 @@
         input[type="number"]{
             width:73px
         }
+
     </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
@@ -151,12 +152,13 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 {{--                    <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>--}}
                     <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                        <td style=" vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
+                        <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
                     </tr>
                     <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -168,6 +170,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -179,6 +182,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -201,7 +205,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             </div>
                         </td>
 
-                        <td style="vertical-align: top; text-align: top; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
+                        <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                     </tr>
                 </tbody>
                 @endforeach
@@ -212,7 +216,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <br>
             <br>
         </div>
-
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
             <font face="Arial">
                 <span style="font-size: 13.3333px;"><b>RATINGS</b></span>
@@ -350,9 +353,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             </tbody>
         </table>
-        <br>
         <div>
-            <table width="" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <br>
+        </div>
+        <div>
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
                     <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
@@ -394,7 +399,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;"><br /></span>
                 </b>
             </p>
-            <table width="" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
                     <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
@@ -470,7 +475,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                 <span style="font-size: 13.5pt; font-family: 'Times New Roman', serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;"><o:p>&nbsp;</o:p></span>
             </p>
-            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184;">
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
                     <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.75pt 0.75pt 0.75pt 0.75pt;">
@@ -504,14 +509,26 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         });
 
         //COMPUTE THE AVERAGE PER ROW
-        $(".q-value, .e-value, .t-value").click(function(){
+        $(".q-value, .e-value, .t-value").change(function(){
             let currentRow = $(this).closest('tr');
-            let EValue = parseFloat(currentRow.find('.e-value').val());
-            let QValue = parseFloat(currentRow.find('.q-value').val());
-            let TValue = parseFloat(currentRow.find('.t-value').val());
-            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / 3);
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
-            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
+            let EValue = Number(currentRow.find('.e-value').val());
+            let QValue = Number(currentRow.find('.q-value').val());
+            let TValue = Number(currentRow.find('.t-value').val());
+            let counter = 0
+
+            if (QValue !== 0){
+                counter = counter + 1
+            }
+            if (EValue !== 0){
+                counter = counter + 1
+            }
+            if (TValue !== 0){
+                counter = counter + 1
+            }
+
+            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
              computeWeightedScore();

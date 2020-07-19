@@ -128,10 +128,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </div>
     <div>
 
-        <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="0">
+        <table cellspacing="0" cellpadding="1" style="border-collapse: collapse; width: 100%;">
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
-                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>
+{{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
                 <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
                 <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                 <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
@@ -150,18 +150,18 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <input type="hidden" value="{{ $row->id }}" name="rating_id[]">
                 <input type="hidden" value="{{ $row->mfo_id}}" name="mfo_id[]">
                 <input type="hidden" value="{{ $row->function_name}}" name="function_name[]">
-                <input type="hidden" value="{!! $row->mfo_desc !!}" name="mfo_desc[]">
-                <input type="hidden" value="{!! $row->success_indicator_desc !!}" name="success_indicator_desc[]">
-                <input type="hidden" value="{!! $row->actual_accomplishment_desc !!}" name="actual_accomplishment_desc[]">
-                <input type="hidden" value="{!! $row->remarks !!}" name="remarks[]">
+                <input type="hidden" value="{{ $row->mfo_desc }}" name="mfo_desc[]">
+                <input type="hidden" value="{{ $row->success_indicator_desc }}" name="success_indicator_desc[]">
+                <input type="hidden" value="{{ $row->actual_accomplishment_desc }}" name="actual_accomplishment_desc[]">
+                <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                 <tbody>
-                    <tr>
-                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name  !!} </td>
+                    <tr style="vertical-align: top;">
+{{--                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!} </td>--}}
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                    <td style="text-align: left; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->actual_accomplishment_desc !!}</td>
+                        <td style="position: relative; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15">{{$row->actual_accomplishment_desc}}</textarea></td>
                     </tr>
-                    <tr style="background-color: rgb(255, 255, 255);">
+                    <tr style="background-color: rgb(255, 255, 255); vertical-align: top">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
@@ -201,14 +201,14 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
 {{--                                <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core a-value-support a-value-research" name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>--}}
-                                @if(trim($row->function_name === 'Core Functions'))
+                                @if($row->function_name == 'Core Administrative Functions')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core"
                                            name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
-                                @elseif(trim($row->function_name === 'Support Functions'))
+                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Support Functions')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support"
                                            name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
                                 @endif
-                                @if(trim($row->function_name === 'Research and Extension Services'))
+                                @if($row->function_name == 'Research Program' || $row->function_name == 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research"
                                            name="A[]" value="{{ $row->A4}}" style="width: 73px" readonly>
                                 @endif

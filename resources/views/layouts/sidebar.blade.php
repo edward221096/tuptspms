@@ -100,19 +100,20 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                    </li>
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                        </li>
+
 
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-clone"></i>
                             <p>
                                 Evaluation Forms
                                 <i class="right fas fa-angle-left"></i>
@@ -126,16 +127,21 @@
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="myteamevaluationforms" class="nav-link">
-                                    <i class="fa fa-list-ul nav-icon"></i>
-                                    <p>My Team Evaluation Forms</p>
-                                </a>
-                            </li>
-                        </ul>
+                        @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
+                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="myteamevaluationforms" class="nav-link">
+                                        <i class="fa fa-list-ul nav-icon"></i>
+                                        <p>My Team Evaluation Forms</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        @endif
                     </li>
 
+                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
+                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fa fa-user-secret"></i>
@@ -171,6 +177,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon"></i>
@@ -181,101 +188,171 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="ipcrcsassocp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>College Secretary</p>
-                                    <br>
-                                    <p>Associate Professor</p>
-                                </a>
-                                <a href="ipcrcsassisp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>College Secretary</p>
-                                    <br>
-                                    <p>Assistant Professor</p>
-                                </a>
-                                <a href="ipcrcsprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>College Secretary</p>
-                                    <br>
-                                    <p>Professor</p>
-                                </a>
-                                <a href="ipcrcsinstructor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>College Secretary</p>
-                                    <br>
-                                    <p>Instructor</p>
-                                </a>
-                                <a href="ipcrfafassocp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Admin Function</p>
-                                    <br>
-                                    <p>Associate Professor</p>
-                                </a>
-                                <a href="ipcrfafassisp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Admin Function</p>
-                                    <br>
-                                    <p>Assistant Professor</p>
-                                </a>
-                                <a href="ipcrfafprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Admin Function</p>
-                                    <br>
-                                    <p>Professor</p>
-                                </a>
-                                <a href="ipcrfafinstructor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Admin Function</p>
-                                    <br>
-                                    <p>Instructor</p>
-                                </a>
-                                <a href="ipcrfqfassocp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Quasi Function</p>
-                                    <br>
-                                    <p>Associate Professor</p>
-                                </a>
-                                <a href="ipcrfqfassisp" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Quasi Function</p>
-                                    <br>
-                                    <p>Assistant Professor</p>
-                                </a>
-                                <a href="ipcrfqfprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Quasi Function</p>
-                                    <br>
-                                    <p>Professor</p>
-                                </a>
-                                <a href="ipcrfqfinstructor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Faculty with Quasi Function</p>
-                                    <br>
-                                    <p>Instructor</p>
-                                </a>
-                                <a href="ipcrfassprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Fulltime Associate Professor</p>
-                                </a>
-                                <a href="ipcrfastprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Fulltime Assistant Professor</p>
-                                </a>
-                                <a href="ipcrfprofessor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Fulltime Professor</p>
-                                </a>
-                                <a href="ipcrfinstructor" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Fulltime Instructor</p>
-                                </a>
-                                <a href="ipcrfulladmin" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Fulltime Admin</p>
-                                </a>
+                                @if(Auth::User()->role == 'College Sec - Associate Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrcsassocp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>College Secretary</p>
+                                            <br>
+                                            <p>Associate Professor</p>
+                                        </a>
+                                @endif
+                                @if(Auth::User()->role == 'College Sec - Assistant Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrcsassisp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>College Secretary</p>
+                                            <br>
+                                            <p>Assistant Professor</p>
+                                        </a>
+                                @endif
+                                @if(Auth::User()->role == 'College Sec - Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrcsprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>College Secretary</p>
+                                            <br>
+                                            <p>Professor</p>
+                                        </a>
+                                @endif
+                                @if(Auth::User()->role == 'College Sec - Instructor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrcsinstructor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>College Secretary</p>
+                                            <br>
+                                            <p>Instructor</p>
+                                        </a>
+                                @endif
+                                @if(Auth::User()->role == 'Faculty with Admin Function - Associate Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfafassocp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Admin Function</p>
+                                            <br>
+                                            <p>Associate Professor</p>
+                                        </a>
+                                @endif
+                                @if(Auth::User()->role == 'Faculty with Admin Function - Assistant Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfafassisp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Admin Function</p>
+                                            <br>
+                                            <p>Assistant Professor</p>
+                                        </a>
+                                @endif
+                                    @if(Auth::User()->role == 'Faculty with Admin Function - Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfafprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Admin Function</p>
+                                            <br>
+                                            <p>Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Faculty with Admin Function - Instructor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfafinstructor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Admin Function</p>
+                                            <br>
+                                            <p>Instructor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Faculty with Quasi Function - Associate Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfqfassocp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Quasi Function</p>
+                                            <br>
+                                            <p>Associate Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Faculty with Quasi Function - Assistant Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfqfassisp" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Quasi Function</p>
+                                            <br>
+                                            <p>Assistant Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Faculty with Quasi Function - Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfqfprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Quasi Function</p>
+                                            <br>
+                                            <p>Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Faculty with Quasi Function - Instructor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfqfinstructor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Faculty with Quasi Function</p>
+                                            <br>
+                                            <p>Instructor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Fulltime - Associate Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfassprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Fulltime Associate Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Fulltime - Assistant Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfastprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Fulltime Assistant Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Fulltime - Professor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfprofessor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Fulltime Professor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Fulltime - Instructor' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfinstructor" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Fulltime Instructor</p>
+                                        </a>
+                                    @endif
+                                    @if(Auth::User()->role == 'Fulltime - Admin' || Auth::User()->role == 'Super Admin'
+                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
+                                    || Auth::User()->role == 'Division Head')
+                                        <a href="ipcrfulladmin" class="nav-link">
+                                            <i class="far fa-circle navbar-icon"></i>
+                                            <p>Fulltime Admin</p>
+                                        </a>
+                                    @endif
                             </li>
                         </ul>
                     </li>
+                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
+                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon"></i>
@@ -359,6 +436,7 @@
                             </li>
                         </ul>
                     </li>
+                        @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

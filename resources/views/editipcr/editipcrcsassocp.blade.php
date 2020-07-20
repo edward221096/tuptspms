@@ -1,11 +1,40 @@
-    @extends('layouts.sidebar')
-    @section('editipcrcsassocp')
+<!doctype html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
+<title>TUP-Taguig SPMS</title>
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
+<!-- Theme style -->
+<link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
+<!-- Google Font: Source Sans Pro -->
+
+<!-- Bootstrap core JavaScript -->
+<!-- jQuery -->
+<script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src=" {{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
     <style>
         input[type="number"]{
             width:73px
         }
     </style>
-    <body>
+</head>
+<body>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
     @foreach($ratingsinglevalue as $row)
     <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
     <form action="{{route('updatemyipcr.update', [$row->form_sequence_id])}}" method="post">
@@ -19,16 +48,21 @@
         <input type="hidden" value="{{ $row->evaluation_startdate }}" name="evaluation_startdate[]">
         <input type="hidden" value="{{ $row->evaluation_enddate }}" name="evaluation_enddate[]">
         <input type="hidden" value="{{ $row->form_id}}" name="form_id[]">
-        <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id">
-
+        <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id[]">
+        <input type="hidden" value="{{ $row->evaluationform_name }}" name="evaluationform_name[]">
 
     <label>
         Evaluation Form Status:
         <select name="evaluationform_status[]" class="form-control form-control-sm">
-            <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">{{$row->evaluationform_status}}</option>
-            <option value="For Review and Approval">For Review and Approval</option>
-            <option value="For Re-evaluation">For Re-evaluation</option>
-            <option value="Approved">Approved</option>
+            @if(Auth::User()->role == 'College Sec - Associate Professor')
+                <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
+            @else
+                <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
+                <option value="For Review and Approval">For Review and Approval</option>
+                <option value="For Re-evaluation">For Re-evaluation</option>
+                <option value="Approved by Head">Approved by Head</option>
+                <option value="Approved (Cannot be edited)">Approved (Cannot be edited)</option>
+            @endif
         </select>
     </label>
     @endforeach
@@ -36,7 +70,7 @@
         <table width="" style="font-family: 'Times New Roman';; font-size: medium; border-collapse: collapse">
             <tbody>
             <tr style="background-color: rgb(255, 255, 255)">
-                <td rowspan="4" style="width: 101px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><b><br></b></td>
+                <td rowspan="4" style="width: 101px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><img style="width: 100px; height: 100px;" type="image/png" src="{!! asset('images/tuptlogo.png') !!} " alt="TUP-T Logo"></td>
                 <td rowspan="4" style="text-align: center; width: 983px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><span style="font-size: 10pt; font-family: Arial"><b>TECHNOLOGICAL UNIVERSITY OF THE PHILIPPINES - TAGUIG CAMPUS</b></span>
                     <br><span style="color: rgb(34, 34, 34); font-family: Arial; font-size: 10pt; text-align: left; background-color: rgb(255, 255, 255); display: inline !important">14 East Service Road Western Bicutan Taguig, 1630 Metro Manila</span><span style="color: rgb(34, 34, 34); font-family: arial, sans-serif; font-size: 14px; text-align: left; background-color: rgb(255, 255, 255); display: inline !important"><br></span><span style="font-size: 10pt; font-family: Arial">(02) 8823 2457</span>
                     <br><span style="font-size: 10pt; font-family: Arial">Email: planning@tup.edu.ph | Website: www.tup.edu.ph</span></td>
@@ -116,11 +150,16 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             <tr style="background-color: rgb(255, 255, 255);">
                 <td style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171); width: 373px;">
-                    @foreach($userdata as $row)
-                    <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b>{{ $row->name }}</b></span>
+                    @foreach($ratingsinglevalue as $row)
+                        @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                            <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b><input type="text" class="form-control form-control-sm" readonly style="color: black; text-align: center; font-family: Arial; font-size: 12pt; text-decoration: underline; !important" value="{{$row->rater_esignature}}"></b></span>
+                        @else
+                            <br><span style="font-family: Arial; font-size: 12pt; text-decoration: underline;"><b><input type="text" class="form-control form-control-sm" style="color: black; text-align: center; font-family: Arial; font-size: 12pt; text-decoration: underline; !important" value="{{$row->rater_esignature}}"></b></span>
+                        @endif
                     @endforeach
-                    <br><span style="font-family: Arial; font-size: 12pt;"><b>Name of Evaluator</b></span>
-                    <br><span style="font-size: 10pt; font-family: Arial;">Position/Designation</span></td>
+                        <br><span style="font-family: Arial; font-size: 12pt;"><b>Name of Evaluator</b></span>
+                        <br><span style="font-size: 10pt; font-family: Arial;">Position/Designation</span></td>
+
             </tr>
             </tbody>
         </table>
@@ -152,14 +191,13 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <input type="hidden" value="{{ $row->function_name}}" name="function_name[]">
                 <input type="hidden" value="{{ $row->mfo_desc }}" name="mfo_desc[]">
                 <input type="hidden" value="{{ $row->success_indicator_desc }}" name="success_indicator_desc[]">
-                <input type="hidden" value="{{ $row->actual_accomplishment_desc }}" name="actual_accomplishment_desc[]">
                 <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                 <tbody>
                     <tr style="vertical-align: top;">
 {{--                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!} </td>--}}
                     <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                        <td style="position: relative; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15">{{$row->actual_accomplishment_desc}}</textarea></td>
+                        <td style="position: relative; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]">{{$row->actual_accomplishment_desc}}</textarea></td>
                     </tr>
                     <tr style="background-color: rgb(255, 255, 255); vertical-align: top">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
@@ -200,7 +238,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-{{--                                <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core a-value-support a-value-research" name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>--}}
                                 @if($row->function_name == 'Core Administrative Functions')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core"
                                            name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
@@ -228,6 +265,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <br>
         </div>
         @foreach($ratingsinglevalue as $row)
+
         <div style="box-sizing: border-box; color: rgb(33, 37, 41); text-align: left; background-color: rgb(255, 255, 255);">
             <font face="Arial">
                 <span style="font-size: 13.3333px;"><b>RATINGS</b></span>
@@ -281,7 +319,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                     <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" value="{{$row->core_total_average}}" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
                 </td>
                 <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                     <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -364,9 +402,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             </tr>
             </tbody>
         </table>
-
+        <br>
         <div>
-            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
                     <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
@@ -408,20 +446,26 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;"><br /></span>
                 </b>
             </p>
-            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
                     <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
-                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;<input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{$row->ratee_esignature}}"></span>
+                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;
+                                <input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{$row->ratee_esignature}}" readonly>
+                            </span>
                         </span>
                         </p>
                     </td>
                     <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                         <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                            &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
+                            @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" readonly name="rater_esignature[]" value="{{$row->rater_esignature}}">
+                            @else
+                                Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
+                            @endif
                         </span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
@@ -430,7 +474,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <tr style="mso-yfti-irow: 1;">
                     <td style="border: solid #ababab 1pt; border-top: none; mso-border-top-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" value="{{$row->ratee_role}}" readonly></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
+                                    Position: <input type="text" class="form-control form-control-sm" name="ratee_role[]" disabled value="{{$row->ratee_role}}" readonly></span>
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -448,7 +493,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" value="{{$row->rater_role}}"></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
+                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                    &nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" readonly value="{{$row->rater_role}}"></span>
+                                @else
+                                    Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" value="{{$row->rater_role}}">
+                                @endif
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -474,7 +524,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     "
                     >
                         <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">&nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="{{$row->rater_date}}"></span>
+                            <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
+                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                    &nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" readonly name="rater_date[]" value="{{$row->rater_date}}"></span>
+                                @else
+                                    &nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="{{$row->rater_date}}">
+                                @endif
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                         </p>
                     </td>
@@ -484,7 +539,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                 <span style="font-size: 13.5pt; font-family: 'Times New Roman', serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;"><o:p>&nbsp;</o:p></span>
             </p>
-            <table width="0" style="width: 0cm; border-collapse: collapse; mso-yfti-tbllook: 1184;">
+            <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184;">
                 <tbody>
                 <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
                     <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.75pt 0.75pt 0.75pt 0.75pt;">
@@ -501,16 +556,40 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </tbody>
             </table>
             <br />
-
             <div>
-                <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Update">
+                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                    <a href="{{ __('/myevaluationforms') }}" class="btn btn-secondary btn-sm" type="submit">Back</a>
+                @else
+                    <a href="{{ __('/myteamevaluationforms') }}" class="btn btn-secondary btn-sm" type="submit">Back</a>
+                @endif
+                @if($row->evaluationform_status != 'Approved (Cannot be edited)')
+                    <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Update">
+                @endif
             </div>
         </div>
     </div>
     @endforeach
     </form>
-    </body>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
     <script type="text/javascript">
+        //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD
+        $(document).ready(function(){
+            let totalweightedscore = document.getElementById('total-weighted-score')
+
+            if(totalweightedscore.value < 3.0000){
+                totalweightedscore.style.color = "red";
+            }
+            else {
+                totalweightedscore.style.color = "green";
+            }
+        });
+
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function(){
             $(".btn-reset").click(function(){
@@ -521,16 +600,28 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         //COMPUTE THE AVERAGE PER ROW
         $(".q-value, .e-value, .t-value").change(function(){
             let currentRow = $(this).closest('tr');
-            let EValue = parseFloat(currentRow.find('.e-value').val());
-            let QValue = parseFloat(currentRow.find('.q-value').val());
-            let TValue = parseFloat(currentRow.find('.t-value').val());
-            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / 3);
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / 3);
-            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / 3);
+            let EValue = Number(currentRow.find('.e-value').val());
+            let QValue = Number(currentRow.find('.q-value').val());
+            let TValue = Number(currentRow.find('.t-value').val());
+            let counter = 0
+
+            if (QValue !== 0){
+                counter = counter + 1
+            }
+            if (EValue !== 0){
+                counter = counter + 1
+            }
+            if (TValue !== 0){
+                counter = counter + 1
+            }
+
+            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
-             computeWeightedScore();
-             $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
+            computeWeightedScore();
+            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
 
@@ -556,7 +647,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             for (let x = 0; x < corevalues.length; x++) {
                 if (corevalues[x].value !== "") {
                     count++
-                    total = total + parseFloat(corevalues[x]    .value)
+                    total = total + parseFloat(corevalues[x].value)
                 }
             }
             avg = (total / count) * 0.65
@@ -609,4 +700,3 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             el.value = parseFloat(el.value).toFixed(4);
         }
     </script>
-@endsection

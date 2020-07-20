@@ -124,12 +124,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrcsassocp');
+        return redirect('/myevaluationforms');
     }
     //IPCRCSASSISP VIEW
     public function getipcrcsassisp(){
@@ -201,12 +202,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrcsassocp');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSPROFESSOR VIEW
@@ -279,12 +281,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrcsprofessor');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSINSTRUCTOR VIEW
@@ -357,12 +360,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrcsinstructor');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafassocp VIEW
@@ -435,12 +439,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfafassocp');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafassisp VIEW
@@ -513,12 +518,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfafassisp');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafprofessor VIEW
@@ -591,12 +597,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfafprofessor');
+        return redirect('/myevaluationforms');
     }
 
 //IPCRCSfafinstructor VIEW
@@ -669,12 +676,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfafinstructor');
+        return redirect('/myevaluationforms');
     }
 
 //IPCRCSfqfassocp VIEW
@@ -747,12 +755,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfqfassocp');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfassisp VIEW
@@ -825,12 +834,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfqfassisp');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfprofessor VIEW
@@ -903,12 +913,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfqfprofessor');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfinstructor VIEW
@@ -981,12 +992,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfqfinstructor');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRfulladmin VIEW
@@ -1049,6 +1061,9 @@ class IpcrController extends Controller
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
                 'research_total_average' => $request->research_total_average[0],
+                'clericalroutine' => $request->clericalroutine[0],
+                'technical' => $request->technical[0],
+                'salary_grade' => $request->salary_grade[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1059,12 +1074,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfulladmin');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRfassprofessor VIEW
@@ -1081,7 +1097,7 @@ class IpcrController extends Controller
             ->where('functions.function_name', '!=', 'Core Administrative Functions')
             ->orderBy('functions.id')
             ->get();
-        return view ('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
+        return view ('ipcr.ipcrfassprofessor',  compact('ipcrfassprofessor'));
     }
 
     //STORE IPCRfassprofessor
@@ -1138,12 +1154,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfassprofessor');
+        return redirect('/myevaluationforms');
     }
 
 //IPCRfastprofessor VIEW
@@ -1217,12 +1234,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfastprofessor');
+        return redirect('/myevaluationforms');
     }
 
 //IPCRfprofessor VIEW
@@ -1296,12 +1314,13 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfprofessor');
+        return redirect('/myevaluationforms');
     }
 
     //IPCRfinstructor VIEW
@@ -1375,11 +1394,12 @@ class IpcrController extends Controller
                 'ratee_date' => $request->ratee_date[0],
                 'rater_date' => $request->rater_date[0],
                 'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
                 'evaluationform_status' => $request->evaluationform_status[0],
             ];
         }
         DB::table('ratings')->insert($store);
 
-        return redirect('/ipcrfinstructor');
+        return redirect('/myevaluationforms');
     }
 }

@@ -7,13 +7,14 @@
     </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
-    <form method="POST" action="/storedata">
+    <form method="POST" action="/storedataipcrfulladmin">
         {{ csrf_field() }}
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->section_id}}" name="section_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->role}}" name="ratee_role[]">
+        <input type="hidden" value="ipcrfulladmin" name="evaluationform_name[]">
         @foreach(\App\Http\Controllers\IpcrController::getEvaluationStartDate() as $getstartdate)
             <input type="hidden" value="{{ $getstartdate ->evaluation_startdate }}" name="evaluation_startdate[]">
         @endforeach
@@ -349,7 +350,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         colspan="4">
                         <!-- Total Rating for Function -->
                         <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)"
-                               class="form-control form-control-sm" id="core-total-average" name="core_total_average"
+                               class="form-control form-control-sm" id="core-total-average" name="core_total_average[]"
                                readonly>
                     </td>
                     <td width="254"
@@ -487,10 +488,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </b>
                 </p>
                 <div class="form-row">
-                    <div class="form-group col-3">
+                    <div class="form-group col-2">
                         <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Salary Grade</label>
-                        <select name="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;" class="form-control form-control-sm" id="salarygrade">
-                            <option value="">Please select a Salary Grade</option>
+                        <select name="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;" class="form-control form-control-sm" id="salarygrade" name="salary_grade[]">
+                            <option value="">Select a Salary Grade</option>
                             <option>>20</option>
                             <option>16-19</option>
                             <option>11-15</option>
@@ -499,12 +500,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </div>
                     <div class="form-group col-3">
                         <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Clerical/Routine Computed Value</label>
-                        <input type="text" class="form-control form-control-sm col-4" id="clericalroutine" onchange="setFourNumberDecimal(this)" readonly>
+                        <input type="text" class="form-control form-control-sm col-12" id="clericalroutine" onchange="setFourNumberDecimal(this)" name="clericalroutine[]" readonly>
                     </div>
 
                     <div class="form-group col-3">
                         <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Technical Computed Value</label>
-                        <input type="text" class="form-control form-control-sm col-4" id="technical" onchange="setFourNumberDecimal(this)" readonly>
+                        <input type="text" class="form-control form-control-sm col-12" id="technical" onchange="setFourNumberDecimal(this)" name="technical[]" readonly>
                     </div>
                 </div>
 
@@ -1082,7 +1083,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function () {
             $(".btn-reset").click(function () {
-                $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
+                $("#core-total-average, #sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").val('');
             });
         });
 
@@ -1104,16 +1105,16 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 counter = counter + 1
             }
 
-            currentRow.find('.clerical-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.technical-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.clerical-value-core').val((EValue  + QValue + TValue ) / counter);
+            currentRow.find('.technical-value-core').val((EValue  + QValue + TValue ) / counter);
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / counter)
 
             computeAvg();
-            computeSalaryGrade()
             computeWeightedScore();
             $("#sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
+
 
         //CONDITIONAL FORMATTING COLORS
         $('.total-weighted-score-color').change(function () {
@@ -1172,6 +1173,47 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             $('#sgsupportfunction').val(isNaN(avg) ? "" : avg)
         }
 
+        //COMPUTE THE SALARY GRADE BASED ON SELECTED VALUE
+            $("#salarygrade").change(function(){
+                let AClericalvalue = $("#clericalroutine").val()
+                let ATechnicalvalue = $("#technical").val()
+                let selectedsalarygrade = $(this).children("option:selected").val();
+                let totalAclerical = 0
+                let totalAtechnical = 0
+                let totalclericaltechnical = 0
+
+                if (selectedsalarygrade === '>20'){
+                    totalAclerical = AClericalvalue * 0
+                    totalAtechnical = ATechnicalvalue * 0.80
+                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                }
+
+                if(selectedsalarygrade === '16-19'){
+                    totalAclerical = AClericalvalue * 0.10
+                    totalAtechnical = ATechnicalvalue * 0.70
+                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                }
+
+                if(selectedsalarygrade === '11-15'){
+                    totalAclerical = AClericalvalue * 0.20
+                    totalAtechnical = ATechnicalvalue * 0.60
+                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                }
+
+                if(selectedsalarygrade === '6-10'){
+                    totalAclerical = AClericalvalue * 0.30
+                    totalAtechnical = ATechnicalvalue * 0.50
+                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                }
+
+                $('#core-total-average').val(totalclericaltechnical)
+
+                computeAvg()
+                computeWeightedScore()
+                $("#sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").trigger("change")
+                setFourNumberDecimal();
+            })
+
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
         // The weighted score will not do the computation
         function computeWeightedScore() {
@@ -1183,45 +1225,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 
             $('#total-weighted-score').val(weightedscore)
             $('#sgtotal').val(weightedscore)
-        }
-        //COMPUTE THE SALARY GRADE BASED ON SELECTED VALUE
-        function computeSalaryGrade(){
-        $("#salarygrade").change(function(){
-            let AClericalvalue = $("#clericalroutine").val()
-            let ATechnicalvalue = $("#technical").val()
-            let selectedsalarygrade = $(this).children("option:selected").val();
-            let totalAclerical = 0
-            let totalAtechnical = 0
-            let totalclericaltechnical = 0
-
-            if (selectedsalarygrade === '>20'){
-                totalAclerical = AClericalvalue * 0
-                totalAtechnical = ATechnicalvalue * 0.80
-                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
-            }
-
-            if(selectedsalarygrade === '16-19'){
-                totalAclerical = AClericalvalue * 0.10
-                totalAtechnical = ATechnicalvalue * 0.70
-                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
-            }
-
-            if(selectedsalarygrade === '11-15'){
-                totalAclerical = AClericalvalue * 0.20
-                totalAtechnical = ATechnicalvalue * 0.60
-                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
-            }
-
-            if(selectedsalarygrade === '6-10'){
-                totalAclerical = AClericalvalue * 0.30
-                totalAtechnical = ATechnicalvalue * 0.50
-                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
-            }
-
-            $('#core-total-average').val(totalclericaltechnical)
-
-            computeWeightedScore()
-        })
         }
 
         //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE

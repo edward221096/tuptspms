@@ -35,7 +35,10 @@ class CreateRatingsTable extends Migration
             $table->decimal('support_total_average', 8, 4)->nullable();
             $table->decimal('research_total_average', 8, 4)->nullable();
             $table->decimal('ipcr_rating_average', 8, 4)->nullable();
+            $table->decimal('clericalroutine', 8, 4)->nullable();
+            $table->decimal('technical', 8, 4)->nullable();
             $table->decimal('total_weighted_score', 8, 4)->nullable();
+            $table->string('salary_grade')->nullable();
             $table->string('evaluation_startdate');
             $table->string('evaluation_enddate');
             $table->string('ratee_esignature')->nullable();
@@ -46,6 +49,7 @@ class CreateRatingsTable extends Migration
             $table->date('ratee_date')->nullable();
             $table->date('rater_date')->nullable();
             $table->mediumText('rater_comments')->nullable();
+            $table->string('evaluationform_name')->nullable();
             $table->string('evaluationform_status');
             $table->timestamps();
         });

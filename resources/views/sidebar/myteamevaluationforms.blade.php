@@ -35,8 +35,13 @@
                     <td>{{$row->evaluationform_status}}</td>
                     <td>
                             <!-- EDIT FORM TYPE BUTTON -->
-                            <a href="{{action('MyEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
-
+                        @if($row->evaluationform_name == 'ipcrcsassocp')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrcsassisp')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrcsprofessor')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @endif
                             <a href="#" class="btn btn-danger btn-sm"
                            data-myformseqid="{{$row->id}}"
                            data-toggle="modal" data-target="#deletemyvaluationform">Delete</a>

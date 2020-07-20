@@ -11,7 +11,6 @@
         <table class="table table-striped">
             <thead>
             <tr style="font-size: 11pt;">
-                <th>FORM NO.</th>
                 <th>FORM TYPE</th>
                 <th>NAME</th>
                 <th>ROLE</th>
@@ -26,7 +25,6 @@
             <tbody>
             @foreach($myevaluationform as $row)
                 <tr>
-                    <td>{{$row->id}}</td>
                     <td>{{$row->form_type}}</td>
                     <td>{{$row->name}}</td>
                     <td>{{$row->ratee_role}}</td>
@@ -37,8 +35,14 @@
                     <td>{{$row->evaluationform_status}}</td>
                     <td>
                             <!-- EDIT FORM TYPE BUTTON -->
-                        <a href="{{action('MyEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
-                        <a href="#" class="btn btn-danger btn-sm"
+                        @if($row->evaluationform_name == 'ipcrcsassocp')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrcsassisp')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrcsprofessor')
+                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @endif
+                            <a href="#" class="btn btn-danger btn-sm"
                            data-myformseqid="{{$row->id}}"
                            data-toggle="modal" data-target="#deletemyvaluationform">Delete</a>
                     </td>

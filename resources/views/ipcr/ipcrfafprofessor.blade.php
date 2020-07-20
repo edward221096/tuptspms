@@ -7,13 +7,14 @@
     </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
-    <form method="POST" action="/storedata">
+    <form method="POST" action="/storedataipcrfafprofessor">
         {{ csrf_field() }}
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->section_id}}" name="section_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->role}}" name="ratee_role[]">
+        <input type="hidden" value="ipcrfafprofessor" name="evaluationform_name[]">
         @foreach(\App\Http\Controllers\IpcrController::getEvaluationStartDate() as $getstartdate)
             <input type="hidden" value="{{ $getstartdate ->evaluation_startdate }}" name="evaluation_startdate[]">
         @endforeach
@@ -156,6 +157,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -167,6 +169,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>
@@ -178,6 +181,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
+                                    <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
                                     <option value="3">3</option>

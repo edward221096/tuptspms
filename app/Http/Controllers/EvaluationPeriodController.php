@@ -16,12 +16,20 @@ class EvaluationPeriodController extends Controller
         return view('sidebar.manageevaluationperiod', compact('evaluationperiod'));
     }
 
-    public function store(){
+    public function store(Request $request){
+        $this->validate($request, [
+            'evaluation_startdate' => 'date',
+            'evaluation_enddate' => 'date',
+            'evaluation_period_status' => 'required',
+        ]);
+
         $evaluationperiod = new EvaluationPeriod();
         $evaluationperiod->evaluation_startdate = request('evaluation_startdate');
         $evaluationperiod->evaluation_enddate = request('evaluation_enddate');
         $evaluationperiod->evaluation_period_status = request('evaluation_period_status');
         $evaluationperiod->save();
+
+        session()->flash('postmessage', 'Succesfully added Evaluation Period. Start date and End date of IPCR and OPCR forms will be based from the latest "OPEN" evaluation period status ');
 
         return redirect ('/manageevaluationperiod');
 
@@ -33,19 +41,28 @@ class EvaluationPeriodController extends Controller
      * @param  int  $id
      */
     public function update(Request $request){
+        $this->validate($request, [
+            'evaluation_startdate' => 'date',
+            'evaluation_enddate' => 'date',
+            'evaluation_period_status' => 'required',
+        ]);
+
         $evaluationperiod = EvaluationPeriod::find($request->evalperiodid);
         $evaluationperiod -> evaluation_startdate = $request->input('evaluation_startdate');
         $evaluationperiod -> evaluation_enddate = $request->input('evaluation_enddate');
         $evaluationperiod -> evaluation_period_status = $request->input('evaluation_period_status');
         $evaluationperiod -> update();
 
+        session()->flash('updatemessage', 'Succesfully updated Evaluation Period information ');
+
         return redirect('/manageevaluationperiod');
 
     }
 
     public function destroy(Request $request){
-
         EvaluationPeriod::destroy($request->evalperiodid);
+
+        session()->flash('deletemessage', 'Succesfully deleted Evaluation Period information ');
 
         return redirect('/manageevaluationperiod');
 

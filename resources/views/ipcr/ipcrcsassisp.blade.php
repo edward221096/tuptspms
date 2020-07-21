@@ -201,7 +201,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                 @if($row->function_name == 'Research Program' || $row->function_name == 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" style="width: 73px" readonly>
                                 @endif
-
                             </div>
                         </td>
 

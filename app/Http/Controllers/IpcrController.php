@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use App\EvaluationPeriod;
 use App\TestRatings;
 
 class IpcrController extends Controller
@@ -56,19 +57,39 @@ class IpcrController extends Controller
     //IPCRASSOCP VIEW
     public function getipcrcsassocp()
     {
-        $ipcrcsassocp = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id', '=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'College Sec - Associate Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
 
-        return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrcsassocp = DB::table('mfos')
+               ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'College Sec - Associate Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
+        } else{
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
+
+
+
 
     //STORE IPCRCSASSOCP
     public function storeipcrcsassocp(Request $request)
@@ -130,22 +151,41 @@ class IpcrController extends Controller
         }
         DB::table('ratings')->insert($store);
 
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
+
         return redirect('/myevaluationforms');
     }
     //IPCRCSASSISP VIEW
     public function getipcrcsassisp(){
-
-        $ipcrcsassisp = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'College Sec - Assistant Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrcsassisp', compact('ipcrcsassisp'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrcsassisp = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'College Sec - Assistant Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrcsassisp', compact('ipcrcsassisp'));
+        } else{
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
         //STORE IPCRCSASSOCP
@@ -208,23 +248,43 @@ class IpcrController extends Controller
         }
         DB::table('ratings')->insert($store);
 
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
+
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSPROFESSOR VIEW
     public function getipcrcsprofessor(){
-
-        $ipcrcsprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'College Sec - Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrcsprofessor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'College Sec - Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
+        }
+        else{
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRCSPROFESSOR
@@ -287,23 +347,43 @@ class IpcrController extends Controller
         }
         DB::table('ratings')->insert($store);
 
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSINSTRUCTOR VIEW
     public function getipcrcsinstructor(){
-
-        $ipcrcsinstructor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'College Sec - Instructor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrcsinstructor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'College Sec - Instructor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
+        }
+        else{
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
+
     }
 
     //STORE IPCRCSINSTRUCTOR
@@ -365,13 +445,27 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafassocp VIEW
     public function getipcrfafassocp(){
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
 
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
         $ipcrfafassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
@@ -383,6 +477,11 @@ class IpcrController extends Controller
             ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp'));
+        }
+        else{
+        session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+        return redirect('/myevaluationforms');
+}
     }
 
     //STORE IPCRFAFASSOCP
@@ -444,24 +543,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafassisp VIEW
     public function getipcrfafassisp(){
-
-        $ipcrfafassisp = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfafassisp = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRFAFASSISP
@@ -523,24 +641,42 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfafprofessor VIEW
     public function getipcrfafprofessor(){
-
-        $ipcrfafprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Admin Function - Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfafprofessor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Faculty with Admin Function - Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
+        } else {
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
     //STORE IPCRFAFprofessor
@@ -602,24 +738,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
 //IPCRCSfafinstructor VIEW
     public function getipcrfafinstructor(){
-
-        $ipcrfafinstructor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Admin Function - Instructor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfafinstructor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Faculty with Admin Function - Instructor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRFAFinstructor
@@ -681,13 +836,27 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
-//IPCRCSfqfassocp VIEW
+    //IPCRCSfqfassocp VIEW
     public function getipcrfqfassocp(){
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
 
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
         $ipcrfqfassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
@@ -699,6 +868,11 @@ class IpcrController extends Controller
             ->orderBy('functions.id')
             ->get();
         return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRfqfassocp
@@ -760,24 +934,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfassisp VIEW
     public function getipcrfqfassisp(){
-
-        $ipcrfqfassisp = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfqfassisp = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRfqfassisp
@@ -839,24 +1032,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfprofessor VIEW
     public function getipcrfqfprofessor(){
+            $get = DB::table('evaluationperiods')
+                ->select('evaluation_period_status')
+                ->orderBy('evaluation_startdate', 'desc')
+                ->limit('1')
+                ->get();
 
-        $ipcrfqfprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Quasi Function - Professor')
-            ->orderBy('functions.id')
-            ->get();
-        return view ('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
+            foreach($get as $evalstatus){
+                $evalstatus->evaluation_period_status;
+            }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+                $ipcrfqfprofessor = DB::table('mfos')
+                    ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                    ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                    ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                    ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                        'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                    ->where('form_type', '=', 'IPCR')
+                    ->Where('role', '=', 'Faculty with Quasi Function - Professor')
+                    ->orderBy('functions.id')
+                    ->get();
+                return view('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
+            }
+            else {
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
     //STORE IPCRfqfprofessor
@@ -918,24 +1130,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRCSfqfinstructor VIEW
     public function getipcrfqfinstructor(){
-
-        $ipcrfqfinstructor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfqfinstructor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRfqfinstructor
@@ -997,24 +1228,43 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRfulladmin VIEW
     public function getipcrfulladmin(){
+            $get = DB::table('evaluationperiods')
+                ->select('evaluation_period_status')
+                ->orderBy('evaluation_startdate', 'desc')
+                ->limit('1')
+                ->get();
 
-        $ipcrfulladmin = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Fulltime - Admin')
-            ->orderBy('functions.id')
-            ->get();
-        return view ('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
+            foreach($get as $evalstatus){
+                $evalstatus->evaluation_period_status;
+            }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+                $ipcrfulladmin = DB::table('mfos')
+                    ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                    ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                    ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                    ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                        'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                    ->where('form_type', '=', 'IPCR')
+                    ->Where('role', '=', 'Fulltime - Admin')
+                    ->orderBy('functions.id')
+                    ->get();
+                return view('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
+            }
+            else {
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
     //STORE IPCRfulladmin
@@ -1079,25 +1329,44 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRfassprofessor VIEW
     public function getipcrfassprofessor(){
-
-        $ipcrfassprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Fulltime - Associate Professor')
-            ->where('functions.function_name', '!=', 'Core Administrative Functions')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfassprofessor',  compact('ipcrfassprofessor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfassprofessor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Fulltime - Associate Professor')
+                ->where('functions.function_name', '!=', 'Core Administrative Functions')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
+        }
+        else {
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
     //STORE IPCRfassprofessor
@@ -1159,25 +1428,44 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
-//IPCRfastprofessor VIEW
+    //IPCRfastprofessor VIEW
     public function getipcrfastprofessor(){
+            $get = DB::table('evaluationperiods')
+                ->select('evaluation_period_status')
+                ->orderBy('evaluation_startdate', 'desc')
+                ->limit('1')
+                ->get();
 
-        $ipcrfastprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Fulltime - Assistant Professor')
-            ->where('functions.function_name', '!=', 'Core Administrative Functions')
-            ->orderBy('functions.id')
-            ->get();
-        return view ('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
+            foreach($get as $evalstatus){
+                $evalstatus->evaluation_period_status;
+            }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+                $ipcrfastprofessor = DB::table('mfos')
+                    ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                    ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                    ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                    ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                        'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                    ->where('form_type', '=', 'IPCR')
+                    ->Where('role', '=', 'Fulltime - Assistant Professor')
+                    ->where('functions.function_name', '!=', 'Core Administrative Functions')
+                    ->orderBy('functions.id')
+                    ->get();
+                return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
+            }
+            else {
+                session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+                return redirect('/myevaluationforms');
+            }
     }
 
     //STORE IPCRfastprofessor
@@ -1239,25 +1527,44 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
 //IPCRfprofessor VIEW
     public function getipcrfprofessor(){
-
-        $ipcrfprofessor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Fulltime - Professor')
-            ->where('functions.function_name', '!=', 'Core Administrative Functions')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfprofessor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Fulltime - Professor')
+                ->where('functions.function_name', '!=', 'Core Administrative Functions')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRfprofessor
@@ -1319,25 +1626,44 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }
 
     //IPCRfinstructor VIEW
     public function getipcrfinstructor(){
-
-        $ipcrfinstructor = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'IPCR')
-            ->Where('role', '=', 'Fulltime - Instructor')
-            ->where('functions.function_name', '!=', 'Core Administrative Functions')
-            ->orderBy('functions.id')
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
             ->get();
-        return view ('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
+
+        foreach($get as $evalstatus){
+            $evalstatus->evaluation_period_status;
+        }
+
+        if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
+            Auth::User()->role == 'Division Head' OR
+            Auth::User()->role == 'Department Head' OR
+            Auth::User()->role == 'Section Head'){
+            $ipcrfinstructor = DB::table('mfos')
+                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+                ->Join('forms', 'forms.id', '=', 'mfos.form_id')
+                ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+                ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                    'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+                ->where('form_type', '=', 'IPCR')
+                ->Where('role', '=', 'Fulltime - Instructor')
+                ->where('functions.function_name', '!=', 'Core Administrative Functions')
+                ->orderBy('functions.id')
+                ->get();
+            return view('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
+        }
+        else {
+            session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
+            return redirect('/myevaluationforms');
+        }
     }
 
     //STORE IPCRfinstructor
@@ -1399,6 +1725,7 @@ class IpcrController extends Controller
             ];
         }
         DB::table('ratings')->insert($store);
+        session()->flash('postmessage', 'You have successfully submitted your form! Wait for your Head to review and approve it');
 
         return redirect('/myevaluationforms');
     }

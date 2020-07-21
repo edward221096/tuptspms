@@ -1,5 +1,57 @@
 @extends('layouts.sidebar')
 @section('employee')
+    <style>
+        .alert{
+            width: 100%;
+        }
+    </style>
+    <div class="container-fluid">
+        @if(session()->has('postmessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('postmessage') }}
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="row">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            <strong>Error: </strong> {{ $error }}
+                        </li>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+        @if(session()->has('updatemessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('updatemessage') }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has('deletemessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                </div>
+            </div>
+        @endif
+    </div>
+    <div class="container-fluid">
         <h3 class="mt-4">TUP-Taguig Employees</h3>
         <p>Manage Employee Information</p>
 
@@ -24,7 +76,6 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Username</th>
-                <th>E-Mail Address</th>
                 <th>Role</th>
                 <th>Division Name</th>
                 <th>Department Name</th>
@@ -37,15 +88,18 @@
             <tbody>
             @foreach($employee as $row)
                 <tr>
-                    <td>{{$row->id}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->username}}</td>
-                    <td>{{$row->email}}</td>
-                    <td>{{$row->role}}</td>
-                    <td>{{$row->division_name}}</td>
-                    <td>{{$row->dept_name}}</td>
-                    <td>{{$row->section_name}}</td>
-                    <td>{{$row->status}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->id}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->name}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->username}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->role}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->division_name}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->dept_name}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->section_name}}</td>
+                    @if($row->status == 'Account Approved')
+                        <td style ="word-wrap: break-word; color: green;">{{$row->status}}</td>
+                        @else
+                        <td style ="word-wrap: break-word; color: red;">{{$row->status}}</td>
+                    @endif
                     <td>
                         <form action="employee/{{$row->id}}" method="POST">
                             @csrf
@@ -71,6 +125,7 @@
             </tbody>
         </table>
         {{$employee->links()}}
+    </div>
 
     <!-- EDIT MODAL -->
     <div class="modal fade" id="editemployee" tabindex="-1" role="dialog" aria-labelledby="editemployeelabel">

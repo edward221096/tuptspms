@@ -1,5 +1,57 @@
 @extends('layouts.sidebar')
 @section('myevaluationforms')
+    <style>
+        .alert{
+            width: 100%;
+        }
+    </style>
+    <div class="container-fluid">
+        @if ($errors->any())
+            <div class="row">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            <strong>Error: </strong> {{ $error }}
+                        </li>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+        @if(session()->has('denied'))
+            <div class="row">
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('denied') }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has('postmessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('postmessage') }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has('deletemessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                </div>
+            </div>
+        @endif
+    </div>
+
     <div class="container-fluid">
         <h3 class="mt-4">My Evaluation Forms</h3>
         <p>Manage my Evaluation Forms</p>

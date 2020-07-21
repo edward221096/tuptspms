@@ -27,7 +27,12 @@ class MfoController extends Controller
         return view ('sidebar.manageevaluationforms', compact('mfo'));
     }
 
-    public function store(){
+    public function store(Request $request){
+        $this->validate($request, [
+            'form_type' => 'required',
+            'function_name' => 'required',
+            'dept_name' => 'required',
+        ]);
 
         $formtype = Form::FirstOrCreate([
            'form_type' => request('form_type')
@@ -54,6 +59,8 @@ class MfoController extends Controller
         $mfo->actual_accomplishment_desc=request('actual_accomplishment_desc');
         $mfo->remarks = request('remarks');
         $mfo->save();
+
+        session()->flash('postmessage', 'Successfully added Question for the selected Role or Department');
 
         return redirect ('/manageevaluationforms');
     }
@@ -116,6 +123,9 @@ class MfoController extends Controller
         $mfo -> actual_accomplishment_desc = $request->input('actual_accomplishment_desc');
         $mfo -> remarks = $request -> input ('remarks');
         $mfo -> save();
+
+        session()->flash('updatemessage', 'Successfully updated information for the selected Question');
+
         return redirect('/manageevaluationforms');
     }
 
@@ -124,7 +134,10 @@ class MfoController extends Controller
         if(Mfo::count() > 1){
             Mfo::destroy($request->mfoid);
         }
-//        return back();
+
+        session()->flash('deletemessage', 'Successfully deleted information for the selected Question');
+
+        return back();
     }
 
     public function show()

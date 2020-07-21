@@ -17,7 +17,7 @@ class OrganizationController extends Controller
             ->join('departments', 'departments.division_id', 'divisions.id')
             ->join('sections', 'sections.dept_id', 'departments.id')
             ->select('divisions.id as division_id', 'departments.id as dept_id', 'sections.id as section_id','divisions.division_name', 'departments.dept_name', 'section_name')
-            ->paginate(10);
+            ->paginate(20);
 
         return view ('sidebar.manageorganization', compact('organizations'));
     }
@@ -37,6 +37,7 @@ class OrganizationController extends Controller
         $section -> section_name = request('section_name');
         $section -> save();
 
+        session()->flash('postmessage', 'Successfully added Division, Department and Section ');
 
         return redirect('/manageorganization');
     }
@@ -60,6 +61,8 @@ class OrganizationController extends Controller
         $section -> section_name = $request->input('section_name');
         $section -> update();
 
+        session()->flash('updatemessage', 'Successfully updated Division, Department and Section');
+
         return redirect('/manageorganization');
     }
 
@@ -68,6 +71,9 @@ class OrganizationController extends Controller
         if(Section::count() > 1){
             Section::destroy($request->section_id);
         }
+
+        session()->flash('deletemessage', 'Successfully deleted Division, Department and Section ');
+
         return back();
     }
 

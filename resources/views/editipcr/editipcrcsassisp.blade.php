@@ -26,6 +26,10 @@
         input[type="number"]{
             width:73px
         }
+
+        .alert{
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -36,6 +40,17 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        @if(session()->has('updatemessage'))
+                            <div class="row">
+                                <div class="alert alert-success">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <strong>Information: </strong> {{ session()->get('updatemessage') }}
+                                </div>
+                            </div>
+                        @endif
+                    </div>
                         @foreach($ratingsinglevalue as $row)
                         <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
                         <form action="{{route('updatemyipcr.update', [$row->form_sequence_id])}}" method="post">
@@ -207,6 +222,7 @@
                                                 <div class="form-label-group">
                                                     <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
                                                         <option selected value="{{ $row->Q1 }}">{{ $row->Q1 }}</option>
+                                                        <option value=""></option>
                                                         <option value="5">5</option>
                                                         <option value="4">4</option>
                                                         <option value="3">3</option>
@@ -219,6 +235,7 @@
                                                 <div class="form-label-group">
                                                     <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
                                                         <option selected value="{{ $row->E2 }}">{{ $row->E2 }}</option>
+                                                        <option value=""></option>
                                                         <option value="5">5</option>
                                                         <option value="4">4</option>
                                                         <option value="3">3</option>
@@ -231,6 +248,7 @@
                                                 <div class="form-label-group">
                                                     <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
                                                         <option selected value="{{ $row->T3 }}">{{ $row->T3 }}</option>
+                                                        <option value=""></option>
                                                         <option value="5">5</option>
                                                         <option value="4">4</option>
                                                         <option value="3">3</option>

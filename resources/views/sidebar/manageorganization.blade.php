@@ -4,13 +4,62 @@
         width: 100%;
     }
 
+    .alert{
+        width: 100%;
+    }
+
 </style>
 
 @extends('layouts.sidebar')
 @section('manageorganization')
     <div class="container-fluid">
+        @if(session()->has('postmessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('postmessage') }}
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+            <div class="row">
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                </div>
+            </div>
+        @endif
+        @if(session()->has('updatemessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('updatemessage') }}
+                </div>
+            </div>
+        @endif
+        @if(session()->has('deletemessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                        &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                </div>
+            </div>
+        @endif
+    </div>
+
+    <div class="container-fluid">
         <h3 class="mt-4">Organization</h3>
-        <p>Manage TUP-Taguig Organization</p>
+        <p>Manage TUP-Taguig Organization Hierarchically</p>
 
         <!-- SEARCH ORGANIZATION -->
         <label>Search for Division/Department or Area/Section</label>
@@ -26,12 +75,14 @@
                     </span>
             </div>
         </form>
-        <br>
+
         <!--ADD DEPARTMENT BUTTON -->
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addorganization">
             Add
         </button>
-
+        <div>
+            <br>
+        </div>
         <table class="table table-striped">
             <thead>
             <tr style="font-size: 11pt;">

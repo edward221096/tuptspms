@@ -12,12 +12,60 @@
         font-size: 10pt;
     }
 
+    .note-group{
+        color: red;
+        font-weight: lighter;
+        font-size: 10pt;
+        font-style: italic;
+    }
+
+    .alert{
+        width: 100%;
+    }
+
 </style>
 
 <script src="{{ asset('node_modules/tinymce/tinymce.min.js') }}"></script>
 
 @extends('layouts.sidebar')
 @section('manageevaluationforms')
+        <div class="container-fluid">
+            @if ($errors->any())
+                <div class="row">
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        @foreach ($errors->all() as $error)
+                            <li>
+                           <strong>Error: </strong> {{ $error }}
+                            </li>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+            @if(session()->has('updatemessage'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        <strong>Information: </strong> {{ session()->get('updatemessage') }}
+                    </div>
+                </div>
+            @endif
+            @if(session()->has('deletemessage'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                    </div>
+                </div>
+            @endif
+        </div>
+
     <div class="container-fluid">
         <h3 class="mt-4">Evaluation Forms</h3>
         <p>Manage the Content of Evaluation Forms for IPCR and OPCR Forms</p>
@@ -41,6 +89,9 @@
         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addmfo">
             Add
         </button>
+        <div>
+            <br>
+        </div>
 
         <form method="GET" action="/manageevaluationforms">
             <table class="table table-striped">
@@ -120,7 +171,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addmfo">Add Evaluation Form Content</h5>
+                        <h5 class="modal-title" id="addmfo">Add Evaluation Form Questions</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -128,7 +179,9 @@
                     <form method="POST" action="/storemfo">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <!-- FUNCTION COMBOBOX-->
+                            <div class="form-row">
+                                <label for="Notes">Note: *All fields are required</label>
+                            </div>
                             <div class="form-row">
                                 <div class="form-group col-6">
                                     <label for="form">Form</label>
@@ -138,6 +191,9 @@
                                             <option>{{$form->form_type}}</option>
                                         @endforeach
                                     </select>
+                                    <div class="note-group">
+                                        Choose where to apply the Form question
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -148,6 +204,9 @@
                                             <option>{{$functiontype->function_name}}</option>
                                         @endforeach
                                     </select>
+                                    <div class="note-group">
+                                        Choose Administrative Functions - Clerical/Routine and Technical (For Fulltime Admin IPCR Form only)
+                                    </div>
                                 </div>
                             </div>
 
@@ -160,6 +219,9 @@
                                             <option>{{$department->dept_name}}</option>
                                         @endforeach
                                     </select>
+                                    <div class="note-group">
+                                        For OPCR form: The question will appear depends on Department selected
+                                    </div>
                                 </div>
 
                                 <div class="form-group col-md-6">
@@ -188,6 +250,9 @@
                                             <option>Fulltime - Instructor</option>
                                             <option>Fulltime - Admin</option>
                                         </select>
+                                    <div class="note-group">
+                                        For IPCR form: The question will appear to the depends on Role selected
+                                    </div>
                                     </div>
                                 </div>
                             <!-- MFO TEXTAREA -->
@@ -205,14 +270,6 @@
                                     <textarea class="form-control" rows="5" name="success_indicator_desc"></textarea>
                                 </div>
                             </div>
-
-                            <!-- ACTUAL ACCOMPLISHMENT TEXT AREA -->
-{{--                            <div class="form-row">--}}
-{{--                                <div class="form-group col-md-12">--}}
-{{--                                    <label for="actual_accomplishment_desc">Actual Accomplishments</label>--}}
-{{--                                    <textarea class="form-control" rows="5" name="actual_accomplishment_desc"></textarea>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
 
                             <!-- REMARKS TEXT AREA -->
                             <div class="form-row">

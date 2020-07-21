@@ -1,6 +1,21 @@
 @extends('layouts.sidebar')
 @section('myteamevaluationforms')
+    <style>
+        .alert{
+            width: 100%;
+        }
+    </style>
     <div class="container-fluid">
+            @if(session()->has('deletemessage'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                    </div>
+                </div>
+            @endif
         <h3 class="mt-4">My Team Evaluation Forms</h3>
         <p>Manage my Team Evaluation Forms</p>
 

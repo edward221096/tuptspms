@@ -21,7 +21,7 @@ class JoinUserDeptController extends Controller
                         'users.email', 'users.role', 'divisions.division_name', 'departments.dept_name',
                         'sections.section_name', 'users.status', 'users.password')
                     ->orderBy('users.id', 'asc')
-                    ->paginate(10);
+                    ->paginate(20);
                     return view ('sidebar.employee', compact('employee'));
     }
     /**
@@ -64,6 +64,8 @@ class JoinUserDeptController extends Controller
         $employee -> section_id = $request->input('section_id');
         $employee -> update();
 
+        session()->flash('updatemessage', 'Successfully updated User information');
+
         return redirect('/employee');
     }
 
@@ -72,6 +74,9 @@ class JoinUserDeptController extends Controller
         if(User::count() > 1){
             User::destroy($request->empid);
         }
+
+        session()->flash('deletemessage', 'Successfully deleted User information');
+
         return redirect('/employee');
     }
 

@@ -239,6 +239,7 @@ class MyEvaluationFormController extends Controller
                 ->where('user_id', '=', $data["user_id"])
                 ->update($data);
         }
+        session()->flash('updatemessage', 'You have successfully updated the form! Press back button below to go back');
         return redirect()->back();
     }
 
@@ -247,6 +248,8 @@ class MyEvaluationFormController extends Controller
         if(Rating::count() > 1){
             Rating::where('form_sequence_id',  $request->form_sequence_id)->delete();
         }
+
+        session()->flash('deletemessage', 'Form successfully deleted!');
 
         return back();
 

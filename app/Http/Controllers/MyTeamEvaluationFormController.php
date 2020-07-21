@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Rating;
 
 class MyTeamEvaluationFormController extends Controller
 {
@@ -215,8 +216,15 @@ class MyTeamEvaluationFormController extends Controller
         return view('editipcr.editipcrcsassisp', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
-    public function destroy(){
+    public function destroy(Request $request)
+    {
+        if(Rating::count() > 1){
+            Rating::where('form_sequence_id',  $request->form_sequence_id)->delete();
+        }
 
+        session()->flash('deletemessage', 'Form successfully deleted!');
+
+        return back();
 
     }
 }

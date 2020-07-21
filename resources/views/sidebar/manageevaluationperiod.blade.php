@@ -1,5 +1,54 @@
 @extends('layouts.sidebar')
 @section('manageevaluationperiod')
+<style>
+    .alert{
+        width: 100%;
+    }
+</style>
+    <div class="container-fluid">
+        @if(session()->has('postmessage'))
+            <div class="row">
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                          &times;
+                    </button>
+                    <strong>Information: </strong> {{ session()->get('postmessage') }}
+                </div>
+            </div>
+        @endif
+        @if ($errors->any())
+                <div class="row">
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                &times;
+                            </button>
+                </div>
+            </div>
+            @endif
+            @if(session()->has('updatemessage'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        <strong>Information: </strong> {{ session()->get('updatemessage') }}
+                    </div>
+                </div>
+            @endif
+            @if(session()->has('deletemessage'))
+                <div class="row">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            &times;
+                        </button>
+                        <strong>Information: </strong> {{ session()->get('deletemessage') }}
+                    </div>
+                </div>
+            @endif
+    </div>
 
     <div class="container-fluid">
         <h3 class="mt-4">Evaluation Period</h3>
@@ -136,7 +185,8 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="evaluation_period_status">Evaluation Status</label>
-                                    <select name="evaluation_period_status" class="form-control form-control-sm" id="evaluation_period_status">
+                                    <select name="evaluation_period_status" class="form-control form-control-sm"
+                                            id="evaluation_period_status" required autocomplete="evaluation_period_status">
                                         <option>Open</option>
                                         <option>Closed</option>
                                     </select>
@@ -165,7 +215,7 @@
                     @csrf
                     @method("DELETE")
                     <div class="modal-body">
-                        <label style="font-weight: normal;">Are you sure do you want to delete this Evaluation Period?</label>
+                        <label style="font-weight: normal;">Are yofu sure do you want to delete this Evaluation Period?</label>
                         <input type="hidden" name="evalperiodid" id="evalperiodid">
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary btn-sm">Confirm</button>

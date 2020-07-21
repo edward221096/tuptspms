@@ -33,12 +33,16 @@
         .main-sidebar{
             width: 270px;
         }
+
+        body, html {
+            height: 100%;
+            background: white;
+        }
     </style>
 
 </head>
 <body class="hold-transition sidebar-dark-red sidebar-mini">
 <div class="wrapper">
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -94,6 +98,7 @@
 
         <!-- Sidebar -->
         <div class="sidebar" style="width: 270px; !important;">
+
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
@@ -443,7 +448,6 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -504,13 +508,13 @@
                             @yield('opcrqaa')
                             @yield('opcrrecords')
                             @yield('opcruitc')
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.content -->
         </div>
+    </div>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->

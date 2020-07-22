@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72df8746-5ece-41b1-9858-5578d559ca0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/adminlte/build/less/variables.less" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassisp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassocp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafinstructor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfassprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfastprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfinstructor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassisp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassocp.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfinstructor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfprofessor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfulladmin.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" afterDir="false" />
@@ -561,19 +573,11 @@
       <change beforePath="$PROJECT_DIR$/../projectfoo/tests/Unit/ExampleTest.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../projectfoo/webpack.mix.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EvaluationPeriodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EvaluationPeriodController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/adminlte/dist/css/adminlte.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/adminlte/dist/css/adminlte.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
@@ -599,10 +603,10 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/util.css" beforeDir="false" />
@@ -965,7 +969,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1092,17 +1096,17 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
+      <recent name="C:\laravel\tuptspms\resources\views\auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
       <recent name="C:\laravel\tuptspms\resources\views\ipcr" />
       <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
       <recent name="C:\laravel\blog\resources\views\admin" />
       <recent name="C:\laravel\blog\resources\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views" />
-      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
-      <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1315,7 +1319,8 @@
       <workItem from="1595216653591" duration="15073000" />
       <workItem from="1595239054425" duration="1657000" />
       <workItem from="1595240728402" duration="9689000" />
-      <workItem from="1595301086062" duration="26320000" />
+      <workItem from="1595301086062" duration="26549000" />
+      <workItem from="1595384781768" duration="23680000" />
     </task>
     <servers />
   </component>
@@ -1326,6 +1331,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595384823018">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595384823018" />
     <state x="361" y="72" key="#Notifications" timestamp="1594090634184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1362,9 +1371,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595306593365" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595305644308">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595420934347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595305644308" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595420934347" />
   </component>
 </project>

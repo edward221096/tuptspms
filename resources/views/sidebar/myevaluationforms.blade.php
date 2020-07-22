@@ -88,11 +88,39 @@
                     <td>
                             <!-- EDIT FORM TYPE BUTTON -->
                         @if($row->evaluationform_name == 'ipcrcsassocp')
-                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                            <a href="{{action('MyEvaluationFormController@editmyipcrcsassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'ipcrcsassisp')
-                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                            <a href="{{action('MyEvaluationFormController@editmyipcrcsassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'ipcrcsprofessor')
-                            <a href="{{action('MyTeamEvaluationFormController@editipcrcsprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                            <a href="{{action('MyEvaluationFormController@editmyipcrcsprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrcsinstructor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrcsinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfafassocp')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfafassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfafassisp')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfafassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfafprofessor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfafprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfafinstructor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfafinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfqfassocp')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfqfassocp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfqfassisp')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfqfassisp', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfqfprofessor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfqfprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfqfinstructor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfqfinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfassprofessor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfassprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfastprofessor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfastprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfprofessor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfprofessor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfinstructor')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfulladmin')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @endif
                             <a href="#" class="btn btn-danger btn-sm"
                            data-myformseqid="{{$row->id}}"

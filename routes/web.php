@@ -50,6 +50,10 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('myteamevaluationforms', 'MyTeamEvaluationFormController@index');
 
+    //FOR SEARCH DATA ORGANIZATION
+    Route::get('/searchteamevaluation', 'MyTeamEvaluationFormController@search');
+
+
     Route::resource('myteamevaluationforms', 'MyTeamEvaluationFormController');
 
     //------------------FORM RELATED ROUTES---------------------------
@@ -187,6 +191,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfafassocp', 'IpcrController@storeipcrfafassocp');
 
+    Route::get('editmyipcrfafassocp/{id}', 'MyEvaluationFormController@editmyipcrfafassocp');
+
+    Route::get('editipcrfafassocp/{id}', 'MyTeamEvaluationFormController@editipcrfafassocp');
+
+    //IPCRFAFASSISP
     Route::get('/ipcrfafassisp', function () {
         return view('ipcr.ipcrfafassisp');
     });
@@ -195,6 +204,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfafassisp', 'IpcrController@storeipcrfafassisp');
 
+    Route::get('editmyipcrfafassisp/{id}', 'MyEvaluationFormController@editmyipcrfafassisp');
+
+    Route::get('editipcrfafassisp/{id}', 'MyTeamEvaluationFormController@editipcrfafassisp');
+
+    //IPCRFAFINSTRUCTOR
     Route::get('/ipcrfafinstructor', function () {
         return view('ipcr.ipcrfafinstructor');
     });
@@ -203,6 +217,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfafinstructor', 'IpcrController@storeipcrfafinstructor');
 
+    Route::get('editmyipcrfafinstructor/{id}', 'MyEvaluationFormController@editmyipcrfafinstructor');
+
+    Route::get('editipcrfafinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfafinstructor');
+
+    //IPCRFAFPROFESSOR
     Route::get('/ipcrfafprofessor', function () {
         return view('ipcr.ipcrfafprofessor');
     });
@@ -211,6 +230,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfafprofessor', 'IpcrController@storeipcrfafprofessor');
 
+    Route::get('editmyipcrfafprofessor/{id}', 'MyEvaluationFormController@editmyipcrfafprofessor');
+
+    Route::get('editipcrfafprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfafprofessor');
+
+    //IPCRFQFASSOCP
     Route::get('/ipcrfqfassocp', function () {
         return view('ipcr.ipcrfqfassocp');
     });
@@ -219,6 +243,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfqfassocp', 'IpcrController@storeipcrfqfassocp');
 
+    Route::get('editmyipcrfqfassocp/{id}', 'MyEvaluationFormController@editmyipcrfqfassocp');
+
+    Route::get('editipcrfqfassocp/{id}', 'MyTeamEvaluationFormController@editipcrfqfassocp');
+
+    //IPCRFQFASSISP
     Route::get('/ipcrfqfassisp', function () {
         return view('ipcr.ipcrfqfassisp');
     });
@@ -227,6 +256,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfqfassisp', 'IpcrController@storeipcrfqfassisp');
 
+    Route::get('editmyipcrfqfassisp/{id}', 'MyEvaluationFormController@editmyipcrfqfassisp');
+
+    Route::get('editipcrfqfassisp/{id}', 'MyTeamEvaluationFormController@editipcrfqfassisp');
+
+    //IPCRFQFPROFESSOR
     Route::get('/ipcrfqfprofessor', function () {
         return view('ipcr.ipcrfqfprofessor');
     });
@@ -235,6 +269,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfqfprofessor', 'IpcrController@storeipcrfqfprofessor');
 
+    Route::get('editmyipcrfqfprofessor/{id}', 'MyEvaluationFormController@editmyipcrfqfprofessor');
+
+    Route::get('editipcrfqfprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfqfprofessor');
+
+    //IPCRFQFINSTRUCTOR
     Route::get('/ipcrfqfinstructor', function () {
         return view('ipcr.ipcrfqfinstructor');
     });
@@ -243,6 +282,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfqfinstructor', 'IpcrController@storeipcrfqfinstructor');
 
+    Route::get('editmyipcrfqfinstructor/{id}', 'MyEvaluationFormController@editmyipcrfqfinstructor');
+
+    Route::get('editipcrfqfinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfqfinstructor');
+
+    //IPCRFASSOCPROFESSOR
     Route::get('/ipcrfassprofessor', function () {
         return view('ipcr.ipcrfassprofessor');
     });
@@ -251,6 +295,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfassprofessor', 'IpcrController@storeipcrfassprofessor');
 
+    Route::get('editmyipcrfassprofessor/{id}', 'MyEvaluationFormController@editmyipcrfassprofessor');
+
+    Route::get('editipcrfassprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfassprofessor');
+
+    //IPCRFASTPROFESSOR
     Route::get('/ipcrfastprofessor', function () {
         return view('ipcr.ipcrfassprofessor');
     });
@@ -259,6 +308,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfastprofessor', 'IpcrController@storeipcrfastprofessor');
 
+    Route::get('editmyipcrfastprofessor/{id}', 'MyEvaluationFormController@editmyipcrfastprofessor');
+
+    Route::get('editipcrfastprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfastprofessor');
+
+    //IPCRFPROFESSOR
     Route::get('/ipcrfprofessor', function () {
         return view('ipcr.ipcrfprofessor');
     });
@@ -267,6 +321,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfprofessor', 'IpcrController@storeipcrfprofessor');
 
+    Route::get('editmyipcrfprofessor/{id}', 'MyEvaluationFormController@editmyipcrfprofessor');
+
+    Route::get('editipcrfprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfprofessor');
+
+    //IPCRFINSTRUCTOR
     Route::get('/ipcrfinstructor', function () {
         return view('ipcr.ipcrfinstructor');
     });
@@ -275,7 +334,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataipcrfinstructor', 'IpcrController@storeipcrfinstructor');
 
+    Route::get('editmyipcrfinstructor/{id}', 'MyEvaluationFormController@editmyipcrfinstructor');
 
+    Route::get('editipcrfinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfinstructor');
+
+    //IPCRFULLADMIN
     Route::get('/ipcrfulladmin', function () {
         return view('ipcr.ipcrfulladmin');
     });
@@ -283,6 +346,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ipcrfulladmin', 'IpcrController@getipcrfulladmin');
 
     Route::post('/storedataipcrfulladmin', 'IpcrController@storeipcrfulladmin');
+
+    Route::get('editmyipcrfulladmin/{id}', 'MyEvaluationFormController@editmyipcrfulladmin');
+
+    Route::get('editipcrfulladmin/{id}', 'MyTeamEvaluationFormController@editipcrfulladmin');
 
     //----OPCR FORMS--------------
 

@@ -175,6 +175,651 @@ class MyEvaluationFormController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrcsinstructor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrcsinstructor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfafassocp($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfafassocp', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfafassisp($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfafassisp', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfafprofessor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfafprofessor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfafinstructor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfafinstructor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfqfassocp($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfqfassocp', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfqfassisp($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfqfassisp', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfqfprofessor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfqfprofessor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfqfinstructor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfqfinstructor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfassprofessor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfassprofessor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfastprofessor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfastprofessor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfprofessor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfprofessor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfinstructor($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfinstructor', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     */
+    public function editmyipcrfulladmin($id)
+    {
+        $myuserid = Auth::User()->id;
+
+        $ratingsinglevalue = DB::table('ratings')
+            ->select('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', DB::raw('upper(MONTHNAME(evaluation_startdate)) as evaluation_startmonth,
+                year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
+                year(evaluation_enddate) as evaluation_endyear'),
+                'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
+                'clericalroutine', 'technical')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
+                'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
+                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
+            ->get();
+
+        $ratingsmultiplevalue = DB::table('ratings')
+            ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
+            ->where('user_id', '=', $myuserid)
+            ->where('form_sequence_id', '=', $id)
+            ->get();
+
+        $userdata = DB::table('ratings')
+            ->join('users', 'users.id', '=', 'ratings.user_id')
+            ->join('divisions', 'divisions.id', '=', 'ratings.division_id')
+            ->join('departments', 'departments.id', '=', 'ratings.dept_id')
+            ->join('sections', 'sections.id', '=', 'ratings.section_id')
+            ->select('ratings.user_id', 'users.name', 'ratings.ratee_role', 'divisions.division_name', 'departments.dept_name', 'sections.section_name')
+            ->where('form_sequence_id', '=', $id)
+            ->limit('1')
+            ->get();
+
+        return view('editipcr.editipcrfulladmin', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -219,6 +864,9 @@ class MyEvaluationFormController extends Controller
                 'support_total_average' => $request->input('support_total_average')[0],
                 'research_total_average' => $request->input('research_total_average')[0],
                 'total_weighted_score' => $request->input('total_weighted_score')[0],
+                'clericalroutine' => $request->input('clericalroutine')[0],
+                'technical' => $request->input('technical')[0],
+                'salary_grade' => $request->input('salary_grade')[0],
                 'evaluation_startdate' => $request->input('evaluation_startdate')[0],
                 'evaluation_enddate' => $request->input('evaluation_enddate')[0],
                 'ratee_esignature' => $request->input('ratee_esignature')[0],

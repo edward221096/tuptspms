@@ -69,7 +69,7 @@
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
-                                    @if(Auth::User()->role == 'College Sec - Professor')
+                                    @if(Auth::User()->role == 'Faculty with Quasi Function - Instructor')
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
                                     @else
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
@@ -330,18 +330,18 @@
                                     >
                                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                                                Core Administrative Functions&nbsp;<br style="box-sizing: border-box;" />
-                                                Weighted Average (65%)
+                                                Higher and Advanced Education Programs and Support Functions&nbsp;<br style="box-sizing: border-box;" />
+                                                Weighted Average (63%)
                                             </b>
                                             <br />
                                         </div>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                                         <!-- Total Rating for Function -->
-                                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
+                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" value="{{$row->support_total_average}}" readonly>
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br />Choose 4 QO in instruction; 2 in research/extension; choose all for quasi/admin</p>
                                     </td>
                                 </tr>
                                 <tr style="box-sizing: border-box;">
@@ -349,25 +349,25 @@
                                         <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                                                 <b style="box-sizing: border-box; font-weight: bolder;">
-                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Higher and Advanced Education Programs and Support Functions</span>
+                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span>
                                                 </b>
                                                 <span style="box-sizing: border-box; color: black;"></span>
                                             </p>
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (21%)</span></b>
+                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (25%)</span></b>
                                             </p>
                                         </div>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                                         <!-- Total Rating for Function -->
-                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" value="{{$row->support_total_average}}" readonly>
+                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" value="{{$row->research_total_average}}" readonly>
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
+                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 4 QO in instruction; 2 in research/extension; choose all for quasi/admin</span>
                                         </p>
                                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span>
+                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
                                             <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
                                         </p>
                                     </td>
@@ -375,24 +375,24 @@
                                 <tr style="box-sizing: border-box; height: 2.9pt;">
                                     <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
                                         <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span></b>
+                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Core Administrative Functions</span></b>
                                             <span style="box-sizing: border-box; color: black;"></span>
                                         </p>
                                         <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (14%)</span></b>
+                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (12%)</span></b>
                                             <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
                                         </p>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                                         <!-- Total Rating for Function -->
-                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" value="{{$row->research_total_average}}" readonly>
+                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                                         <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
                                             <p style="box-sizing: border-box; margin: 6pt 0cm;">
-                                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
+                                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                                             </p>
-                                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span></p>
+                                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span></p>
                                         </div>
                                         <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
                                             <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
@@ -668,7 +668,7 @@
                     total = total + parseFloat(corevalues[x].value)
                 }
             }
-            avg = (total / count) * 0.65
+            avg = (total / count) * 0.12
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
 
             // For Support Functons
@@ -682,7 +682,7 @@
                     total = total + parseFloat(supvalues[x].value)
                 }
             }
-            avg = total / count * 0.2100
+            avg = total / count * 0.63
             $('#support-total-average').val(isNaN(avg) ? "" : avg)
 
             // For Research Services
@@ -696,7 +696,7 @@
                     total = total + parseFloat(resvalues[x].value)
                 }
             }
-            avg = total / count * 0.14
+            avg = total / count * 0.25
             $('#research-total-average').val(isNaN(avg) ? "" : avg)
         }
 

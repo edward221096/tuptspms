@@ -69,7 +69,7 @@
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
-                                    @if(Auth::User()->role == 'College Sec - Professor')
+                                    @if(Auth::User()->role == 'Fulltime - Admin')
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
                                     @else
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
@@ -257,18 +257,21 @@
                                             </td>
                                             <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                                                 <div class="form-label-group">
-                                                    @if($row->function_name == 'Core Administrative Functions')
-                                                        <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core"
-                                                               name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
-                                                    @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Support Functions')
-                                                        <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support"
-                                                               name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
+                                                    @if($row->function_name == 'Core Administrative Functions - Clerical/Routine')
+                                                        <input type="number" onchange="setFourNumberDecimal(this)"
+                                                               class="form-control form-control-sm clerical-value-core" name="A[]"
+                                                               value="{{ $row->A4 }}" style="width: 73px" readonly>
                                                     @endif
-                                                    @if($row->function_name == 'Research Program' || $row->function_name == 'Technical Advisory Extension Program')
-                                                        <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research"
-                                                               name="A[]" value="{{ $row->A4}}" style="width: 73px" readonly>
+                                                    @if($row->function_name == 'Core Administrative Functions - Technical')
+                                                        <input type="number" onchange="setFourNumberDecimal(this)"
+                                                               class="form-control form-control-sm technical-value-core" name="A[]"
+                                                               value="{{ $row->A4 }}" style="width: 73px" readonly>
                                                     @endif
-
+                                                    @if($row->function_name == 'Support Functions')
+                                                        <input type="number" onchange="setFourNumberDecimal(this)"
+                                                               class="form-control form-control-sm a-value-support" name="A[]"
+                                                               value="{{ $row->A4 }}" style="width: 73px" readonly>
+                                                    @endif
                                                 </div>
                                             </td>
 
@@ -331,17 +334,17 @@
                                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
                                                 Core Administrative Functions&nbsp;<br style="box-sizing: border-box;" />
-                                                Weighted Average (65%)
+                                                Weighted Average (80%)
                                             </b>
                                             <br />
                                         </div>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                                         <!-- Total Rating for Function -->
-                                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
+                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br />Refer to the notes below on the specific percentage of clerical and technical admin functions based on the salary grade (SG) Level </p>
                                     </td>
                                 </tr>
                                 <tr style="box-sizing: border-box;">
@@ -349,12 +352,12 @@
                                         <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                                                 <b style="box-sizing: border-box; font-weight: bolder;">
-                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Higher and Advanced Education Programs and Support Functions</span>
+                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Support Functions</span>
                                                 </b>
                                                 <span style="box-sizing: border-box; color: black;"></span>
                                             </p>
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (21%)</span></b>
+                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (20%)</span></b>
                                             </p>
                                         </div>
                                     </td>
@@ -364,38 +367,11 @@
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
+                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                                         </p>
                                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span>
+                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
                                             <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr style="box-sizing: border-box; height: 2.9pt;">
-                                    <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                                        <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span></b>
-                                            <span style="box-sizing: border-box; color: black;"></span>
-                                        </p>
-                                        <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (14%)</span></b>
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
-                                        </p>
-                                    </td>
-                                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                                        <!-- Total Rating for Function -->
-                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" value="{{$row->research_total_average}}" readonly>
-                                    </td>
-                                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                                        <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
-                                            <p style="box-sizing: border-box; margin: 6pt 0cm;">
-                                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
-                                            </p>
-                                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span></p>
-                                        </div>
-                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
                                         </p>
                                     </td>
                                 </tr>
@@ -452,6 +428,464 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
+                                    <b>
+                                <span
+                                    style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;">
+                                    <br/>
+                                    Notes:
+                                </span>
+                                    </b>
+                                </p>
+                                <div class="form-row">
+                                    <div class="form-group col-2">
+                                        <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Salary Grade</label>
+                                        <select style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;" class="form-control form-control-sm" id="salarygrade" name="salary_grade[]">
+                                            <option selected readonly value="{{$row->salary_grade}}">Current SG: {{$row->salary_grade}}</option>
+                                            <option value="">Select a Salary Grade</option>
+                                            <option value=">20">>20</option>
+                                            <option value="16-19">16-19</option>
+                                            <option value="11-15">11-15</option>
+                                            <option value="6-10">6-10</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-3">
+                                        <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Clerical/Routine Computed Value</label>
+                                        <input type="text" class="form-control form-control-sm col-12" id="clericalroutine" onchange="setFourNumberDecimal(this)" name="clericalroutine[]" value="{{ $row->clericalroutine }}" readonly>
+                                    </div>
+
+                                    <div class="form-group col-3">
+                                        <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Technical Computed Value</label>
+                                        <input type="text" class="form-control form-control-sm col-12" id="technical" onchange="setFourNumberDecimal(this)" name="technical[]" value="{{ $row->technical }}" readonly>
+                                    </div>
+
+                                </div>
+
+                                <table style="width: 100%; margin-left: -1.7pt; border-collapse: collapse;">
+                                    <tbody>
+                                    <tr style="mso-yfti-irow: 4; height: 3.5pt;">
+                                        <td width="204" rowspan="2"
+                                            style="width: 122.35pt; border: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i style=""><span style="font-size: 10pt; font-family: Arial; color: black;">Salary Grade</span></i>
+                                                    <span style="color: black;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="333" colspan="2"
+                                            style="width: 199.55pt; border: solid windowtext 1pt; border-left: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span
+                                                            style="font-size: 10pt; font-family: Arial; color: black;">Core Admin</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="310"
+                                            style="border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span style="font-size: 10pt; font-family: Arial; color: black;">Support Functions*</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="254"
+                                            style="border-top: 1pt solid windowtext; border-right: 1pt solid windowtext; border-bottom: 1pt solid windowtext; border-image: initial; border-left: none; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span style="font-size: 10pt; font-family: Arial; color: black;">Total</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="353"
+                                            style="width: 211.5pt; border: solid windowtext 1pt; border-left: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span
+                                                            style="font-size: 10pt; font-family: Arial; color: black;">Remarks</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 5; mso-yfti-lastrow: yes; height: 11.75pt;">
+                                        <td width="186"
+                                            style="width: 111.85pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span style="font-size: 10pt; font-family: Arial; color: black;">Clerical/</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                    <i><span style="font-size: 10pt; font-family: Arial;">Routine</span></i>
+                                                    <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="146"
+                                            style="width: 87.7pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <i><span style="font-size: 10pt; font-family: Arial; color: black;">Technical</span></i>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="309"
+                                            style="text-align: center; width: 642px; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                    <span style="font-size: 10pt; font-family: Arial;"><input
+                                    class="form-control form-control-sm" style="width: 100%;" id="sgsupportfunction" onchange="setFourNumberDecimal(this)" value="{{ $row->support_total_average }}" type="number"
+                                    readonly></span>
+                                        </td>
+                                        <td width="339"
+                                            style="text-align: center; width: 689px; border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                    <span style="font-size: 10pt; font-family: Arial;"><input
+                                    class="form-control form-control-sm" style="width: 100%;" id="sgtotal" onchange="setFourNumberDecimal(this)" value="{{ $row->total_weighted_score }}" type="number"
+                                    readonly></span>
+                                        </td>
+                                        <td width="791" rowspan="5"
+                                            style="width: 474.75pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"> </span>
+                                            <p style="margin-bottom: 0cm; margin-bottom: 0.0001pt;">
+                                                <span style="font-size: 10pt; font-family: Arial; color: black;">Choose all for core admin;</span>
+                                                <span style="color: black;">
+                          <o:p><span style="font-family: Arial; font-size: 10pt;">&nbsp;</span></o:p>
+                      </span>
+                                            </p>
+                                            <p style="margin-bottom: 0cm; margin-bottom: 0.0001pt;">
+                                                <span style="font-size: 10pt; font-family: Arial;">choose at least 2 QO for support functions</span>
+                                                <o:p style=""><span style="font-family: Arial; font-size: 10pt;">&nbsp;</span></o:p>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 4; height: 3.5pt;">
+                                        <td width="204"
+                                            style="width: 122.35pt; border: solid windowtext 1pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">>20</span>
+                                                    <span style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="186"
+                                            style="width: 111.85pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">N/A</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="146"
+                                            style="width: 87.7pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">80%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="310"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">20%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="254"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">100%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 5; mso-yfti-lastrow: yes; height: 11.75pt;">
+                                        <td width="204"
+                                            style="width: 122.35pt; border: solid windowtext 1pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">16-19</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="186"
+                                            style="width: 111.85pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">10%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="146"
+                                            style="width: 87.7pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">70%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="310"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">20%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="254"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.2pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">100%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 4; height: 3.5pt;">
+                                        <td width="204"
+                                            style="width: 122.35pt; border: solid windowtext 1pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 3.5pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">11-15</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="186"
+                                            style="width: 111.85pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 3.5pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">20%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="146"
+                                            style="width: 87.7pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 3.5pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">60%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="310"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 3.5pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">20%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="254"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 3.5pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">100%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 5; mso-yfti-lastrow: yes; height: 11.75pt;">
+                                        <td width="204"
+                                            style="width: 122.35pt; border: solid windowtext 1pt; border-top: none; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.75pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">6-10</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="186"
+                                            style="width: 111.85pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.75pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">30%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="146"
+                                            style="width: 87.7pt; border-top: none; border-left: none; border-bottom: solid windowtext 1pt; border-right: solid windowtext 1pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 11.75pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">50%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="310"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.75pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">20%</span>
+                                                    <span
+                                                        style="mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: EN-PH;">
+                              <o:p><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                        </td>
+                                        <td width="254"
+                                            style="border-top: none; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1pt solid windowtext; padding: 0cm 5.4pt; height: 11.75pt;">
+                                            <span style="font-size: 10pt; font-family: Arial;"><b> </b></span>
+                                            <p align="center" style="margin-bottom: 0cm; margin-bottom: 0.0001pt; text-align: center;">
+                                                <b>
+                                                    <span style="font-size: 10pt; font-family: Arial; color: black;">100%</span>
+                                                    <span style="color: black;">
+                              <o:p style=""><span style="font-size: 10pt; font-family: Arial;">&nbsp;</span></o:p>
+                          </span>
+                                                </b>
+                                            </p>
+                                            <span style="font-size: 10pt; font-family: Arial;"> </span>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
                                 <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                                     <b>
                                 <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;">
@@ -596,22 +1030,10 @@
     </div>
 </body>
     <script type="text/javascript">
-        //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD
-        $(document).ready(function(){
-            let totalweightedscore = document.getElementById('total-weighted-score')
-
-            if(totalweightedscore.value < 3.0000){
-                totalweightedscore.style.color = "red";
-            }
-            else {
-                totalweightedscore.style.color = "green";
-            }
-        });
-
         //CLEAR AVERAGE FIELDS AND RESET
-        $(document).ready(function(){
-            $(".btn-reset").click(function(){
-                $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
+        $(document).ready(function () {
+            $(".btn-reset").click(function () {
+                $("#core-total-average, #sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").val('');
             });
         });
 
@@ -633,45 +1055,59 @@
                 counter = counter + 1
             }
 
-            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.clerical-value-core').val((EValue  + QValue + TValue ) / counter);
+            currentRow.find('.technical-value-core').val((EValue  + QValue + TValue ) / counter);
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / counter)
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
+            $("#sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
 
+
         //CONDITIONAL FORMATTING COLORS
-        $('.total-weighted-score-color').change(function(){
+        $('.total-weighted-score-color').change(function () {
             let totalweightedscore = document.getElementById('total-weighted-score')
 
-            if(totalweightedscore.value < 3.0000){
+            if (totalweightedscore.value < 3.0000) {
                 totalweightedscore.style.color = "red";
-            }
-            else {
+            } else {
                 totalweightedscore.style.color = "green";
             }
         })
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {
-            // For Core Functions
-            const corevalues = document.getElementsByClassName("a-value-core")
+            // For Core Functions - Clerical/Routine
+            const clericalvalues = document.getElementsByClassName("clerical-value-core")
             let avg = 0
             let total = 0
             let count = 0
-            for (let x = 0; x < corevalues.length; x++) {
-                if (corevalues[x].value !== "") {
+            for (let x = 0; x < clericalvalues.length; x++) {
+                if (clericalvalues[x].value !== "") {
                     count++
-                    total = total + parseFloat(corevalues[x].value)
+                    total = total + Number(clericalvalues[x].value)
                 }
             }
-            avg = (total / count) * 0.65
-            $('#core-total-average').val(isNaN(avg) ? "" : avg)
+            avg = (total / count)
+            $('#clericalroutine').val(isNaN(avg) ? "" : avg)
 
-            // For Support Functons
+            // For Core Functions - Technical
+            avg = 0
+            total = 0
+            count = 0
+            const technicalvalues = document.getElementsByClassName("technical-value-core")
+            for (let x = 0; x < technicalvalues.length; x++) {
+                if (technicalvalues[x].value !== "") {
+                    count++
+                    total = total + Number(technicalvalues[x].value)
+                }
+            }
+            avg = total / count
+            $('#technical').val(isNaN(avg) ? "" : avg)
+
+            // For Support Functions
             avg = 0
             total = 0
             count = 0
@@ -682,35 +1118,63 @@
                     total = total + parseFloat(supvalues[x].value)
                 }
             }
-            avg = total / count * 0.2100
+            avg = total / count * 0.20
             $('#support-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Research Services
-            avg = 0
-            total = 0
-            count = 0
-            const resvalues = document.getElementsByClassName("a-value-research")
-            for (let x = 0; x < resvalues.length; x++) {
-                if (resvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(resvalues[x].value)
-                }
-            }
-            avg = total / count * 0.14
-            $('#research-total-average').val(isNaN(avg) ? "" : avg)
+            $('#sgsupportfunction').val(isNaN(avg) ? "" : avg)
         }
+
+        //COMPUTE THE SALARY GRADE BASED ON SELECTED VALUE
+        $("#salarygrade").change(function(){
+            let AClericalvalue = $("#clericalroutine").val()
+            let ATechnicalvalue = $("#technical").val()
+            let selectedsalarygrade = $(this).children("option:selected").val();
+            let totalAclerical = 0
+            let totalAtechnical = 0
+            let totalclericaltechnical = 0
+
+            if (selectedsalarygrade === '>20'){
+                totalAclerical = AClericalvalue * 0
+                totalAtechnical = ATechnicalvalue * 0.80
+                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+            }
+
+            if(selectedsalarygrade === '16-19'){
+                totalAclerical = AClericalvalue * 0.10
+                totalAtechnical = ATechnicalvalue * 0.70
+                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+            }
+
+            if(selectedsalarygrade === '11-15'){
+                totalAclerical = AClericalvalue * 0.20
+                totalAtechnical = ATechnicalvalue * 0.60
+                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+            }
+
+            if(selectedsalarygrade === '6-10'){
+                totalAclerical = AClericalvalue * 0.30
+                totalAtechnical = ATechnicalvalue * 0.50
+                totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+            }
+
+            $('#core-total-average').val(totalclericaltechnical)
+
+            computeAvg()
+            computeWeightedScore()
+            $("#sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").trigger("change")
+            setFourNumberDecimal();
+        })
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
         // The weighted score will not do the computation
-        function computeWeightedScore(){
+        function computeWeightedScore() {
             let weightedscore = 0
             let ACoreValue = $("#core-total-average").val()
             let ASuppValue = $("#support-total-average").val()
-            let AResValue = $("#research-total-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue) + parseFloat(AResValue)
+            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
 
             $('#total-weighted-score').val(weightedscore)
+            $('#sgtotal').val(weightedscore)
         }
 
         //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE

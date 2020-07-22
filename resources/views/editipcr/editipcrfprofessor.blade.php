@@ -69,7 +69,7 @@
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
-                                    @if(Auth::User()->role == 'College Sec - Professor')
+                                    @if(Auth::User()->role == 'Fulltime - Professor')
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
                                     @else
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
@@ -257,10 +257,7 @@
                                             </td>
                                             <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                                                 <div class="form-label-group">
-                                                    @if($row->function_name == 'Core Administrative Functions')
-                                                        <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core"
-                                                               name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
-                                                    @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Support Functions')
+                                                    @if($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Support Functions')
                                                         <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support"
                                                                name="A[]" value="{{ $row->A4 }}" style="width: 73px" readonly>
                                                     @endif
@@ -330,18 +327,18 @@
                                     >
                                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                                                Core Administrative Functions&nbsp;<br style="box-sizing: border-box;" />
-                                                Weighted Average (65%)
+                                                Higher and Advanced Education Programs and Support Functions&nbsp;<br style="box-sizing: border-box;" />
+                                                Weighted Average (60%)
                                             </b>
                                             <br />
                                         </div>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                                         <!-- Total Rating for Function -->
-                                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" value="{{$row->core_total_average}}" readonly>
+                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" value="{{$row->support_total_average}}" readonly>
                                     </td>
                                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
+                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br />Supports functions includes involvement on various programs, activities and projects related to faculty/staff development and institutional awards, etc. </p>
                                     </td>
                                 </tr>
                                 <tr style="box-sizing: border-box;">
@@ -349,53 +346,26 @@
                                         <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                                                 <b style="box-sizing: border-box; font-weight: bolder;">
-                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Higher and Advanced Education Programs and Support Functions</span>
+                                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span>
                                                 </b>
                                                 <span style="box-sizing: border-box; color: black;"></span>
                                             </p>
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (21%)</span></b>
+                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (40%)</span></b>
                                             </p>
                                         </div>
-                                    </td>
-                                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                                        <!-- Total Rating for Function -->
-                                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" value="{{$row->support_total_average}}" readonly>
-                                    </td>
-                                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
-                                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
-                                        </p>
-                                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span>
-                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr style="box-sizing: border-box; height: 2.9pt;">
-                                    <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                                        <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Research/ Technical Advisory and Extension Programs</span></b>
-                                            <span style="box-sizing: border-box; color: black;"></span>
-                                        </p>
-                                        <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (14%)</span></b>
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
-                                        </p>
                                     </td>
                                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                                         <!-- Total Rating for Function -->
                                         <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" value="{{$row->research_total_average}}" readonly>
                                     </td>
-                                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                                        <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
-                                            <p style="box-sizing: border-box; margin: 6pt 0cm;">
-                                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Choose 1 QO in instruction; 2 QO in research/extension; choose all for admin; with Graduate</span>
-                                            </p>
-                                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Program QO if applicable</span></p>
-                                        </div>
-                                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
+                                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
+                                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
+                                        </p>
+                                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
+                                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
                                         </p>
                                     </td>
                                 </tr>
@@ -595,126 +565,99 @@
         </div>
     </div>
 </body>
-    <script type="text/javascript">
-        //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD
-        $(document).ready(function(){
-            let totalweightedscore = document.getElementById('total-weighted-score')
-
-            if(totalweightedscore.value < 3.0000){
-                totalweightedscore.style.color = "red";
-            }
-            else {
-                totalweightedscore.style.color = "green";
-            }
+<script type="text/javascript">
+    //CLEAR AVERAGE FIELDS AND RESET
+    $(document).ready(function(){
+        $(".btn-reset").click(function(){
+            $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
         });
+    });
 
-        //CLEAR AVERAGE FIELDS AND RESET
-        $(document).ready(function(){
-            $(".btn-reset").click(function(){
-                $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score').val('');
-            });
-        });
+    //COMPUTE THE AVERAGE PER ROW
+    $(".q-value, .e-value, .t-value").change(function(){
+        let currentRow = $(this).closest('tr');
+        let EValue = Number(currentRow.find('.e-value').val());
+        let QValue = Number(currentRow.find('.q-value').val());
+        let TValue = Number(currentRow.find('.t-value').val());
+        let counter = 0
 
-        //COMPUTE THE AVERAGE PER ROW
-        $(".q-value, .e-value, .t-value").change(function(){
-            let currentRow = $(this).closest('tr');
-            let EValue = Number(currentRow.find('.e-value').val());
-            let QValue = Number(currentRow.find('.q-value').val());
-            let TValue = Number(currentRow.find('.t-value').val());
-            let counter = 0
-
-            if (QValue !== 0){
-                counter = counter + 1
-            }
-            if (EValue !== 0){
-                counter = counter + 1
-            }
-            if (TValue !== 0){
-                counter = counter + 1
-            }
-
-            currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
-
-            computeAvg();
-            computeWeightedScore();
-            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
-            setFourNumberDecimal();
-        });
-
-        //CONDITIONAL FORMATTING COLORS
-        $('.total-weighted-score-color').change(function(){
-            let totalweightedscore = document.getElementById('total-weighted-score')
-
-            if(totalweightedscore.value < 3.0000){
-                totalweightedscore.style.color = "red";
-            }
-            else {
-                totalweightedscore.style.color = "green";
-            }
-        })
-
-        //COMPUTE AVERAGE FOR EACH FUNCTION
-        function computeAvg() {
-            // For Core Functions
-            const corevalues = document.getElementsByClassName("a-value-core")
-            let avg = 0
-            let total = 0
-            let count = 0
-            for (let x = 0; x < corevalues.length; x++) {
-                if (corevalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(corevalues[x].value)
-                }
-            }
-            avg = (total / count) * 0.65
-            $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.2100
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Research Services
-            avg = 0
-            total = 0
-            count = 0
-            const resvalues = document.getElementsByClassName("a-value-research")
-            for (let x = 0; x < resvalues.length; x++) {
-                if (resvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(resvalues[x].value)
-                }
-            }
-            avg = total / count * 0.14
-            $('#research-total-average').val(isNaN(avg) ? "" : avg)
+        if (QValue !== 0){
+            counter = counter + 1
+        }
+        if (EValue !== 0){
+            counter = counter + 1
+        }
+        if (TValue !== 0){
+            counter = counter + 1
         }
 
-        //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
-        // The weighted score will not do the computation
-        function computeWeightedScore(){
-            let weightedscore = 0
-            let ACoreValue = $("#core-total-average").val()
-            let ASuppValue = $("#support-total-average").val()
-            let AResValue = $("#research-total-average").val()
+        currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
+        currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+        currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue) + parseFloat(AResValue)
+        computeAvg();
+        computeWeightedScore();
+        $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
+        setFourNumberDecimal();
+    });
 
-            $('#total-weighted-score').val(weightedscore)
+    //CONDITIONAL FORMATTING COLORS
+    $('.total-weighted-score-color').change(function(){
+        let totalweightedscore = document.getElementById('total-weighted-score')
+
+        if(totalweightedscore.value < 3.0000){
+            totalweightedscore.style.color = "red";
         }
-
-        //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
-        function setFourNumberDecimal(el) {
-            el.value = parseFloat(el.value).toFixed(4);
+        else {
+            totalweightedscore.style.color = "green";
         }
-    </script>
+    })
+
+    //COMPUTE AVERAGE FOR EACH FUNCTION
+    function computeAvg() {
+        // For Support Functons
+        avg = 0
+        total = 0
+        count = 0
+        const supvalues = document.getElementsByClassName("a-value-support")
+        for (let x = 0; x < supvalues.length; x++) {
+            if (supvalues[x].value !== "") {
+                count++
+                total = total + parseFloat(supvalues[x].value)
+            }
+        }
+        avg = total / count * 0.60
+        $('#support-total-average').val(isNaN(avg) ? "" : avg)
+
+        // For Research Services
+        avg = 0
+        total = 0
+        count = 0
+        const resvalues = document.getElementsByClassName("a-value-research")
+        for (let x = 0; x < resvalues.length; x++) {
+            if (resvalues[x].value !== "") {
+                count++
+                total = total + parseFloat(resvalues[x].value)
+            }
+        }
+        avg = total / count * 0.40
+        $('#research-total-average').val(isNaN(avg) ? "" : avg)
+    }
+
+    //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
+    // The weighted score will not do the computation
+    function computeWeightedScore(){
+        let weightedscore = 0
+        let ASuppValue = $("#support-total-average").val()
+        let AResValue = $("#research-total-average").val()
+
+        weightedscore = parseFloat(ASuppValue) + parseFloat(AResValue)
+
+        $('#total-weighted-score').val(weightedscore)
+    }
+
+    //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
+    function setFourNumberDecimal(el) {
+        el.value = parseFloat(el.value).toFixed(4);
+    }
+</script>

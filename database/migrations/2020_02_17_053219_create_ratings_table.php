@@ -31,7 +31,7 @@ class CreateRatingsTable extends Migration
             $table->integer('E2')->nullable();
             $table->integer('T3')->nullable();
             $table->decimal('A4', 8, 4)->nullable();
-            $table->decimal('core_total_average', 8)->nullable();
+            $table->decimal('core_total_average', 8,4 )->nullable();
             $table->decimal('support_total_average', 8, 4)->nullable();
             $table->decimal('research_total_average', 8, 4)->nullable();
             $table->decimal('ipcr_rating_average', 8, 4)->nullable();

@@ -64,7 +64,7 @@
                             <input type="hidden" value="{{ $row->evaluation_startdate }}" name="evaluation_startdate[]">
                             <input type="hidden" value="{{ $row->evaluation_enddate }}" name="evaluation_enddate[]">
                             <input type="hidden" value="{{ $row->form_id}}" name="form_id[]">
-                            <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id">
+                            <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id[]">
                             <input type="hidden" value="{{ $row->evaluationform_name }}" name="evaluationform_name[]">
 
 

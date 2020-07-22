@@ -490,21 +490,21 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <div class="form-row">
                     <div class="form-group col-2">
                         <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Salary Grade</label>
-                        <select name="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;" class="form-control form-control-sm" id="salarygrade" name="salary_grade[]">
+                        <select style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;" class="form-control form-control-sm" id="salarygrade" name="salary_grade[]">
                             <option value="">Select a Salary Grade</option>
-                            <option>>20</option>
-                            <option>16-19</option>
-                            <option>11-15</option>
-                            <option>6-10</option>
+                            <option value=">20">>20</option>
+                            <option value="16-19">16-19</option>
+                            <option value="11-15">11-15</option>
+                            <option value="6-10">6-10</option>
                         </select>
                     </div>
                     <div class="form-group col-3">
-                        <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Clerical/Routine Computed Value</label>
+                        <label for="clericalroutine" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Clerical/Routine Computed Value</label>
                         <input type="text" class="form-control form-control-sm col-12" id="clericalroutine" onchange="setFourNumberDecimal(this)" name="clericalroutine[]" readonly>
                     </div>
 
                     <div class="form-group col-3">
-                        <label for="salarygrade" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Technical Computed Value</label>
+                        <label for="technical" style="font-size: 10pt; font-family: Arial; font-weight: bold; color: black;">Technical Computed Value</label>
                         <input type="text" class="form-control form-control-sm col-12" id="technical" onchange="setFourNumberDecimal(this)" name="technical[]" readonly>
                     </div>
                 </div>

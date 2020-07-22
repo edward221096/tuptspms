@@ -230,7 +230,6 @@
                                             <option>Division Head</option>
                                             <option>Department Head</option>
                                             <option>Division Head</option>
-                                            <option selected>Staff</option>
                                             <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                             <option>College Sec - Associate Professor</option>
                                             <option>College Sec - Assistant Professor</option>
@@ -248,7 +247,7 @@
                                             <option>Fulltime - Assistant Professor</option>
                                             <option>Fulltime - Professor</option>
                                             <option>Fulltime - Instructor</option>
-                                            <option>Fulltime - Admin</option>
+                                            <option selected>Fulltime - Admin</option>
                                         </select>
                                     <div class="note-group">
                                         For IPCR form: The question will appear to the depends on Role selected

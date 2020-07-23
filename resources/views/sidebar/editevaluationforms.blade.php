@@ -18,9 +18,20 @@
             overflow-x: hidden;
         }
     </style>
+    <!-- Bootstrap core JavaScript -->
+    <!-- jQuery -->
+    <script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src=" {{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-
-
+    <style>
+        .note-group{
+            color: red;
+            font-weight: lighter;
+            font-size: 10pt;
+            font-style: italic;
+        }
+    </style>
     <div class="main_content">
         <div class="info">
             <div class="container-fluid">
@@ -41,47 +52,17 @@
                                     <option>{{$form->form_type}}</option>
                                 @endforeach
                             </select>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="function" style="font-weight: bold">Function</label>
-                            <select name="function_name" id="function_name" class="form-control form-control-sm">
-                                <!-- GET THE CURRENT DATA IN DROP DOWN -->
-                                @foreach(App\FunctionType::orderBy('id')->where('id', '=', $mfo->function_id)->get() as $selectedfunctiontype)
-                                    <option selected>{{$selectedfunctiontype->function_name}}</option>
-                                @endforeach
-                                @foreach(App\FunctionType::orderBy('id')->get() as $functiontype)
-                                    <option>{{$functiontype->function_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="department" style="font-weight: bold">Department</label>
-                            <select name="dept_name" id="dept_name" class="form-control form-control-sm">
-                                <!-- GET THE CURRENT DATA IN DROP DOWN -->
-                                @foreach(App\Department::orderBy('id')->where('id', '=', $mfo->dept_id)->get() as $selecteddeptname)
-                                    <option selected>{{$selecteddeptname->dept_name}}</option>
-                                @endforeach
-                                @foreach(App\Department::orderBy('id')->get() as $department)
-                                    <option>{{$department->dept_name}}</option>
-                                @endforeach
-                            </select>
+                            <div class="note-group">
+                                Choose where to apply the Form question
+                            </div>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="role" style="font-weight: bold">Role</label>
-                            <select name="role" class="form-control form-control-sm" value="text">
+                            <select name="role" class="form-control form-control-sm" id="role">
                                 @foreach(\Illuminate\Support\Facades\DB::table('mfos')->where('id', '=', $id)->get() as $selectedrole)
                                     <option selected value="{{$selectedrole->role}}">{{$selectedrole->role}}</option>
                                 @endforeach
-                                <option>Division Head</option>
-                                <option>Department Head</option>
-                                <option>Division Head</option>
-                                <option>Staff</option>
-                                <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                 <option>College Sec - Associate Professor</option>
                                 <option>College Sec - Assistant Professor</option>
                                 <option>College Sec - Professor</option>
@@ -100,9 +81,48 @@
                                 <option>Fulltime - Instructor</option>
                                 <option>Fulltime - Admin</option>
                             </select>
+                            <div class="note-group">
+                                IPCR form questions depends on the selected role
+                            </div>
                         </div>
-
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="department" style="font-weight: bold">Department</label>
+                                <select name="dept_name" id="dept_name" class="form-control form-control-sm">
+                                    @foreach(App\Department::orderBy('id')->where('id', '=', $mfo->dept_id)->get() as $selecteddeptname)
+                                        <option selected>{{$selecteddeptname->dept_name}}</option>
+                                    @endforeach
+                                    <option disabled style="font-weight: bold;">TEACHING DEPARTMENT</option>
+                                    @foreach(App\Department::orderBy('id')->whereIn('type', ['Teaching'])->get() as $department)
+                                        <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                    @endforeach
+                                    <option disabled style="font-weight: bold;">NON-TEACHING DEPARTMENT</option>
+                                    @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin'])->get() as $department)
+                                        <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                    @endforeach
+                                </select>
+                            <div class="note-group">
+                                OPCR form questions depends on the selected department
+                            </div>
+                            <div class="note-group">
+                                Select a Department so the Function will be filtered out
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="function" style="font-weight: bold">Function</label>
+                            <select name="function_name" id="function_name" class="form-control form-control-sm">
+                                <!-- GET THE CURRENT DATA IN DROP DOWN -->
+                                @foreach(App\FunctionType::orderBy('id')->where('id', '=', $mfo->function_id)->get() as $selectedfunctiontype)
+                                    <option selected>Current Value: {{$selectedfunctiontype->function_name}}</option>
+                                @endforeach
+                            </select>
+                            <div class="note-group">
+                                Please re-select a role to update the function type
+                            </div>
+                        </div>
+                    </div>
+
 
                     <!-- MFO TEXTBOX -->
                     <div class="form-row">
@@ -141,69 +161,70 @@
                 </form>
             </div>
         </div>
+    </div>
+    <script>
+        $("#role").change(function(){
+            $('#function_name').html('')
 
+            let selectedrole = $(this).children("option:selected").val();
+            let ipcrFunctionValues =
+                {"Core Administrative Functions": "Core Administrative Functions",
+                    "Support Functions": "Support Functions",
+                    "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                    "Research Program": "Research Program",
+                    "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+                }
+            let ipcrFullAdminValues =
+                {"Core Administrative Functions - Clerical/Routine": "Core Administrative Functions - Clerical/Routine",
+                    "Core Administrative Functions - Technical": "Core Administrative Functions - Technical",
+                    "Support Functions": "Support Functions",
+                }
+
+            let ipcrFulltimeValues = {
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                "Support Functions": "Support Functions",
+                "Research Program": "Research Program",
+                "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+            }
+
+            if (selectedrole === 'College Sec - Associate Professor' || selectedrole === 'College Sec - Assistant Professor' ||
+                selectedrole === 'College Sec - Professor' || selectedrole === 'College Sec - Instructor' ||
+                selectedrole === 'Faculty with Admin Function - Associate Professor' || selectedrole === 'Faculty with Admin Function - Assistant Professor' ||
+                selectedrole === 'Faculty with Admin Function - Professor' || selectedrole === 'Faculty with Admin Function - Instructor' ||
+                selectedrole === 'Faculty with Quasi Function - Associate Professor' || selectedrole === 'Faculty with Quasi Function - Assistant Professor' ||
+                selectedrole === 'Faculty with Quasi Function - Professor' || selectedrole === 'Faculty with Quasi Function - Instructor') {
+                $.each(ipcrFunctionValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+
+            if (selectedrole === 'Fulltime - Admin') {
+                $.each(ipcrFullAdminValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+
+            if (selectedrole === 'Fulltime - Associate Professor' || selectedrole === 'Fulltime - Assistant Professor'
+                || selectedrole === 'Fulltime - Professor' || selectedrole === 'Fulltime - Instructor') {
+                $.each(ipcrFulltimeValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+        })
+    </script>
         <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
         <script>
             tinymce.init({
                 selector: 'textarea',
                 plugins: 'lists',
                 toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
-            });
-
-
-        </script>
-
-
-        {{--                <form method="POST" action="{{action('JoinUserDeptController@update', $id)}}">--}}
-        {{--                    <!-- FULL NAME TEXTBOX -->--}}
-        {{--                    {{ csrf_field() }}--}}
-        {{--                    <input type="hidden" name="_method" value="PATCH"/>--}}
-        {{--                    <div class="form-row">--}}
-        {{--                        <div class="form-group col-md-12">--}}
-        {{--                            <label for="name">Full Name</label>--}}
-        {{--                            <input type="text" class="form-control form-control-sm" name="name" placeholder="Full Name"  required autocomplete="name"--}}
-        {{--                                   value="{{$employee->name}}">--}}
-        {{--                        </div>--}}
-
-        {{--                        <div class="form-group col-md-12">--}}
-        {{--                            <label for="name">Username</label>--}}
-        {{--                            <input type="text" class="form-control form-control-sm" name="username" placeholder="Full Name"  required autocomplete="username"--}}
-        {{--                                   value="{{$employee->username}}">--}}
-
-        {{--                        </div>--}}
-        {{--                        <div class="form-group col-md-12">--}}
-        {{--                            <label for="name">E-mail Address</label>--}}
-        {{--                            <input type="text" class="form-control form-control-sm" name="email" placeholder="Full Name"  required autocomplete="email"--}}
-        {{--                                   value="{{$employee->email}}">--}}
-        {{--                        </div>--}}
-
-        {{--                        <div class="form-group col-md-12">--}}
-        {{--                            <label for="role">Role</label>--}}
-        {{--                            <select name="role" class="form-control form-control-sm" value="{{$employee->role}}">--}}
-        {{--                                <option>Staff</option>--}}
-        {{--                                <option>Faculty</option>--}}
-        {{--                                <option>Organization Head</option>--}}
-        {{--                                <option>Section Head</option>--}}
-        {{--                            </select>--}}
-        {{--                        </div>--}}
-
-        {{--                        <div class="form-label-group col-md-12">--}}
-        {{--                            <label for="department">Organization</label>--}}
-        {{--                            <select name="dept_id" class="form-control form-control-sm" value="text">--}}
-        {{--                                <option selected value="1">Library</option>--}}
-        {{--                                <option value="2">Supply</option>--}}
-        {{--                                <option value="3">Basic Arts and Sciences Organization</option>--}}
-        {{--                                <option value="4">Computer Engineering Technology</option>--}}
-        {{--                                <option value="5">Mechanical Engineering Technology</option>--}}
-        {{--                            </select>--}}
-        {{--                        </div>--}}
-
-        {{--                        <input class="btn btn-primary btn-sm" type="submit" value="Submit">--}}
-        {{--                        <a href="{{ __('/employee') }}" class="btn btn-secondary btn-sm" style="float: right;" type="submit">Cancel</a>--}}
-        {{--                    </div>--}}
-        {{--                </form>--}}
-
-    </div>
-
+            })
+            </script>
 </head>
 </html>

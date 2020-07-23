@@ -10,7 +10,11 @@
     <title>TUP-Taguig SPMS</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/fontawesome.min.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -24,8 +28,11 @@
     <!-- AdminLTE App -->
     <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 
-{{--    <script src="{{asset('jquery/jquery.min.js')}}"></script>--}}
-{{--    <script src="{{asset('js/app.js')}}"></script>--}}
+    <!-- CHART JS CDN -->
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
@@ -113,6 +120,22 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="ipcrdashboard" class="nav-link">
+                                        <i class="fa fa-chart-bar nav-icon"></i>
+                                        <p>IPCR Dashboard</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-chart-line nav-icon"></i>
+                                        <p>OPCR Dashboard</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
 
@@ -508,6 +531,7 @@
                             @yield('opcrqaa')
                             @yield('opcrrecords')
                             @yield('opcruitc')
+                            @yield('ipcrdashboard')
                     </div>
                 </div>
             </div>
@@ -529,6 +553,21 @@
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
+    $(document).ready(function() {
+        /** add active class and stay opened when selected */
+        var url = window.location;
+
+        // for sidebar menu entirely but not cover treeview
+        $('ul.nav-sidebar a').filter(function() {
+            return this.href == url;
+        }).addClass('active');
+
+        // for treeview
+        $('ul.nav-treeview a').filter(function() {
+            return this.href == url;
+        }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+    });
+
     //EDIT MODAL IN MANAGEFUNCTIONSTYPE VIEW
     $('#editfunction').on('show.bs.modal', function (event) {
 
@@ -561,6 +600,7 @@
         var division_name = button.data('mydivisionname')
         var dept_name = button.data('mydeptname')
         var section_name = button.data('mysectionname')
+        var type = button.data('mytype')
         var modal = $(this)
 
         modal.find('.modal-body #division_id').val(division_id);
@@ -569,6 +609,7 @@
         modal.find('.modal-body #division_name').val(division_name);
         modal.find('.modal-body #dept_name').val(dept_name);
         modal.find('.modal-body #section_name').val(section_name);
+        modal.find('.modal-body #type').val(type);
     })
 
     //DELETE MODAL IN MANAGE DEPARTMENTS

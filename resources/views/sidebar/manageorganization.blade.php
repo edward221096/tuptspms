@@ -90,6 +90,7 @@
                 <th>DIVISION NAME</th>
                 <th>DEPARTMENT NAME</th>
                 <th>AREA/SECTION NAME</th>
+                <th>TYPE</th>
                 <th>ACTIONS</th>
             </tr>
             </thead>
@@ -100,6 +101,7 @@
                     <td>{{$row->division_name}}</td>
                     <td>{{$row->dept_name}}</td>
                     <td>{{$row->section_name}}</td>
+                    <td>{{$row->type}}</td>
                     <td>
                             <!-- EDIT DEPARTMENT TYPE BUTTON -->
                                 <a href="#" class="btn btn-secondary btn-sm"
@@ -109,6 +111,7 @@
                                    data-mydivisionname="{{$row->division_name}}"
                                    data-mydeptname="{{$row->dept_name}}"
                                    data-mysectionname="{{$row->section_name}}"
+                                   data-mytype="{{$row->type}}"
                                    data-toggle="modal" data-target="#editorganization">Edit</a>
                             <!-- DELETE DEPARTMENT TYPE BUTTON -->
                                 <a href="#" class="btn btn-danger btn-sm"
@@ -159,6 +162,18 @@
                                        placeholder="Section Name"  required autocomplete="section_name">
                             </div>
                         </div>
+
+                        <!-- Type -->
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="type">Type</label>
+                                <select name="type" class="form-control form-control-sm" required>
+                                    <option value="Teaching">Teaching</option>
+                                    <option value="Non-Teaching">Non-Teaching</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="modal-footer">
                             <!-- Add Information Button-->
                             <input class="btn btn-primary btn-sm" type="submit" value="Submit">
@@ -206,7 +221,18 @@
                             <div class="form-group col-md-12">
                                 <label for="section">Area/Section Name</label>
                                 <input type="text" class="form-control form-control-sm" name="section_name"
-                                      id="section_name" placeholder="Section Name"  required autocomplete="section_name">
+                                       id="section_name" placeholder="Section Name"  required autocomplete="section_name">
+                            </div>
+                        </div>
+
+                        <!-- Type-->
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="section">Type</label>
+                                <select name="type" id="type" class="form-control form-control-sm" required>
+                                    <option value="Teaching">Teaching</option>
+                                    <option value="Non-Teaching">Non-Teaching</option>
+                                </select>
                             </div>
                         </div>
 

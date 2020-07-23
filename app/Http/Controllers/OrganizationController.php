@@ -16,7 +16,7 @@ class OrganizationController extends Controller
         $organizations = DB::table('divisions')
             ->join('departments', 'departments.division_id', 'divisions.id')
             ->join('sections', 'sections.dept_id', 'departments.id')
-            ->select('divisions.id as division_id', 'departments.id as dept_id', 'sections.id as section_id','divisions.division_name', 'departments.dept_name', 'section_name')
+            ->select('divisions.id as division_id', 'departments.id as dept_id', 'sections.id as section_id','divisions.division_name', 'departments.dept_name', 'departments.type', 'sections.section_name')
             ->paginate(20);
 
         return view ('sidebar.manageorganization', compact('organizations'));
@@ -30,6 +30,7 @@ class OrganizationController extends Controller
         $department = new Department();
         $department -> division_id = $division->id;
         $department -> dept_name = request('dept_name');
+        $department -> type = request('type');
         $department -> save();
 
         $section = new Section();
@@ -55,6 +56,7 @@ class OrganizationController extends Controller
 
         $section = Department::findorfail($request->dept_id);
         $section -> dept_name = $request->input('dept_name');
+        $section -> type = $request->input('type');
         $section -> update();
 
         $section = Section::findorfail($request->section_id);
@@ -87,6 +89,7 @@ class OrganizationController extends Controller
             ->where('divisions.division_name', 'like', '%'.$search.'%')
             ->orWhere('departments.dept_name', 'like', '%'.$search.'%')
             ->orWhere('sections.section_name', 'like', '%'.$search.'%')
+            ->orWhere('departments.type', 'like', '%'.$search.'%')
             ->paginate(10);
 
         return view('sidebar.manageorganization', ['organizations' => $organizations]);

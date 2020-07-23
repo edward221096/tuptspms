@@ -61,7 +61,12 @@
                     <td>{{$row->dept_name}}</td>
                     <td>{{$row->section_name}}</td>
                     <td>{{$row->evaluation_startdate}} to {{$row->evaluation_enddate}}</td>
-                    <td>{{$row->evaluationform_status}}</td>
+
+                    @if($row->evaluationform_status == 'Approved (Cannot be edited)')
+                        <td style="color: green;">{{$row->evaluationform_status}}</td>
+                    @else
+                        <td style="color: red;">{{$row->evaluationform_status}}</td>
+                    @endif
                     <td>
                             <!-- EDIT FORM TYPE BUTTON -->
                         @if($row->evaluationform_name == 'ipcrcsassocp')

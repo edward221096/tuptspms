@@ -195,17 +195,30 @@
                                         Choose where to apply the Form question
                                     </div>
                                 </div>
-
                                 <div class="form-group col-md-6">
-                                    <label for="function">Function</label>
-                                    <select name="function_name" id="function_name" class="form-control form-control-sm">
-                                        <option selected disabled>Select a Function</option>
-                                        @foreach(App\FunctionType::orderBy('id')->get() as $functiontype)
-                                            <option>{{$functiontype->function_name}}</option>
-                                        @endforeach
+                                    <label for="role">Role</label>
+                                    <select name="role" id="role" class="form-control form-control-sm">
+                                        <option selected disabled>Select a Role</option>
+                                        <option>College Sec - Associate Professor</option>
+                                        <option>College Sec - Assistant Professor</option>
+                                        <option>College Sec - Professor</option>
+                                        <option>College Sec - Instructor</option>
+                                        <option>Faculty with Admin Function - Associate Professor</option>
+                                        <option>Faculty with Admin Function - Assistant Professor</option>
+                                        <option>Faculty with Admin Function - Professor</option>
+                                        <option>Faculty with Admin Function - Instructor</option>
+                                        <option>Faculty with Quasi Function - Associate Professor</option>
+                                        <option>Faculty with Quasi Function - Assistant Professor </option>
+                                        <option>Faculty with Quasi Function - Professor</option>
+                                        <option>Faculty with Quasi Function - Instructor</option>
+                                        <option>Fulltime - Associate Professor</option>
+                                        <option>Fulltime - Assistant Professor</option>
+                                        <option>Fulltime - Professor</option>
+                                        <option>Fulltime - Instructor</option>
+                                        <option>Fulltime - Admin</option>
                                     </select>
                                     <div class="note-group">
-                                        Choose Administrative Functions - Clerical/Routine and Technical (For Fulltime Admin IPCR Form only)
+                                        Select a role so function will be filtered out
                                     </div>
                                 </div>
                             </div>
@@ -215,44 +228,44 @@
                                     <label for="department">Department</label>
                                     <select name="dept_name" id="dept_name" class="form-control form-control-sm">
                                         <option selected disabled>Select a Department</option>
-                                        @foreach(App\Department::orderBy('id')->get() as $department)
-                                            <option>{{$department->dept_name}}</option>
+                                        <option disabled style="font-weight: bold;">TEACHING DEPARTMENT</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Faculty'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                        @endforeach
+                                        <option disabled style="font-weight: bold;">NON-TEACHING DEPARTMENT</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="note-group">
-                                        For OPCR form: The question will appear depends on Department selected
+                                        OPCR form questions depends on the selected department
+                                    </div>
+                                    <div class="note-group">
+                                        Select a Department so Function will be filtered out
                                     </div>
                                 </div>
-
                                 <div class="form-group col-md-6">
-                                    <label for="role">Role</label>
-                                        <select name="role" class="form-control form-control-sm" value="text">
-                                            <option>Division Head</option>
-                                            <option>Department Head</option>
-                                            <option>Division Head</option>
-                                            <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
-                                            <option>College Sec - Associate Professor</option>
-                                            <option>College Sec - Assistant Professor</option>
-                                            <option>College Sec - Professor</option>
-                                            <option>College Sec - Instructor</option>
-                                            <option>Faculty with Admin Function - Associate Professor</option>
-                                            <option>Faculty with Admin Function - Assistant Professor</option>
-                                            <option>Faculty with Admin Function - Professor</option>
-                                            <option>Faculty with Admin Function - Instructor</option>
-                                            <option>Faculty with Quasi Function - Associate Professor</option>
-                                            <option>Faculty with Quasi Function - Assistant Professor </option>
-                                            <option>Faculty with Quasi Function - Professor</option>
-                                            <option>Faculty with Quasi Function - Instructor</option>
-                                            <option>Fulltime - Associate Professor</option>
-                                            <option>Fulltime - Assistant Professor</option>
-                                            <option>Fulltime - Professor</option>
-                                            <option>Fulltime - Instructor</option>
-                                            <option selected>Fulltime - Admin</option>
-                                        </select>
+                                    <label for="function">Function</label>
+                                    <select name="function_name" id="function_name" class="form-control form-control-sm">
+{{--                                        <option selected disabled>Select a Function</option>--}}
+{{--                                        <option disabled style="font-weight: bold;">IPCR RELATED FUNCTION</option>--}}
+{{--                                        @foreach(App\FunctionType::orderBy('id')->whereNotIn('function_name', ['Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical'])->get() as $functiontype)--}}
+{{--                                            <option>{{$functiontype->function_name}}</option>--}}
+{{--                                        @endforeach--}}
+{{--                                        <option disabled style="font-weight: bold;">IPCR FULLTIME ROLE RELATED FUNCTION</option>--}}
+{{--                                        @foreach(App\FunctionType::orderBy('id')->whereNotIn('function_name', ['Core Administrative Functions', 'Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical'])->get() as $functiontype)--}}
+{{--                                            <option>{{$functiontype->function_name}}</option>--}}
+{{--                                        @endforeach--}}
+
+{{--                                        <option disabled style="font-weight: bold;">IPCR FULLTIME - ADMIN RELATED FUNCTION</option>--}}
+{{--                                        @foreach(App\FunctionType::orderBy('id')->whereIn('function_name', ['Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical', 'Support Functions'])->get() as $functiontype)--}}
+{{--                                            <option>{{$functiontype->function_name}}</option>--}}
+{{--                                        @endforeach--}}
+                                    </select>
                                     <div class="note-group">
-                                        For IPCR form: The question will appear to the depends on Role selected
+                                        *Choose what type of function for the question
                                     </div>
-                                    </div>
+                                </div>
                                 </div>
                             <!-- MFO TEXTAREA -->
                             <div class="form-row">
@@ -274,7 +287,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="Remarks">Remarks</label>
-                                    <textarea class="form-control" rows="5" name="Remarks"></textarea>
+                                    <textarea class="form-control" rows="5" name="remarks"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -298,6 +311,62 @@
         toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
     });
 </script>
+    <script type="text/javascript">
+        $("#role").change(function(){
+            $('#function_name').html('')
+
+            let selectedrole = $(this).children("option:selected").val();
+            let ipcrFunctionValues =
+                {"Core Administrative Functions": "Core Administrative Functions",
+                    "Support Functions": "Support Functions",
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                    "Research Program": "Research Program",
+                    "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+                }
+            let ipcrFullAdminValues =
+                {"Core Administrative Functions - Clerical/Routine": "Core Administrative Functions - Clerical/Routine",
+                "Core Administrative Functions - Technical": "Core Administrative Functions - Technical",
+                "Support Functions": "Support Functions",
+            }
+
+            let ipcrFulltimeValues = {
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                "Support Functions": "Support Functions",
+                "Research Program": "Research Program",
+                "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+            }
+
+            if (selectedrole === 'College Sec - Associate Professor' || selectedrole === 'College Sec - Assistant Professor' ||
+                selectedrole === 'College Sec - Professor' || selectedrole === 'College Sec - Instructor' ||
+                selectedrole === 'Faculty with Admin Function - Associate Professor' || selectedrole === 'Faculty with Admin Function - Assistant Professor' ||
+                selectedrole === 'Faculty with Admin Function - Professor' || selectedrole === 'Faculty with Admin Function - Instructor' ||
+                selectedrole === 'Faculty with Quasi Function - Associate Professor' || selectedrole === 'Faculty with Quasi Function - Assistant Professor' ||
+                selectedrole === 'Faculty with Quasi Function - Professor' || selectedrole === 'Faculty with Quasi Function - Instructor') {
+                $.each(ipcrFunctionValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+
+            if (selectedrole === 'Fulltime - Admin') {
+                $.each(ipcrFullAdminValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+
+            if (selectedrole === 'Fulltime - Associate Professor' || selectedrole === 'Fulltime - Assistant Professor'
+                || selectedrole === 'Fulltime - Professor' || selectedrole === 'Fulltime - Instructor') {
+                $.each(ipcrFulltimeValues, function(key, value) {
+                    $('#function_name')
+                        .append($('<option>', { value : key })
+                            .text(value))
+                });
+            }
+        })
+    </script>
 </head>
 </html>
 @endsection

@@ -25,6 +25,13 @@ Route::group(['middleware' => ['auth']], function () {
         return view('layouts.sidebar');
     });
 
+    //------------------DASHBOARD RELATED ROUTES--------------------------
+    Route::get('/ipcrdashboard', function(){
+       return view('sidebar.ipcrdashboard');
+    });
+
+    Route::get('/countipcrevalstatus', 'IpcrDashboardController@getCountIpcrEvalStatus');
+
     //------------------EMPLOYEE RELATED ROUTES---------------------------
     Route::get('/employee', function () {
         return view('sidebar.employee');

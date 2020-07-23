@@ -24,8 +24,11 @@
     <!-- AdminLTE App -->
     <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 
-{{--    <script src="{{asset('jquery/jquery.min.js')}}"></script>--}}
-{{--    <script src="{{asset('js/app.js')}}"></script>--}}
+    <!-- CHART JS CDN -->
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 
 <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
@@ -100,15 +103,31 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                        </li>
+                    <li class="nav-item has-treeview menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fa fa-chart-bar nav-icon"></i>
+                                    <p>IPCR Dashboard</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="fa fa-chart-line nav-icon"></i>
+                                    <p>OPCR Dashboard</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link active">
@@ -549,6 +568,23 @@
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
+    $(document).ready(function(){
+        $(document).ready(function() {
+            /** add active class and stay opened when selected */
+            var url = window.location;
+
+            // for sidebar menu entirely but not cover treeview
+            $('ul.nav-sidebar a').filter(function() {
+                return this.href == url;
+            }).addClass('active');
+
+            // for treeview
+            $('ul.nav-treeview a').filter(function() {
+                return this.href == url;
+            }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
+        });
+    });
+
     //EDIT MODAL IN MANAGEFUNCTIONSTYPE VIEW
     $('#editfunction').on('show.bs.modal', function (event) {
 

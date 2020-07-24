@@ -28,7 +28,7 @@
     <!-- AdminLTE App -->
     <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 
-    <!-- CHART JS CDN -->
+    <!-- CHART JS -->
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.js') }}"></script>
@@ -122,6 +122,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="mydashboard" class="nav-link">
+                                        <i class="fa fa-chart-line nav-icon"></i>
+                                        <p>My Dashboard</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Division Head')
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
                                     <a href="ipcrdashboard" class="nav-link">
                                         <i class="fa fa-chart-bar nav-icon"></i>
                                         <p>IPCR Dashboard</p>
@@ -131,11 +140,12 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
-                                        <i class="fa fa-chart-line nav-icon"></i>
+                                        <i class="fa fa-chart-area nav-icon"></i>
                                         <p>OPCR Dashboard</p>
                                     </a>
                                 </li>
                             </ul>
+                                @endif
                         </li>
 
 
@@ -532,6 +542,7 @@
                             @yield('opcrrecords')
                             @yield('opcruitc')
                             @yield('ipcrdashboard')
+                            @yield('mydashboard')
                     </div>
                 </div>
             </div>

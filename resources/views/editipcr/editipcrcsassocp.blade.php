@@ -70,7 +70,7 @@
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
-                                    @if(Auth::User()->role == 'College Sec - Associate Professor')
+                                    @if(Auth::User()->role != 'Super Admin' AND Auth::User()->role != 'Division Head' AND Auth::User()->role != 'Department Head' AND Auth::User()->role != 'Section Head')
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
                                     @else
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>

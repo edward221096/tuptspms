@@ -26,11 +26,23 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //------------------DASHBOARD RELATED ROUTES--------------------------
+    //------------------MY DASHBOARD------------------------------
+    Route::get('/mydashboard', function(){
+        return view('sidebar.mydashboard');
+    });
+
+    Route::get('/totalipcrweightedscore', 'MyDashboardController@getTotalIpcrWeightedScore');
+
+    //------------------IPCR DASHBOARD------------------------------
     Route::get('/ipcrdashboard', function(){
        return view('sidebar.ipcrdashboard');
     });
 
     Route::get('/countipcrevalstatus', 'IpcrDashboardController@getCountIpcrEvalStatus');
+
+    Route::get('/countipcrweightedscore', 'IpcrDashboardController@getCountWeightedScore');
+
+    Route::get('/countipcrdepartment', 'IpcrDashboardController@getCountperDepartment');
 
     //------------------EMPLOYEE RELATED ROUTES---------------------------
     Route::get('/employee', function () {

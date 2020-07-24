@@ -113,7 +113,16 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="mydashboard" class="nav-link">
+                                    <i class="fa fa-chart-line nav-icon"></i>
+                                    <p>My Dashboard</p>
+                                </a>
+                            </li>
+                        </ul>
+                        @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Division Head')
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="ipcrdashboard" class="nav-link">
                                     <i class="fa fa-chart-bar nav-icon"></i>
                                     <p>IPCR Dashboard</p>
                                 </a>
@@ -122,11 +131,12 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="fa fa-chart-line nav-icon"></i>
+                                    <i class="fa fa-chart-area nav-icon"></i>
                                     <p>OPCR Dashboard</p>
                                 </a>
                             </li>
                         </ul>
+                        @endif
                     </li>
 
                     <li class="nav-item has-treeview menu-open">
@@ -547,6 +557,8 @@
                                 @yield('opcrqaa')
                                 @yield('opcrrecords')
                                 @yield('opcruitc')
+                                @yield('ipcrdashboard')
+                                @yield('mydashboard')
                             </div>
                         </div>
                     </div>

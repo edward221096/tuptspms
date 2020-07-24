@@ -69,7 +69,7 @@
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
-                                    @if(Auth::User()->role == 'Faculty with Admin Function - Professor')
+                                    @if(Auth::User()->role != 'Super Admin' AND Auth::User()->role != 'Division Head' AND Auth::User()->role != 'Department Head' AND Auth::User()->role != 'Section Head')
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
                                     @else
                                         <option readonly="{{$row->evaluationform_status}}" selected value="{{$row->evaluationform_status}}">Current Form Status: {{$row->evaluationform_status}}</option>
@@ -577,11 +577,13 @@
                                 <br />
                                 <div>
                                     @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
-                                    <a href="{{ __('/myevaluationforms') }}" class="btn btn-secondary btn-sm" type="submit">Back</a>
+                                        <a href="{{ __('/myevaluationforms') }}" class="btn btn-secondary btn-sm" type="submit">Back</a>
                                     @else
                                         <a href="{{ __('/myteamevaluationforms') }}" class="btn btn-secondary btn-sm" type="submit">Back</a>
                                     @endif
-                                    <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Update">
+                                    @if($row->evaluationform_status != 'Approved (Cannot be edited)')
+                                        <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Update">
+                                    @endif
                                 </div>
 
                             </div>

@@ -126,6 +126,32 @@
                             <a href="{{action('MyEvaluationFormController@editmyipcrfinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'ipcrfulladmin')
                             <a href="{{action('MyEvaluationFormController@editmyipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'ipcrfulladmin')
+                            <a href="{{action('MyEvaluationFormController@editmyipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcraccounting')
+                            <a href="{{action('MyEvaluationFormController@editmyopcraccounting', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcradre')
+                            <a href="{{action('MyEvaluationFormController@editmyopcradre', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrbudget')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrbudget', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrcashier')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrcashier', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrido')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrido', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrindustrybased')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrindustrybased', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrmedicalserv')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrmedicalserv', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrpdo')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrpdo', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrprocurement')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrprocurement', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrqaa')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrqaa', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrrecords')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrrecords', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcruitc')
+                            <a href="{{action('MyEvaluationFormController@editmyopcruitc', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @endif
                             <a href="#" class="btn btn-danger btn-sm"
                            data-myformseqid="{{$row->id}}"

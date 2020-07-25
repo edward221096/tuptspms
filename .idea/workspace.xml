@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72df8746-5ece-41b1-9858-5578d559ca0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MyDashboardController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -20,18 +19,6 @@
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfinstructor.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfprofessor.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfulladmin.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrcashier.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrido.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrindustrybased.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrmedicalserv.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrpdo.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrprocurement.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrqaa.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcrrecords.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcruitc.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/mydashboard.blade.php" afterDir="false" />
@@ -579,9 +566,9 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -605,7 +592,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editemployee.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
@@ -973,7 +959,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1330,6 +1316,8 @@
       <workItem from="1595504607241" duration="9071000" />
       <workItem from="1595559360053" duration="17812000" />
       <workItem from="1595604205314" duration="1063000" />
+      <workItem from="1595643621690" duration="42000" />
+      <workItem from="1595679608197" duration="5105000" />
     </task>
     <servers />
   </component>
@@ -1340,10 +1328,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595468904835">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595679617145">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595468904835" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595679617145" />
     <state x="361" y="72" key="#Notifications" timestamp="1594090634184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

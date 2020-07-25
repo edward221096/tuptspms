@@ -144,7 +144,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('manageevaluationforms', 'MfoController');
 
     //------------------EVALUATION FORM RELATED ROUTES---------------------------
-    //FOR ALL UPDATE FUNCTION OF IPCR
+    //FOR ALL UPDATE FUNCTION OF IPCR AND OPCR
     Route::resource('updatemyipcr', 'MyEvaluationFormController');
     Route::resource('myevaluationform', 'MyEvaluationFormController');
 
@@ -370,76 +370,162 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfulladmin/{id}', 'MyTeamEvaluationFormController@editipcrfulladmin');
 
-    //----OPCR FORMS--------------
-
+    //---------------------------------------OPCR FORMS----------------------------------------------------
+    //ACCOUNTING
     Route::get('/opcraccounting', function () {
         return view('opcr.opcraccounting');
     });
 
     Route::get('/opcraccounting', 'OpcrController@getopcraccounting');
 
+    Route::post('/storedataopcraccounting', 'OpcrController@storeopcraccounting');
+
+    Route::get('editmyopcraccounting/{id}', 'MyEvaluationFormController@editmyopcraccounting');
+
+    Route::get('editopcraccounting/{id}', 'MyTeamEvaluationFormController@editopcraccounting');
+
+    //ADRE
     Route::get('/opcradre', function () {
         return view('opcr.opcradre');
     });
 
     Route::get('/opcradre', 'OpcrController@getopcradre');
 
+    Route::post('/storedataopcradre', 'OpcrController@storeopcradre');
+
+    Route::get('editmyopcradre/{id}', 'MyEvaluationFormController@editmyopcradre');
+
+    Route::get('editopcradre/{id}', 'MyTeamEvaluationFormController@editopcradre');
+
+    //BUDGET
     Route::get('/opcrbudget', function () {
         return view('opcr.opcrbudget');
     });
 
     Route::get('/opcrbudget', 'OpcrController@getopcrbudget');
 
+    Route::post('/storedataopcrbudget', 'OpcrController@storeopcrbudget');
+
+    Route::get('editmyopcrbudget/{id}', 'MyEvaluationFormController@editmyopcrbudget');
+
+    Route::get('editopcrbudget/{id}', 'MyTeamEvaluationFormController@editopcrbudget');
+
+    //CASHIER
     Route::get('/opcrcashier', function () {
         return view('opcr.opcrcashier');
     });
 
     Route::get('/opcrcashier', 'OpcrController@getopcrcashier');
 
+    Route::post('/storedataopcrcashier', 'OpcrController@storeopcrcashier');
+
+    Route::get('editmyopcrcashier/{id}', 'MyEvaluationFormController@editmyopcrcashier');
+
+    Route::get('editopcrcashier/{id}', 'MyTeamEvaluationFormController@editopcrcashier');
+
+    //IDO
     Route::get('/opcrido', function () {
         return view('ipcr.opcrido');
     });
 
     Route::get('/opcrido', 'OpcrController@getopcrido');
 
+    Route::post('/storedataopcrido', 'OpcrController@storeopcrido');
+
+    Route::get('editmyopcrido/{id}', 'MyEvaluationFormController@editmyopcrido');
+
+    Route::get('editopcrido/{id}', 'MyTeamEvaluationFormController@editopcrido');
+
+    //INDUSTRYBASED
     Route::get('/opcrindustrybased', function () {
         return view('opcr.opcrindustrybased');
     });
 
     Route::get('/opcrindustrybased', 'OpcrController@getopcrindustrybased');
 
+    Route::post('/storedataopcrindustrybased', 'OpcrController@storeopcrindustrybased');
+
+    Route::get('editmyopcrindustrybased/{id}', 'MyEvaluationFormController@editmyopcrindustrybased');
+
+    Route::get('editopcrindustrybased/{id}', 'MyTeamEvaluationFormController@editopcrindustrybased');
+
+    //MEDICAL SERV
     Route::get('/opcrmedicalserv', function () {
         return view('opcr.opcrmedicalserv');
     });
 
     Route::get('/opcrmedicalserv', 'OpcrController@getopcrmedicalserv');
 
+    Route::post('/storedataopcrmedicalserv', 'OpcrController@storeopcrmedicalserv');
+
+    Route::get('editmyopcrmedicalserv/{id}', 'MyEvaluationFormController@editmyopcrmedicalserv');
+
+    Route::get('editopcrmedicalserv/{id}', 'MyTeamEvaluationFormController@editopcrmedicalserv');
+
+    //PDO
     Route::get('/opcrpdo', function () {
         return view('opcr.opcrpdo');
     });
 
     Route::get('/opcrpdo', 'OpcrController@getopcrpdo');
 
+    Route::post('/storedataopcrpdo', 'OpcrController@storeopcrpdo');
+
+    Route::get('editmyopcrpdo/{id}', 'MyEvaluationFormController@editmyopcrpdo');
+
+    Route::get('editopcrpdo/{id}', 'MyTeamEvaluationFormController@editopcrpdo');
+
+    //PROCUREMENT
     Route::get('/opcrprocurement', function () {
         return view('opcr.opcrprocurement');
     });
 
     Route::get('/opcrprocurement', 'OpcrController@getopcrprocurement');
 
+    Route::post('/storedataopcrprocurement', 'OpcrController@storeopcrprocurement');
+
+    Route::get('editmyopcrprocurement/{id}', 'MyEvaluationFormController@editmyopcrprocurement');
+
+    Route::get('editopcrprocurement/{id}', 'MyTeamEvaluationFormController@editopcrprocurement');
+
+    //QAA
+    Route::get('/opcrqaa', function () {
+        return view('opcr.opcrqaa');
+    });
+
     Route::get('/opcrqaa', 'OpcrController@getopcrqaa');
 
+    Route::post('/storedataopcrqaa', 'OpcrController@storeopcrqaa');
+
+    Route::get('editmyopcrqaa/{id}', 'MyEvaluationFormController@editmyopcrqaa');
+
+    Route::get('editopcrqaa/{id}', 'MyTeamEvaluationFormController@editopcrqaa');
+
+    //RECORDS
     Route::get('/opcrrecords', function () {
         return view('opcr.opcrrecords');
     });
 
     Route::get('/opcrrecords', 'OpcrController@getopcrrecords');
 
+    Route::post('/storedataopcrrecords', 'OpcrController@storeopcrrecords');
 
+    Route::get('editmyopcrrecords/{id}', 'MyEvaluationFormController@editmyopcrrecords');
+
+    Route::get('editopcrrecords/{id}', 'MyTeamEvaluationFormController@editopcrrecords');
+
+    //UITC
     Route::get('/opruitc', function () {
         return view('opcr.opruitc');
     });
 
     Route::get('/opcruitc', 'OpcrController@getopcruitc');
+
+    Route::post('/storedataopcruitc', 'OpcrController@storeopcruitc');
+
+    Route::get('editmyopcruitc/{id}', 'MyEvaluationFormController@editmyopcruitc');
+
+    Route::get('editopcruitc/{id}', 'MyTeamEvaluationFormController@editopcruitc');
 
 
     Route::get('/home', 'HomeController@index')->name('home');

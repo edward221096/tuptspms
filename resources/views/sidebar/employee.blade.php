@@ -180,10 +180,10 @@
                                 <label for="role">Role</label>
                                 <select name="role" class="form-control form-control-sm" id="role">
                                     <option>Super Admin</option>
+                                    <option>Campus Director</option>
                                     <option>Division Head</option>
                                     <option>Department Head</option>
                                     <option>Section Head</option>
-                                    <option selected>Staff</option>
                                     <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
                                     <option>College Sec - Associate Professor</option>
                                     <option>College Sec - Assistant Professor</option>
@@ -201,7 +201,7 @@
                                     <option>Fulltime - Assistant Professor</option>
                                     <option>Fulltime - Professor</option>
                                     <option>Fulltime - Instructor</option>
-                                    <option>Fulltime - Admin</option>
+                                    <option selected>Fulltime - Admin</option>
                                 </select>
                             </div>
                         </div>
@@ -238,9 +238,7 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-default btn-sm" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
                         </div>
                     </div>

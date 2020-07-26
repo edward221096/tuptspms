@@ -193,11 +193,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions'
-                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
+                                @if($row->function_name === 'Core Administrative Functions'
+                                    || $row->function_name === 'General Administration and Support' || $row->function_name === 'Support to Operations')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Research Program'
-                                        || $row->function_name == 'Technical Advisory Extension Program')
+                                @endif
+                                    @if($row->function_name === 'Higher and Advanced Education Program' || $row->function_name === 'Research Program'
+                                        || $row->function_name === 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
 

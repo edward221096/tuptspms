@@ -195,7 +195,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             <div class="form-label-group">
                                 @if($row->function_name == 'Core Administrative Functions'|| $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program'|| $row->function_name == 'Research Program' | $row->function_name == 'Technical Advisory and Extension Program' )
+                                @elseif($row->function_name == 'Higher and Advanced Education Program'|| $row->function_name == 'Research Program' | $row->function_name == 'Technical Advisory Extension Program' )
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
 
@@ -267,7 +267,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                         <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" name="core_total_average[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                         <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;"><br /></p>
@@ -314,7 +314,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                         <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total_weighted_score" name="total_weighted_score[]" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                         <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
@@ -477,8 +477,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </form>
     </body>
     <script type="text/javascript">
-       //CLEAR AVERAGE FIELDS AND RESET
-       $(document).ready(function(){
+        //CLEAR AVERAGE FIELDS AND RESET
+        $(document).ready(function(){
             $(".btn-reset").click(function(){
                 $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #total-weighted-score').val('');
             });

@@ -863,7 +863,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcraccounting', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcraccounting', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -910,7 +910,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcraccounting', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcradre', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -957,7 +957,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrbudget', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrbudget', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1004,7 +1004,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrcashier', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrcashier', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1051,7 +1051,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrido', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrido', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1098,7 +1098,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrindustrybased', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrindustrybased', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1145,7 +1145,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrmedicalserv', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrmedicalserv', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1192,7 +1192,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrpdo', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrpdo', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1239,7 +1239,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrprocurement', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrprocurement', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1286,7 +1286,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrqaa', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrqaa', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1333,7 +1333,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcrrecords', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcrrecords', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**
@@ -1380,7 +1380,7 @@ class MyEvaluationFormController extends Controller
             ->limit('1')
             ->get();
 
-        return view('editopcr.opcruitc', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
+        return view('editopcr.editopcruitc', compact('ratingsinglevalue', 'id', 'ratingsmultiplevalue', 'userdata'));
     }
 
     /**

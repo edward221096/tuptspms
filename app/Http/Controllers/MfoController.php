@@ -31,7 +31,6 @@ class MfoController extends Controller
         $this->validate($request, [
             'form_type' => 'required',
             'function_name' => 'required',
-            'dept_name' => 'required',
         ]);
 
         $formtype = Form::FirstOrCreate([
@@ -62,7 +61,7 @@ class MfoController extends Controller
 
         session()->flash('postmessage', 'Successfully added Question for the selected Role or Department');
 
-        return redirect ('/manageevaluationforms');
+        return back();
     }
 
     /**

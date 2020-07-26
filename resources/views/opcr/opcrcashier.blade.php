@@ -195,7 +195,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             <div class="form-label-group">
                                 @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Research Program' | $row->function_name == 'Technical Advisory and Extension Program')
+                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Research Program' | $row->function_name == 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
 

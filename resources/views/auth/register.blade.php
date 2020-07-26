@@ -255,11 +255,13 @@
                         <div class="form-label-group">
                             <center>Role</center>
                             <select name="role" class="form-control form-control-sm" required autocomplete="role">
+                                <option readonly>Select a Role</option>
+                                <option disabled style="font-weight: bold">HEAD</option>
+                                <option>Campus Director</option>
                                 <option>Division Head</option>
                                 <option>Department Head</option>
                                 <option>Section Head</option>
-                                <option selected>Staff</option>
-                                <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
+                                <option disabled style="font-weight: bold">FACULTY</option>
                                 <option>College Sec - Associate Professor</option>
                                 <option>College Sec - Assistant Professor</option>
                                 <option>College Sec - Professor</option>
@@ -276,6 +278,7 @@
                                 <option>Fulltime - Assistant Professor</option>
                                 <option>Fulltime - Professor</option>
                                 <option>Fulltime - Instructor</option>
+                                <option disabled style="font-weight: bold">STAFF</option>
                                 <option>Fulltime - Admin</option>
                             </select>
                         </div>

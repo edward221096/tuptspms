@@ -32,6 +32,7 @@
             font-style: italic;
         }
     </style>
+</head>
     <div class="main_content">
         <div class="info">
             <div class="container-fluid">
@@ -114,7 +115,7 @@
                             <select name="function_name" id="function_name" class="form-control form-control-sm">
                                 <!-- GET THE CURRENT DATA IN DROP DOWN -->
                                 @foreach(App\FunctionType::orderBy('id')->where('id', '=', $mfo->function_id)->get() as $selectedfunctiontype)
-                                    <option selected>Current Value: {{$selectedfunctiontype->function_name}}</option>
+                                    <option selected value="{{$selectedfunctiontype->function_name}}">Current Value: {{$selectedfunctiontype->function_name}}</option>
                                 @endforeach
                             </select>
                             <div class="note-group">
@@ -217,6 +218,47 @@
                 });
             }
         })
+
+        //OPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED DEPARTMENT (VALUES)
+        $("#dept_name").change(function() {
+            $('#function_name').html('')
+
+            let selecteddept = $(this).children("option:selected").val();
+            let opcrFunctionValues = {
+                "Core Administrative Functions": "Core Administrative Functions",
+                "General Administration and Support": "General Administration and Support",
+                "Support to Operations": "Support to Operations",
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                "Research Program": "Research Program",
+                "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+            }
+
+            let opcrFunctionValues2 = {
+                "Core Administrative Functions": "Core Administrative Functions",
+                "General Administration and Support": "General Administration and Support",
+                "Support to Operations": "Support to Operations",
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program"
+            }
+
+            if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
+                || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
+                $.each(opcrFunctionValues, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+
+            if (selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
+                || selecteddept === 'Records' || selecteddept === 'UITC') {
+                $.each(opcrFunctionValues2, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+        });
+
     </script>
         <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
         <script>
@@ -226,5 +268,3 @@
                 toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
             })
             </script>
-</head>
-</html>

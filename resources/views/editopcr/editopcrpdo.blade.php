@@ -252,12 +252,10 @@
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions'
-                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" value="{{ $row->A4 }}" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Research Program'
-                                        || $row->function_name == 'Technical Advisory Extension Program')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" value="{{ $row->A4 }}" name="A[]" style="width: 73px" readonly>
+                                @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
+                                @elseif($row->function_name == 'Higher and Advanced Education Program' )
+                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
                                 @endif
 
                             </div>
@@ -320,7 +318,7 @@
                         style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt; width: 892px;">
                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                             <b style="vertical-align: middle;  color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                            Core Administrative Functions, General Administration and Support to Operations (80%)
+                            Core Administrative Functions, General Administration and Support Functions (80%)
                             </b>
                         </div>
                     </td>
@@ -337,12 +335,12 @@
                         <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                                 <b style="box-sizing: border-box; font-weight: bolder;">
-                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Support Functions for Higher and Advanced Education Programs, Research Programs,  </span>
+                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"> </span>
                                 </b>
                                 <span style="box-sizing: border-box; color: black;"></span>
                             </p>
                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"> Technical Advisory Extension Programs  (20%)</span></b>
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">IPCR Rating (20%)</span></b>
                             </p>
                         </div>
                     </td>

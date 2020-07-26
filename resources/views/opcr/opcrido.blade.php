@@ -313,7 +313,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                         <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" name="research_total_average[]" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" name="total_weighted_score[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
                         <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">

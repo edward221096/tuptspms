@@ -53,7 +53,7 @@
                     </div>
                         @foreach($ratingsinglevalue as $row)
                         <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
-                        <form action="{{route('updatemyipcr.update', [$row->form_sequence_id])}}" method="post">
+                        <form action="{{route('updatemyipcropcr.update', [$row->form_sequence_id])}}" method="post">
                             {{method_field('PATCH')}}
                             {{ csrf_field() }}
                             <input type="hidden" value="{{ $row->user_id }}" name="user_id[]">
@@ -597,7 +597,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
     <script type="text/javascript">
         //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD

@@ -145,7 +145,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //------------------EVALUATION FORM RELATED ROUTES---------------------------
     //FOR ALL UPDATE FUNCTION OF IPCR AND OPCR
-    Route::resource('updatemyipcr', 'MyEvaluationFormController');
+    Route::resource('updatemyipcropcr', 'MyEvaluationFormController');
     Route::resource('myevaluationform', 'MyEvaluationFormController');
 
     //------------------IPCR---------------------------------------

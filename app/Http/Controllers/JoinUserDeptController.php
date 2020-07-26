@@ -20,7 +20,8 @@ class JoinUserDeptController extends Controller
                     ->select('users.id', 'users.division_id', 'users.dept_id', 'users.section_id', 'users.name', 'users.username',
                         'users.email', 'users.role', 'divisions.division_name', 'departments.dept_name',
                         'sections.section_name', 'users.status', 'users.password')
-                    ->orderBy('users.id', 'asc')
+                    ->orderBy('status', 'desc')
+                    ->orderBy('name', 'asc')
                     ->paginate(20);
                     return view ('sidebar.employee', compact('employee'));
     }

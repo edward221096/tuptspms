@@ -315,6 +315,7 @@
         $("#role").change(function(){
             $('#function_name').html('')
 
+            //IPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED FUNCTION (FUNCTION VALUES)
             let selectedrole = $(this).children("option:selected").val();
             let ipcrFunctionValues =
                 {"Core Administrative Functions": "Core Administrative Functions",
@@ -366,6 +367,48 @@
                 });
             }
         })
+
+        //OPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED DEPARTMENT (VALUES)
+        $("#dept_name").change(function() {
+            $('#function_name').html('')
+
+            let selecteddept = $(this).children("option:selected").val();
+            let opcrFunctionValues = {
+                "Core Administrative Functions": "Core Administrative Functions",
+                "General Administration and Support": "General Administration and Support",
+                "Support to Operations": "Support to Operations",
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                "Research Program": "Research Program",
+                "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+            }
+
+            let opcrFunctionValues2 = {
+                "Core Administrative Functions": "Core Administrative Functions",
+                "General Administration and Support": "General Administration and Support",
+                "Support to Operations": "Support to Operations",
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program"
+            }
+
+            if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
+                || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
+                $.each(opcrFunctionValues, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+
+            if (selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
+                || selecteddept === 'Records' || selecteddept === 'UITC') {
+                $.each(opcrFunctionValues2, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+        });
+
+
     </script>
 </head>
 </html>

@@ -192,7 +192,7 @@
 
 
                         <div class="form-label-group">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" autofocus>
                             <label for="password">{{ __('Password') }}</label>
 
                                 @error('password')
@@ -210,7 +210,7 @@
 
                         <div class="form-label-group">
                             <center>Division</center>
-                            <select class="form-control form-control-sm" name="division_id"  id="divisions" value="text">
+                            <select class="form-control form-control-sm" name="division_id"  id="divisions" required autocomplete="division_id">
                                 <option value="0" selected disabled>Select a Division</option>
                                 @foreach($divisions as $key => $value)
                                     <option value="{{$value->id}}">{{$value->division_name}}</option>
@@ -220,14 +220,14 @@
 
                         <div class="form-label-group">
                             <center>Department</center>
-                            <select class="form-control form-control-sm" name="dept_id"  id="depts" value="text">
+                            <select class="form-control form-control-sm" name="dept_id"  id="depts" required autocomplete="dept_id">
                                 <option value="0" selected disabled>Select a Department</option>
                             </select>
                         </div>
 
                         <div class="form-label-group">
                             <center>Section or Area</center>
-                            <select class="form-control form-control-sm" name="section_id"  id="sections" value="text">
+                            <select class="form-control form-control-sm" name="section_id"  id="sections" required autocomplete="section_id">
                                 <option value="0" selected disabled>Select a Section</option>
                             </select>
                         </div>
@@ -254,7 +254,7 @@
 
                         <div class="form-label-group">
                             <center>Role</center>
-                            <select name="role" class="form-control form-control-sm" value="text">
+                            <select name="role" class="form-control form-control-sm" required autocomplete="role">
                                 <option>Division Head</option>
                                 <option>Department Head</option>
                                 <option>Section Head</option>

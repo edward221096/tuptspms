@@ -177,9 +177,7 @@
                             </ul>
                         @endif
                     </li>
-
-                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
-                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
+                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Section Head')
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fa fa-user-secret"></i>
@@ -201,6 +199,7 @@
                                     <p>Manage Organization</p>
                                 </a>
                             </li>
+
                             <li class="nav-item">
                                 <a href="manageevaluationforms" class="nav-link">
                                     <i class="fas fa-edit nav-icon"></i>

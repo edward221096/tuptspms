@@ -371,7 +371,33 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editipcrfulladmin/{id}', 'MyTeamEvaluationFormController@editipcrfulladmin');
 
     //---------------------------------------OPCR FORMS----------------------------------------------------
-    //ACCOUNTING
+    //DEPARTMENT ADFA
+    Route::get('/opcradaf', function () {
+        return view('opcr.opcradaf');
+    });
+
+    Route::get('/opcradaf', 'OpcrController@getopcradaf');
+
+    Route::post('/storedataopcradaf', 'OpcrController@storeopcradaf');
+
+    Route::get('editmyopcradaf/{id}', 'MyEvaluationFormController@editmyopcradaf');
+
+    Route::get('editopcradaf/{id}', 'MyTeamEvaluationFormController@editopcradaf');
+
+    //DEPARTMENT ADAA
+    Route::get('/opcradaa', function () {
+        return view('opcr.opcradaa');
+    });
+
+    Route::get('/opcradaa', 'OpcrController@getopcradaa');
+
+    Route::post('/storedataopcradaa', 'OpcrController@storeopcradaa');
+
+    Route::get('editmyopcradaa/{id}', 'MyEvaluationFormController@editmyopcradaa');
+
+    Route::get('editopcradaa/{id}', 'MyTeamEvaluationFormController@editopcradaa');
+
+    //DEPARTMENT ACADEMICS
     Route::get('/opcracademics', function () {
         return view('opcr.opcracademics');
     });

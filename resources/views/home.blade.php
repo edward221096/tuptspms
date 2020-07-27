@@ -515,7 +515,7 @@
                                         @endif
                                     </li>
                                     <li class="nav-item">
-                                        @if($row->type == 'Teaching' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                        @if($row->type != 'Non-Teaching' ||  Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
                                             || Auth::User()->role == 'Division Head')
                                             <a href="opcracademics" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
@@ -705,6 +705,7 @@
                                 @yield('ipcrfprofessor')
                                 @yield('ipcrfinstructor')
                                 @yield('ipcrfulladmin')
+                                @yield('opcracademics')
                                 @yield('opcraccounting')
                                 @yield('opcradre')
                                 @yield('opcrbudget')

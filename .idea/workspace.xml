@@ -21,6 +21,8 @@
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfulladmin.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcracademics.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcraccounting.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradaa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradaf.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradre.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrbudget.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrcashier.blade.php" afterDir="false" />
@@ -33,6 +35,8 @@
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrrecords.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcruitc.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcracademics.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaf.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/sidebar/mydashboard.blade.php" afterDir="false" />
@@ -580,8 +584,9 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021925_create_departments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021925_create_departments_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
@@ -610,6 +615,7 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/util.css" beforeDir="false" />
@@ -972,7 +978,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1099,17 +1105,17 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views" />
-      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
-      <recent name="C:\laravel\tuptspms\resources\views\auth" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views\editopcr" />
       <recent name="C:\laravel\tuptspms\resources\views\opcr" />
       <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
       <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
       <recent name="C:\laravel\tuptspms\resources\views\ipcr" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
+      <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1335,7 +1341,9 @@
       <workItem from="1595742774628" duration="518000" />
       <workItem from="1595745590985" duration="12227000" />
       <workItem from="1595771940879" duration="7266000" />
-      <workItem from="1595813687731" duration="19580000" />
+      <workItem from="1595813687731" duration="20041000" />
+      <workItem from="1595837462239" duration="304000" />
+      <workItem from="1595846548841" duration="7361000" />
     </task>
     <servers />
   </component>
@@ -1346,10 +1354,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595772171764">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595846552298">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595772171764" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595846552298" />
     <state x="361" y="72" key="#Notifications" timestamp="1594090634184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1386,10 +1394,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="539" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1595224201939" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1595772117740">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1595853391123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595772117740" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595853391123" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595728361302">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

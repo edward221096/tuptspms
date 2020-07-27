@@ -411,7 +411,7 @@
                 });
             }
 
-            if (selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
+            if (selecteddept === 'ADAA' || selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
                 || selecteddept === 'Records' || selecteddept === 'UITC') {
                 $.each(opcrFunctionValues2, function (key, value) {
                     $('#function_name')
@@ -420,14 +420,13 @@
                 });
             }
 
-            if (selecteddept === 'Academics Department') {
+            if (selecteddept === 'Academics Department' || selecteddept === 'ADAF') {
                 $.each(opcrFunctionValues3, function (key, value) {
                     $('#function_name')
                         .append($('<option>', {value: key})
                             .text(value))
                 });
             }
-
         });
 
 

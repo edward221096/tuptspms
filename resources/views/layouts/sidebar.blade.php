@@ -481,21 +481,21 @@
                                 @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
                                 @if($row->dept_name == 'Campus Director' || Auth::User()->role == 'Super Admin'
                                         || Auth::User()->role == 'Division Head')
-                                    <a href="opcradaa" class="nav-link">
+                                    <a href="opcrcampusdirector" class="nav-link">
                                         <i class="far fa-circle navbar-icon"></i>
                                         <p>Campus Director</p>
                                     </a>
                                 @endif
                             </li>
                             <li class="nav-item">
-                            @if($row->dept_name === 'ADAA' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
-                                 || Auth::User()->role == 'Division Head')
-                                <a href="opcradaa" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>ADAA</p>
-                                </a>
+                                @if($row->dept_name === 'ADAA' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                     || Auth::User()->role == 'Division Head')
+                                    <a href="opcradaa" class="nav-link">
+                                        <i class="far fa-circle navbar-icon"></i>
+                                        <p>ADAA</p>
+                                    </a>
                                 @endif
-                                </li>
+                            </li>
                             <li class="nav-item">
                                 @if($row->dept_name === 'ADAF' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
                                         || Auth::User()->role == 'Division Head')
@@ -682,6 +682,8 @@
                             @yield('ipcrfulladmin')
                             @yield('opcracademics')
                             @yield('opcraccounting')
+                            @yield('opcradaa')
+                            @yield('opcradaf')
                             @yield('opcradre')
                             @yield('opcrbudget')
                             @yield('opcrcashier')

@@ -26,8 +26,6 @@
         Evaluation Form Status:
         <select name="evaluationform_status[]" class="form-control form-control-sm">
             <option selected value="For Review and Approval">For Review and Approval</option>
-            <option disabled value="For Re-evaluation">For Re-evaluation</option>
-            <option disabled value="Approved">Approved</option>
         </select>
     </label>
     <div>

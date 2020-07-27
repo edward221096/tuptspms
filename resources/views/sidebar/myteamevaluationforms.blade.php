@@ -103,8 +103,12 @@
                             <a href="{{action('MyTeamEvaluationFormController@editipcrfinstructor', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'ipcrfulladmin')
                             <a href="{{action('MyTeamEvaluationFormController@editipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcradaf')
+                            <a href="{{action('MyTeamEvaluationFormController@editopcradaf', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcradaa')
+                            <a href="{{action('MyTeamEvaluationFormController@editopcradaa', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'opcracademics')
-                            <a href="{{action('MyTeamEvaluationFormController@editmyopcracademics', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                            <a href="{{action('MyTeamEvaluationFormController@editopcracademics', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'opcraccounting')
                             <a href="{{action('MyTeamEvaluationFormController@editopcraccounting', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'opcradre')

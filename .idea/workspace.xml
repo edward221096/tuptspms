@@ -580,14 +580,6 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JoinUserDeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrganizationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021808_create_divisions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021808_create_divisions_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021925_create_departments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021925_create_departments_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
@@ -618,7 +610,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/util.css" beforeDir="false" />
@@ -981,7 +972,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1344,7 +1335,7 @@
       <workItem from="1595742774628" duration="518000" />
       <workItem from="1595745590985" duration="12227000" />
       <workItem from="1595771940879" duration="7266000" />
-      <workItem from="1595813687731" duration="19230000" />
+      <workItem from="1595813687731" duration="19580000" />
     </task>
     <servers />
   </component>

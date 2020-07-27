@@ -176,7 +176,7 @@
                 });
                 var ctx3 = document.getElementById("countipcrdepartment").getContext('2d');
                 var myChart = new Chart(ctx3, {
-                    type: 'horizontalBar',
+                    type: 'bar',
                     data: {
                         labels: deptname,
                         datasets: [{
@@ -226,7 +226,7 @@
                                 'rgba(255, 128, 204, 1)',
                                 'rgba(255, 128, 166, 1)',
                             ],
-                            barThickness: 50,
+                            barThickness: 10,
                             borderWidth: 1
 
                         }]
@@ -235,7 +235,10 @@
                         labels: {
                             fontColor: 'rgba(0, 0 ,0)',
                         scales: {
-                            yAxes: [{scaleLabel:{display: true, labelString: "COUNT", fontStyle: 'Bold'}, ticks: {beginAtZero:true}}]
+                            yAxes: [{ticks: {
+                                beginAtZero: true
+                                },
+                                scaleLabel:{display: true, labelString: "COUNT", fontStyle: 'Bold'}}]
                         }
                         }
                     }

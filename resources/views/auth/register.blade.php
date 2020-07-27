@@ -209,6 +209,37 @@
                         </div>
 
                         <div class="form-label-group">
+                            <center>Role</center>
+                            <select name="role" id="role" class="form-control form-control-sm" required autocomplete="role">
+                                <option readonly>Select a Role</option>
+                                <option disabled style="font-weight: bolder;">HEAD ROLES</option>
+                                <option>Campus Director</option>
+                                <option>Division Head</option>
+                                <option>Department Head</option>
+                                <option>Section Head</option>
+                                <option disabled style="font-weight: bolder;">FACULTY ROLES</option>
+                                <option>College Sec - Associate Professor</option>
+                                <option>College Sec - Assistant Professor</option>
+                                <option>College Sec - Professor</option>
+                                <option>College Sec - Instructor</option>
+                                <option>Faculty with Admin Function - Associate Professor</option>
+                                <option>Faculty with Admin Function - Assistant Professor</option>
+                                <option>Faculty with Admin Function - Professor</option>
+                                <option>Faculty with Admin Function - Instructor</option>
+                                <option>Faculty with Quasi Function - Associate Professor</option>
+                                <option>Faculty with Quasi Function - Assistant Professor </option>
+                                <option>Faculty with Quasi Function - Professor</option>
+                                <option>Faculty with Quasi Function - Instructor</option>
+                                <option>Fulltime - Associate Professor</option>
+                                <option>Fulltime - Assistant Professor</option>
+                                <option>Fulltime - Professor</option>
+                                <option>Fulltime - Instructor</option>
+                                <option disabled style="font-weight: bolder;">STAFF ROLE</option>
+                                <option>Fulltime - Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="form-label-group">
                             <center>Division</center>
                             <select class="form-control form-control-sm" name="division_id"  id="divisions" required autocomplete="division_id">
                                 <option value="0" selected disabled>Select a Division</option>
@@ -231,58 +262,6 @@
                                 <option value="0" selected disabled>Select a Section</option>
                             </select>
                         </div>
-
-{{--                        <div class="form-label-group">--}}
-{{--                            <center>Department</center>--}}
-{{--                            <select name="dept_id" class="form-control form-control-sm" value="text">--}}
-
-{{--                                @foreach(App\Department::orderBy('id')->get() as $department)--}}
-{{--                                    <option value="{{$department->id}}">{{$department->dept_name}}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-label-group">--}}
-{{--                            <center>Section or Area</center>--}}
-{{--                            <select name="section_id" class="form-control form-control-sm" value="text">--}}
-
-{{--                                @foreach(App\Section::orderBy('id')->get() as $section)--}}
-{{--                                    <option value="{{$section->id}}">{{$section->section_name}}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-
-                        <div class="form-label-group">
-                            <center>Role</center>
-                            <select name="role" class="form-control form-control-sm" required autocomplete="role">
-                                <option readonly>Select a Role</option>
-                                <option disabled style="font-weight: bold">HEAD</option>
-                                <option>Campus Director</option>
-                                <option>Division Head</option>
-                                <option>Department Head</option>
-                                <option>Section Head</option>
-                                <option disabled style="font-weight: bold">FACULTY</option>
-                                <option>College Sec - Associate Professor</option>
-                                <option>College Sec - Assistant Professor</option>
-                                <option>College Sec - Professor</option>
-                                <option>College Sec - Instructor</option>
-                                <option>Faculty with Admin Function - Associate Professor</option>
-                                <option>Faculty with Admin Function - Assistant Professor</option>
-                                <option>Faculty with Admin Function - Professor</option>
-                                <option>Faculty with Admin Function - Instructor</option>
-                                <option>Faculty with Quasi Function - Associate Professor</option>
-                                <option>Faculty with Quasi Function - Assistant Professor </option>
-                                <option>Faculty with Quasi Function - Professor</option>
-                                <option>Faculty with Quasi Function - Instructor</option>
-                                <option>Fulltime - Associate Professor</option>
-                                <option>Fulltime - Assistant Professor</option>
-                                <option>Fulltime - Professor</option>
-                                <option>Fulltime - Instructor</option>
-                                <option disabled style="font-weight: bold">STAFF</option>
-                                <option>Fulltime - Admin</option>
-                            </select>
-                        </div>
-
                         <div class="form-label-group">
                             <input id="status" type="hidden" name="status" value="Account Pending">
                         </div>

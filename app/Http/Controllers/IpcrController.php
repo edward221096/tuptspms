@@ -14,6 +14,20 @@ use App\TestRatings;
 
 class IpcrController extends Controller
 {
+    public static function getUserDepartmentName(){
+        $myuserid = Auth::User()->id;
+
+        $getuserdepartmentname = DB::table('users')
+            ->join('departments', 'users.dept_id', '=', 'departments.id')
+            ->join('divisions', 'users.division_id', '=', 'divisions.id')
+            ->join('sections', 'users.section_id', '=', 'sections.id')
+            ->select('users.id', 'departments.dept_name', 'departments.type', 'sections.section_name', 'divisions.division_name', 'users.name')
+            ->where('users.id', '=', $myuserid)
+            ->get();
+
+        return $getuserdepartmentname;
+    }
+
     public static function getEvaluationStartDate()
     {
         $startdate = DB::table('evaluationperiods')

@@ -372,6 +372,19 @@ Route::group(['middleware' => ['auth']], function () {
 
     //---------------------------------------OPCR FORMS----------------------------------------------------
     //ACCOUNTING
+    Route::get('/opcracademics', function () {
+        return view('opcr.opcracademics');
+    });
+
+    Route::get('/opcracademics', 'OpcrController@getopcracademics');
+
+    Route::post('/storedataopcracademics', 'OpcrController@storeopcracademics');
+
+    Route::get('editmyopcracademics/{id}', 'MyEvaluationFormController@editmyopcracademics');
+
+    Route::get('editopcracademics/{id}', 'MyTeamEvaluationFormController@editopcracademics');
+
+    //ACCOUNTING
     Route::get('/opcraccounting', function () {
         return view('opcr.opcraccounting');
     });

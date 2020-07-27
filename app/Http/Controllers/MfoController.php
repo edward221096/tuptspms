@@ -129,10 +129,7 @@ class MfoController extends Controller
     }
 
     public function destroy(Request $request){
-
-        if(Mfo::count() > 1){
-            Mfo::destroy($request->mfoid);
-        }
+        Mfo::destroy($request->mfoid);
 
         session()->flash('deletemessage', 'Successfully deleted information for the selected Question');
 

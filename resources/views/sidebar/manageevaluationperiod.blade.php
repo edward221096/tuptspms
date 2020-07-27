@@ -66,7 +66,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Evaluation Period Start Date</th>
                 <th>Evaluation Period End Date</th>
                 <th>Evaluation Period Status</th>
@@ -77,7 +76,6 @@
             <tbody>
             @foreach($evaluationperiod as $row)
                 <tr>
-                    <td>{{$row->id}}</td>
                     <td>{{$row->evaluation_startdate}}</td>
                     <td>{{$row->evaluation_enddate}}</td>
                     <td>{{$row->evaluation_period_status}}</td>

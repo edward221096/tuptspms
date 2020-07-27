@@ -23,8 +23,10 @@ class CreateDivisionsTable extends Migration
         //insert divisions
         DB::table('divisions')->insert([
             ['id' => 1, 'division_name' => 'System Admin'],
-            ['id' => 2, 'division_name' => 'Assistant Director of Academic Affairs'],
-            ['id' => 3, 'division_name' => 'Assistant Director and Administrative and Finance'],
+            ['id' => 2, 'division_name' => 'Campus Director Division'],
+            ['id' => 3, 'division_name' => 'Assistant Director for Academic Affairs'],
+            ['id' => 4, 'division_name' => 'Assistant Director for Administrative and Finance'],
+            ['id' => 5, 'division_name' => 'Assistant Director for Research and Extension'],
         ]);
     }
 

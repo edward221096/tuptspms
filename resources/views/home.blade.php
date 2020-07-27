@@ -10,7 +10,11 @@
     <title>TUP-Taguig SPMS</title>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/fontawesome.min.css') }}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
@@ -24,24 +28,28 @@
     <!-- AdminLTE App -->
     <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 
-    <!-- CHART JS CDN -->
-    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min') }}"></script>
+    <!-- CHART JS -->
+    <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.js') }}"></script>
     <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js') }}"></script>
 
-<!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
     <style>
         .main-sidebar{
             width: 270px;
+        }
+
+        body, html {
+            height: 100%;
+            background: white;
         }
     </style>
 
 </head>
 <body class="hold-transition sidebar-dark-red sidebar-mini">
 <div class="wrapper">
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -98,6 +106,7 @@
         <!-- Sidebar -->
         <div class="sidebar" style="width: 270px; !important;">
 
+
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -119,25 +128,26 @@
                                 </a>
                             </li>
                         </ul>
-                        @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Division Head')
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="ipcrdashboard" class="nav-link">
-                                    <i class="fa fa-chart-bar nav-icon"></i>
-                                    <p>IPCR Dashboard</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fa fa-chart-area nav-icon"></i>
-                                    <p>OPCR Dashboard</p>
-                                </a>
-                            </li>
-                        </ul>
+                        @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director')
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="ipcrdashboard" class="nav-link">
+                                        <i class="fa fa-chart-bar nav-icon"></i>
+                                        <p>IPCR Dashboard</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fa fa-chart-area nav-icon"></i>
+                                        <p>OPCR Dashboard</p>
+                                    </a>
+                                </li>
+                            </ul>
                         @endif
                     </li>
+
 
                     <li class="nav-item has-treeview menu-open">
                         <a href="#" class="nav-link active">
@@ -156,7 +166,7 @@
                             </li>
                         </ul>
                         @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
-                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
+                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director')
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="myteamevaluationforms" class="nav-link">
@@ -167,9 +177,8 @@
                             </ul>
                         @endif
                     </li>
-
-                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
-                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
+                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Division Head' ||
+                        Auth::User()->role == 'Department Head')
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fa fa-user-secret"></i>
@@ -178,12 +187,14 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            @endif
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="manageevaluationperiod" class="nav-link">
-                                        <i class="fa fa-calendar-alt nav-icon"></i>
-                                        <p>Manage Evaluation Period</p>
-                                    </a>
+                                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director')
+                                        <a href="manageevaluationperiod" class="nav-link">
+                                            <i class="fa fa-calendar-alt nav-icon"></i>
+                                            <p>Manage Evaluation Period</p>
+                                        </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="manageorganization" class="nav-link">
@@ -197,273 +208,423 @@
                                         <p>Manage Evaluation Forms</p>
                                     </a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
-                                    <a href="employee" class="nav-link">
-                                        <i class="fa fa-user-circle nav-icon"></i>
-                                        <p>Manage Employee</p>
-                                    </a>
+                                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                        || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Department Head')
+                                        <a href="employee" class="nav-link">
+                                            <i class="fa fa-user-circle nav-icon"></i>
+                                            <p>Manage Employee</p>
+                                        </a>
+                                    @endif
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon"></i>
+                                <p>
+                                    IPCR
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'College Sec - Associate Professor'
+                                    OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                    Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                    OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrcsassocp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>College Secretary</p>
+                                                <br>
+                                                <p>Associate Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'College Sec - Assistant Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrcsassisp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>College Secretary</p>
+                                                <br>
+                                                <p>Assistant Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'College Sec - Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrcsprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>College Secretary</p>
+                                                <br>
+                                                <p>Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'College Sec - Instructor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrcsinstructor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>College Secretary</p>
+                                                <br>
+                                                <p>Instructor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Admin Function - Associate Professor'
+                                    OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                    Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                    OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfafassocp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Admin Function</p>
+                                                <br>
+                                                <p>Associate Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Admin Function - Assistant Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfafassisp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Admin Function</p>
+                                                <br>
+                                                <p>Assistant Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Admin Function - Professor'
+                                   OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                   Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                   OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfafprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Admin Function</p>
+                                                <br>
+                                                <p>Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Admin Function - Instructor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfafinstructor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Admin Function</p>
+                                                <br>
+                                                <p>Instructor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Quasi Function - Associate Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfqfassocp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Quasi Function</p>
+                                                <br>
+                                                <p>Associate Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Quasi Function - Assistant Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfqfassisp" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Quasi Function</p>
+                                                <br>
+                                                <p>Assistant Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Quasi Function - Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfqfprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Quasi Function</p>
+                                                <br>
+                                                <p>Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Faculty with Quasi Function - Instructor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfqfinstructor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Faculty with Quasi Function</p>
+                                                <br>
+                                                <p>Instructor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Fulltime - Associate Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfassprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Fulltime Associate Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Fulltime - Assistant Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfastprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Fulltime Assistant Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Fulltime - Professor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfprofessor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Fulltime Professor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Fulltime - Instructor'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Teaching'
+                                OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
+                                            <a href="ipcrfinstructor" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Fulltime Instructor</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
+
+
+                                    @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                        @if(Auth::User()->role == 'Fulltime - Admin'
+                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director' OR
+                                Auth::User()->role == 'Department Head' AND $row->type === 'Non-Teaching')
+                                            <a href="ipcrfulladmin" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Fulltime Admin</p>
+                                            </a>
+                                        @endif
+                                    @endforeach
                                 </li>
                             </ul>
                         </li>
-                    @endif
-                    <li class="nav-item has-treeview menu-close">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon"></i>
-                            <p>
-                                IPCR
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                @if(Auth::User()->role == 'College Sec - Associate Professor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrcsassocp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>College Secretary</p>
-                                        <br>
-                                        <p>Associate Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'College Sec - Assistant Professor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrcsassisp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>College Secretary</p>
-                                        <br>
-                                        <p>Assistant Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'College Sec - Professor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrcsprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>College Secretary</p>
-                                        <br>
-                                        <p>Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'College Sec - Instructor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrcsinstructor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>College Secretary</p>
-                                        <br>
-                                        <p>Instructor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Admin Function - Associate Professor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfafassocp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Admin Function</p>
-                                        <br>
-                                        <p>Associate Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Admin Function - Assistant Professor' || Auth::User()->role == 'Super Admin'
-                                    || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                    || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfafassisp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Admin Function</p>
-                                        <br>
-                                        <p>Assistant Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Admin Function - Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfafprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Admin Function</p>
-                                        <br>
-                                        <p>Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Admin Function - Instructor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfafinstructor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Admin Function</p>
-                                        <br>
-                                        <p>Instructor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Quasi Function - Associate Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfqfassocp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Quasi Function</p>
-                                        <br>
-                                        <p>Associate Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Quasi Function - Assistant Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfqfassisp" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Quasi Function</p>
-                                        <br>
-                                        <p>Assistant Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Quasi Function - Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfqfprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Quasi Function</p>
-                                        <br>
-                                        <p>Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Faculty with Quasi Function - Instructor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfqfinstructor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Faculty with Quasi Function</p>
-                                        <br>
-                                        <p>Instructor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Fulltime - Associate Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfassprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Fulltime Associate Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Fulltime - Assistant Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfastprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Fulltime Assistant Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Fulltime - Professor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfprofessor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Fulltime Professor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Fulltime - Instructor' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfinstructor" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Fulltime Instructor</p>
-                                    </a>
-                                @endif
-                                @if(Auth::User()->role == 'Fulltime - Admin' || Auth::User()->role == 'Super Admin'
-                                || Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head'
-                                || Auth::User()->role == 'Division Head')
-                                    <a href="ipcrfulladmin" class="nav-link">
-                                        <i class="far fa-circle navbar-icon"></i>
-                                        <p>Fulltime Admin</p>
-                                    </a>
-                                @endif
-                            </li>
-                        </ul>
-                    </li>
-                    @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Section Head'
-                        || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head')
-                    <li class="nav-item has-treeview menu-close">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon"></i>
-                            <p>
-                                OPCR
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="opcraccounting" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Accounting</p>
+                        @if(Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Department Head'
+                           || Auth::User()->role == 'Division Head')
+                            <li class="nav-item has-treeview menu-close">
+                                <a href="#" class="nav-link active">
+                                    <i class="nav-icon"></i>
+                                    <p>
+                                        OPCR
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
+                                            @if($row->dept_name == 'Campus Director' || Auth::User()->role == 'Super Admin'
+                                                    || Auth::User()->role == 'Division Head')
+                                                <a href="opcradaa" class="nav-link">
+                                                    <i class="far fa-circle navbar-icon"></i>
+                                                    <p>Campus Director</p>
+                                                </a>
+                                            @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'ADAA' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                             || Auth::User()->role == 'Division Head')
+                                            <a href="opcradaa" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>ADAA</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'ADAF' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                                || Auth::User()->role == 'Division Head')
+                                            <a href="opcradaf" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>ADAF</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'ADRE' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                           || Auth::User()->role == 'Division Head')
+                                            <a href="opcradre" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>ADRE</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->type == 'Teaching' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                            || Auth::User()->role == 'Division Head')
+                                            <a href="opcracademics" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Academics Department</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Accounting' || Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'
+                                        || Auth::User()->role == 'Division Head')
+                                            <a href="opcraccounting" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Accounting</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Budget' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrbudget" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Budget</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Cashier' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                          OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrcashier" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Cashier</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'IDO' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrido" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>IDO</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Industry Based' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrindustrybased" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Industry Based</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Medical Services' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrmedicalserv" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Medical Services</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'PDO' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrpdo" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>PDO</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Procurement' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrprocurement" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Procurement</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'QAA' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrqaa" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>QAA</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'Records' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                         OR Auth::User()->role == 'Division Head')
+                                            <a href="opcrrecords" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>Records</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    <li class="nav-item">
+                                        @if($row->dept_name === 'UITC' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                        OR Auth::User()->role == 'Division Head')
+                                            <a href="opcruitc" class="nav-link">
+                                                <i class="far fa-circle navbar-icon"></i>
+                                                <p>UITC</p>
+                                            </a>
+                                        @endif
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="opcradre" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>ADRE</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrbudget" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Budget</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrcashier" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Cashier</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrido" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>IDO</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrindustrybased" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Industry Based</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrmedicalserv" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Medical Services</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrpdo" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>PDO</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrprocurement" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Procurement</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrqaa" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>QAA</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcrrecords" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>Records</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="opcruitc" class="nav-link">
-                                    <i class="far fa-circle navbar-icon"></i>
-                                    <p>UITC</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
                         @endif
                 </ul>
             </nav>
@@ -471,7 +632,6 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -563,8 +723,8 @@
                         </div>
                     </div>
                 </div>
+                <!-- /.content -->
             </div>
-            <!-- /.content -->
         </div>
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
@@ -580,21 +740,19 @@
 
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        $(document).ready(function() {
-            /** add active class and stay opened when selected */
-            var url = window.location;
+    $(document).ready(function() {
+        /** add active class and stay opened when selected */
+        var url = window.location;
 
-            // for sidebar menu entirely but not cover treeview
-            $('ul.nav-sidebar a').filter(function() {
-                return this.href == url;
-            }).addClass('active');
+        // for sidebar menu entirely but not cover treeview
+        $('ul.nav-sidebar a').filter(function() {
+            return this.href == url;
+        }).addClass('active');
 
-            // for treeview
-            $('ul.nav-treeview a').filter(function() {
-                return this.href == url;
-            }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
-        });
+        // for treeview
+        $('ul.nav-treeview a').filter(function() {
+            return this.href == url;
+        }).parentsUntil(".nav-sidebar > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
     });
 
     //EDIT MODAL IN MANAGEFUNCTIONSTYPE VIEW
@@ -629,6 +787,7 @@
         var division_name = button.data('mydivisionname')
         var dept_name = button.data('mydeptname')
         var section_name = button.data('mysectionname')
+        var type = button.data('mytype')
         var modal = $(this)
 
         modal.find('.modal-body #division_id').val(division_id);
@@ -637,6 +796,7 @@
         modal.find('.modal-body #division_name').val(division_name);
         modal.find('.modal-body #dept_name').val(dept_name);
         modal.find('.modal-body #section_name').val(section_name);
+        modal.find('.modal-body #type').val(type);
     })
 
     //DELETE MODAL IN MANAGE DEPARTMENTS

@@ -86,7 +86,6 @@
         <table class="table table-striped">
             <thead>
             <tr style="font-size: 11pt;">
-                <th>ID</th>
                 <th>DIVISION NAME</th>
                 <th>DEPARTMENT NAME</th>
                 <th>AREA/SECTION NAME</th>
@@ -97,7 +96,6 @@
             <tbody>
             @foreach($organizations as $row)
                 <tr>
-                    <td>{{$row->section_id}}</td>
                     <td>{{$row->division_name}}</td>
                     <td>{{$row->dept_name}}</td>
                     <td>{{$row->section_name}}</td>
@@ -168,6 +166,7 @@
                             <div class="form-group col-md-12">
                                 <label for="type">Type</label>
                                 <select name="type" class="form-control form-control-sm" required>
+                                    <option value="Admin">Admin</option>
                                     <option value="Teaching">Teaching</option>
                                     <option value="Non-Teaching">Non-Teaching</option>
                                 </select>
@@ -230,6 +229,7 @@
                             <div class="form-group col-md-12">
                                 <label for="section">Type</label>
                                 <select name="type" id="type" class="form-control form-control-sm" required>
+                                    <option value="Admin">Admin</option>
                                     <option value="Teaching">Teaching</option>
                                     <option value="Non-Teaching">Non-Teaching</option>
                                 </select>

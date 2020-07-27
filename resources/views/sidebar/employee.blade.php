@@ -73,7 +73,6 @@
         <table class="table table-striped" style="font-size: 15px;">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Username</th>
                 <th>Role</th>
@@ -88,7 +87,6 @@
             <tbody>
             @foreach($employee as $row)
                 <tr>
-                    <td style ="word-wrap: break-word;">{{$row->id}}</td>
                     <td style ="word-wrap: break-word;">{{$row->name}}</td>
                     <td style ="word-wrap: break-word;">{{$row->username}}</td>
                     <td style ="word-wrap: break-word;">{{$row->role}}</td>
@@ -179,12 +177,15 @@
                             <div class="form-group col-md-12">
                                 <label for="role">Role</label>
                                 <select name="role" class="form-control form-control-sm" id="role">
+                                    <option readonly>Select a Role</option>
+                                    <option disabled style="font-weight: bolder;">ADMIN ROLE</option>
                                     <option>Super Admin</option>
+                                    <option disabled style="font-weight: bolder;">HEAD ROLES</option>
                                     <option>Campus Director</option>
                                     <option>Division Head</option>
                                     <option>Department Head</option>
                                     <option>Section Head</option>
-                                    <option disabled style="font-weight: bold">FACULTY WITH FUNCTION</option>
+                                    <option disabled style="font-weight: bolder;">FACULTY ROLES</option>
                                     <option>College Sec - Associate Professor</option>
                                     <option>College Sec - Assistant Professor</option>
                                     <option>College Sec - Professor</option>
@@ -201,7 +202,8 @@
                                     <option>Fulltime - Assistant Professor</option>
                                     <option>Fulltime - Professor</option>
                                     <option>Fulltime - Instructor</option>
-                                    <option selected>Fulltime - Admin</option>
+                                    <option disabled style="font-weight: bolder;">STAFF ROLE</option>
+                                    <option>Fulltime - Admin</option>
                                 </select>
                             </div>
                         </div>

@@ -85,7 +85,7 @@ class OrganizationController extends Controller
         $organizations = DB::table('divisions')
             ->join('departments', 'departments.division_id', 'divisions.id')
             ->join('sections', 'sections.dept_id', 'departments.id')
-            ->select('divisions.id as division_id', 'departments.id as dept_id', 'sections.id as section_id','divisions.division_name', 'departments.dept_name', 'section_name')
+            ->select('divisions.id as division_id', 'departments.id as dept_id', 'departments.type', 'sections.id as section_id','divisions.division_name', 'departments.dept_name', 'section_name')
             ->where('divisions.division_name', 'like', '%'.$search.'%')
             ->orWhere('departments.dept_name', 'like', '%'.$search.'%')
             ->orWhere('sections.section_name', 'like', '%'.$search.'%')

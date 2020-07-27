@@ -67,7 +67,7 @@ class JoinUserDeptController extends Controller
 
         session()->flash('updatemessage', 'Successfully updated User information');
 
-        return redirect('/employee');
+        return back();
     }
 
     public function destroy(Request $request)

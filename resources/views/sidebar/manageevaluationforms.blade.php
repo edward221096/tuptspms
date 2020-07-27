@@ -228,12 +228,16 @@
                                     <label for="department">Department</label>
                                     <select name="dept_name" id="dept_name" class="form-control form-control-sm">
                                         <option selected disabled>Select a Department</option>
+                                        <option disabled style="font-weight: bold;">DIRECTOR RELATED</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Campus Director', 'ADAA', 'ADRE', 'ADAF'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                        @endforeach
                                         <option disabled style="font-weight: bold;">TEACHING DEPARTMENT</option>
-                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Faculty'])->get() as $department)
+                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Academics Department', 'ADAA Department'])->get() as $department)
                                             <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
                                         @endforeach
                                         <option disabled style="font-weight: bold;">NON-TEACHING DEPARTMENT</option>
-                                        @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin'])->get() as $department)
+                                        @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin', 'ADAF', 'ADRE', 'Campus Director'])->get() as $department)
                                             <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
                                         @endforeach
                                     </select>
@@ -389,6 +393,15 @@
                 "Higher and Advanced Education Program": "Higher and Advanced Education Program"
             }
 
+            let opcrFunctionValues3 = {
+                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+                "Research Program": "Research Program",
+                "Technical Advisory Extension Program": "Technical Advisory Extension Program",
+                "Core Administrative Functions": "Core Administrative Functions",
+                "General Administration and Support": "General Administration and Support",
+                "Support to Operations": "Support to Operations",
+            }
+
             if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
                 || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
                 $.each(opcrFunctionValues, function (key, value) {
@@ -406,6 +419,15 @@
                             .text(value))
                 });
             }
+
+            if (selecteddept === 'Academics Department') {
+                $.each(opcrFunctionValues3, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+
         });
 
 

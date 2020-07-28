@@ -22,8 +22,10 @@ class IpcrDashboardController extends Controller
 
 
         $evalstatus = DB::table('ratings')
+            ->join('forms', 'ratings.form_id', '=', 'forms.id')
             ->select(DB::raw('count(distinct form_sequence_id) as count'), 'evaluationform_status', 'evaluation_startdate')
             ->where('evaluation_startdate', '=', $getmaxevaldate)
+            ->where('form_type', '=', 'IPCR')
             ->groupBy('evaluationform_status', 'evaluation_startdate')
             ->get();
 
@@ -41,10 +43,12 @@ class IpcrDashboardController extends Controller
         }
 
         $countweightedscore = DB::table('ratings')
+            ->join('forms', 'ratings.form_id', '=', 'forms.id')
             ->select(DB::raw('count(distinct form_sequence_id) as count'), 'evaluationform_status')
             ->where('total_weighted_score', '<', 3)
             ->where('evaluationform_status', '!=', 'Approved (Cannot be edited)')
             ->where('evaluation_startdate', '=', $getmaxevaldate)
+            ->where('form_type', '=', 'IPCR')
             ->groupBy('evaluationform_status')
             ->orderBy('count', 'desc')
             ->get();
@@ -62,9 +66,12 @@ class IpcrDashboardController extends Controller
         }
 
         $countdepartment = DB::table('ratings')
+            ->join('forms', 'ratings.form_id', '=', 'forms.id')
             ->join('departments', 'ratings.dept_id', '=', 'departments.id')
             ->select(DB::raw('count(distinct form_sequence_id) as count'), 'departments.dept_name')
             ->where('evaluation_startdate', '=', $getmaxevaldate)
+            ->where('form_type', '=', 'IPCR')
+            ->whereNotIn('departments.dept_name', ['Campus Director', 'ADAA', 'ADAF', 'ADRE'])
             ->groupBy('departments.dept_name')
             ->orderBy('count', 'desc')
             ->get();

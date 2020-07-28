@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/totalipcrweightedscore', 'MyDashboardController@getTotalIpcrWeightedScore');
 
+    Route::get('/totalopcrweightedscore', 'MyDashboardController@getTotalOpcrWeightedScore');
+
     //------------------IPCR DASHBOARD------------------------------
     Route::get('/ipcrdashboard', function(){
        return view('sidebar.ipcrdashboard');

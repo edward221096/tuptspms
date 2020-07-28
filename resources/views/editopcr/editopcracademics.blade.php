@@ -253,7 +253,7 @@
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 @if($row->function_name == 'Higher and Advanced Education Program'|| $row->function_name == 'Research Program'
-                                    || $row->function_name == 'Technical Advisory Extension Program' || $row->function_name == 'Core Administrative Function'
+                                    || $row->function_name == 'Technical Advisory Extension Program' || $row->function_name == 'Core Administrative Functions'
                                     || $row->function_name == 'Support to Operations' || $row->function_name == 'General Administration and Support')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
                                 @endif
@@ -345,8 +345,10 @@
                         </div>
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->ipcr_rating_average}}" name="ipcr_rating_average[]" readonly>
+                        @foreach(\App\Http\Controllers\OpcrController::getLatestIpcrRatings() as $getipcrratingaverage)
+                            <input type="hidden"  value="{{$getipcrratingaverage->total_weighted_score}}" id="get-ipcr-rating-average">
+                        @endforeach
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->total_weighted_score}}" name="ipcr_rating_average[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -562,6 +564,19 @@
     </div>
     </body>
     <script type="text/javascript">
+        $(document).ready(function(){
+            let ipcrcomputed = $("#get-ipcr-rating-average").val()
+            let computed = 0
+
+            computed = ipcrcomputed * 0.20
+
+            $('#ipcr-rating-average').val(isNaN(computed) ? "" : computed)
+
+            computeWeightedScore();
+            $(".a-value-core, #core-total-average, #total-weighted-score, #ipcr-rating-average").trigger("change")
+            setFourNumberDecimal();
+        });
+
         //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD
         $(document).ready(function(){
             let totalweightedscore = document.getElementById('total-weighted-score')
@@ -572,15 +587,6 @@
             else {
                 totalweightedscore.style.color = "green";
             }
-        });
-
-        $(document).ready(function(){
-            let ipcrcomputed = $("#get-ipcr-rating-average").val()
-            let computed = 0
-
-            computed = ipcrcomputed * 0.20
-
-            $('#ipcr-rating-average').val(isNaN(computed) ? "" : computed)
         });
 
         //CLEAR AVERAGE FIELDS AND RESET
@@ -613,7 +619,7 @@
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, #core-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, #core-total-average, #total-weighted-score, #get-ipcr-rating-average").trigger("change")
             setFourNumberDecimal();
         });
 

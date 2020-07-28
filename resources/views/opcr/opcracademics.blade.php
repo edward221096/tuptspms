@@ -483,6 +483,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             computed = ipcrcomputed * 0.20
 
             $('#ipcr-rating-average').val(isNaN(computed) ? "" : computed)
+            computeWeightedScore();
+            $(".a-value-core, #core-total-average, #total-weighted-score, #ipcr-rating-average").trigger("change")
+            setFourNumberDecimal();
         });
 
         //CLEAR AVERAGE FIELDS AND RESET
@@ -515,7 +518,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, #core-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, #core-total-average, #total-weighted-score, #ipcr-rating-average").trigger("change")
             setFourNumberDecimal();
         });
 

@@ -191,10 +191,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions'|| $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
+                                @if($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Core Administrative Functions' || $row->function_name == 'General Administration and Support'
+                                    || $row->function_name == 'Support to Operations' || $row->function_name == 'Technical Advisory Extension Program' || $row->function_name == 'Research Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
 
                             </div>
@@ -286,8 +285,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </div>
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
+                        @foreach(\App\Http\Controllers\OpcrController::getLatestIpcrRatings() as $row)
+                            <input type="hidden" value="{{$row->total_weighted_score}}" id="get-ipcr-rating-average">
+                        @endforeach
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" name="ipcr_rating_average[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -475,8 +476,20 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </form>
     </body>
     <script type="text/javascript">
-       //CLEAR AVERAGE FIELDS AND RESET
-       $(document).ready(function(){
+        $(document).ready(function(){
+            let ipcrcomputed = $("#get-ipcr-rating-average").val()
+            let computed = 0
+
+            computed = ipcrcomputed * 0.20
+
+            $('#ipcr-rating-average').val(isNaN(computed) ? "" : computed)
+            computeWeightedScore();
+            $(".a-value-core, #core-total-average, #total-weighted-score, #ipcr-rating-average").trigger("change")
+            setFourNumberDecimal();
+        });
+
+        //CLEAR AVERAGE FIELDS AND RESET
+        $(document).ready(function(){
             $(".btn-reset").click(function(){
                 $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #total-weighted-score').val('');
             });
@@ -501,11 +514,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             }
 
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            // currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, .a-value-support, #core-total-average, #support-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, #core-total-average, #total-weighted-score, #ipcr-rating-average").trigger("change")
             setFourNumberDecimal();
         });
 
@@ -536,20 +549,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             }
             avg = (total / count) * 0.80
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.20
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
         }
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
@@ -557,9 +556,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         function computeWeightedScore(){
             let weightedscore = 0
             let ACoreValue = $("#core-total-average").val()
-            let ASuppValue = $("#support-total-average").val()
+            let IpcrRating = $("#ipcr-rating-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+            weightedscore = parseFloat(ACoreValue) + parseFloat(IpcrRating)
 
             $('#total-weighted-score').val(weightedscore)
         }

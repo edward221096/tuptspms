@@ -1568,6 +1568,7 @@ class MyEvaluationFormController extends Controller
                 'core_total_average' => $request->input('core_total_average')[0],
                 'support_total_average' => $request->input('support_total_average')[0],
                 'research_total_average' => $request->input('research_total_average')[0],
+                'ipcr_rating_average' => $request->input('ipcr_rating_average')[0],
                 'total_weighted_score' => $request->input('total_weighted_score')[0],
                 'clericalroutine' => $request->input('clericalroutine')[0],
                 'technical' => $request->input('technical')[0],

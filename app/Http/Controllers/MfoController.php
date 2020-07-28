@@ -22,6 +22,7 @@ class MfoController extends Controller
             ->select('mfos.id', 'forms.form_type', 'departments.dept_name',
                 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc',
                 'mfos.actual_accomplishment_desc', 'mfos.remarks', 'mfos.role')
+            ->orderby('mfos.id', 'desc')
             ->paginate(10);
 
         return view ('sidebar.manageevaluationforms', compact('mfo'));

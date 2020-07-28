@@ -93,7 +93,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'College Sec - Associate Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
         } else{
@@ -101,9 +106,6 @@ class IpcrController extends Controller
             return redirect('/myevaluationforms');
         }
     }
-
-
-
 
     //STORE IPCRCSASSOCP
     public function storeipcrcsassocp(Request $request)
@@ -193,7 +195,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'College Sec - Assistant Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsassisp', compact('ipcrcsassisp'));
         } else{
@@ -291,7 +298,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'College Sec - Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
         }
@@ -389,7 +401,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'College Sec - Instructor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
         }
@@ -488,7 +505,12 @@ class IpcrController extends Controller
                 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Admin Function - Associate Professor')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
             ->get();
         return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp'));
         }
@@ -586,7 +608,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
         }
@@ -684,7 +711,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Faculty with Admin Function - Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
         } else {
@@ -781,7 +813,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Faculty with Admin Function - Instructor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
         }
@@ -879,7 +916,12 @@ class IpcrController extends Controller
                 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'IPCR')
             ->Where('role', '=', 'Faculty with Quasi Function - Associate Professor')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
             ->get();
         return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp'));
         }
@@ -977,7 +1019,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
         }
@@ -1075,7 +1122,12 @@ class IpcrController extends Controller
                         'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                     ->where('form_type', '=', 'IPCR')
                     ->Where('role', '=', 'Faculty with Quasi Function - Professor')
-                    ->orderBy('functions.id')
+                    ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
                     ->get();
                 return view('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
             }
@@ -1173,7 +1225,12 @@ class IpcrController extends Controller
                     'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
         }
@@ -1271,7 +1328,10 @@ class IpcrController extends Controller
                         'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
                     ->where('form_type', '=', 'IPCR')
                     ->Where('role', '=', 'Fulltime - Admin')
-                    ->orderBy('functions.id')
+                    ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions - Clerical/Routine' THEN 1
+                           WHEN 'Core Administrative Functions - Technical' THEN 2
+                           WHEN 'Support Functions' THEN 3 END ASC")
                     ->get();
                 return view('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
             }
@@ -1373,7 +1433,11 @@ class IpcrController extends Controller
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Fulltime - Associate Professor')
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
         }
@@ -1472,7 +1536,11 @@ class IpcrController extends Controller
                     ->where('form_type', '=', 'IPCR')
                     ->Where('role', '=', 'Fulltime - Assistant Professor')
                     ->where('functions.function_name', '!=', 'Core Administrative Functions')
-                    ->orderBy('functions.id')
+                    ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
                     ->get();
                 return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
             }
@@ -1571,7 +1639,11 @@ class IpcrController extends Controller
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Fulltime - Professor')
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
         }
@@ -1670,7 +1742,11 @@ class IpcrController extends Controller
                 ->where('form_type', '=', 'IPCR')
                 ->Where('role', '=', 'Fulltime - Instructor')
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
-                ->orderBy('functions.id')
+                ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Support Functions' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
         }

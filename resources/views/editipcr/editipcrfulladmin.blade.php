@@ -1032,6 +1032,18 @@
     </div>
 </body>
     <script type="text/javascript">
+        //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD
+        $(document).ready(function(){
+            let totalweightedscore = document.getElementById('total-weighted-score')
+
+            if(totalweightedscore.value < 3.0000){
+                totalweightedscore.style.color = "red";
+            }
+            else {
+                totalweightedscore.style.color = "green";
+            }
+        });
+
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function () {
             $(".btn-reset").click(function () {

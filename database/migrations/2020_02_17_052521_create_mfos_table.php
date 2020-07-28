@@ -15,8 +15,8 @@ class CreateMfosTable extends Migration
     {
         Schema::create('mfos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('function_id')->unsigned();
-            $table->bigInteger('dept_id')->unsigned();
+            $table->bigInteger('function_id')->nullable()->unsigned();
+            $table->bigInteger('dept_id')->nullable()->unsigned();
             $table->bigInteger('form_id')->unsigned();
             $table->mediumText('mfo_desc')->nullable();
             $table->string('role')->nullable();

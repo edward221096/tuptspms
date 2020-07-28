@@ -12,8 +12,23 @@ use Illuminate\Support\Facades\Input;
 use App\TestRatings;
 
 class OpcrController extends Controller
-
 {
+    public static function getLatestIpcrRatings(){
+        $myuserid = Auth::User()->id;
+
+        $getlatestipcrratings = DB::table('ratings')
+            ->join('forms', 'forms.id', '=', 'ratings.form_id')
+            ->select('total_weighted_score')
+            ->where('forms.form_type', '=', 'IPCR')
+            ->where('ratings.user_id', '=', $myuserid)
+            ->orderBy('evaluation_startdate', 'desc')
+            ->orderBy('form_sequence_id','desc')
+            ->limit(1)
+            ->get();
+
+        return $getlatestipcrratings;
+    }
+
     public static function getEvaluationStartDate()
     {
         $startdate = DB::table('evaluationperiods')
@@ -66,7 +81,12 @@ class OpcrController extends Controller
                 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'ADAF')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Higher and Advanced Education Program' THEN 3
+                           WHEN 'Research Program' THEN 4
+                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
             ->get();
 
         return view ('opcr.opcradaf', compact('opcradaf'));
@@ -114,6 +134,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -133,7 +155,7 @@ class OpcrController extends Controller
         return redirect('/myevaluationforms');
     }
 
-    //OPCRACADEMICS VIEW
+    //OPCRADAA VIEW
     public function getopcradaa(){
 
         $opcradaa = DB::table('mfos')
@@ -145,7 +167,11 @@ class OpcrController extends Controller
                 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'ADAA')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Core Administrative Functions' THEN 2
+                           WHEN 'General Administration and Support' THEN 3
+                           WHEN 'Support to Operations' THEN 4 END ASC")
             ->get();
 
         return view ('opcr.opcradaa', compact('opcradaa'));
@@ -194,6 +220,7 @@ class OpcrController extends Controller
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
                 'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -213,6 +240,29 @@ class OpcrController extends Controller
         return redirect('/myevaluationforms');
     }
 
+    //OPCRADRE VIEW
+    public function getopcradre(){
+
+        $opcradre = DB::table('mfos')
+            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
+            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
+                'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('form_type', '=', 'OPCR')
+            ->Where('dept_name', '=', 'ADRE')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Research Program' THEN 1
+                           WHEN 'Technical Advisory Extension Program' THEN 2
+                           WHEN 'Core Administrative Functions' THEN 3
+                           WHEN 'General Administration and Support' THEN 4
+                           WHEN 'Support to Operations' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
+            ->get();
+        return view ('opcr.opcradre', compact('opcradre'));
+    }
+
     //OPCRACADEMICS VIEW
     public function getopcracademics(){
 
@@ -225,8 +275,15 @@ class OpcrController extends Controller
                 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Academics Department')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'General Administration and Support' THEN 5
+                           WHEN 'Support to Operations' THEN 6 END ASC")
             ->get();
+
 
         return view ('opcr.opcracademics', compact('opcracademics'));
     }
@@ -273,6 +330,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -304,7 +363,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Accounting')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
 
             // dd($opcraccounting);
@@ -353,6 +418,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -370,24 +437,6 @@ class OpcrController extends Controller
         DB::table('ratings')->insert($store);
 
         return redirect('/myevaluationforms');
-    }
-
-
-    //OPCRADRE VIEW
-    public function getopcradre(){
-
-        $opcradre = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
-            'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-            'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'OPCR')
-            ->Where('dept_name', '=', 'ADRE')
-            ->orderBy('functions.id')
-            ->get();
-        return view ('opcr.opcradre', compact('opcradre'));
     }
 
     public function storeopcradre(Request $request)
@@ -432,7 +481,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -464,7 +514,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Budget')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrbudget', compact('opcrbudget'));
     }
@@ -511,6 +567,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -530,18 +588,6 @@ class OpcrController extends Controller
         return redirect('/myevaluationforms');
     }
 
-    public function getopcrfaculty(){
-        $opcrfaculty = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'departments.dept_name', 'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc', 'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'OPCR')
-            ->Where('dept_name', '=', 'Faculty')
-            ->get();
-        return view ('opcr.opcrfaculty', compact('opcrfaculty'));
-    }
-
     //OPCRCASHIER VIEW
     public function getopcrcashier(){
 
@@ -554,7 +600,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Cashier')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrcashier', compact('opcrcashier'));
     }
@@ -601,7 +653,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -632,7 +685,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'IDO')
-            ->orderBy('functions.id')
+         ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrido', compact('opcrido'));
     }
@@ -679,7 +738,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -711,7 +771,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Industry Based')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrindustrybased', compact('opcrindustrybased'));
     }
@@ -758,7 +824,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -790,7 +857,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Medical Service')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrmedicalserv', compact('opcrmedicalserv'));
     }
@@ -837,7 +910,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -869,7 +943,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'PDO')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrpdo', compact('opcrpdo'));
     }
@@ -916,7 +996,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -948,7 +1029,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Procurement')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrprocurement', compact('opcrprocurement'));
     }
@@ -995,7 +1082,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1013,6 +1101,7 @@ class OpcrController extends Controller
         DB::table('ratings')->insert($store);
 
         return redirect('/myevaluationforms');
+
     }
 
     //OPCRQAA VIEW
@@ -1027,7 +1116,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'QAA')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrqaa', compact('opcrqaa'));
     }
@@ -1074,7 +1169,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1106,7 +1202,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'Records')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcrrecords', compact('opcrrecords'));
     }
@@ -1153,7 +1255,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1185,7 +1288,13 @@ class OpcrController extends Controller
             'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
             ->where('form_type', '=', 'OPCR')
             ->Where('dept_name', '=', 'UITC')
-            ->orderBy('functions.id')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcruitc', compact('opcruitc'));
     }
@@ -1232,7 +1341,8 @@ class OpcrController extends Controller
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
                 'support_total_average' => $request->support_total_average[0],
-                //'research_total_average' => $request->research_total_average[0],
+                'research_total_average' => $request->research_total_average[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],

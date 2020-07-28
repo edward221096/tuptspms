@@ -44,6 +44,16 @@
                     </div>
                 </div>
             @endif
+                @if(session()->has('postmessage'))
+                    <div class="row">
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                &times;
+                            </button>
+                            <strong>Information: </strong> {{ session()->get('postmessage') }}
+                        </div>
+                    </div>
+                @endif
             @if(session()->has('updatemessage'))
                 <div class="row">
                     <div class="alert alert-success">
@@ -96,7 +106,7 @@
         <form method="GET" action="/manageevaluationforms">
             <table class="table table-striped">
                 <thead>
-                <tr style="font-size: 11pt;">
+                <tr style="font-size: 10.5pt; text-align: center;">
                     <th>FORM TYPE</th>
                     <th>DEPARTMENT NAME</th>
                     <th>FUNCTION NAME</th>
@@ -111,26 +121,15 @@
                 </thead>
                 <tbody>
                 @foreach($mfo as $row)
-                    <tr>
-                        <td>{{$row->form_type}}</td>
-                        <td>{{$row->dept_name}}</td>
-                        <td>{{$row->function_name}}</td>
-                        <td>{{$row->role}}</td>
-                        <td>{!! $row->mfo_desc !!}</td>
-                        <td>{!! $row->success_indicator_desc !!}</td>
-{{--                        <td>{!! $row->actual_accomplishment_desc !!}</td>--}}
+                    <tr style="font-size: 10.5pt;">
+                        <td style="overflow-wrap: break-word;">{{$row->form_type}}</td>
+                        <td style="overflow-wrap: break-word;">{{$row->dept_name}}</td>
+                        <td style="overflow-wrap: break-word;">{{$row->function_name}}</td>
+                        <td style="overflow-wrap: break-word;">{{$row->role}}</td>
+                        <td style="overflow-wrap: break-word;">{!! $row->mfo_desc !!}</td>
+                        <td style="overflow-wrap: break-word;">{!! $row->success_indicator_desc !!}</td>
                         <td>{!! $row->remarks !!}
                         <td>
-{{--                                <a href="#" class="btn btn-secondary btn-sm"--}}
-{{--                                   data-mymfoid="{{$row->id}}"--}}
-{{--                                   data-myformtype="{{$row->form_type}}"--}}
-{{--                                   data-mydeptname="{{$row->dept_name}}"--}}
-{{--                                   data-myfunctionname="{{$row->function_name}}"--}}
-{{--                                   data-mymfodesc="{{ $row->mfo_desc }}"--}}
-{{--                                   data-mysuccessindicatordesc="{{ $row->success_indicator_desc }}"--}}
-{{--                                   data-actualaccomplishmentdesc="{{ $row->actual_accomplishment_desc }}"--}}
-{{--                                   data-myremarks="{{ $row->remarks }}"--}}
-{{--                                   data-toggle="modal" data-target="#editmfo">Edit</a>--}}
                                 <a href="{{action('MfoController@edit', $row->id)}}" class="btn btn-secondary btn-sm" type="submit">Edit</a>
                                 <a href="#" class="btn btn-danger btn-sm"
                                    data-mymfoid="{{$row->id}}" data-toggle="modal" data-target="#deletemfo">Delete</a>
@@ -185,7 +184,7 @@
                             <div class="form-row">
                                 <div class="form-group col-6">
                                     <label for="form">Form</label>
-                                    <select name="form_type" id="form_type" class="form-control form-control-sm">
+                                    <select name="form_type" id="form" class="form-control form-control-sm">
                                         <option selected disabled>Select a Form</option>
                                         @foreach(App\Form::orderBy('id')->get() as $form)
                                             <option>{{$form->form_type}}</option>
@@ -316,6 +315,20 @@
     });
 </script>
     <script type="text/javascript">
+        $("#form").change(function () {
+            let selectedform = $(this).children("option:selected").val();
+
+            if (selectedform === 'IPCR'){
+                $("#dept_name").prop('disabled', true)
+                $("#role").prop('disabled', false)
+            }
+
+            if (selectedform === 'OPCR') {
+                $("#dept_name").prop('disabled', false)
+                $("#role").prop('disabled', true)
+            }
+        })
+
         $("#role").change(function(){
             $('#function_name').html('')
 
@@ -428,8 +441,6 @@
                 });
             }
         });
-
-
     </script>
 </head>
 </html>

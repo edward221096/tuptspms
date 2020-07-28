@@ -16,9 +16,9 @@ class CreateDepartmentsTable extends Migration
     {
         Schema::create('departments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('division_id');
-            $table->string('dept_name');
-            $table->string('type');
+            $table->bigInteger('division_id')->nullable();
+            $table->string('dept_name')->nullable();
+            $table->string('type')->nullable();
         });
 
         //insert departments
@@ -29,10 +29,10 @@ class CreateDepartmentsTable extends Migration
             ['id' => 4, 'division_id' => 3 , 'dept_name' => 'Mechanical and Allied Department', 'type' => 'Teaching'],
             ['id' => 5, 'division_id' => 3 , 'dept_name' => 'Bachelors of Engineering Department', 'type' => 'Teaching'],
             ['id' => 6, 'division_id' => 3 , 'dept_name' => 'Basic Arts and Sciences Department (BASD)', 'type' => 'Teaching'],
-            ['id' => 7, 'division_id' => 2 , 'dept_name' => 'Campus Director Department', 'type' => 'Non-Teaching'],
-            ['id' => 8, 'division_id' => 3 , 'dept_name' => 'ADAA Department', 'type' => 'Teaching'],
-            ['id' => 9, 'division_id' => 4 , 'dept_name' => 'ADAF Department', 'type' => 'Non-Teaching'],
-            ['id' => 10, 'division_id' => 5 , 'dept_name' => 'ADRE Department', 'type' => 'Non-Teaching'],
+            ['id' => 7, 'division_id' => 2 , 'dept_name' => 'Campus Director', 'type' => 'Non-Teaching'],
+            ['id' => 8, 'division_id' => 3 , 'dept_name' => 'ADAA', 'type' => 'Teaching'],
+            ['id' => 9, 'division_id' => 4 , 'dept_name' => 'ADAF', 'type' => 'Non-Teaching'],
+            ['id' => 10, 'division_id' => 5 , 'dept_name' => 'ADRE', 'type' => 'Non-Teaching'],
             ['id' => 11, 'division_id' => 4 , 'dept_name' => 'Accounting', 'type' => 'Non-Teaching'],
             ['id' => 12, 'division_id' => 4 , 'dept_name' => 'Budget', 'type' => 'Non-Teaching'],
             ['id' => 13, 'division_id' => 4 , 'dept_name' => 'Cashier', 'type' => 'Non-Teaching'],
@@ -44,7 +44,8 @@ class CreateDepartmentsTable extends Migration
             ['id' => 19, 'division_id' => 4 , 'dept_name' => 'QAA', 'type' => 'Non-Teaching'],
             ['id' => 20, 'division_id' => 4 , 'dept_name' => 'Records', 'type' => 'Non-Teaching'],
             ['id' => 21, 'division_id' => 4 , 'dept_name' => 'UITC', 'type' => 'Non-Teaching'],
-        ]);
+            ['id' => 22, 'division_id' => 3 , 'dept_name' => 'Academics Department', 'type' => 'Teaching'],
+            ]);
     }
 
     /**

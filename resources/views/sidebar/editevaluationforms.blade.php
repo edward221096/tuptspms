@@ -43,7 +43,7 @@
                     <div class="form-row">
                         <div class="form-group col-6">
                             <label for="form" style="font-weight: bold">Form</label>
-                            <select name="form_type" class="form-control form-control-sm">
+                            <select name="form_type" id="form" class="form-control form-control-sm">
                                 <!-- GET THE CURRENT DATA IN DROP DOWN -->
                                 @foreach(App\Form::orderBy('id')->where('id', '=', $mfo->form_id)->get() as $selectedformtype)
                                     <option selected>{{$selectedformtype->form_type}}</option>
@@ -91,17 +91,21 @@
                         <div class="form-group col-6">
                             <label for="department" style="font-weight: bold">Department</label>
                                 <select name="dept_name" id="dept_name" class="form-control form-control-sm">
-                                    @foreach(App\Department::orderBy('id')->where('id', '=', $mfo->dept_id)->get() as $selecteddeptname)
+                                    @foreach(App\Department::orderBy('id')->where('id', '=', $mfo->dept_id)->limit(1)->get() as $selecteddeptname)
                                         <option selected>{{$selecteddeptname->dept_name}}</option>
                                     @endforeach
-                                    <option disabled style="font-weight: bold;">TEACHING DEPARTMENT</option>
-                                    @foreach(App\Department::orderBy('id')->whereIn('type', ['Teaching'])->get() as $department)
-                                        <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
-                                    @endforeach
-                                    <option disabled style="font-weight: bold;">NON-TEACHING DEPARTMENT</option>
-                                    @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin'])->get() as $department)
-                                        <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
-                                    @endforeach
+                                        <option disabled style="font-weight: bold;">DIRECTOR RELATED</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Campus Director', 'ADAA', 'ADRE', 'ADAF'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                        @endforeach
+                                        <option disabled style="font-weight: bold;">TEACHING DEPARTMENT</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('dept_name', ['Academics Department', 'ADAA Department'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                        @endforeach
+                                        <option disabled style="font-weight: bold;">NON-TEACHING DEPARTMENT</option>
+                                        @foreach(App\Department::orderBy('id')->whereIn('type', ['Non-Teaching'])->whereNotIn('dept_name', ['System Admin', 'ADAF', 'ADRE', 'Campus Director'])->get() as $department)
+                                            <option value="{{$department->dept_name}}">{{ $department->dept_name }}</option>
+                                        @endforeach
                                 </select>
                             <div class="note-group">
                                 OPCR form questions depends on the selected department
@@ -163,103 +167,134 @@
             </div>
         </div>
     </div>
-    <script>
-        $("#role").change(function(){
-            $('#function_name').html('')
+<script type="text/javascript">
+    $("#form").change(function () {
+        let selectedform = $(this).children("option:selected").val();
 
-            let selectedrole = $(this).children("option:selected").val();
-            let ipcrFunctionValues =
-                {"Core Administrative Functions": "Core Administrative Functions",
-                    "Support Functions": "Support Functions",
-                    "Higher and Advanced Education Program": "Higher and Advanced Education Program",
-                    "Research Program": "Research Program",
-                    "Technical Advisory Extension Program": "Technical Advisory Extension Program"
-                }
-            let ipcrFullAdminValues =
-                {"Core Administrative Functions - Clerical/Routine": "Core Administrative Functions - Clerical/Routine",
-                    "Core Administrative Functions - Technical": "Core Administrative Functions - Technical",
-                    "Support Functions": "Support Functions",
-                }
+        if (selectedform === 'IPCR'){
+            $("#dept_name").prop('disabled', true)
+            $("#role").prop('disabled', false)
+        }
 
-            let ipcrFulltimeValues = {
-                "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+        if (selectedform === 'OPCR') {
+            $("#dept_name").prop('disabled', false)
+            $("#role").prop('disabled', true)
+        }
+    })
+
+    $("#role").change(function(){
+        $('#function_name').html('')
+
+        //IPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED FUNCTION (FUNCTION VALUES)
+        let selectedrole = $(this).children("option:selected").val();
+        let ipcrFunctionValues =
+            {"Core Administrative Functions": "Core Administrative Functions",
                 "Support Functions": "Support Functions",
-                "Research Program": "Research Program",
-                "Technical Advisory Extension Program": "Technical Advisory Extension Program"
-            }
-
-            if (selectedrole === 'College Sec - Associate Professor' || selectedrole === 'College Sec - Assistant Professor' ||
-                selectedrole === 'College Sec - Professor' || selectedrole === 'College Sec - Instructor' ||
-                selectedrole === 'Faculty with Admin Function - Associate Professor' || selectedrole === 'Faculty with Admin Function - Assistant Professor' ||
-                selectedrole === 'Faculty with Admin Function - Professor' || selectedrole === 'Faculty with Admin Function - Instructor' ||
-                selectedrole === 'Faculty with Quasi Function - Associate Professor' || selectedrole === 'Faculty with Quasi Function - Assistant Professor' ||
-                selectedrole === 'Faculty with Quasi Function - Professor' || selectedrole === 'Faculty with Quasi Function - Instructor') {
-                $.each(ipcrFunctionValues, function(key, value) {
-                    $('#function_name')
-                        .append($('<option>', { value : key })
-                            .text(value))
-                });
-            }
-
-            if (selectedrole === 'Fulltime - Admin') {
-                $.each(ipcrFullAdminValues, function(key, value) {
-                    $('#function_name')
-                        .append($('<option>', { value : key })
-                            .text(value))
-                });
-            }
-
-            if (selectedrole === 'Fulltime - Associate Professor' || selectedrole === 'Fulltime - Assistant Professor'
-                || selectedrole === 'Fulltime - Professor' || selectedrole === 'Fulltime - Instructor') {
-                $.each(ipcrFulltimeValues, function(key, value) {
-                    $('#function_name')
-                        .append($('<option>', { value : key })
-                            .text(value))
-                });
-            }
-        })
-
-        //OPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED DEPARTMENT (VALUES)
-        $("#dept_name").change(function() {
-            $('#function_name').html('')
-
-            let selecteddept = $(this).children("option:selected").val();
-            let opcrFunctionValues = {
-                "Core Administrative Functions": "Core Administrative Functions",
-                "General Administration and Support": "General Administration and Support",
-                "Support to Operations": "Support to Operations",
                 "Higher and Advanced Education Program": "Higher and Advanced Education Program",
                 "Research Program": "Research Program",
                 "Technical Advisory Extension Program": "Technical Advisory Extension Program"
             }
-
-            let opcrFunctionValues2 = {
-                "Core Administrative Functions": "Core Administrative Functions",
-                "General Administration and Support": "General Administration and Support",
-                "Support to Operations": "Support to Operations",
-                "Higher and Advanced Education Program": "Higher and Advanced Education Program"
+        let ipcrFullAdminValues =
+            {"Core Administrative Functions - Clerical/Routine": "Core Administrative Functions - Clerical/Routine",
+                "Core Administrative Functions - Technical": "Core Administrative Functions - Technical",
+                "Support Functions": "Support Functions",
             }
 
-            if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
-                || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
-                $.each(opcrFunctionValues, function (key, value) {
-                    $('#function_name')
-                        .append($('<option>', {value: key})
-                            .text(value))
-                });
-            }
+        let ipcrFulltimeValues = {
+            "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+            "Support Functions": "Support Functions",
+            "Research Program": "Research Program",
+            "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+        }
 
-            if (selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
-                || selecteddept === 'Records' || selecteddept === 'UITC') {
-                $.each(opcrFunctionValues2, function (key, value) {
-                    $('#function_name')
-                        .append($('<option>', {value: key})
-                            .text(value))
-                });
-            }
-        });
+        if (selectedrole === 'College Sec - Associate Professor' || selectedrole === 'College Sec - Assistant Professor' ||
+            selectedrole === 'College Sec - Professor' || selectedrole === 'College Sec - Instructor' ||
+            selectedrole === 'Faculty with Admin Function - Associate Professor' || selectedrole === 'Faculty with Admin Function - Assistant Professor' ||
+            selectedrole === 'Faculty with Admin Function - Professor' || selectedrole === 'Faculty with Admin Function - Instructor' ||
+            selectedrole === 'Faculty with Quasi Function - Associate Professor' || selectedrole === 'Faculty with Quasi Function - Assistant Professor' ||
+            selectedrole === 'Faculty with Quasi Function - Professor' || selectedrole === 'Faculty with Quasi Function - Instructor') {
+            $.each(ipcrFunctionValues, function(key, value) {
+                $('#function_name')
+                    .append($('<option>', { value : key })
+                        .text(value))
+            });
+        }
 
-    </script>
+        if (selectedrole === 'Fulltime - Admin') {
+            $.each(ipcrFullAdminValues, function(key, value) {
+                $('#function_name')
+                    .append($('<option>', { value : key })
+                        .text(value))
+            });
+        }
+
+        if (selectedrole === 'Fulltime - Associate Professor' || selectedrole === 'Fulltime - Assistant Professor'
+            || selectedrole === 'Fulltime - Professor' || selectedrole === 'Fulltime - Instructor') {
+            $.each(ipcrFulltimeValues, function(key, value) {
+                $('#function_name')
+                    .append($('<option>', { value : key })
+                        .text(value))
+            });
+        }
+    })
+
+    //OPCR RELATED DYNAMICALLY CHANGE THE FUNCTION NAME BASED ON SELECTED DEPARTMENT (VALUES)
+    $("#dept_name").change(function() {
+        $('#function_name').html('')
+
+        let selecteddept = $(this).children("option:selected").val();
+        let opcrFunctionValues = {
+            "Core Administrative Functions": "Core Administrative Functions",
+            "General Administration and Support": "General Administration and Support",
+            "Support to Operations": "Support to Operations",
+            "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+            "Research Program": "Research Program",
+            "Technical Advisory Extension Program": "Technical Advisory Extension Program"
+        }
+
+        let opcrFunctionValues2 = {
+            "Core Administrative Functions": "Core Administrative Functions",
+            "General Administration and Support": "General Administration and Support",
+            "Support to Operations": "Support to Operations",
+            "Higher and Advanced Education Program": "Higher and Advanced Education Program"
+        }
+
+        let opcrFunctionValues3 = {
+            "Higher and Advanced Education Program": "Higher and Advanced Education Program",
+            "Research Program": "Research Program",
+            "Technical Advisory Extension Program": "Technical Advisory Extension Program",
+            "Core Administrative Functions": "Core Administrative Functions",
+            "General Administration and Support": "General Administration and Support",
+            "Support to Operations": "Support to Operations",
+        }
+
+        if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
+            || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
+            $.each(opcrFunctionValues, function (key, value) {
+                $('#function_name')
+                    .append($('<option>', {value: key})
+                        .text(value))
+            });
+        }
+
+        if (selecteddept === 'ADAA' || selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
+            || selecteddept === 'Records' || selecteddept === 'UITC') {
+            $.each(opcrFunctionValues2, function (key, value) {
+                $('#function_name')
+                    .append($('<option>', {value: key})
+                        .text(value))
+            });
+        }
+
+        if (selecteddept === 'Academics Department' || selecteddept === 'ADAF') {
+            $.each(opcrFunctionValues3, function (key, value) {
+                $('#function_name')
+                    .append($('<option>', {value: key})
+                        .text(value))
+            });
+        }
+    });
+</script>
         <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
         <script>
             tinymce.init({

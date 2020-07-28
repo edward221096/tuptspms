@@ -82,11 +82,15 @@
             @endif
 
             <div class="content">
-                <img src="images\tuptlogo.png" width="200px" height="200px">
-                <div class="title m-b-md">
-                     TUP-TAGUIG
-                <br>
-                    STRATEGIC PERFORMANCE MANAGEMENT SYSTEM
+                <div class="card">
+                    <div class="card-body">
+                        <img src="images\tuptlogoflat.jpg" width="200px" height="200px">
+                        <div class="title m-b-md">
+                            TUP-TAGUIG
+                            <br>
+                            STRATEGIC PERFORMANCE MANAGEMENT SYSTEM
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

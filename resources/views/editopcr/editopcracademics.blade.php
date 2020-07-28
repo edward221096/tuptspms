@@ -252,11 +252,10 @@
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'General Administration and Support'
-                                     || $row->function_name == 'Support to Operations' || $row->function_name == 'Technical Advisory Extension Program' || $row->function_name == 'Research Program')
+                                @if($row->function_name == 'Higher and Advanced Education Program'|| $row->function_name == 'Research Program'
+                                    || $row->function_name == 'Technical Advisory Extension Program' || $row->function_name == 'Core Administrative Function'
+                                    || $row->function_name == 'Support to Operations' || $row->function_name == 'General Administration and Support')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
                                 @endif
                             </div>
                         </td>
@@ -347,7 +346,7 @@
                     </td>
                     <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
                         <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" value="{{$row->support_total_average}}" name="support_total_average[]" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->ipcr_rating_average}}" name="ipcr_rating_average[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
@@ -575,8 +574,17 @@
             }
         });
 
-       //CLEAR AVERAGE FIELDS AND RESET
-       $(document).ready(function(){
+        $(document).ready(function(){
+            let ipcrcomputed = $("#get-ipcr-rating-average").val()
+            let computed = 0
+
+            computed = ipcrcomputed * 0.20
+
+            $('#ipcr-rating-average').val(isNaN(computed) ? "" : computed)
+        });
+
+        //CLEAR AVERAGE FIELDS AND RESET
+        $(document).ready(function(){
             $(".btn-reset").click(function(){
                 $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #total-weighted-score').val('');
             });
@@ -601,11 +609,11 @@
             }
 
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            // currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, .a-value-support, #core-total-average, #support-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, #core-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
 
@@ -619,7 +627,7 @@
             else {
                 totalweightedscore.style.color = "green";
             }
-        });
+        })
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {
@@ -636,20 +644,6 @@
             }
             avg = (total / count) * 0.80
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.20
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
         }
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
@@ -657,9 +651,9 @@
         function computeWeightedScore(){
             let weightedscore = 0
             let ACoreValue = $("#core-total-average").val()
-            let ASuppValue = $("#support-total-average").val()
+            let IpcrRating = $("#ipcr-rating-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+            weightedscore = parseFloat(ACoreValue) + parseFloat(IpcrRating)
 
             $('#total-weighted-score').val(weightedscore)
         }
@@ -668,5 +662,4 @@
         function setFourNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(4);
         }
-
     </script>

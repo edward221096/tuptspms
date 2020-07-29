@@ -267,6 +267,10 @@
                         </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">{{ __('Register') }} </button>
                     </form>
+                    <br>
+                    <div>
+                        Already have an account? Click here to <a href="{{url('/login')}}">Login</a>
+                    </div>
                 </div>
             </div>
     </div>

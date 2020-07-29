@@ -2,6 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72df8746-5ece-41b1-9858-5578d559ca0e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/aos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagecss/templatemo-digital-trend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Light.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Light.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/Plain-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagefonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/blog/blog-header-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/blog/blog-sidebar-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/blog/blog-sidebar-image01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/blog/blog-sidebar-image02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/female-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/newsletter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/office.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-detail/interview-process.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-detail/male-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-detail/personal-website.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-image01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-image02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-image03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-image04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/project/project-image05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepageimages/working-girl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/aos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/rellax.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/smoothscroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/aos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/owl.theme.default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagecss/templatemo-digital-trend.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Bold.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Bold.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Light.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Light.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/Plain-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagefonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/accountapproval.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/blog/blog-header-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/blog/blog-sidebar-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/blog/blog-sidebar-image01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/blog/blog-sidebar-image02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/conditional.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/editform.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/female-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/form.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/ipcrforms.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/ipcrtotalcount.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/mydashboard.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/myteamevaluationforms.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/newsletter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/office.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-detail/interview-process.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-detail/male-avatar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-detail/personal-website.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-image01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-image02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-image03.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-image04.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/project/project-image05.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/working-girl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/aos.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/custom.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/rellax.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepagejs/smoothscroll.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -584,10 +675,8 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MfoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyDashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
@@ -618,7 +707,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/util.css" beforeDir="false" />
@@ -981,7 +1069,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1099,7 +1187,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/editopcr" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -1108,22 +1196,23 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views\editopcr" />
-      <recent name="C:\laravel\tuptspms\resources\views\opcr" />
-      <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
-      <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
-      <recent name="C:\laravel\tuptspms\resources\views\ipcr" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views" />
       <recent name="C:\laravel\tuptspms\resources\views\layouts" />
       <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\editopcr" />
+      <recent name="C:\laravel\tuptspms\resources\views\opcr" />
+      <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
+      <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="editfunction" />
+      <command value="IPCR" />
     </option>
   </component>
   <component name="RunManager">
@@ -1349,6 +1438,8 @@
       <workItem from="1595846548841" duration="11128000" />
       <workItem from="1595904072824" duration="18644000" />
       <workItem from="1595933283897" duration="11627000" />
+      <workItem from="1595990417528" duration="16743000" />
+      <workItem from="1596019570769" duration="2537000" />
     </task>
     <servers />
   </component>
@@ -1359,10 +1450,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1595940880671">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596019602883">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1595940880671" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596019602883" />
     <state x="361" y="72" key="#Notifications" timestamp="1595904195234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1399,10 +1490,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="539" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1595224201939" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1595924754849">
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1596019684920">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1595924754849" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596019684920" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595943489998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

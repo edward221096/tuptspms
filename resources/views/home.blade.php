@@ -100,7 +100,7 @@
         <a href="home" class="brand-link">
             <img type="image/png" src="{!! asset('images/tuptlogo.png') !!} " alt="TUP-T Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">TUP-TAGUIG SPMS</span>
+            <span class="brand-text font-weight-light">TUP TAGUIG - SPMS</span>
         </a>
 
         <!-- Sidebar -->
@@ -223,7 +223,7 @@
                         </li>
                         <li class="nav-item has-treeview menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon"></i>
+                                <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     IPCR
                                     <i class="right fas fa-angle-left"></i>
@@ -470,7 +470,7 @@
                            || Auth::User()->role == 'Division Head')
                             <li class="nav-item has-treeview menu-close">
                                 <a href="#" class="nav-link active">
-                                    <i class="nav-icon"></i>
+                                    <i class="nav-icon fab fa-wpforms"></i>
                                     <p>
                                         OPCR
                                         <i class="right fas fa-angle-left"></i>
@@ -481,7 +481,7 @@
                                         @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
                                             @if($row->dept_name == 'Campus Director' || Auth::User()->role == 'Super Admin'
                                                     || Auth::User()->role == 'Division Head')
-                                                <a href="opcradaa" class="nav-link">
+                                                <a href="opcrcampusdirector" class="nav-link">
                                                     <i class="far fa-circle navbar-icon"></i>
                                                     <p>Campus Director</p>
                                                 </a>
@@ -653,34 +653,10 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-sm-12">
                         <div class="card">
                             <div class="card-body">
                                 <p style="font-weight: bold"> Welcome to Technological University of the Philippines - Taguig Strategic Performance Management System (SPMS)</p>
-                                <br>
-                                <p style="font-weight: bold">As a normal user (Faculty or Staff):</p>
-                                1. Please wait for the evaluation period to be OPEN by Planning Department before answering the IPCR forms based on your role
-                                <br>
-                                2. If the evaluation period is OPEN. You can navigate to IPCR then click the form based on your role to start the evaluation
-                                <br>
-                                3. If you are done with the evaluation. You can navigate to Evaluation Forms > My Evaluation Forms to see the previous and recent evaluation forms and its status
-                                <br>
-                                <br>
-                                <p style="font-weight: bold">As a Section Head and Above</p>
-                                1. You can go to My Team Evaluation Forms to check your OPCR and IPCR forms as well as the IPCR form of your team
-                                <br>
-                                2. You can manage employee to change the basic information of each users and their respective division, department, section and account status
-                                <br>
-                                <br>
-                                <p style="font-weight: bold">As a Planning Officer</p>
-                                1. You can navigate to Admin > Manage Evaluation Period to set evaluation period start and end date and status
-                                <br>
-                                2. You can navigate to Manage > Organization > to view, add, edit and delete organization (Division, Department, Section)
-                                <br>
-                                3. You can navigate to Manage Evaluation Forms to view, add, edit and delete content or questions for each evaluation forms
-                                <br>
-                                4. You can manage employee to change the basic information of each users and their respective division, department, section and account status
-
                                 @yield('employee')
                                 @yield('manageevaluationforms')
                                 @yield('manageorganization')
@@ -707,6 +683,8 @@
                                 @yield('ipcrfulladmin')
                                 @yield('opcracademics')
                                 @yield('opcraccounting')
+                                @yield('opcradaa')
+                                @yield('opcradaf')
                                 @yield('opcradre')
                                 @yield('opcrbudget')
                                 @yield('opcrcashier')
@@ -723,20 +701,49 @@
                             </div>
                         </div>
                     </div>
-                </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold">As a normal user (Faculty or Staff)</p>
+                            1. Please wait for the evaluation period to be OPEN by Planning Department before answering the IPCR forms based on your role
+                            <br>
+                            2. If the evaluation period is OPEN. You can navigate to IPCR then click the form based on your role to start the evaluation
+                            <br>
+                            3. If you are done with the evaluation. You can navigate to Evaluation Forms > My Evaluation Forms to see the previous and recent evaluation forms and its status
+                            4. You can also navigate to Dashboard > My Dashboard to check the graph of your previous and recent IPCR Ratings
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold">As a Section Head and Above</p>
+                            1. You can go to My Team Evaluation Forms to check your OPCR and IPCR forms as well as the IPCR form of your team
+                            <br>
+                            2. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold">As a Planning Officer</p>
+                            1. You can navigate to Admin > Manage Evaluation Period to set evaluation period start and end date and status
+                            <br>
+                            2. You can navigate to Manage > Organization > to view, add, edit and delete organization (Division, Department, Section)
+                            <br>
+                            3. You can navigate to Manage Evaluation Forms to view, add, edit and delete content or questions for each evaluation forms
+                            <br>
+                            4. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+                            <br>
+                        </div>
+                    </div>
+                    </div>
+                            </div>
+                        </div>
+                    </div>
                 <!-- /.content -->
             </div>
-        </div>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
-    </div>
-</div>
 </body>
 
 <!-- Menu Toggle Script -->

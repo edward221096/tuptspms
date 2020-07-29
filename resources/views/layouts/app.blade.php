@@ -28,8 +28,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    TUP-Taguig SPMS
+                <a style="color: #404040;" class="navbar-brand" href="{{ url('/') }}">
+                    <i><img src="images\tuptlogo.png" width="50px" height="50px"></i>
+                    TUP TAGUIG - SPMS
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -43,6 +44,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
                         <!-- Authentication Links -->
                         @guest
 {{--                            <li class="nav-item">--}}

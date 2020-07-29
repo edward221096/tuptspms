@@ -48,7 +48,7 @@
     </style>
 
 </head>
-<body class="hold-transition sidebar-dark-red sidebar-mini">
+<body class="hold-transition sidebar-dark-red sidebar-mini-md">
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -100,7 +100,7 @@
         <a href="home" class="brand-link">
             <img type="image/png" src="{!! asset('images/tuptlogo.png') !!} " alt="TUP-T Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">TUP-TAGUIG SPMS</span>
+            <span class="brand-text font-weight-light">TUP TAGUIG - SPMS</span>
         </a>
 
         <!-- Sidebar -->
@@ -223,7 +223,7 @@
                     </li>
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon"></i>
+                            <i class="nav-icon fas fa-newspaper"></i>
                             <p>
                                 IPCR
                                 <i class="right fas fa-angle-left"></i>
@@ -454,7 +454,7 @@
 
                                         @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
                                             @if(Auth::User()->role == 'Fulltime - Admin'
-                                    OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
+                                    OR Auth::User()->role == 'Super Admin' AND Auth::User()->role == 'Section Head' OR
                                     Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director' OR
                                     Auth::User()->role == 'Department Head' AND $row->type === 'Non-Teaching')
                                         <a href="ipcrfulladmin" class="nav-link">
@@ -470,7 +470,7 @@
                        || Auth::User()->role == 'Division Head')
                     <li class="nav-item has-treeview menu-close">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon"></i>
+                            <i class="nav-icon fab fa-wpforms"></i>
                             <p>
                                 OPCR
                                 <i class="right fas fa-angle-left"></i>

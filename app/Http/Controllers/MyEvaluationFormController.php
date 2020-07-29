@@ -26,7 +26,7 @@ class MyEvaluationFormController extends Controller
             ->groupBy('form_sequence_id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                 'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate',
                 'evaluationform_status', 'ratings.evaluationform_name')
-            ->orderBy('ratings.evaluation_startdate')
+            ->orderBy('ratings.evaluation_startdate', 'desc')
             ->get();
 
         return view('sidebar.myevaluationforms', compact('myevaluationform'));

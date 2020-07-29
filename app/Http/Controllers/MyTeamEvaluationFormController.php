@@ -14,6 +14,7 @@ class MyTeamEvaluationFormController extends Controller
         $mysectionid = Auth::User()->section_id;
         $mydeptid = Auth::User()->dept_id;
         $mydivisionid = Auth::User()->division_id;
+        $myuserid = Auth::User()->id;
 
 
         if(Auth::User()->role == 'Section Head'){
@@ -29,9 +30,15 @@ class MyTeamEvaluationFormController extends Controller
             ->where('sections.id', '=', $mysectionid)
             ->where('role', '!=', 'Department Head')
             ->where('role', '!=', 'Division Head')
+            ->where('users.id', '!=', $myuserid)
             ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                 'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
-            ->orderBy('ratings.evaluationform_status')
+            ->orderBy('ratings.evaluation_startdate', 'desc')
+            ->orderByRaw("CASE evaluationform_status
+                           WHEN 'For Review and Approval' THEN 1
+                           WHEN 'For Re-evaluation' THEN 2
+                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'Approved (Cannot be edited)' THEN 4 END ASC")
             ->get();
         }
         elseif (Auth::User()->role == 'Department Head'){
@@ -46,9 +53,15 @@ class MyTeamEvaluationFormController extends Controller
                     'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
                 ->where('ratings.dept_id', '=', $mydeptid)
                 ->where('role', '!=', 'Division Head')
+                ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
-                ->orderBy('ratings.evaluationform_status')
+                ->orderBy('ratings.evaluation_startdate', 'desc')
+                ->orderByRaw("CASE evaluationform_status
+                           WHEN 'For Review and Approval' THEN 1
+                           WHEN 'For Re-evaluation' THEN 2
+                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'Approved (Cannot be edited)' THEN 4 END ASC")
                 ->get();
         }elseif (Auth::User()->role == 'Division Head') {
             $myteamevaluationform = DB::table('ratings')
@@ -61,9 +74,15 @@ class MyTeamEvaluationFormController extends Controller
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
                     'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
                 ->where('divisions.id', '=', $mydivisionid)
+                ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
-                ->orderBy('ratings.evaluationform_status')
+                ->orderBy('ratings.evaluation_startdate', 'desc')
+                ->orderByRaw("CASE evaluationform_status
+                           WHEN 'For Review and Approval' THEN 1
+                           WHEN 'For Re-evaluation' THEN 2
+                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'Approved (Cannot be edited)' THEN 4 END ASC")
                 ->get();
         }elseif (Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'){
             $myteamevaluationform = DB::table('ratings')
@@ -75,9 +94,16 @@ class MyTeamEvaluationFormController extends Controller
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
                     'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
-                ->orderBy('ratings.evaluationform_status')
+                ->orderBy('ratings.evaluation_startdate', 'desc')
+                ->orderBy('ratings.evaluation_startdate', 'desc')
+                ->orderByRaw("CASE evaluationform_status
+                           WHEN 'For Review and Approval' THEN 1
+                           WHEN 'For Re-evaluation' THEN 2
+                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'Approved (Cannot be edited)' THEN 4 END ASC")
                 ->get();
         }
 

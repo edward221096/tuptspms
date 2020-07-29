@@ -128,6 +128,8 @@
                             <a href="{{action('MyEvaluationFormController@editmyipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'ipcrfulladmin')
                             <a href="{{action('MyEvaluationFormController@editmyipcrfulladmin', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
+                        @elseif($row->evaluationform_name == 'opcrcampusdirector')
+                            <a href="{{action('MyEvaluationFormController@editmyopcrcampusdirector', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'opcradaf')
                             <a href="{{action('MyEvaluationFormController@editmyopcradaf', $row->id)}}" class="btn btn-primary btn-sm" type="submit">View</a>
                         @elseif($row->evaluationform_name == 'opcradaa')

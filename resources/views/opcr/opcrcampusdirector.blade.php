@@ -1,5 +1,5 @@
 @extends('layouts.sidebar')
-@section('opcradaa')
+@section('opcrcampusdirector')
     <style>
         input[type="number"]{
             width:73px
@@ -14,7 +14,7 @@
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->section_id}}" name="section_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->role}}" name="ratee_role[]">
-        <input type="hidden" value="opcradaa" name="evaluationform_name[]">
+        <input type="hidden" value="opcrcampusdirector" name="evaluationform_name[]">
         @foreach(\App\Http\Controllers\OpcrController::getEvaluationStartDate() as $getstartdate)
             <input type="hidden" value="{{ $getstartdate ->evaluation_startdate }}" name="evaluation_startdate[]">
         @endforeach
@@ -137,7 +137,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </tr>
                 </thead>
 
-                @foreach($opcradaa as $row)
+                @foreach($opcrcampusdirector as $row)
                     <input type="hidden" value="{{ $row->form_id }}" name="form_id[]">
                     <input type="hidden" value="{{ $row->function_name }}" name="function_name[]">
                     <input type="hidden" value="{{ $row->id }}" name="mfo_id[]">
@@ -192,7 +192,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'Higher and Advanced Education Program'
-                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
+                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations'
+                                    || $row->function_name == 'Research Program' || 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
                                 @endif
                             </div>
@@ -256,7 +257,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     >
                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                            Higher and Advanced Education Programs, Core Administrative Functions, General Administration and Support to Operations (80%)
+                                Core Administrative Functions, General Administration and Support to Operations, Higher and Advanced Education Programs,
+                                Research and Technical Advisory Extension Program (80%)
                             </b>
                         </div>
                     </td>
@@ -488,17 +490,18 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </body>
     <script type="text/javascript">
         //CONDITIONAL FORMATTING COLORS
-        $('.total-weighted-score-color').change(function(){
+        function conditionalFormatting(){
             let totalweightedscore = document.getElementById('total-weighted-score')
 
-            if(totalweightedscore.value > 0.0000){
+            if(totalweightedscore.value < 3.0000){
                 totalweightedscore.style.color = "red";
             }
-
             else {
                 totalweightedscore.style.color = "green";
             }
-        })
+        $('.total-weighted-score-color').change(totalweightedscore)
+        }
+
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function(){
             $(".btn-reset").click(function(){
@@ -541,6 +544,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
+
+
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {

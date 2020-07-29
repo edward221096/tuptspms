@@ -191,10 +191,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
+                                @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'Higher and Advanced Education Program'
+                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations'
+                                    || $row->function_name == 'Research Program' || 'Technical Advisory Extension Program')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program' || $row->function_name == 'Research Program' || $row->function_name == 'Technical Advisory Extension Program')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" style="width: 73px" readonly>
                                 @endif
                             </div>
                         </td>
@@ -257,7 +257,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     >
                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                            Core Administrative Functions, General Administration and Support to Operations
+                                Core Administrative Functions, General Administration and Support to Operations, Higher and Advanced Education Programs,
+                                Research and Technical Advisory Extension Program (80%)
                             </b>
                         </div>
                     </td>
@@ -267,7 +268,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Average of all Sectoral Offices OPCR</span>
+                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                         </p>
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                             <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
@@ -285,17 +286,26 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                 <span style="box-sizing: border-box; color: black;"></span>
                             </p>
                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Support Functions for Higher and Advanced Education Program, Research and Technical Advisory Extension Program</span></b>
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">&nbsp</span></b>
+                            </p>
+                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">IPCR Rating 20%</span></b>
+                            </p>
+                            <br>
+                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Input the IPCR Rating Value: <input type="number" min="0" max="5" style="width: 73px" class="form-control form-control-sm ipcr-value" id="input-ipcr-rating-average"></span></b>
                             </p>
                         </div>
                     </td>
-                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
+                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
                         <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" name="support_total_average[]" readonly>
+                        <div>
+                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" name="ipcr_rating_average[]" readonly>
+                        </div>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Average of ADAF and all Sectoral Offices OPCR</span>
+                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                         </p>
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                             <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
@@ -323,7 +333,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             <p style="box-sizing: border-box; margin: 6pt 0cm;">
                                 <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                             </p>
-                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">Average of ADAF and all Sectoral Offices OPCR</span></p>
+                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span></p>
                         </div>
                         <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
                             <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
@@ -482,9 +492,19 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function(){
             $(".btn-reset").click(function(){
-                $('.a-value-core, .a-value-support, #core-total-average, #support-total-average, #total-weighted-score').val('');
+                $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #total-weighted-score').val('');
             });
         });
+
+        $("#input-ipcr-rating-average").on("keydown keyup", function () {
+            let IpcrValue = $(".ipcr-value").val()
+            let compute = 0
+
+            compute = IpcrValue * 0.20
+
+            $('#ipcr-rating-average').val(isNaN(compute) ? "" : compute)
+            computeWeightedScore();
+        })
 
         //COMPUTE THE AVERAGE PER ROW
         $(".q-value, .e-value, .t-value").change(function(){
@@ -505,11 +525,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             }
 
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, .a-value-support, #core-total-average, #support-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
 
@@ -540,20 +559,6 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             }
             avg = (total / count) * 0.80
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.20
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
         }
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
@@ -561,9 +566,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         function computeWeightedScore(){
             let weightedscore = 0
             let ACoreValue = $("#core-total-average").val()
-            let ASuppValue = $("#support-total-average").val()
+            let IpcrValue = $("#ipcr-rating-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+            weightedscore = parseFloat(ACoreValue) + parseFloat(IpcrValue)
 
             $('#total-weighted-score').val(weightedscore)
         }

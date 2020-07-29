@@ -433,7 +433,7 @@
                 });
             }
 
-            if (selecteddept === 'Academics Department' || selecteddept === 'ADAF') {
+            if (selecteddept === 'Academics Department' || selecteddept === 'ADAF' || selecteddept === 'Campus Director') {
                 $.each(opcrFunctionValues3, function (key, value) {
                     $('#function_name')
                         .append($('<option>', {value: key})

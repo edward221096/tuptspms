@@ -680,6 +680,7 @@
                             @yield('ipcrfprofessor')
                             @yield('ipcrfinstructor')
                             @yield('ipcrfulladmin')
+                            @yield('opcrcampusdirector')
                             @yield('opcracademics')
                             @yield('opcraccounting')
                             @yield('opcradaa')

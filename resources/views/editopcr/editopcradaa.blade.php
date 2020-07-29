@@ -252,12 +252,9 @@
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                @if($row->function_name == 'Core Administrative Functions')
+                                @if($row->function_name == 'Core Administrative Functions' || $row->function_name == 'Higher and Advanced Education Program'
+                                    || $row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
                                     <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-core" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'Higher and Advanced Education Program')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-support" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
-                                @elseif($row->function_name == 'General Administration and Support' || $row->function_name == 'Support to Operations')
-                                    <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research" name="A[]" value="{{$row->A4}}" style="width: 73px" readonly>
                                 @endif
                             </div>
                         </td>
@@ -280,9 +277,9 @@
                 </font>
             </div>
             <ul id="avgdisplay"></ul>
-            <table
-                width=""
-                style="
+                <table
+                    width=""
+                    style="
         box-sizing: border-box;
         border-collapse: collapse;
         color: rgb(33, 37, 41);
@@ -291,139 +288,120 @@
         background-color: rgb(255, 255, 255);
         border: none;
     "
-            >
-                <tbody>
-                <tr style="box-sizing: border-box;">
-                    <td width="514" style="box-sizing: border-box; border: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;"></td>
-                    <td
-                        width="25"
-                        style="box-sizing: border-box; border-top: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: none; padding: 0cm 5.4pt;"
-                        colspan="4"
-                    >
-                        <div align="center" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; text-align: center;">
-                            <b style="font-family: Calibri, sans-serif; font-size: 14.6667px; background-color: rgb(255, 255, 255); box-sizing: border-box; font-weight: bolder;">
-                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">FINAL RATINGS</span>
-                            </b>
-                            <br />
-                        </div>
-                    </td>
-                    <td width="254" style="box-sizing: border-box; border-top: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: none; padding: 0cm 5.4pt;">
-                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">REMARKS</span></b>
-                        </p>
-                    </td>
-                </tr>
-                <tr style="box-sizing: border-box; height: 2.9pt;">
-                    <td
-                        width="514"
-                        style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt; width: 892px;"
-                    >
-                        <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                            <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                                Higher and Advanced Education Programs
-                            </b>
-                        </div>
-                    </td>
-                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="support-total-average" value="{{$row->support_total_average}}" name="support_total_average[]" readonly>
-                    </td>
-                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Average of Colleges and Academic Related Services OPCR</span>
-                        </p>
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr style="box-sizing: border-box;">
-                    <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                        <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                <b style="box-sizing: border-box; font-weight: bolder;">
-                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">  </span>
+                >
+                    <tbody>
+                    <tr style="box-sizing: border-box;">
+                        <td width="514" style="box-sizing: border-box; border: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;"></td>
+                        <td
+                            width="25"
+                            style="box-sizing: border-box; border-top: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: none; padding: 0cm 5.4pt;"
+                            colspan="4"
+                        >
+                            <div align="center" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; text-align: center;">
+                                <b style="font-family: Calibri, sans-serif; font-size: 14.6667px; background-color: rgb(255, 255, 255); box-sizing: border-box; font-weight: bolder;">
+                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">FINAL RATINGS</span>
                                 </b>
-                                <span style="box-sizing: border-box; color: black;"></span>
+                                <br />
+                            </div>
+                        </td>
+                        <td width="254" style="box-sizing: border-box; border-top: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: none; padding: 0cm 5.4pt;">
+                            <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;">REMARKS</span></b>
                             </p>
-                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Core Administrative Functions</span></b>
-                            </p>
-                        </div>
-                    </td>
-                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" value="{{$row->core_total_average}}" name="core_total_average[]" readonly>
-                    </td>
-                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Average of ADAA and All Sectoral Offices OPCR</span>
-                        </p>
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr style="box-sizing: border-box;">
-                    <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                        <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                                <b style="box-sizing: border-box; font-weight: bolder;">
-                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">  </span>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing: border-box; height: 2.9pt;">
+                        <td
+                            width="514"
+                            style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt; width: 892px;"
+                        >
+                            <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
+                                <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
+                                    Higher and Advanced Education Programs, Core Administrative Functions, General Administration and Support to Operations (80%)
                                 </b>
-                                <span style="box-sizing: border-box; color: black;"></span>
-                            </p>
-                            <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">General Administration and Support to Operations</span></b>
-                            </p>
-                        </div>
-                    </td>
-                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="research-total-average" value="{{$row->research_total_average}}" name="research_total_average[]" readonly>
-                    </td>
-                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Average of ADAA and All Sectoral Offices OPCR</span>
-                        </p>
-                        <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
-                            <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
-                        </p>
-                    </td>
-                </tr>
-                <tr style="box-sizing: border-box; height: 2.9pt;">
-                    <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
-                        <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span></b>
-                            <span style="box-sizing: border-box; color: black;"></span>
-                        </p>
-                        <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Total Weighted Score</span></b>
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
-                        </p>
-                    </td>
-                    <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
-                        <!-- Total Rating for Function -->
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" value="{{$row->total_weighted_score}}" name="total_weighted_score[]" readonly>
-                    </td>
-                    <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
-                        <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
-                            <p style="box-sizing: border-box; margin: 6pt 0cm;">
+                            </div>
+                        </td>
+                        <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
+                            <!-- Total Rating for Function -->
+                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="core-total-average" value="{{$row->core_total_average}}" name="core_total_average[]" readonly>
+                        </td>
+                        <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
+                            <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
                                 <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
                             </p>
-                            <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span></p>
-                        </div>
-                        <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
-                            <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
-                        </p>
-                    </td>
-                </tr>
+                            <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
+                                <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing: border-box;">
+                        <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
+                            <div align="right" style="box-sizing: border-box; margin: 8px 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
+                                <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                    <b style="box-sizing: border-box; font-weight: bolder;">
+                                        <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">  </span>
+                                    </b>
+                                    <span style="box-sizing: border-box; color: black;"></span>
+                                </p>
+                                <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
+                                    <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">&nbsp</span></b>
+                                </p>
+                                <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
+                                    <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">IPCR Rating 20%</span></b>
+                                </p>
+                                <br>
+                                <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
+                                    <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Input the IPCR Rating Value: <input type="number" min="0" max="5" style="width: 73px" class="form-control form-control-sm ipcr-value" id="input-ipcr-rating-average"></span></b>
+                                </p>
+                            </div>
+                        </td>
+                        <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
+                            <!-- Total Rating for Function -->
+                            <div>
+                                <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->ipcr_rating_average}}" name="ipcr_rating_average[]" readonly>
+                            </div>
+                        </td>
+                        <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
+                            <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
+                            </p>
+                            <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">
+                                <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span>
+                                <span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;">&nbsp;</span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr style="box-sizing: border-box; height: 2.9pt;">
+                        <td width="514" style="box-sizing: border-box; border-right: 1pt solid rgb(191, 191, 191); border-bottom: 1pt solid rgb(191, 191, 191); border-left: 1pt solid rgb(191, 191, 191); border-top: none; padding: 0cm 5.4pt;">
+                            <p align="right" style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right; line-height: 12.65pt;">
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span></b>
+                                <span style="box-sizing: border-box; color: black;"></span>
+                            </p>
+                            <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Total Weighted Score</span></b>
+                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
+                            </p>
+                        </td>
+                        <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;" colspan="4">
+                            <!-- Total Rating for Function -->
+                            <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm total-weighted-score-color" id="total-weighted-score" value="{{$row->total_weighted_score}}" name="total_weighted_score[]" readonly>
+                        </td>
+                        <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt;">
+                            <div style="box-sizing: border-box; font-size: 11pt; font-family: Calibri, sans-serif; margin: 8px 0cm; line-height: 12.65pt;">
+                                <p style="box-sizing: border-box; margin: 6pt 0cm;">
+                                    <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;"></span>
+                                </p>
+                                <p style="box-sizing: border-box; margin: 6pt 0cm;"><span style="box-sizing: border-box; font-family: Arial, sans-serif; font-size: 10pt; text-align: center;"></span></p>
+                            </div>
+                            <p align="center" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: center;">
+                                <span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span>
+                            </p>
+                        </td>
+                    </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
             <br>
             <div>
                 <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184; mso-padding-alt: 0.6pt 0.6pt 0.6pt 0.6pt;">
@@ -610,12 +588,22 @@
             }
         });
 
-       //CLEAR AVERAGE FIELDS AND RESET
-       $(document).ready(function(){
+        //CLEAR AVERAGE FIELDS AND RESET
+        $(document).ready(function(){
             $(".btn-reset").click(function(){
                 $('.a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #total-weighted-score').val('');
             });
         });
+
+        $("#input-ipcr-rating-average").on("keydown keyup", function () {
+            let IpcrValue = $(".ipcr-value").val()
+            let compute = 0
+
+            compute = IpcrValue * 0.20
+
+            $('#ipcr-rating-average').val(isNaN(compute) ? "" : compute)
+            computeWeightedScore();
+        })
 
         //COMPUTE THE AVERAGE PER ROW
         $(".q-value, .e-value, .t-value").change(function(){
@@ -636,11 +624,10 @@
             }
 
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
-            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
 
             computeAvg();
             computeWeightedScore();
-            $(".a-value-core, .a-value-support, #core-total-average, #support-total-average, #total-weighted-score").trigger("change")
+            $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
         });
 
@@ -654,7 +641,7 @@
             else {
                 totalweightedscore.style.color = "green";
             }
-        });
+        })
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
         function computeAvg() {
@@ -671,20 +658,6 @@
             }
             avg = (total / count) * 0.80
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.20
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
         }
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
@@ -692,9 +665,9 @@
         function computeWeightedScore(){
             let weightedscore = 0
             let ACoreValue = $("#core-total-average").val()
-            let ASuppValue = $("#support-total-average").val()
+            let IpcrValue = $("#ipcr-rating-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+            weightedscore = parseFloat(ACoreValue) + parseFloat(IpcrValue)
 
             $('#total-weighted-score').val(weightedscore)
         }
@@ -703,5 +676,4 @@
         function setFourNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(4);
         }
-
     </script>

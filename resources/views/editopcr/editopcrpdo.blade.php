@@ -12,7 +12,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
     <!-- Theme style -->
-    <link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}" media="all">
     <!-- Google Font: Source Sans Pro -->
 
     <!-- Bootstrap core JavaScript -->
@@ -30,6 +30,9 @@
         .alert{
             width: 100%;
         }
+        thead { display: table-header-group }
+        tfoot { display: table-row-group }
+        tr { page-break-inside: avoid }
     </style>
 </head>
     <body>
@@ -66,6 +69,10 @@
         <input type="hidden" value="{{ $row->form_id}}" name="form_id[]">
         <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id[]">
         <input type="hidden" value="{{ $row->evaluationform_name }}" name="evaluationform_name[]">
+        <div style="position: absolute; right: 0;">
+            <a href="{{action('PrintformController@pdfexportopcrpdo', $row->form_sequence_id)}}" class="fas fa-print nav-icon fa-2x"></a>
+        </div>
+
         <label>
             Evaluation Form Status:
             <select name="evaluationform_status[]" class="form-control form-control-sm">
@@ -178,8 +185,7 @@
         </div>
         <div>
 
-            <table cellspacing="0" cellpadding="1" style="border-collapse: collapse;" width="">
-                <thead>
+            <table>
                 <tr style="background-color: rgb(255, 255, 255);">
                     {{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
                     <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
@@ -194,7 +200,6 @@
                     <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>T</b></span></td>
                     <td style="text-align: center; width: 73px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
                 </tr>
-                </thead>
 
                 @foreach($ratingsmultiplevalue as $row)
                     <input type="hidden" value="{{ $row->id }}" name="rating_id[]">
@@ -204,13 +209,11 @@
                     <input type="hidden" value="{{ $row->success_indicator_desc }}" name="success_indicator_desc[]">
                     <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                     <tbody>
-                    <tr>
+                    <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
                         {{--                    <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>--}}
                         <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                         <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
                         <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15">{{$row->actual_accomplishment_desc}}</textarea></td>
-                    </tr>
-                    <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">

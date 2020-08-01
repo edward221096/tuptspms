@@ -13,6 +13,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Barryvdh\DomPDF\PDF;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/sidebar', function () {
         return view('layouts.sidebar');
     });
+
 
     //------------------DASHBOARD RELATED ROUTES--------------------------
     //------------------MY DASHBOARD------------------------------
@@ -164,6 +166,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrcsassocp/{id}', 'MyTeamEvaluationFormController@editipcrcsassocp');
 
+    route::get('/printformipcrcsassocp/{id}', 'PrintformController@pdfexportipcrcsassocp');
+
     //IPCRCSASSISP
     Route::get('/ipcrcsassisp', function () {
         return view('ipcr.ipcrcsassisp');
@@ -176,6 +180,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrcsassisp/{id}', 'MyEvaluationFormController@editmyipcrcsassisp');
 
     Route::get('editipcrcsassisp/{id}', 'MyTeamEvaluationFormController@editipcrcsassisp');
+
+    route::get('/printformipcrcsassisp/{id}', 'PrintformController@pdfexportipcrcsassisp');
 
     //IPCRCSINSTRUCTOR
     Route::get('/ipcrcsinstructor', function () {
@@ -190,6 +196,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrcsinstructor/{id}', 'MyTeamEvaluationFormController@editipcrcsinstructor');
 
+    route::get('/printformipcrcsinstructor/{id}', 'PrintformController@pdfexportipcrcsinstructor');
+
     //IPCRCSPROFESSOR
     Route::get('/ipcrcsprofessor', function () {
         return view('ipcr.ipcrcsprofessor');
@@ -202,6 +210,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrcsprofessor/{id}', 'MyEvaluationFormController@editmyipcrcsprofessor');
 
     Route::get('editipcrcsprofessor/{id}', 'MyTeamEvaluationFormController@editipcrcsprofessor');
+
+    route::get('/printformipcrcsprofessor/{id}', 'PrintformController@pdfexportipcrcsprofessor');
 
     //IPCRFAFASSOCP
     Route::get('/ipcrfafassocp', function () {
@@ -216,6 +226,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfafassocp/{id}', 'MyTeamEvaluationFormController@editipcrfafassocp');
 
+    route::get('/printformipcrfafassocp/{id}', 'PrintformController@pdfexportipcrfafassocp');
+
     //IPCRFAFASSISP
     Route::get('/ipcrfafassisp', function () {
         return view('ipcr.ipcrfafassisp');
@@ -228,6 +240,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfafassisp/{id}', 'MyEvaluationFormController@editmyipcrfafassisp');
 
     Route::get('editipcrfafassisp/{id}', 'MyTeamEvaluationFormController@editipcrfafassisp');
+
+    route::get('/printformipcrfafassisp/{id}', 'PrintformController@pdfexportipcrfafassisp');
 
     //IPCRFAFINSTRUCTOR
     Route::get('/ipcrfafinstructor', function () {
@@ -242,6 +256,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfafinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfafinstructor');
 
+    route::get('/printformipcrfafinstructor/{id}', 'PrintformController@pdfexportipcrfafinstructor');
+
     //IPCRFAFPROFESSOR
     Route::get('/ipcrfafprofessor', function () {
         return view('ipcr.ipcrfafprofessor');
@@ -254,6 +270,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfafprofessor/{id}', 'MyEvaluationFormController@editmyipcrfafprofessor');
 
     Route::get('editipcrfafprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfafprofessor');
+
+    route::get('/printformipcrfafprofessor/{id}', 'PrintformController@pdfexportipcrfafprofessor');
 
     //IPCRFQFASSOCP
     Route::get('/ipcrfqfassocp', function () {
@@ -268,6 +286,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfqfassocp/{id}', 'MyTeamEvaluationFormController@editipcrfqfassocp');
 
+    route::get('/printformipcrfqfassocp/{id}', 'PrintformController@pdfexportipcrfqfassocp');
+
     //IPCRFQFASSISP
     Route::get('/ipcrfqfassisp', function () {
         return view('ipcr.ipcrfqfassisp');
@@ -280,6 +300,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfqfassisp/{id}', 'MyEvaluationFormController@editmyipcrfqfassisp');
 
     Route::get('editipcrfqfassisp/{id}', 'MyTeamEvaluationFormController@editipcrfqfassisp');
+
+    route::get('/printformipcrfqfassisp/{id}', 'PrintformController@pdfexportipcrfqfassisp');
 
     //IPCRFQFPROFESSOR
     Route::get('/ipcrfqfprofessor', function () {
@@ -294,6 +316,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfqfprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfqfprofessor');
 
+    route::get('/printformipcrfqfprofessor/{id}', 'PrintformController@pdfexportipcrfqfprofessor');
+
     //IPCRFQFINSTRUCTOR
     Route::get('/ipcrfqfinstructor', function () {
         return view('ipcr.ipcrfqfinstructor');
@@ -306,6 +330,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfqfinstructor/{id}', 'MyEvaluationFormController@editmyipcrfqfinstructor');
 
     Route::get('editipcrfqfinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfqfinstructor');
+
+    route::get('/printformipcrfqfinstructor/{id}', 'PrintformController@pdfexportipcrfqfinstructor');
 
     //IPCRFASSOCPROFESSOR
     Route::get('/ipcrfassprofessor', function () {
@@ -320,6 +346,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfassprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfassprofessor');
 
+    route::get('/printformipcrfassprofessor/{id}', 'PrintformController@pdfexportipcrfassprofessor');
+
     //IPCRFASTPROFESSOR
     Route::get('/ipcrfastprofessor', function () {
         return view('ipcr.ipcrfassprofessor');
@@ -332,6 +360,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfastprofessor/{id}', 'MyEvaluationFormController@editmyipcrfastprofessor');
 
     Route::get('editipcrfastprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfastprofessor');
+
+    route::get('/printformipcrfastprofessor/{id}', 'PrintformController@pdfexportipcrfastprofessor');
 
     //IPCRFPROFESSOR
     Route::get('/ipcrfprofessor', function () {
@@ -346,6 +376,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfprofessor/{id}', 'MyTeamEvaluationFormController@editipcrfprofessor');
 
+    route::get('/printformipcrfprofessor/{id}', 'PrintformController@pdfexportipcrfprofessor');
+
     //IPCRFINSTRUCTOR
     Route::get('/ipcrfinstructor', function () {
         return view('ipcr.ipcrfinstructor');
@@ -359,6 +391,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editipcrfinstructor/{id}', 'MyTeamEvaluationFormController@editipcrfinstructor');
 
+    route::get('/printformipcrfinstructor/{id}', 'PrintformController@pdfexportipcrfinstructor');
+
     //IPCRFULLADMIN
     Route::get('/ipcrfulladmin', function () {
         return view('ipcr.ipcrfulladmin');
@@ -371,6 +405,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyipcrfulladmin/{id}', 'MyEvaluationFormController@editmyipcrfulladmin');
 
     Route::get('editipcrfulladmin/{id}', 'MyTeamEvaluationFormController@editipcrfulladmin');
+
+    route::get('/printformipcrfulladmin/{id}', 'PrintformController@pdfexportipcrfulladmin');
 
     //---------------------------------------OPCR FORMS----------------------------------------------------
     //ADAF
@@ -386,6 +422,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrcampusdirector/{id}', 'MyTeamEvaluationFormController@editopcrcampusdirector');
 
+    route::get('/printformopcrcampusdirector/{id}', 'PrintformController@pdfexportopcrcampusdirector');
+
     //ADAF
     Route::get('/opcradaf', function () {
         return view('opcr.opcradaf');
@@ -398,6 +436,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcradaf/{id}', 'MyEvaluationFormController@editmyopcradaf');
 
     Route::get('editopcradaf/{id}', 'MyTeamEvaluationFormController@editopcradaf');
+
+    route::get('/printformopcradaf/{id}', 'PrintformController@pdfexportopcradaf');
 
     //ADAA
     Route::get('/opcradaa', function () {
@@ -412,6 +452,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcradaa/{id}', 'MyTeamEvaluationFormController@editopcradaa');
 
+    route::get('/printformopcradaa/{id}', 'PrintformController@pdfexportopcradaa');
+
     //DEPARTMENT ACADEMICS
     Route::get('/opcracademics', function () {
         return view('opcr.opcracademics');
@@ -424,6 +466,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcracademics/{id}', 'MyEvaluationFormController@editmyopcracademics');
 
     Route::get('editopcracademics/{id}', 'MyTeamEvaluationFormController@editopcracademics');
+
+    route::get('/printformopcracademics/{id}', 'PrintformController@pdfexportopcracademics');
 
     //ACCOUNTING
     Route::get('/opcraccounting', function () {
@@ -438,6 +482,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcraccounting/{id}', 'MyTeamEvaluationFormController@editopcraccounting');
 
+    route::get('/printformopcraccounting/{id}', 'PrintformController@pdfexportopcraccounting');
+
     //ADRE
     Route::get('/opcradre', function () {
         return view('opcr.opcradre');
@@ -450,6 +496,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcradre/{id}', 'MyEvaluationFormController@editmyopcradre');
 
     Route::get('editopcradre/{id}', 'MyTeamEvaluationFormController@editopcradre');
+
+    route::get('/printformopcradre/{id}', 'PrintformController@pdfexportopcradre');
 
     //BUDGET
     Route::get('/opcrbudget', function () {
@@ -464,6 +512,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrbudget/{id}', 'MyTeamEvaluationFormController@editopcrbudget');
 
+    route::get('/printformopcrbudget/{id}', 'PrintformController@pdfexportopcrbudget');
+
     //CASHIER
     Route::get('/opcrcashier', function () {
         return view('opcr.opcrcashier');
@@ -476,6 +526,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcrcashier/{id}', 'MyEvaluationFormController@editmyopcrcashier');
 
     Route::get('editopcrcashier/{id}', 'MyTeamEvaluationFormController@editopcrcashier');
+
+    route::get('/printformopcrcashier/{id}', 'PrintformController@pdfexportopcrcashier');
 
     //IDO
     Route::get('/opcrido', function () {
@@ -490,6 +542,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrido/{id}', 'MyTeamEvaluationFormController@editopcrido');
 
+    route::get('/printformopcrido/{id}', 'PrintformController@pdfexportopcrido');
+
     //INDUSTRYBASED
     Route::get('/opcrindustrybased', function () {
         return view('opcr.opcrindustrybased');
@@ -502,6 +556,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcrindustrybased/{id}', 'MyEvaluationFormController@editmyopcrindustrybased');
 
     Route::get('editopcrindustrybased/{id}', 'MyTeamEvaluationFormController@editopcrindustrybased');
+
+    route::get('/printformopcrindustrybased/{id}', 'PrintformController@pdfexportopcrindustrybased');
 
     //MEDICAL SERV
     Route::get('/opcrmedicalserv', function () {
@@ -516,6 +572,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrmedicalserv/{id}', 'MyTeamEvaluationFormController@editopcrmedicalserv');
 
+    route::get('/printformopcrmedicalserv/{id}', 'PrintformController@pdfexportopcrmedicalserv');
+
     //PDO
     Route::get('/opcrpdo', function () {
         return view('opcr.opcrpdo');
@@ -528,6 +586,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcrpdo/{id}', 'MyEvaluationFormController@editmyopcrpdo');
 
     Route::get('editopcrpdo/{id}', 'MyTeamEvaluationFormController@editopcrpdo');
+
+    route::get('/printformopcrpdo/{id}', 'PrintformController@pdfexportopcrpdo');
 
     //PROCUREMENT
     Route::get('/opcrprocurement', function () {
@@ -542,6 +602,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrprocurement/{id}', 'MyTeamEvaluationFormController@editopcrprocurement');
 
+    route::get('/printformopcrprocurement/{id}', 'PrintformController@pdfexportopcrprocurement');
+
     //QAA
     Route::get('/opcrqaa', function () {
         return view('opcr.opcrqaa');
@@ -554,6 +616,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcrqaa/{id}', 'MyEvaluationFormController@editmyopcrqaa');
 
     Route::get('editopcrqaa/{id}', 'MyTeamEvaluationFormController@editopcrqaa');
+
+    route::get('/printformopcrqaa/{id}', 'PrintformController@pdfexportopcrqaa');
 
     //RECORDS
     Route::get('/opcrrecords', function () {
@@ -568,6 +632,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('editopcrrecords/{id}', 'MyTeamEvaluationFormController@editopcrrecords');
 
+    route::get('/printformopcrrecords/{id}', 'PrintformController@pdfexportopcrrecords');
+
     //UITC
     Route::get('/opruitc', function () {
         return view('opcr.opruitc');
@@ -580,6 +646,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('editmyopcruitc/{id}', 'MyEvaluationFormController@editmyopcruitc');
 
     Route::get('editopcruitc/{id}', 'MyTeamEvaluationFormController@editopcruitc');
+
+    route::get('/printformopcruitc/{id}', 'PrintformController@pdfexportopcruitc');
 
 
     Route::get('/home', 'HomeController@index')->name('home');

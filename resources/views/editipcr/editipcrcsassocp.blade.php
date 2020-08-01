@@ -2,26 +2,26 @@
 
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
-<title>TUP-Taguig SPMS</title>
+    <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
+    <title>TUP-Taguig SPMS</title>
 
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
-<!-- Theme style -->
-<link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
-<!-- Google Font: Source Sans Pro -->
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css') }}" media="all"/>
 
-<!-- Bootstrap core JavaScript -->
-<!-- jQuery -->
-<script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src=" {{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <!-- jQuery -->
+    <script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap 4 -->
+    <script src=" {{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src=" {{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+
     <style>
         input[type="number"]{
             width:73px
@@ -30,27 +30,28 @@
         .alert{
             width: 100%;
         }
+
+        thead { display: table-header-group }
+        tfoot { display: table-row-group }
+        tr { page-break-inside: avoid }
     </style>
 </head>
 <body>
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="container-fluid">
-                                @if(session()->has('updatemessage'))
-                                    <div class="row">
-                                        <div class="alert alert-success">
-                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                                                &times;
-                                            </button>
-                                            <strong>Information: </strong> {{ session()->get('updatemessage') }}
-                                        </div>
-                                    </div>
-                                @endif
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    @if(session()->has('updatemessage'))
+                        <div class="row">
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <strong>Information: </strong> {{ session()->get('updatemessage') }}
                             </div>
+                        </div>
+                    @endif
                             @foreach($ratingsinglevalue as $row)
                             <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
                             <form action="{{route('updatemyipcropcr.update', [$row->form_sequence_id])}}" method="post">
@@ -66,7 +67,9 @@
                                 <input type="hidden" value="{{ $row->form_id}}" name="form_id[]">
                                 <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id[]">
                                 <input type="hidden" value="{{ $row->evaluationform_name }}" name="evaluationform_name[]">
-
+                                    <div style="position: absolute; right: 0;">
+                                        <a href="{{action('PrintformController@pdfexportipcrcsassocp', $row->form_sequence_id)}}" class="fas fa-print nav-icon fa-2x"></a>
+                                    </div>
                             <label>
                                 Evaluation Form Status:
                                 <select name="evaluationform_status[]" class="form-control form-control-sm">
@@ -182,25 +185,20 @@
                                 <br>
                             </div>
                             <div>
-
-                                <table cellspacing="0" cellpadding="1" style="border-collapse: collapse; width: 100%;">
-                                    <thead>
+                                <table>
                                     <tr style="background-color: rgb(255, 255, 255);">
-                        {{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
-                                        <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
-                                        <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
+                                        <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
+                                        <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                                         <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
                                         <td style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" colspan="4"><span style="font-family: Arial; font-size: 10pt;"><b>RATING</b></span></td>
                                         <td style="text-align: center; width: 366px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>REMARKS</b></span></td>
                                     </tr>
                                     <tr style="background-color: rgb(255, 255, 255);">
-                                        <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>Q</b></span></td>
-                                        <td style="text-align: center; width: 49px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>E</b></span></td>
-                                        <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>T</b></span></td>
+                                        <td style="text-align: center; width: 50px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>Q</b></span></td>
+                                        <td style="text-align: center; width: 50px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>E</b></span></td>
+                                        <td style="text-align: center; width: 50px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>T</b></span></td>
                                         <td style="text-align: center; width: 73px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>A</b></span></td>
                                     </tr>
-                                    </thead>
-
                                     @foreach($ratingsmultiplevalue as $row)
                                         <input type="hidden" value="{{ $row->id }}" name="rating_id[]">
                                         <input type="hidden" value="{{ $row->mfo_id}}" name="mfo_id[]">
@@ -210,12 +208,10 @@
                                         <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                                         <tbody>
                                             <tr style="vertical-align: top;">
-                        {{--                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!} </td>--}}
-                                            <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
-                                            <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                                                <td style="position: relative; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]">{{$row->actual_accomplishment_desc}}</textarea></td>
-                                            </tr>
-                                            <tr style="background-color: rgb(255, 255, 255); vertical-align: top">
+                                            <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
+                                            <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
+                                                <td style="position: relative; text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]">{{$row->actual_accomplishment_desc}}</textarea></td>
+{{--                                            <tr style="background-color: rgb(255, 255, 255); vertical-align: top">--}}
                                                 <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                                                     <div class="form-label-group">
                                                         <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
@@ -268,12 +264,9 @@
                                                             <input type="number" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm a-value-research"
                                                                    name="A[]" value="{{ $row->A4}}" style="width: 73px" readonly>
                                                         @endif
-
                                                     </div>
                                                 </td>
-
-                                                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
-                                            </tr>
+                                                <td style="vertical-align: top; text-align: left; width: 366px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                                         </tbody>
                                 @endforeach
                                 </table>
@@ -589,12 +582,11 @@
                             </div>
                             @endforeach
                             </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                         </body>
     <script type="text/javascript">
         //FOR CONDITIONAL FORMATTING ON DOCUMENT LOAD

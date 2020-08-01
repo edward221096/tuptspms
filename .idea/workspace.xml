@@ -44,6 +44,9 @@
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/owl.carousel.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/rellax.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/smoothscroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PrintformController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/dompdf.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/snappy.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -627,11 +630,15 @@
       <change beforePath="$PROJECT_DIR$/../projectfoo/webpack.mix.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tuptspms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tuptspms.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -1125,6 +1132,11 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltopdf-amd64" />
+      <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltopdf-i386" />
+      <path value="$PROJECT_DIR$/vendor/h4cc/wkhtmltoimage-amd64" />
     </include_path>
   </component>
   <component name="ProjectId" id="1X7HXY4Eg8xkdV1vYEmtQwYdbGu" />
@@ -1151,17 +1163,17 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
+      <recent name="C:\laravel\tuptspms\resources\views\auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views\editopcr" />
       <recent name="C:\laravel\tuptspms\resources\views\opcr" />
       <recent name="C:\laravel\tuptspms\resources\views" />
       <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
       <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views" />
-      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
-      <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1395,6 +1407,10 @@
       <workItem from="1595933283897" duration="11627000" />
       <workItem from="1595990417528" duration="16743000" />
       <workItem from="1596019570769" duration="11337000" />
+      <workItem from="1596082430403" duration="15179000" />
+      <workItem from="1596110754144" duration="6017000" />
+      <workItem from="1596182532220" duration="26694000" />
+      <workItem from="1596250523502" duration="5000" />
     </task>
     <servers />
   </component>
@@ -1405,10 +1421,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596019602883">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596250526819">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596019602883" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596250526819" />
     <state x="361" y="72" key="#Notifications" timestamp="1595904195234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1449,9 +1465,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596019684920" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596029775861">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596199877066">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596029775861" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1596199877066" />
   </component>
 </project>

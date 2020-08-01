@@ -299,6 +299,7 @@
         <script>
             tinymce.init({
                 selector: 'textarea',
+                height: "700",
                 plugins: 'lists',
                 toolbar: 'undo redo styleselect bold italic alignleft aligncenter alignright bullist numlist outdent indent code',
             })

@@ -453,10 +453,10 @@
 
 
                                     @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
-                                        @if(Auth::User()->role == 'Fulltime - Admin'
-                                OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Section Head' OR
-                                Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director' OR
-                                Auth::User()->role == 'Department Head' AND $row->type === 'Non-Teaching')
+                                        @if($row->type == 'Non-Teaching' OR $row->type == 'Admin' OR Auth::User()->role == 'Fulltime - Admin'
+                                    AND Auth::User()->role == 'Super Admin' AND Auth::User()->role == 'Section Head' OR
+                                    Auth::User()->role == 'Division Head' AND Auth::User()->role == 'Campus Director' AND
+                                    Auth::User()->role == 'Department Head')
                                             <a href="ipcrfulladmin" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
                                                 <p>Fulltime Admin</p>

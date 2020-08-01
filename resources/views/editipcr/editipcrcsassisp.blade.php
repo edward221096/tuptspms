@@ -12,7 +12,7 @@
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href=" {{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }} ">
 <!-- Theme style -->
-<link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}">
+<link rel="stylesheet" href=" {{ asset('adminlte/dist/css/adminlte.min.css') }}" media="all">
 <!-- Google Font: Source Sans Pro -->
 
 <!-- Bootstrap core JavaScript -->
@@ -30,6 +30,10 @@
         .alert{
             width: 100%;
         }
+
+        thead { display: table-header-group }
+        tfoot { display: table-row-group }
+        tr { page-break-inside: avoid }
     </style>
 </head>
 <body>
@@ -50,7 +54,7 @@
                                 </div>
                             </div>
                         @endif
-                    </div>
+
                         @foreach($ratingsinglevalue as $row)
                         <!-- UPDATE ALL THE USER DATA TO RATING TABLE -->
                         <form action="{{route('updatemyipcropcr.update', [$row->form_sequence_id])}}" method="post">
@@ -67,6 +71,9 @@
                             <input type="hidden" value="{{ $row->form_sequence_id }}" name="form_sequence_id[]">
                             <input type="hidden" value="{{ $row->evaluationform_name }}" name="evaluationform_name[]">
 
+                            <div style="position: absolute; right: 0;">
+                                <a href="{{action('PrintformController@pdfexportipcrcsassisp', $row->form_sequence_id)}}" class="fas fa-print nav-icon fa-2x"></a>
+                            </div>
 
                             <label>
                                 Evaluation Form Status:
@@ -188,7 +195,6 @@
                             <table cellspacing="0" cellpadding="1" style="border-collapse: collapse; width: 100%;">
                                 <thead>
                                 <tr style="background-color: rgb(255, 255, 255);">
-                    {{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
                                     <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
                                     <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
                                     <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
@@ -212,7 +218,6 @@
                                     <input type="hidden" value="{{ $row->remarks }}" name="remarks[]">
                                     <tbody>
                                         <tr style="vertical-align: top;">
-                    {{--                    <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!} </td>--}}
                                         <td style="text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                                         <td style="text-align: left; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
                                             <td style="position: relative; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]">{{$row->actual_accomplishment_desc}}</textarea></td>
@@ -273,8 +278,7 @@
 
                                                 </div>
                                             </td>
-
-                                            <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
+                                            <td style="text-align: center; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                                         </tr>
                                     </tbody>
                             @endforeach
@@ -594,6 +598,7 @@
                         </form>
                         </div>
                     </div>
+            </div>
                 </div>
             </div>
         </div>

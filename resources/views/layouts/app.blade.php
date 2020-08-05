@@ -80,7 +80,7 @@
         </nav>
             @yield('register')
             @yield('loginpage')
-
+            @yield('content')
     </div>
 </body>
 </html>

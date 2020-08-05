@@ -13,13 +13,16 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Barryvdh\DomPDF\PDF;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/password/reset', function(){
+    return view('passwords.reset');
+});
+
+Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/sidebar', function () {

@@ -171,13 +171,6 @@
                             <div class="form-label-group">
                                 <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autofocus>
                                 <label for="email">Username or E-mail Address</label>
-
-
-{{--                                @error('username')--}}
-{{--                                <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                                @enderror--}}
                             </div>
 
                             <div class="form-label-group">
@@ -196,8 +189,11 @@
                                 <label class="custom-control-label" for="remember">{{ __('Remember Me') }}</label>
                             </div>
 
-
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">{{ __('Login') }}</button>
+                            <br>
+                            <div>
+                                Forgot your password? Click <a href="{{url('/password/reset')}}">here!</a>
+                            </div>
                             <hr class="my-4">
                             <div>Don't Have an Account?</div>
                             <a href="{{ route('register') }}" class="btn btn-lg btn-secondary btn-block text-uppercase">Click Here to Register</a>

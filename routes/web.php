@@ -418,7 +418,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/storedataopcrcampusdirector', 'OpcrController@storeopcrcampusdirector');
 
-    Route::get('editmyopcrcampusdirector/{id}', 'MyEvaluationFormController@editmyopcrrcampusdirector');
+    Route::get('editmyopcrcampusdirector/{id}', 'MyEvaluationFormController@editmyopcrcampusdirector');
 
     Route::get('editopcrcampusdirector/{id}', 'MyTeamEvaluationFormController@editopcrcampusdirector');
 

@@ -569,7 +569,7 @@
                                         @endif
                                     </li>
                                     <li class="nav-item">
-                                        @if($row->dept_name === 'Medical Services' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
+                                        @if($row->dept_name === 'Medical Service' OR Auth::User()->role == 'Super Admin' OR Auth::User()->role == 'Campus Director'
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrmedicalserv" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>

@@ -130,17 +130,12 @@
                         <div>
                             <!-- Getting the currently logged user -->
                             <p style="margin: 0cm 0cm 10pt; line-height: 115%; font-size: 11pt; font-family: Calibri, sans-serif;margin-bottom:0cm;margin-bottom:.0001pt;text-align:
-                    justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>
-                                            @foreach($userdata as $row)
-                                            {{$row->name}},
-                                            </u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{$row->ratee_role}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"></span><span style="font-family: Arial; font-size: 10pt;"><b><u>
-                                            {{$row->division_name}} / {{$row->dept_name}} / {{$row->section_name}}
-                                        </u></b></span><span style="font-family: Arial; font-size: 10pt;">,
-                    Technological University of the Philippines - Taguig, commits to deliver and
-                    agree to be rated on the attainment of the following targets in accordance with
-                    the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;">
-                                    @endforeach
-                                    <b>
+justify;line-height:normal"><span style="font-family: Arial; font-size: 10pt;">I, </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{ Str::Upper(Auth::User()->name)}},</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>{{ Str::Upper(Auth::User()->role)}}</u></b></span><span style="font-family: Arial; font-size: 10pt;"> </span><span style="font-family: Arial; font-size: 10pt;"><b><u>
+                        @foreach(\App\Http\Controllers\IpcrController::getUserdata() as $getdata) {{ Str::Upper($getdata->division_name) }} / {{ Str::Upper($getdata->dept_name)}} / {{Str::Upper($getdata->section_name)}} @endforeach</u></b></span><span style="font-family: Arial; font-size: 10pt;">,
+Technological University of the Philippines - Taguig, commits to deliver and
+agree to be rated on the attainment of the following targets in accordance with
+the indicated measures for the period </span><span style="font-family: Arial; font-size: 10pt;">
+                <b>
                                         <u>
                     <!-- TO DISPLAY THE EVALUATION PERIOD START AND END DATE -->
                                             @foreach($ratingsinglevalue as $row)

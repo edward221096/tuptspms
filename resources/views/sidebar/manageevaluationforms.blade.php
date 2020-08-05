@@ -104,20 +104,18 @@
         </div>
 
         <form method="GET" action="/manageevaluationforms">
-            <table class="table table-striped">
+            <table class="table table-striped" style="width: 100%; table-layout: fixed;">
                 <thead>
-{{--                <tr style="font-size: 10.5pt; text-align: center;">--}}
-                <tr style="">
-                    <th>FORM TYPE</th>
-                    <th>DEPARTMENT NAME</th>
-                    <th>FUNCTION NAME</th>
-                    <th>ROLE NAME</th>
-                    <th>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</th>
-                    <th>QUALITY + OBJECTIVES
+                <tr>
+                    <th style="width: 10%;">FORM TYPE</th>
+                    <th style="width: 10%">DEPT NAME</th>
+                    <th style="width: 12%;">FUNCTION NAME</th>
+                    <th style="width: 10%;">ROLE NAME</th>
+                    <th style="width: 20%">ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</th>
+                    <th style="width: 20%">QUALITY + OBJECTIVES
                         (TARGETS + MEASURES)</th>
-{{--                    <th>ACTUAL ACCOMPLISHMENTS</th>--}}
-                    <th>REMARKS</th>
-                    <th>ACTIONS</th>
+                    <th style="width: 20%">REMARKS</th>
+                    <th style="width: 10%">ACTIONS</th>
                 </tr>
                 </thead>
                 <tbody>

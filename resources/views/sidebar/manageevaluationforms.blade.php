@@ -106,7 +106,8 @@
         <form method="GET" action="/manageevaluationforms">
             <table class="table table-striped">
                 <thead>
-                <tr style="font-size: 10.5pt; text-align: center;">
+{{--                <tr style="font-size: 10.5pt; text-align: center;">--}}
+                <tr style="">
                     <th>FORM TYPE</th>
                     <th>DEPARTMENT NAME</th>
                     <th>FUNCTION NAME</th>

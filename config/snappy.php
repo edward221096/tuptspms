@@ -37,12 +37,7 @@ return [
         'enabled' => true,
         'binary'  => env('WKHTML_PDF_BINARY', '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"'),
         'timeout' => false,
-        'options' => [
-            'orientation' => 'landscape',
-            'enable-javascript' => true,
-            'javascript-delay' => 500,
-            'no-stop-slow-scripts' => true,
-            'enable-smart-shrinking' => true],
+        'options' => [],
         'env' => [],
     ],
 

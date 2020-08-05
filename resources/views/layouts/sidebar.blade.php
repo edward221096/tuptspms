@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
-    <title>TUP-Taguig SPMS</title>
+    <title>TUP TAGUIG - SPMS</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">

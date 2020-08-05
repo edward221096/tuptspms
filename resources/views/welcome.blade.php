@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Welcome to TUP Taguig SPMS</title>
+    <title>WELCOME TO TUP TAGUIG - SPMS</title>
     <!--
 
     DIGITAL TREND
@@ -16,6 +16,8 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
 
     <link rel="stylesheet" href="{{ asset('welcomepagecss/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('welcomepagecss/font-awesome.min.css') }}">

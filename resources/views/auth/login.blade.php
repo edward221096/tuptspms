@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
-    <title>Log-in to TUP-Taguig SPMS</title>
+    <title>LOG-IN TUP TAGUIG - SPMS</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

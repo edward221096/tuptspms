@@ -349,7 +349,7 @@
                         @foreach(\App\Http\Controllers\OpcrController::getLatestIpcrRatings() as $getipcrratingaverage)
                             <input type="hidden"  value="{{$getipcrratingaverage->total_weighted_score}}" id="get-ipcr-rating-average">
                         @endforeach
-                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->total_weighted_score}}" name="ipcr_rating_average[]" readonly>
+                        <input type="number" style="width: 73px" onchange="setFourNumberDecimal(this)" class="form-control form-control-sm" id="ipcr-rating-average" value="{{$row->ipcr_rating_average}}" name="ipcr_rating_average[]" readonly>
                     </td>
                     <td width="254" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 524px;">
                         <p style="box-sizing: border-box; margin: 6pt 0cm; font-size: 11pt; font-family: Calibri, sans-serif; line-height: 12.65pt;">

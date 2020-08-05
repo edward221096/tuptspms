@@ -7,7 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
-    <title>TUP-Taguig SPMS</title>
+    <title>TUP TAGUIG - SPMS</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
@@ -705,37 +705,74 @@
 
                     <div class="col-sm-12">
                         <div class="card">
-                            <p style="font-weight: bold">As a normal user (Faculty or Staff)</p>
-                            1. Please wait for the evaluation period to be OPEN by Planning Department before answering the IPCR forms based on your role
+                            <p style="font-weight: bold">AS A NORMAL USER (FACULTY OR STAFF)</p>
+                            1. Please wait for the evaluation period to OPEN by Planning Officer before answering the IPCR form based on your role
                             <br>
-                            2. If the evaluation period is OPEN. You can navigate to IPCR then click the form based on your role to start the evaluation
-                            <br>
-                            3. If you are done with the evaluation. You can navigate to Evaluation Forms > My Evaluation Forms to see the previous and recent evaluation forms and its status
-                            4. You can also navigate to Dashboard > My Dashboard to check the graph of your previous and recent IPCR Ratings
-                            <br>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="card">
-                            <p style="font-weight: bold">As a Section Head and Above</p>
-                            1. You can go to My Team Evaluation Forms to check your OPCR and IPCR forms as well as the IPCR form of your team
-                            <br>
-                            2. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+                            2. If the evaluation period is OPEN. You can navigate to: <u style="font-style: italic;">IPCR > IPCR Form based on Role</u>
+                            3. If you are done with the evaluation. You can check the previous, recent and status of your evaluation forms. Navigate to:
+                            <u style="font-style: italic;">Evaluation Forms > My Evaluation Forms</u>
+                            4. If you want to check the graph of your previous and recent IPCR and OPCR Ratings (If any). You can navigate to:
+                            <u style="font-style: italic;">Dashboard > My Dashboard</u>
                             <br>
                         </div>
                     </div>
 
                     <div class="col-sm-12">
                         <div class="card">
-                            <p style="font-weight: bold">As a Planning Officer</p>
-                            1. You can navigate to Admin > Manage Evaluation Period to set evaluation period start and end date and status
+                            <p style="font-weight: bold;">AS A SECTION HEAD</p>
+                            1. Please wait for the evaluation period to OPEN by Planning Officer before answering the IPCR form based on your role
                             <br>
-                            2. You can navigate to Manage > Organization > to view, add, edit and delete organization (Division, Department, Section)
+                            2. If the evaluation period is OPEN. You can navigate to: <u style="font-style: italic;">IPCR > IPCR Form based on Role</u>
+                            3. If you want to see the previous and recent evaluation forms and its status then navigate to: <u style="font-style: italic;">Evaluation Forms > My Evaluation Forms</u>
+                            4. If you want to see the evaluation forms of faculty/staff under you then navigate to:  <u style="font-style: italic;">Evaluation Forms > My Team Evaluation Forms</u>
+                            5. If you want to check the graph of your previous and recent IPCR and OPCR Ratings (If any). You can navigate to:
+                            <u style="font-style: italic;">Dashboard > My Dashboard</u>
                             <br>
-                            3. You can navigate to Manage Evaluation Forms to view, add, edit and delete content or questions for each evaluation forms
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold;">AS A DEPARTMENT HEAD</p>
+                            1. If the evaluation period is OPEN. You can navigate to: <u style="font-style: italic;">IPCR > IPCR Form based on Role</u> or <u style="font-style: italic;">OPCR > OPCR Form based on your Department</u>
+                            2. If you want to see the previous and recent evaluation forms and its status then navigate to: <u style="font-style: italic;">Evaluation Forms > My Evaluation Forms</u>
+                            3. If you want to see the evaluation forms of faculty/staff under you then navigate to:  <u style="font-style: italic;">Evaluation Forms > My Team Evaluation Forms</u>
+                            4. If you want to manage employee user accounts as well as account approval then navigate to: <u style="font-style: italic;">Admin > Manage Employee</u>
+                            5. If you want to check the graph of your previous and recent IPCR and OPCR Ratings (If any). You can navigate to:
+                            <u style="font-style: italic;">Dashboard > My Dashboard</u>
                             <br>
-                            4. You can manage employee to change the basic information of each users and their respective division, department, section and account status
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold;">AS A DIVISION HEAD</p>
+                            1. If the evaluation period is OPEN. You can navigate to: <u style="font-style: italic;">IPCR > IPCR Form based on Role</u> or <u style="font-style: italic;">OPCR > OPCR Form based on your Department</u>
+                            2. If you want to see the previous and recent evaluation forms and its status then navigate to: <u style="font-style: italic;">Evaluation Forms > My Evaluation Forms</u>
+                            3. If you want to see the evaluation forms of faculty/staff under you then navigate to:  <u style="font-style: italic;">Evaluation Forms > My Team Evaluation Forms</u>
+                            4. If you want to manage employee user accounts as well as account approval then navigate to: <u style="font-style: italic;">Admin > Manage Employee</u>
+                            5. If you want to check the graph of your previous and recent IPCR and OPCR Ratings (If any). You can navigate to:
+                            <u style="font-style: italic;">Dashboard > My Dashboard</u>
+                            6. If you want to check the simple Analytics related with the IPCR Forms then navigate to <u style="font-style: italic;">Dashboard > IPCR Dashboard</u>
+                            7. If you want to check the simple Analytics related with the OPCR Forms then navigate to <u style="font-style: italic;">Dashboard > OPCR Dashboard</u>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <p style="font-weight: bold">AS A CAMPUS DIRECTOR OR PLANNING OFFICER</p>
+                            1. If the evaluation period is OPEN. You can navigate to: <u style="font-style: italic;">IPCR > IPCR Form based on Role</u> or <u style="font-style: italic;">OPCR > OPCR Form based on your Role</u>
+                            2. If you want to see the previous and recent evaluation forms and its status then navigate to: <u style="font-style: italic;">Evaluation Forms > My Evaluation Forms</u>
+                            3. If you want to see the evaluation forms of faculty/staff under you then navigate to:  <u style="font-style: italic;">Evaluation Forms > My Team Evaluation Forms</u>
+                            4. If you want to manage evaluation period uthen navigate to: <u style="font-style: italic;">Admin > Manage Evaluation Period</u>
+                            4. If you want to manage organization (Divisions, Departments and Sections) then navigate to: <u style="font-style: italic;">Admin > Manage Organization</u>
+                            4. If you want to manage evaluation form questions and content then navigate to: <u style="font-style: italic;">Admin > Manage Evaluation Forms</u>
+                            4. If you want to manage employee user accounts as well as account approval then navigate to: <u style="font-style: italic;">Admin > Manage Employee</u>
+                            5. If you want to check the graph of your previous and recent IPCR and OPCR Ratings (If any). You can navigate to:
+                            <u style="font-style: italic;">Dashboard > My Dashboard</u>
+                            6. If you want to check the simple Analytics related with the IPCR Forms then navigate to <u style="font-style: italic;">Dashboard > IPCR Dashboard</u>
+                            7. If you want to check the simple Analytics related with the OPCR Forms then navigate to <u style="font-style: italic;">Dashboard > OPCR Dashboard</u>
                             <br>
                         </div>
                     </div>

@@ -92,7 +92,6 @@ class RegisterController extends Controller
             'dept_id'=> $data['dept_id'],
             'section_id'=> $data['section_id']
         ]);
-
     }
 
     /**

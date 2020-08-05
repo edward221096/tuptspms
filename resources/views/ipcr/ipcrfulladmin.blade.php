@@ -1108,6 +1108,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / counter)
 
             computeAvg();
+            $('#core-total-average').val(totalclericaltechnical)
+
             computeWeightedScore();
             $("#sgsupportfunction, #sgtotal, .clerical-value-core, .technical-value-core, .a-value-support, #technical, #clericalroutine, #support-total-average, #total-weighted-score").trigger("change")
             setFourNumberDecimal();
@@ -1163,7 +1165,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             for (let x = 0; x < supvalues.length; x++) {
                 if (supvalues[x].value !== "") {
                     count++
-                    total = total + parseFloat(supvalues[x].value)
+                    total = total + Number(supvalues[x].value)
                 }
             }
             avg = total / count * 0.20
@@ -1181,27 +1183,27 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 let totalclericaltechnical = 0
 
                 if (selectedsalarygrade === '>20'){
-                    totalAclerical = AClericalvalue * 0
-                    totalAtechnical = ATechnicalvalue * 0.80
-                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                    totalAclerical = Number(AClericalvalue * 0)
+                    totalAtechnical = Number(ATechnicalvalue * 0.80)
+                    totalclericaltechnical = totalAclerical + totalAtechnical
                 }
 
                 if(selectedsalarygrade === '16-19'){
-                    totalAclerical = AClericalvalue * 0.10
-                    totalAtechnical = ATechnicalvalue * 0.70
-                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                    totalAclerical = Number(AClericalvalue * 0.10)
+                    totalAtechnical = Number(ATechnicalvalue * 0.70)
+                    totalclericaltechnical = totalAclerical + totalAtechnical
                 }
 
                 if(selectedsalarygrade === '11-15'){
-                    totalAclerical = AClericalvalue * 0.20
-                    totalAtechnical = ATechnicalvalue * 0.60
-                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                    totalAclerical = Number(AClericalvalue * 0.20)
+                    totalAtechnical = Number(ATechnicalvalue * 0.60)
+                    totalclericaltechnical = totalAclerical + totalAtechnical
                 }
 
                 if(selectedsalarygrade === '6-10'){
                     totalAclerical = AClericalvalue * 0.30
                     totalAtechnical = ATechnicalvalue * 0.50
-                    totalclericaltechnical = parseFloat(totalAclerical) + parseFloat(totalAtechnical)
+                    totalclericaltechnical = totalAclerical + totalAtechnical
                 }
 
                 $('#core-total-average').val(totalclericaltechnical)
@@ -1219,7 +1221,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             let ACoreValue = $("#core-total-average").val()
             let ASuppValue = $("#support-total-average").val()
 
-            weightedscore = parseFloat(ACoreValue) + parseFloat(ASuppValue)
+            weightedscore = Number(ACoreValue) + Number(ASuppValue)
 
             $('#total-weighted-score').val(weightedscore)
             $('#sgtotal').val(weightedscore)
@@ -1227,7 +1229,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 
         //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE
         function setFourNumberDecimal(el) {
-            el.value = parseFloat(el.value).toFixed(4);
+            el.value = Number(el.value).toFixed(4);
         }
     </script>
 @endsection

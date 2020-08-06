@@ -1,8 +1,7 @@
 @extends('layouts.sidebar')
-@section('ipcrdashboard')
-
+@section('opcrdashboard')
     <div class="container-fluid">
-                <h4 class="mt-4">Individual Performance Commitment Review (IPCR) Dashboard ('OPEN' Evaluation Period Status Only)</h4>
+        <h4 class="mt-4">Office Performance Commitment and Review (OPCR) Dashboard ('OPEN' Evaluation Period Status Only)</h4>
         <div>
             <br>
         </div>
@@ -10,7 +9,7 @@
         <div class="row">
             <div class="col-6">
                 <div class="card">
-                    <div class="card-header" style="text-align: center;">IPCR based on Evaluation Status
+                    <div class="card-header" style="text-align: center;">OPCR based on Evaluation Status
                         @foreach($getEvalPeriod as $row)
                             <div style="font-size: 11.5pt;">
                                 Evaluation Period: <u> {{$row->evaluation_period}}</u>
@@ -18,9 +17,9 @@
                         @endforeach
                     </div>
                     <div class="card-body">
-                        <canvas id="countipcrevalstatus"></canvas>
+                        <canvas id="countopcrevalstatus"></canvas>
                         <div class="card-footer" style="font-weight: lighter; font-size: 11pt; text-align: center;">
-                            <div>Shows the total count of IPCR based on Evaluation Status</div>
+                            <div>Shows the total count of OPCR based on Evaluation Status</div>
                             <div>(All Evaluation Form Status)</div>
                     </div>
                 </div>
@@ -29,7 +28,7 @@
 
             <div class="col-6">
                 <div class="card">
-                    <div class="card-header" style="text-align: center;">IPCR having Total Weighted Score below 3
+                    <div class="card-header" style="text-align: center;">OPCR having Total Weighted Score below 3
                         @foreach($getEvalPeriod as $row)
                             <div style="font-size: 11.5pt;">
                                 Evaluation Period: <u> {{$row->evaluation_period}}</u>
@@ -37,9 +36,9 @@
                         @endforeach
                     </div>
                     <div class="card-body">
-                        <canvas id="countipcrweightedscore"></canvas>
+                        <canvas id="countopcrweightedscore"></canvas>
                         <div class="card-footer" style="font-weight: lighter; font-size: 11pt; text-align: center;">
-                            <div>Shows the total count of IPCR having a Total Weighted Score Below 3.</div>
+                            <div>Shows the total count of OPCR having a Total Weighted Score Below 3.</div>
                             <div>(Unapproved Evaluation Form Status only)<div>
                         </div>
                     </div>
@@ -52,7 +51,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header" style="text-align: center;">IPCR based on Deparment
+                    <div class="card-header" style="text-align: center;">OPCR based on Deparment
                         @foreach($getEvalPeriod as $row)
                             <div style="font-size: 11.5pt;">
                                 Evaluation Period: <u> {{$row->evaluation_period}}</u>
@@ -60,19 +59,19 @@
                         @endforeach
                     </div>
                     <div class="card-body">
-                        <canvas id="countipcrdepartment"></canvas>
+                        <canvas id="countopcrdepartment"></canvas>
                         <div class="card-footer" style="font-weight: lighter; font-size: 11pt; text-align: center;">
-                            <div>Shows the total count of IPCR per Department</div>
+                            <div>Shows the total count of OPCR per Department</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
 
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header" style="text-align: center;">Faculty/Staff who are done (Approved IPCR)
+                    <div class="card-header" style="text-align: center;">Faculty/Staff who are done (Approved OPCR)
                         @foreach($getEvalPeriod as $row)
                             <div style="font-size: 11.5pt;">
                                 Evaluation Period: <u> {{$row->evaluation_period}}</u>
@@ -105,12 +104,11 @@
         </div>
     </div>
 
-
     <script>
         //COUNT TOTAL IPCR BASED ON EVALUATION STATUS
-        var countipcrevalstatus = $('#countipcrevalstatus');
+        var countopcrevalstatus = $('#countopcrevalstatus');
 
-        var url1 = "{{url('/countipcrevalstatus')}}";
+        var url1 = "{{url('/countopcrevalstatus')}}";
         var count = [];
         var evalstatus = [];
 
@@ -120,7 +118,7 @@
                     count.push(data.count);
                     evalstatus.push(data.evaluationform_status);
                 });
-                var ctx = document.getElementById("countipcrevalstatus").getContext('2d');
+                var ctx = document.getElementById("countopcrevalstatus").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'doughnut',
                     data: {
@@ -166,9 +164,9 @@
         });
 
         //TOTAL IPCR COUNT PER EVALUATION STATUS BELOW 3 TOTAL WEIGHTED SCORE
-        var countipcrweightedscore = $('#countipcrweightedscore');
+        var countopcrweightedscore = $('#countopcrweightedscore');
 
-        var url2 = "{{url('/countipcrweightedscore')}}";
+        var url2 = "{{url('/countopcrweightedscore')}}";
         var count2 = [];
         var evalstatus2 = [];
 
@@ -178,7 +176,7 @@
                     count2.push(data.count);
                     evalstatus2.push(data.evaluationform_status);
                 });
-                var ctx2 = document.getElementById("countipcrweightedscore").getContext('2d');
+                var ctx2 = document.getElementById("countopcrweightedscore").getContext('2d');
                 var myChart = new Chart(ctx2, {
                     type: 'bar',
                     data: {
@@ -217,9 +215,9 @@
         });
 
         //TOTAL COUNT OF IPCR PER DEPARTMENT
-        var countipcrdepartment = $('#countipcrdepartment');
+        var countopcrdepartment = $('#countopcrdepartment');
 
-        var url3 = "{{url('/countipcrdepartment')}}";
+        var url3 = "{{url('/countopcrdepartment')}}";
         var count3 = [];
         var deptname = [];
 
@@ -229,7 +227,7 @@
                     count3.push(data.count);
                     deptname.push(data.dept_name);
                 });
-                var ctx3 = document.getElementById("countipcrdepartment").getContext('2d');
+                var ctx3 = document.getElementById("countopcrdepartment").getContext('2d');
                 var myChart = new Chart(ctx3, {
                     type: 'horizontalBar',
                     data: {

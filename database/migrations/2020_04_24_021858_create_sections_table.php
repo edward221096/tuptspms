@@ -38,7 +38,7 @@ class CreateSectionsTable extends Migration
             ['id' => 13, 'dept_id'=> 4, 'section_name' => 'Non-Destructive Testing Engineering Technology'],
             ['id' => 14, 'dept_id'=> 4, 'section_name' => 'Refrigeration and Airconditioning Engineering Technology'],
             ['id' => 15, 'dept_id'=> 5, 'section_name' => 'Bachelor of Engineering'],
-            ['id' => 16, 'dept_id' => 7, 'section_name' => 'Campus Director Department'],
+            ['id' => 16, 'dept_id' => 7, 'section_name' => 'Campus Director'],
             ['id' => 17, 'dept_id' => 8, 'section_name' => 'ADAA'],
             ['id' => 18, 'dept_id' => 9, 'section_name' => 'ADAF'],
             ['id' => 19, 'dept_id' => 10, 'section_name' => 'ADRE'],

@@ -51,6 +51,21 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/countipcrdepartment', 'IpcrDashboardController@getCountperDepartment');
 
+    route::get('/ipcrdashboard', 'IpcrDashboardController@getevaluated');
+
+    //------------------OPCR DASHBOARD------------------------------
+    Route::get('/opcrdashboard', function(){
+        return view('sidebar.opcrdashboard');
+    });
+
+    Route::get('/countopcrevalstatus', 'OpcrDashboardController@getCountOpcrEvalStatus');
+
+    Route::get('/countopcrweightedscore', 'OpcrDashboardController@getCountWeightedScore');
+
+    Route::get('/countopcrdepartment', 'OpcrDashboardController@getCountperDepartment');
+
+    route::get('/opcrdashboard', 'OpcrDashboardController@getevaluated');
+
     //------------------EMPLOYEE RELATED ROUTES---------------------------
     Route::get('/employee', function () {
         return view('sidebar.employee');

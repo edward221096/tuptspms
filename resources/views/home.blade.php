@@ -139,7 +139,7 @@
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="opcrdashboard" class="nav-link">
                                         <i class="fa fa-chart-area nav-icon"></i>
                                         <p>OPCR Dashboard</p>
                                     </a>
@@ -698,6 +698,7 @@
                                 @yield('opcrrecords')
                                 @yield('opcruitc')
                                 @yield('ipcrdashboard')
+                                @yield('opcrdashboard')
                                 @yield('mydashboard')
                             </div>
                         </div>

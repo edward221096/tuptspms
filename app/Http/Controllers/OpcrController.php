@@ -18,11 +18,13 @@ class OpcrController extends Controller
 
         $getlatestipcrratings = DB::table('ratings')
             ->join('forms', 'forms.id', '=', 'ratings.form_id')
-            ->select('total_weighted_score')
+            ->join('evaluationperiods', 'ratings.evaluation_startdate', '=', 'evaluationperiods.evaluation_startdate')
+            ->select('ratings.total_weighted_score')
+            ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
             ->where('forms.form_type', '=', 'IPCR')
             ->where('ratings.user_id', '=', $myuserid)
-            ->orderBy('evaluation_startdate', 'desc')
-            ->orderBy('form_sequence_id','desc')
+            ->orderBy('ratings.evaluation_startdate', 'desc')
+            ->orderBy('ratings.form_sequence_id','desc')
             ->limit(1)
             ->get();
 

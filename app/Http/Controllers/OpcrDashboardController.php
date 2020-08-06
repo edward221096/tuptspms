@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Rating;
-use App\TestRatings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Psr\Log\NullLogger;
 
-class IpcrDashboardController extends Controller
+class OpcrDashboardController extends Controller
 {
-    public function getCountIpcrEvalStatus()
+    public function getCountOpcrEvalStatus()
     {
         $evalstatus = DB::table('ratings')
             ->join('forms', 'ratings.form_id', '=', 'forms.id')
@@ -19,7 +16,7 @@ class IpcrDashboardController extends Controller
                 YEAR(ratings.evaluation_startdate), " ", "to", " ", LEFT(MONTHNAME(UPPER(ratings.evaluation_enddate)),3), " ",
                 YEAR(ratings.evaluation_enddate)) as evaluation_period'))
             ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
-            ->where('forms.form_type', '=', 'IPCR')
+            ->where('forms.form_type', '=', 'OPCR')
             ->groupBy('ratings.evaluationform_status', 'ratings.evaluation_startdate', 'ratings.evaluation_startdate', 'ratings.evaluation_enddate')
             ->get();
 
@@ -37,7 +34,7 @@ class IpcrDashboardController extends Controller
             ->where('total_weighted_score', '<', 3)
             ->where('evaluationform_status', '!=', 'Approved (Cannot be edited)')
             ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
-            ->where('form_type', '=', 'IPCR')
+            ->where('form_type', '=', 'OPCR')
             ->groupBy('evaluationform_status', 'ratings.evaluation_startdate', 'ratings.evaluation_enddate')
             ->orderBy('count', 'desc')
             ->get();
@@ -54,7 +51,7 @@ class IpcrDashboardController extends Controller
                 YEAR(ratings.evaluation_startdate), " ", "to", " ", LEFT(MONTHNAME(UPPER(ratings.evaluation_enddate)),3), " ",
                 YEAR(ratings.evaluation_enddate)) as evaluation_period'))
             ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
-            ->where('form_type', '=', 'IPCR')
+            ->where('form_type', '=', 'OPCR')
             ->whereNotIn('departments.dept_name', ['Campus Director', 'ADAA', 'ADAF', 'ADRE', 'System Admin'])
             ->groupBy('departments.dept_name', 'ratings.evaluation_startdate', 'ratings.evaluation_enddate')
             ->orderBy('count', 'desc')
@@ -63,7 +60,8 @@ class IpcrDashboardController extends Controller
         return response()->json($countdepartment);
     }
 
-    public function getevaluated(){
+    public function getevaluated()
+    {
         $getEvalPeriod = DB::table('ratings')
             ->join('evaluationperiods', 'ratings.evaluation_startdate', '=', 'evaluationperiods.evaluation_startdate')
             ->select(DB::raw('concat(LEFT(MONTHNAME(UPPER(ratings.evaluation_startdate)), 3)," ",
@@ -82,7 +80,7 @@ class IpcrDashboardController extends Controller
             ->select('users.name', 'departments.dept_name', DB::raw('concat(LEFT(MONTHNAME(UPPER(ratings.evaluation_startdate)), 3)," ",
                 YEAR(ratings.evaluation_startdate), " ", "to", " ", LEFT(MONTHNAME(UPPER(ratings.evaluation_enddate)),3), " ",
                 YEAR(ratings.evaluation_enddate)) as evaluation_period'))
-            ->where('form_type', '=', 'IPCR')
+            ->where('form_type', '=', 'OPCR')
             ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
             ->where('evaluationform_status', '=', 'Approved (Cannot be edited)')
             ->where('users.name', '!=', 'Super Admin')
@@ -90,6 +88,6 @@ class IpcrDashboardController extends Controller
             ->orderBy('users.name')
             ->get();
 
-        return view('sidebar.ipcrdashboard', compact('getevaluated', 'getEvalPeriod'));
+        return view('sidebar.opcrdashboard', compact('getevaluated', 'getEvalPeriod'));
     }
 }

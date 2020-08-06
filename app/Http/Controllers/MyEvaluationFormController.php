@@ -28,6 +28,11 @@ class MyEvaluationFormController extends Controller
                 'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate',
                 'evaluationform_status', 'ratings.evaluationform_name')
             ->orderBy('ratings.evaluation_startdate', 'desc')
+            ->orderByRaw("CASE evaluationform_status
+                           WHEN 'For Review and Approval' THEN 1
+                           WHEN 'For Re-evaluation' THEN 2
+                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'Approved (Cannot be edited)' THEN 4 END DESC")
             ->get();
 
         return view('sidebar.myevaluationforms', compact('myevaluationform'));

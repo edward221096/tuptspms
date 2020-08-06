@@ -223,7 +223,20 @@
                             <div class="form-group col-md-12">
                                 <label for="department">Department</label>
                                 <select name="dept_id" class="form-control form-control-sm" id="deptid">
-                                    @foreach(App\Department::orderBy('dept_name')->get() as $department)
+                                        <option disabled style="font-weight: bolder;">ADAA RELATED DEPARTMENTS</option>
+                                    @foreach(App\Department::orderBy('dept_name')
+                                          ->whereIn('dept_name', ['Electrical and Allied Department',
+                                          'Civil and Allied Department', 'Mechanical and Allied Department',
+                                          'Bachelors of Engineering Department', 'Basic Arts and Sciences Department (BASD)', 'ADAA'])->get() as $department)
+                                        <option value="{{$department->id}}">{{$department->dept_name}}</option>
+                                    @endforeach
+                                        <option disabled style="font-weight: bolder;">ADAF RELATED DEPARTMENTS</option>
+                                    @foreach(App\Department::orderBy('dept_name')
+                                          ->whereIn('type', ['Non-Teaching'])->where('dept_name', '!=', 'ADRE')->get() as $department)
+                                        <option value="{{$department->id}}">{{$department->dept_name}}</option>
+                                    @endforeach
+                                        <option disabled style="font-weight: bolder;">ADRE RELATED DEPARTMENTS</option>
+                                    @foreach(App\Department::orderBy('dept_name')->where('dept_name', '=', 'ADRE')->get() as $department)
                                         <option value="{{$department->id}}">{{$department->dept_name}}</option>
                                     @endforeach
                                 </select>
@@ -234,7 +247,12 @@
                             <div class="form-group col-md-12">
                                 <label for="section">Area/Section</label>
                                 <select name="section_id" class="form-control form-control-sm" id="sectionid">
-                                    @foreach(App\Section::orderBy('section_name')->get() as $section)
+                                        <option disabled style="font-weight: bolder;">TEACHING AREA/SECTIONS</option>
+                                    @foreach(App\Section::orderBy('section_name')->whereIn('dept_id', ['2', '3', '4', '5'])->get() as $section)
+                                        <option value="{{$section->id}}">{{$section->section_name}}</option>
+                                    @endforeach
+                                        <option disabled style="font-weight: bolder;">NON-TEACHING AREA/SECTIONS</option>
+                                    @foreach(App\Section::orderBy('section_name')->where('dept_id', '!=', [1,2,3,4,5])->get() as $section)
                                         <option value="{{$section->id}}">{{$section->section_name}}</option>
                                     @endforeach
                                 </select>

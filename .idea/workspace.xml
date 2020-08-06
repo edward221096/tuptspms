@@ -44,7 +44,6 @@
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/owl.carousel.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/rellax.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/smoothscroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrDashboardController.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -630,11 +629,11 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_24_021858_create_sections_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
@@ -663,13 +662,11 @@
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editemployee.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/util.css" beforeDir="false" />
@@ -1032,7 +1029,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1421,6 +1418,8 @@
       <workItem from="1596642485266" duration="477000" />
       <workItem from="1596682849405" duration="18826000" />
       <workItem from="1596703404754" duration="26000" />
+      <workItem from="1596707872957" duration="747000" />
+      <workItem from="1596708753988" duration="2343000" />
     </task>
     <servers />
   </component>
@@ -1431,10 +1430,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596703422151">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596708759020">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596703422151" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596708759020" />
     <state x="361" y="72" key="#Notifications" timestamp="1595904195234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

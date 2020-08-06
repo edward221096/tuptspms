@@ -53,7 +53,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -61,7 +61,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -101,7 +101,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -109,7 +109,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -149,7 +149,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -157,7 +157,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -195,7 +195,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -203,7 +203,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -241,7 +241,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -249,7 +249,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -287,7 +287,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -295,7 +295,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -333,7 +333,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -341,7 +341,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -379,7 +379,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -387,7 +387,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -425,7 +425,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -433,7 +433,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -471,7 +471,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -479,7 +479,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -517,7 +517,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -525,7 +525,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -563,7 +563,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -571,7 +571,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -609,7 +609,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -617,7 +617,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -655,7 +655,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -663,7 +663,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -701,7 +701,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -709,7 +709,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -747,7 +747,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->where('user_id', '=', $myuserid)
@@ -755,7 +755,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name')
             ->get();
 
@@ -793,7 +793,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -802,7 +802,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -840,7 +840,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -849,7 +849,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -887,7 +887,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -896,7 +896,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -934,7 +934,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -943,7 +943,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -981,7 +981,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -990,7 +990,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1028,7 +1028,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1037,7 +1037,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1075,7 +1075,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1084,7 +1084,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1122,7 +1122,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1131,7 +1131,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1169,7 +1169,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1178,7 +1178,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1216,7 +1216,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1225,7 +1225,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1263,7 +1263,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1272,7 +1272,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1310,7 +1310,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1319,7 +1319,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1357,7 +1357,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1366,7 +1366,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1404,7 +1404,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1413,7 +1413,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1451,7 +1451,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1460,7 +1460,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1498,7 +1498,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1507,7 +1507,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1545,7 +1545,7 @@ class MyEvaluationFormController extends Controller
                 year(evaluation_startdate) as evaluation_startyear, upper(MONTHNAME(evaluation_enddate)) as evaluation_endmonth,
                 year(evaluation_enddate) as evaluation_endyear'),
                 'evaluation_enddate', 'ratee_esignature',
-                'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
+                'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical')
@@ -1554,7 +1554,7 @@ class MyEvaluationFormController extends Controller
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
-                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
+                'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average', 'ratee_esignature_file', 'rater_esignature_file',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'evaluationform_name', 'clericalroutine', 'technical', 'salary_grade')
             ->get();
 
@@ -1630,6 +1630,8 @@ class MyEvaluationFormController extends Controller
                 'evaluation_enddate' => $request->input('evaluation_enddate')[0],
                 'ratee_esignature' => $request->input('ratee_esignature')[0],
                 'rater_esignature' => $request->input('rater_esignature')[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file[0],
+                'rater_esignature_file' => $request->rater_esignature_file[0],
                 'ratee_role' => $request->input('ratee_role')[0],
                 'rater_role' => $request->input('rater_role')[0],
                 'ratee_date' => $request->input('ratee_date')[0],

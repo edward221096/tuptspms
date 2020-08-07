@@ -244,6 +244,7 @@
       <change beforePath="$PROJECT_DIR$/../LARAVEL SYSTEM/tests/TestCase.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LARAVEL SYSTEM/tests/Unit/ExampleTest.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../LARAVEL SYSTEM/webpack.mix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Laravel - Metrobarbers_final_041420.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Metrobarbers/resources/views/sidebar/charts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Metrobarbers/resources/views/sidebar/charts.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../blog/.editorconfig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../blog/.gitattributes" beforeDir="false" />
@@ -627,13 +628,8 @@
       <change beforePath="$PROJECT_DIR$/../projectfoo/tests/Unit/ExampleTest.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../projectfoo/webpack.mix.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_02_17_053219_create_ratings_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
@@ -1419,7 +1415,8 @@
       <workItem from="1596682849405" duration="18826000" />
       <workItem from="1596703404754" duration="26000" />
       <workItem from="1596707872957" duration="747000" />
-      <workItem from="1596708753988" duration="2343000" />
+      <workItem from="1596708753988" duration="4638000" />
+      <workItem from="1596770428326" duration="1635000" />
     </task>
     <servers />
   </component>

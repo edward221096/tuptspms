@@ -630,7 +630,9 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/welcomepageimages/ipcrforms.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/welcomepageimages/ipcrforms.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
@@ -1026,7 +1028,7 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/resources/views" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
   <component name="PackageJsonUpdateNotifier">
@@ -1159,17 +1161,17 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2019.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laravel\tuptspms\resources\views" />
+      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
+      <recent name="C:\laravel\tuptspms\resources\views\auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laravel\tuptspms\resources\views\sidebar" />
       <recent name="C:\laravel\tuptspms\resources\views\editopcr" />
       <recent name="C:\laravel\tuptspms\resources\views\opcr" />
       <recent name="C:\laravel\tuptspms\resources\views" />
       <recent name="C:\laravel\tuptspms\resources\views\editipcr" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\laravel\tuptspms\resources\views" />
-      <recent name="C:\laravel\tuptspms\resources\views\layouts" />
-      <recent name="C:\laravel\tuptspms\resources\views\auth" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1419,7 +1421,9 @@
       <workItem from="1596707872957" duration="747000" />
       <workItem from="1596708753988" duration="4638000" />
       <workItem from="1596770428326" duration="1635000" />
-      <workItem from="1596777703336" duration="1773000" />
+      <workItem from="1596777703336" duration="3396000" />
+      <workItem from="1596797075940" duration="292000" />
+      <workItem from="1596856217108" duration="8419000" />
     </task>
     <servers />
   </component>
@@ -1430,10 +1434,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596708759020">
+    <state x="361" y="72" key="#Configure_Path_Variables" timestamp="1596856290317">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596708759020" />
+    <state x="361" y="72" key="#Configure_Path_Variables/0.0.1536.824@0.0.1536.824" timestamp="1596856290317" />
     <state x="361" y="72" key="#Notifications" timestamp="1595904195234">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

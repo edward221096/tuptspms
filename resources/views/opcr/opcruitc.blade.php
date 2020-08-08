@@ -467,9 +467,13 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 </table>
                 <br />
 
-                <div>
-                    <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
-                </div>
+                @foreach(\App\Http\Controllers\OpcrController::isEvaluationOpen() as $isevaluationopen)
+                    @if($isevaluationopen->evaluation_period_status == 'Open')
+                        <div>
+                            <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
+                        </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </form>

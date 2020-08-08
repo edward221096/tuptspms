@@ -14,6 +14,16 @@ use App\TestRatings;
 
 class IpcrController extends Controller
 {
+    public static function isEvaluationOpen(){
+        $isevaluationopen = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->get();
+
+        return $isevaluationopen;
+    }
+
     public static function getUserDepartmentName(){
         $myuserid = Auth::User()->id;
 
@@ -74,7 +84,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -84,7 +93,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrcsassocp = DB::table('mfos')
                ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -178,7 +187,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -188,7 +196,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrcsassisp = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -283,7 +291,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -293,7 +300,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrcsprofessor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -388,7 +395,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -398,7 +404,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrcsinstructor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -494,7 +500,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -504,7 +509,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
         $ipcrfafassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
@@ -599,7 +604,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -609,7 +613,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfafassisp = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -704,7 +708,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -714,7 +717,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfafprofessor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -808,7 +811,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -818,7 +820,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfafinstructor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -913,7 +915,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -923,7 +924,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
         $ipcrfqfassocp = DB::table('mfos')
             ->Join('functions', 'functions.id', '=', 'mfos.function_id')
             ->Join('forms', 'forms.id','=', 'mfos.form_id')
@@ -1018,7 +1019,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1028,7 +1028,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfqfassisp = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1123,7 +1123,6 @@ class IpcrController extends Controller
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
                 ->orderBy('evaluation_startdate', 'desc')
-                ->limit('1')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1133,7 +1132,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
                 $ipcrfqfprofessor = DB::table('mfos')
                     ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                     ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1228,7 +1227,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1238,7 +1236,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfqfinstructor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1333,7 +1331,6 @@ class IpcrController extends Controller
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
                 ->orderBy('evaluation_startdate', 'desc')
-                ->limit('1')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1343,7 +1340,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
                 $ipcrfulladmin = DB::table('mfos')
                     ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                     ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1439,7 +1436,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1449,7 +1445,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfassprofessor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1544,7 +1540,6 @@ class IpcrController extends Controller
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
                 ->orderBy('evaluation_startdate', 'desc')
-                ->limit('1')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1554,7 +1549,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
                 $ipcrfastprofessor = DB::table('mfos')
                     ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                     ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1649,7 +1644,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1659,7 +1653,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfprofessor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')
@@ -1754,7 +1748,6 @@ class IpcrController extends Controller
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
             ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1764,7 +1757,7 @@ class IpcrController extends Controller
         if($evalstatus->evaluation_period_status == 'Open' OR Auth::User()->role == 'Super Admin' OR
             Auth::User()->role == 'Division Head' OR
             Auth::User()->role == 'Department Head' OR
-            Auth::User()->role == 'Section Head'){
+            Auth::User()->role == 'Section Head' OR Auth::User()->role == 'Campus Director'){
             $ipcrfinstructor = DB::table('mfos')
                 ->Join('functions', 'functions.id', '=', 'mfos.function_id')
                 ->Join('forms', 'forms.id', '=', 'mfos.form_id')

@@ -31,6 +31,16 @@ class OpcrController extends Controller
         return $getlatestipcrratings;
     }
 
+    public static function isEvaluationOpen(){
+        $isevaluationopen = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->get();
+
+        return $isevaluationopen;
+    }
+
     public static function getEvaluationStartDate()
     {
         $startdate = DB::table('evaluationperiods')

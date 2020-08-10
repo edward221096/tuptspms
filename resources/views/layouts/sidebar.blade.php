@@ -20,6 +20,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <!-- Signature Pad -->
+    <script type="text/javascript" src="{{ asset('/js/signaturepadjquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/signaturepadjquery-ui.min.js') }}"></script>
+
     <!-- Bootstrap core JavaScript -->
     <!-- jQuery -->
     <script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
@@ -717,7 +721,6 @@
 </div>
 </div>
 </body>
-
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
     $(document).ready(function() {

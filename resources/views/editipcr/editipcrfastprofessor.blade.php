@@ -150,9 +150,16 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             </p>
                             <br>
                         </div>
-                        <div><span style="font-family: Arial;">____________________</span></div>
-                        <div><span style="font-size: 10pt; font-family: Arial;">&nbsp; &nbsp;Signature of Employee</span></div>
-                        <div>
+                            @foreach($ratingsinglevalue as $row)
+                                <div class="row col-md-12">
+                                    &nbsp; &nbsp; &nbsp;<img src="data:{{$row->ratee_esignature_file}}" style="width: 10%; height: auto;">
+                                    <input type="hidden" name="ratee_esignature_file" value="{{$row->ratee_esignature_file}}">
+                                    <p>&nbsp; &nbsp; </p>
+                                </div>
+                                <div><span style="font-size: 10pt; font-family: Arial;">&nbsp; &nbsp; &nbsp; &nbsp; Signature of Employee</span></div>
+                            @endforeach
+
+                            <div>
                             <br>
                         </div>
                         <div><span style="font-size: 10pt; font-family: Arial;">Date: <input name="date" value="<?= date('Y-m-d',time()) ;?>" readonly></span></div>
@@ -434,24 +441,52 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                     <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
                                         <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                        <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
-                            &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name and Signature of Ratee:&nbsp;
-                                <input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{$row->ratee_esignature}}" readonly>
-                            </span>
-                        </span>
+                                                <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
+                                                    &nbsp;<span style="color: black; mso-color-alt: windowtext; background: white;">Name of Ratee:&nbsp;
+                                                        <input type="text" class="form-control form-control-sm" name="ratee_esignature[]" value="{{$row->ratee_esignature}}" readonly>
+                                                    </span>
+                                                </span>
                                             </p>
                                         </td>
                                         <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
-                        <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                            @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
-                                &nbsp;Name and Signature of Rater: <input type="text" class="form-control form-control-sm" readonly name="rater_esignature[]" value="{{$row->rater_esignature}}">
-                            @else
-                                Name and Signature of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
-                            @endif
-                        </span>
+                                                    <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
+                                                    @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                                            &nbsp;Name of Rater: <input type="text" class="form-control form-control-sm" readonly name="rater_esignature[]" value="{{$row->rater_esignature}}">
+                                                        @else
+                                                            Name of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
+                                                        @endif
+                                                </span>
                                                 <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>
                                             </p>
+                                        </td>
+                                    </tr>
+                                    <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes;">
+                                        <td width="837" style="width: 627.75pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
+                                            <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
+                                            <div style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">
+                                                <div>
+                                                    Signature of Ratee: <img src="data:{{$row->ratee_esignature_file}}" style="width: 20%; height: auto;">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
+                                            <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
+                                            <div style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">Signature of Rater:
+                                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                                    <div>
+                                                        <img src="data:{{$row->rater_esignature_file}}" style="width: 20%; height: auto;">
+                                                    </div>
+                                                @else
+                                                    @if($row->rater_esignature_file == '')
+                                                        <div style="width: 30%; height: auto; border-style: solid; border-width: thin;" id="signature"></div>
+                                                        <input type="button" class="btn btn-secondary btn-sm btn-reset" id="clearsignature" value="Clear">
+                                                        <input type="hidden" id="rater_signature" name="rater_esignature_file" value="">
+                                                    @else
+                                                        <img src="data:{{$row->rater_esignature_file}}" style="width: 20%; height: auto;">
+                                                    @endif
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr style="mso-yfti-irow: 1;">
@@ -559,6 +594,23 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         </div>
     </div>
 </body>
+    <script src="{{ asset('js/jSignature.min.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#signature").jSignature()
+        })
+
+        $("#signature").bind('change', function(e){
+            var dataToBeSaved = $("#signature").jSignature("getData", "svgbase64");
+            $("#rater_signature").val(dataToBeSaved)
+        })
+
+        $("#clearsignature").click(function(e){
+            let signature = $("#signature")
+            signature.jSignature("reset")
+        });
+
+    </script>
 <script type="text/javascript">
     //CLEAR AVERAGE FIELDS AND RESET
     $(document).ready(function(){

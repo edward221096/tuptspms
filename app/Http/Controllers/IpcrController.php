@@ -11,9 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\EvaluationPeriod;
 use App\TestRatings;
+use Illuminate\Support\Facades\Storage;
 
 class IpcrController extends Controller
 {
+
     public static function isEvaluationOpen(){
         $isevaluationopen = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
@@ -83,7 +85,6 @@ class IpcrController extends Controller
     {
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -165,8 +166,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -186,7 +187,6 @@ class IpcrController extends Controller
     public function getipcrcsassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -268,8 +268,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -290,7 +290,6 @@ class IpcrController extends Controller
     public function getipcrcsprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -373,8 +372,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -394,7 +393,6 @@ class IpcrController extends Controller
     public function getipcrcsinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -478,8 +476,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -499,7 +497,6 @@ class IpcrController extends Controller
     public function getipcrfafassocp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -582,8 +579,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -603,7 +600,6 @@ class IpcrController extends Controller
     public function getipcrfafassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -686,8 +682,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -707,7 +703,6 @@ class IpcrController extends Controller
     public function getipcrfafprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -789,8 +784,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -810,7 +805,6 @@ class IpcrController extends Controller
     public function getipcrfafinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -893,8 +887,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -914,7 +908,6 @@ class IpcrController extends Controller
     public function getipcrfqfassocp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -997,8 +990,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1018,7 +1011,6 @@ class IpcrController extends Controller
     public function getipcrfqfassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1101,8 +1093,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1122,7 +1114,6 @@ class IpcrController extends Controller
     public function getipcrfqfprofessor(){
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
-                ->orderBy('evaluation_startdate', 'desc')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1205,8 +1196,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1226,7 +1217,6 @@ class IpcrController extends Controller
     public function getipcrfqfinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1309,8 +1299,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1330,7 +1320,6 @@ class IpcrController extends Controller
     public function getipcrfulladmin(){
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
-                ->orderBy('evaluation_startdate', 'desc')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1414,8 +1403,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1435,7 +1424,6 @@ class IpcrController extends Controller
     public function getipcrfassprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1518,8 +1506,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1539,7 +1527,6 @@ class IpcrController extends Controller
     public function getipcrfastprofessor(){
             $get = DB::table('evaluationperiods')
                 ->select('evaluation_period_status')
-                ->orderBy('evaluation_startdate', 'desc')
                 ->get();
 
             foreach($get as $evalstatus){
@@ -1622,8 +1609,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1643,7 +1630,6 @@ class IpcrController extends Controller
     public function getipcrfprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1726,8 +1712,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],
@@ -1747,7 +1733,6 @@ class IpcrController extends Controller
     public function getipcrfinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
-            ->orderBy('evaluation_startdate', 'desc')
             ->get();
 
         foreach($get as $evalstatus){
@@ -1830,8 +1815,8 @@ class IpcrController extends Controller
                 'evaluation_enddate' => $request->evaluation_enddate[0],
                 'ratee_esignature' => $request->ratee_esignature[0],
                 'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file[0],
-                'rater_esignature_file' => $request->rater_esignature_file[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
                 'ratee_role' => $request->ratee_role[0],
                 'rater_role' => $request->rater_role[0],
                 'ratee_date' => $request->ratee_date[0],

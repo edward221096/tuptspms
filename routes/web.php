@@ -170,6 +170,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('updatemyipcropcr', 'MyEvaluationFormController');
     Route::resource('myevaluationform', 'MyEvaluationFormController');
 
+    //------------------SIGNATURE PAD RELATED ROUTES-----------------------------
+    Route::get('laravel-signature-pad', 'IpcrController@signaturePad');
+
     //------------------IPCR---------------------------------------
     //IPCRCSASSOCP
     Route::get('/ipcrcsassocp', function () {
@@ -178,7 +181,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ipcrcsassocp', 'IpcrController@getipcrcsassocp');
 
     Route::post('/storedataipcrcsassocp', 'IpcrController@storeipcrcsassocp');
-
 
     Route::get('editmyipcrcsassocp/{id}', 'MyEvaluationFormController@editmyipcrcsassocp');
 

@@ -43,8 +43,8 @@ class CreateRatingsTable extends Migration
             $table->string('evaluation_enddate');
             $table->string('ratee_esignature')->nullable();
             $table->string('rater_esignature')->nullable();
-            $table->string('ratee_esignature_file')->nullable();
-            $table->string('rater_esignature_file')->nullable();
+            $table->mediumText('ratee_esignature_file')->nullable();
+            $table->mediumText('rater_esignature_file')->nullable();
             $table->string('ratee_role')->nullable();
             $table->string('rater_role')->nullable();
             $table->string('remarks_files')->nullable();

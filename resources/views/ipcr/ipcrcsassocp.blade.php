@@ -5,10 +5,16 @@
             width: 73px
         }
 
+        .kbw-signature {
+            width: 20%;
+            height: auto;
+            border-style: solid;
+            border-width: thin;
+        }
     </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
-    <form method="POST" action="/storedataipcrcsassocp">
+    <form method="POST" action="/storedataipcrcsassocp" enctype="multipart/form-data">
         {{ csrf_field() }}
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
@@ -93,8 +99,19 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         </p>
         <br>
     </div>
-    <div><span style="font-family: Arial;">____________________</span></div>
-    <div><span style="font-size: 10pt; font-family: Arial;">&nbsp; &nbsp;Signature of Employee</span></div>
+
+            <div class="row">
+                <div class="kbw-signature">
+                <div id="signature"></div>
+                </div>
+                <p>&nbsp; &nbsp; </p>
+                <div>
+                    <input type="button" class="btn btn-secondary btn-sm btn-reset" id="clearsignature" value="Clear">
+                </div>
+
+                <input type="hidden" id="ratee_signature" name="ratee_esignature_file" value="">
+            </div>
+        <span style="font-size: 10pt; font-family: Arial;">&nbsp; &nbsp;Signature of Employee</span>
     <div>
         <br>
     </div>
@@ -504,8 +521,30 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         </div>
     </div>
     </form>
-    </body>
+    <script src="{{ asset('js/jSignature.min.js')}}"></script>
     <script type="text/javascript">
+        $(document).ready(function(){
+            $("#signature").jSignature()
+        })
+
+        $("#signature").bind('change', function(e){
+            var dataToBeSaved = $("#signature").jSignature("getData", "svgbase64");
+            $("#ratee_signature").val(dataToBeSaved)
+        })
+
+        $("#clearsignature").click(function () {
+            var $sigdiv = $("#signature")
+            $sigdiv.jSignature("reset") // clears the canvas and rerenders the decor on it.
+        });
+    </script>
+    </body>
+
+    <script type="text/javascript">
+        $("#clearsignature").click(function(e){
+            let signature = $("#signature")
+            signature.jSignature("reset")
+        });
+
         //CLEAR AVERAGE FIELDS AND RESET
         $(document).ready(function(){
             $(".btn-reset").click(function(){

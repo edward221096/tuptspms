@@ -92,7 +92,8 @@
 
                     <h2 class="text-white" data-aos="fade-up">Manage Individual Performance Commitment and Review (IPCR)</h2>
                     <h2 class="text-white" data-aos="fade-up">Office Performance Commitment Review (OPCR) Forms</h2>
-                </div>
+                    <h6 class="text-white" data-aos="fade-up">Before logging in. Kindly fill up <a href="https://docs.google.com/forms/d/e/1FAIpQLSfrZW8jgStDcrKqhTxo3uLnJNbsg5YWnvnSOEVPMiFTpvOppw/viewform" style="color: white; font-size: 12pt; font-style: italic; font-weight: bolder"><u>this</u></a> pre-survey form.</h6>
+            </div>
             </div>
 
             <div class="col-lg-6 col-12">
@@ -129,6 +130,14 @@
                 <div class="about-image" data-aos="fade-up" data-aos-delay="200">
                     <img src="{{asset('welcomepageimages/ipcrtotalcount.png')}}" width="1100px" height="" class="img-fluid" alt="office">
                 </div>
+
+                <div>
+                    <p class="mb-0" data-aos="fade-up" style="font-style: italic;">IPCR Count per Department</p>
+
+                </div>
+                <div class="about-image" data-aos="fade-up" data-aos-delay="200">
+                    <img src="{{asset('welcomepageimages/ipcrperdepartment.png')}}" width="1100px" height="" class="img-fluid" alt="office">
+                </div>
             </div>
             <div><br></div>
             <div class="col-lg-7 mx-auto col-md-10 col-12">
@@ -138,7 +147,8 @@
                 <p class="mb-0" data-aos="fade-up"></p>
                 <div class="about-image" data-aos="fade-up" data-aos-delay="200">
 
-                    <img src="{{asset('welcomepageimages/mydashboard.png')}}" width="1100px" class="img-fluid" alt="mydashboard">
+                    <img src="{{asset('welcomepageimages/mydashboard.png')}}" width="1100px" class="img-fluid" alt="myipcrtotalcount">
+                    <img src="{{asset('welcomepageimages/opcrtotalcount.png')}}" width="1100px" class="img-fluid" alt="myopcrtotalcount">
                 </div>
             </div>
         </div>
@@ -160,7 +170,7 @@
 
                 <div class="owl-carousel owl-theme" id="project-slide">
                     <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
-                        <img src="{{asset('welcomepageimages/myteamevaluationforms.png')}}" class="img-fluid" alt="project image">
+                        <img src="{{asset('welcomepageimages/myteamevaluationforms.png')}}" class="img-fluid" alt="myteamevaluationforms">
                         <div>
                             <h4 style="color: black; font-style: italic;">
                                 <center>
@@ -172,7 +182,7 @@
                     </div>
 
                     <div class="item project-wrapper" data-aos="fade-up">
-                        <img src="{{asset('welcomepageimages/editform.png')}}" class="img-fluid" alt="project image">
+                        <img src="{{asset('welcomepageimages/editform.png')}}" class="img-fluid" alt="editforms">
                         <div>
                             <h4 style="color: black; font-style: italic;">
                                 <center>
@@ -184,7 +194,7 @@
                     </div>
 
                     <div class="item project-wrapper" data-aos="fade-up">
-                        <img src="{{asset('welcomepageimages/conditional.png')}}" class="img-fluid" alt="project image">
+                        <img src="{{asset('welcomepageimages/conditional.png')}}" class="img-fluid" alt="conditional">
                         <div>
                             <h4 style="color: black; font-style: italic;">
                                 <center>
@@ -196,7 +206,7 @@
                     </div>
 
                     <div class="item project-wrapper" data-aos="fade-up">
-                        <img src="{{asset('welcomepageimages/accountapproval.png')}}" class="img-fluid" alt="project image">
+                        <img src="{{asset('welcomepageimages/accountapproval.png')}}" class="img-fluid" alt="accountapproval">
                         <div>
                             <h4 style="color: black; font-style: italic;">
                                 <center>

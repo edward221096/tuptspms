@@ -706,6 +706,14 @@
 
                     <div class="col-sm-12">
                         <div class="card">
+                            <p style="font-weight: bold">Done using the system?</p>
+                            <div>
+                            Help us by answering the Post Survey form. By clicking this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform"><u style="font-size: 12pt; font-weight: bolder">Link</u></a>
+                            <br>
+                            </div>
+                        </div>
+
+                        <div class="card">
                             <p style="font-weight: bold">AS A NORMAL USER (FACULTY OR STAFF)</p>
                             1. Please wait for the evaluation period to OPEN by Planning Officer before answering the IPCR form based on your role
                             <br>

@@ -21,6 +21,7 @@ class MyDashboardController extends Controller
             ->where('form_type', '=', 'IPCR')
             ->where('evaluationform_status', 'Approved (Cannot be edited)')
             ->groupBy('form_sequence_id', 'total_weighted_score', 'evaluation_period')
+            ->orderBy('evaluation_startdate', 'asc')
             ->get();
 
         return response()->json($getmyweightedscore);
@@ -39,6 +40,7 @@ class MyDashboardController extends Controller
             ->where('form_type', '=', 'OPCR')
             ->where('evaluationform_status', 'Approved (Cannot be edited)')
             ->groupBy('form_sequence_id', 'total_weighted_score', 'evaluation_period')
+            ->orderBy('evaluation_startdate', 'asc')
             ->get();
 
         return response()->json($getmyweightedscore);

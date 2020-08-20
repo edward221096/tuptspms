@@ -185,9 +185,9 @@ class OpcrController extends Controller
             ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
                            WHEN 'General Administration and Support' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Higher and Advanced Education Program' THEN 5 END ASC")
             ->get();
 
         return view ('opcr.opcradaf', compact('opcradaf'));
@@ -273,8 +273,8 @@ class OpcrController extends Controller
             ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
                            WHEN 'Core Administrative Functions' THEN 2
-                           WHEN 'General Administration and Support' THEN 3
-                           WHEN 'Support to Operations' THEN 4 END ASC")
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'General Administration and Support' THEN 4 END ASC")
             ->get();
 
         return view ('opcr.opcradaa', compact('opcradaa'));
@@ -359,10 +359,10 @@ class OpcrController extends Controller
             ->Where('dept_name', '=', 'ADRE')
             ->orderByRaw("CASE function_name
                            WHEN 'Research Program' THEN 1
-                           WHEN 'Technical Advisory Extension Program' THEN 2
-                           WHEN 'Core Administrative Functions' THEN 3
-                           WHEN 'General Administration and Support' THEN 4
-                           WHEN 'Support to Operations' THEN 5
+                           WHEN 'Core Administrative Functions' THEN 2
+                           WHEN 'General Administration and Support' THEN 3
+                           WHEN 'Support to Operations' THEN 4
+                           WHEN 'Higher and Advanced Education Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
         return view ('opcr.opcradre', compact('opcradre'));

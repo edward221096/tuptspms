@@ -231,13 +231,6 @@
                 <h1 class="text-white" data-aos="fade-up" data-aos-delay="100">Bachelor of Technology in Information Technology</h1>
                 <h1 class="text-white" data-aos="fade-up" data-aos-delay="100"><strong style="color: #f1c111">Development Team</strong></h1>
             </div>
-
-            <div class="col-lg-3 col-md-3 col-12" data-aos="fade-up" data-aos-delay="200">
-                <h4 class="my-5">Rico Santos</h4>
-                <strong style="color: #f1c111">Project Technical Adviser</strong>
-            </div>
-
-
             <div class="col-lg-3 col-md-3 col-12" data-aos="fade-up" data-aos-delay="200">
                 <h4 class="my-5">Edward Del Rosario</h4>
                 <strong style="color: #f1c111">BTIT Student</strong>
@@ -251,6 +244,10 @@
             <div class="col-lg-3 col-md-3 col-12" data-aos="fade-up" data-aos-delay="300">
                 <h4 class="my-5">Rhodnie Mataba</h4>
                 <strong style="color: #f1c111">BTIT Student</strong>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12" data-aos="fade-up" data-aos-delay="200">
+                <h4 class="my-5">Rico Santos</h4>
+                <strong style="color: #f1c111">Project Technical Adviser</strong>
             </div>
 
             <div class="col-lg-12 mx-lg-auto text-center col-md-12 col-12" data-aos="fade-up" data-aos-delay="400">

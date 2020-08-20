@@ -156,7 +156,7 @@ class MfoController extends Controller
             ->orWhere('departments.dept_name', 'like', '%'.$search.'%')
             ->orderBy('mfos.role', 'asc')
             ->orderBy('departments.dept_name', 'asc')
-            ->paginate(10);
+            ->paginate(50);
         return view ('sidebar.manageevaluationforms', ['mfo'=>$mfo]);
     }
 }//End of Controller Script

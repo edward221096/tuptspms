@@ -105,10 +105,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'College Sec - Associate Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
         } else{
@@ -207,10 +207,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'College Sec - Assistant Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsassisp', compact('ipcrcsassisp'));
         } else{
@@ -310,10 +310,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'College Sec - Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
         }
@@ -413,10 +413,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'College Sec - Instructor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
         }
@@ -517,10 +517,10 @@ class IpcrController extends Controller
             ->Where('role', '=', 'Faculty with Admin Function - Associate Professor')
             ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
             ->get();
         return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp'));
         }
@@ -620,10 +620,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'Faculty with Admin Function - Assistant Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
         }
@@ -723,10 +723,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'Faculty with Admin Function - Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
         } else {
@@ -825,10 +825,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'Faculty with Admin Function - Instructor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Higher and Advanced Education Program' THEN 3
-                           WHEN 'Research Program' THEN 4
-                           WHEN 'Technical Advisory Extension Program' THEN 5 END ASC")
+                           WHEN 'Higher and Advanced Education Program' THEN 2
+                           WHEN 'Research Program' THEN 3
+                           WHEN 'Technical Advisory Extension Program' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
         }
@@ -928,10 +928,10 @@ class IpcrController extends Controller
             ->Where('role', '=', 'Faculty with Quasi Function - Associate Professor')
             ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4
-                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
             ->get();
         return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp'));
         }
@@ -1031,10 +1031,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'Faculty with Quasi Function - Assistant Professor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4
-                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
         }
@@ -1134,10 +1134,10 @@ class IpcrController extends Controller
                     ->Where('role', '=', 'Faculty with Quasi Function - Professor')
                     ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4
-                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                     ->get();
                 return view('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
             }
@@ -1237,10 +1237,10 @@ class IpcrController extends Controller
                 ->Where('role', '=', 'Faculty with Quasi Function - Instructor')
                 ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4
-                           WHEN 'Core Administrative Functions' THEN 5 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
             return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
         }
@@ -1445,9 +1445,9 @@ class IpcrController extends Controller
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
                 ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
         }
@@ -1548,9 +1548,9 @@ class IpcrController extends Controller
                     ->where('functions.function_name', '!=', 'Core Administrative Functions')
                     ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Support Functions' THEN 4 END ASC")
                     ->get();
                 return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
             }
@@ -1651,9 +1651,9 @@ class IpcrController extends Controller
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
                 ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
         }
@@ -1754,9 +1754,9 @@ class IpcrController extends Controller
                 ->where('functions.function_name', '!=', 'Core Administrative Functions')
                 ->orderByRaw("CASE function_name
                            WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Support Functions' THEN 2
-                           WHEN 'Research Program' THEN 3
-                           WHEN 'Technical Advisory Extension Program' THEN 4 END ASC")
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
             return view('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
         }

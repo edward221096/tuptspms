@@ -208,7 +208,7 @@
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
                         </div>
 
-                        <div class="form-label-group">
+                        <div>
                             <center>Role</center>
                             <select name="role" id="role" class="form-control form-control-sm" required autocomplete="role">
                                 <option readonly>Select a Role</option>
@@ -237,9 +237,13 @@
                                 <option disabled style="font-weight: bolder;">STAFF ROLE</option>
                                 <option>Fulltime - Admin</option>
                             </select>
+
+                            <span>
+                                <label style="font-size: 9pt; color: red; font-style: italic">* This field is required</label>
+                            </span>
                         </div>
 
-                        <div class="form-label-group">
+                        <div>
                             <center>Division</center>
                             <select class="form-control form-control-sm" name="division_id"  id="divisions" required autocomplete="division_id">
                                 <option value="0" selected disabled>Select a Division</option>
@@ -247,20 +251,32 @@
                                     <option value="{{$value->id}}">{{$value->division_name}}</option>
                                 @endforeach
                             </select>
+
+                            <span>
+                                <label style="font-size: 9pt; color: red; font-style: italic">* This field is required</label>
+                            </span>
                         </div>
 
-                        <div class="form-label-group">
+                        <div>
                             <center>Department</center>
                             <select class="form-control form-control-sm" name="dept_id"  id="depts" required autocomplete="dept_id">
                                 <option value="0" selected disabled>Select a Department</option>
                             </select>
+
+                            <span>
+                                <label style="font-size: 9pt; color: red; font-style: italic">* This field is required</label>
+                            </span>
                         </div>
 
-                        <div class="form-label-group">
+                        <div>
                             <center>Section or Area</center>
                             <select class="form-control form-control-sm" name="section_id"  id="sections" required autocomplete="section_id">
                                 <option value="0" selected disabled>Select a Section</option>
                             </select>
+
+                            <span>
+                                <label style="font-size: 9pt; color: red; font-style: italic">* This field is required</label>
+                            </span>
                         </div>
                         <div class="form-label-group">
                             <input id="status" type="hidden" name="status" value="Account Pending">

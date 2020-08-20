@@ -120,7 +120,7 @@
                 </thead>
                 <tbody>
                 @foreach($mfo as $row)
-                    <tr style="font-size: 10.5pt;">
+                    <tr>
                         <td style="overflow-wrap: break-word;">{{$row->form_type}}</td>
                         <td style="overflow-wrap: break-word;">{{$row->dept_name}}</td>
                         <td style="overflow-wrap: break-word;">{{$row->function_name}}</td>
@@ -414,6 +414,10 @@
                 "Support to Operations": "Support to Operations",
             }
 
+            let opcrFunctionValues4 = {
+                "Research Program": "Research Program"
+            }
+
             if (selecteddept === 'Accounting' || selecteddept === 'Budget' || selecteddept === 'Cashier'
                 || selecteddept === 'Industry Based' || selecteddept === 'Medical Service') {
                 $.each(opcrFunctionValues, function (key, value) {
@@ -426,6 +430,14 @@
             if (selecteddept === 'ADAA' || selecteddept === 'ADRE' || selecteddept === 'IDO' || selecteddept === 'PDO' || selecteddept === 'Procurement' || selecteddept === 'QAA'
                 || selecteddept === 'Records' || selecteddept === 'UITC') {
                 $.each(opcrFunctionValues2, function (key, value) {
+                    $('#function_name')
+                        .append($('<option>', {value: key})
+                            .text(value))
+                });
+            }
+
+            if (selecteddept === 'ADRE') {
+                $.each(opcrFunctionValues4, function (key, value) {
                     $('#function_name')
                         .append($('<option>', {value: key})
                             .text(value))

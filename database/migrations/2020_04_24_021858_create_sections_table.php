@@ -53,6 +53,9 @@ class CreateSectionsTable extends Migration
             ['id' => 28, 'dept_id'=> 19 , 'section_name' => 'QAA'],
             ['id' => 29, 'dept_id'=> 20 , 'section_name' => 'Records'],
             ['id' => 30, 'dept_id'=> 21 , 'section_name' => 'UITC'],
+            ['id' => 31, 'dept_id'=> 22 , 'section_name' => 'Academics Section'],
+            ['id' => 32, 'dept_id'=> 23 , 'section_name' => 'Academics'],
+            ['id' => 33, 'dept_id'=> 26 , 'section_name' => 'Basic Arts and Sciences Department (BASD)'],
         ]);
     }
 

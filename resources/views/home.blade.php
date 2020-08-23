@@ -20,6 +20,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <!-- Signature Pad -->
+    <script type="text/javascript" src="{{ asset('/js/signaturepadjquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/signaturepadjquery-ui.min.js') }}"></script>
+
     <!-- Bootstrap core JavaScript -->
     <!-- jQuery -->
     <script src=" {{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
@@ -39,16 +43,18 @@
     <style>
         .main-sidebar{
             width: 270px;
+            background-color: #808080; !important
         }
 
         body, html {
             height: 100%;
             background: white;
         }
+
     </style>
 
 </head>
-<body class="hold-transition sidebar-dark-red sidebar-mini">
+<body class="hold-transition sidebar-dark-red sidebar-mini-md">
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -94,7 +100,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-5">
+    <aside class="main-sidebar elevation-5">
         <!-- Brand Logo -->
         <link rel="icon" type="image/png" href="{!! asset('images/tuptlogo.png') !!}"/>
         <a href="home" class="brand-link">
@@ -124,7 +130,7 @@
                             <li class="nav-item">
                                 <a href="mydashboard" class="nav-link">
                                     <i class="fa fa-chart-line nav-icon"></i>
-                                    <p>My Dashboard</p>
+                                    <p style="color: black;">My Dashboard</p>
                                 </a>
                             </li>
                         </ul>
@@ -133,7 +139,7 @@
                                 <li class="nav-item">
                                     <a href="ipcrdashboard" class="nav-link">
                                         <i class="fa fa-chart-bar nav-icon"></i>
-                                        <p>IPCR Dashboard</p>
+                                        <p style="color: black;">IPCR Dashboard</p>
                                     </a>
                                 </li>
                             </ul>
@@ -141,7 +147,7 @@
                                 <li class="nav-item">
                                     <a href="opcrdashboard" class="nav-link">
                                         <i class="fa fa-chart-area nav-icon"></i>
-                                        <p>OPCR Dashboard</p>
+                                        <p style="color: black;">OPCR Dashboard</p>
                                     </a>
                                 </li>
                             </ul>
@@ -161,7 +167,7 @@
                             <li class="nav-item">
                                 <a href="myevaluationforms" class="nav-link">
                                     <i class="fa fa-sticky-note nav-icon"></i>
-                                    <p>My Evaluation Forms</p>
+                                    <p style="color: black;">My Evaluation Forms</p>
                                 </a>
                             </li>
                         </ul>
@@ -171,7 +177,7 @@
                                 <li class="nav-item">
                                     <a href="myteamevaluationforms" class="nav-link">
                                         <i class="fa fa-list-ul nav-icon"></i>
-                                        <p>My Team Evaluation Forms</p>
+                                        <p style="color: black;">My Team Evaluation Forms</p>
                                     </a>
                                 </li>
                             </ul>
@@ -193,19 +199,19 @@
                                     @if(Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director')
                                         <a href="manageevaluationperiod" class="nav-link">
                                             <i class="fa fa-calendar-alt nav-icon"></i>
-                                            <p>Manage Evaluation Period</p>
+                                            <p style="color: black;">Manage Evaluation Period</p>
                                         </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="manageorganization" class="nav-link">
                                         <i class="fa fa-sitemap nav-icon"></i>
-                                        <p>Manage Organization</p>
+                                        <p style="color: black;">Manage Organization</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="manageevaluationforms" class="nav-link">
                                         <i class="fas fa-edit nav-icon"></i>
-                                        <p>Manage Evaluation Forms</p>
+                                        <p style="color: black;">Manage Evaluation Forms</p>
                                     </a>
                                 </li>
                                 @endif
@@ -214,7 +220,7 @@
                                         || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Department Head')
                                         <a href="employee" class="nav-link">
                                             <i class="fa fa-user-circle nav-icon"></i>
-                                            <p>Manage Employee</p>
+                                            <p style="color: black;">Manage Employee</p>
                                         </a>
                                     @endif
                                 </li>
@@ -238,9 +244,9 @@
                                     OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrcsassocp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>College Secretary</p>
+                                                <p style="color: black;">College Secretary</p>
                                                 <br>
-                                                <p>Associate Professor</p>
+                                                <p style="color: black;">Associate Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -251,9 +257,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrcsassisp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>College Secretary</p>
+                                                <p style="color: black;">College Secretary</p>
                                                 <br>
-                                                <p>Assistant Professor</p>
+                                                <p style="color: black;">Assistant Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -264,9 +270,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrcsprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>College Secretary</p>
+                                                <p style="color: black;">College Secretary</p>
                                                 <br>
-                                                <p>Professor</p>
+                                                <p style="color: black;">Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -277,9 +283,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrcsinstructor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>College Secretary</p>
+                                                <p style="color: black;">College Secretary</p>
                                                 <br>
-                                                <p>Instructor</p>
+                                                <p style="color: black;">Instructor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -290,9 +296,9 @@
                                     OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfafassocp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Admin Function</p>
+                                                <p style="color: black;">Faculty with Admin Function</p>
                                                 <br>
-                                                <p>Associate Professor</p>
+                                                <p style="color: black;">Associate Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -303,9 +309,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfafassisp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Admin Function</p>
+                                                <p style="color: black;">Faculty with Admin Function</p>
                                                 <br>
-                                                <p>Assistant Professor</p>
+                                                <p style="color: black;">Assistant Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -317,9 +323,9 @@
                                    OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfafprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Admin Function</p>
+                                                <p style="color: black;">Faculty with Admin Function</p>
                                                 <br>
-                                                <p>Professor</p>
+                                                <p style="color: black;">Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -332,9 +338,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfafinstructor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Admin Function</p>
+                                                <p style="color: black;">Faculty with Admin Function</p>
                                                 <br>
-                                                <p>Instructor</p>
+                                                <p style="color: black;">Instructor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -347,9 +353,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfqfassocp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Quasi Function</p>
+                                                <p style="color: black;">Faculty with Quasi Function</p>
                                                 <br>
-                                                <p>Associate Professor</p>
+                                                <p style="color: black;">Associate Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -362,9 +368,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfqfassisp" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Quasi Function</p>
+                                                <p style="color: black;">Faculty with Quasi Function</p>
                                                 <br>
-                                                <p>Assistant Professor</p>
+                                                <p style="color: black;">Assistant Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -377,9 +383,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfqfprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Quasi Function</p>
+                                                <p style="color: black;">Faculty with Quasi Function</p>
                                                 <br>
-                                                <p>Professor</p>
+                                                <p style="color: black;">Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -392,9 +398,9 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfqfinstructor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Faculty with Quasi Function</p>
+                                                <p style="color: black;">Faculty with Quasi Function</p>
                                                 <br>
-                                                <p>Instructor</p>
+                                                <p style="color: black;">Instructor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -407,7 +413,7 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfassprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Fulltime Associate Professor</p>
+                                                <p style="color: black;">Fulltime Associate Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -420,7 +426,7 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfastprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Fulltime Assistant Professor</p>
+                                                <p style="color: black;">Fulltime Assistant Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -433,7 +439,7 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfprofessor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Fulltime Professor</p>
+                                                <p style="color: black;">Fulltime Professor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -446,7 +452,7 @@
                                 OR Auth::User()->role == 'Division Head' OR Auth::User()->role == 'Campus Director')
                                             <a href="ipcrfinstructor" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Fulltime Instructor</p>
+                                                <p style="color: black;">Fulltime Instructor</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -454,12 +460,12 @@
 
                                     @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
                                         @if($row->type == 'Non-Teaching' OR $row->type == 'Admin' OR Auth::User()->role == 'Fulltime - Admin'
-                                    AND Auth::User()->role == 'Super Admin' AND Auth::User()->role == 'Section Head' OR
-                                    Auth::User()->role == 'Division Head' AND Auth::User()->role == 'Campus Director' AND
-                                    Auth::User()->role == 'Department Head')
+                                AND Auth::User()->role == 'Super Admin' AND Auth::User()->role == 'Section Head' OR
+                                Auth::User()->role == 'Division Head' AND Auth::User()->role == 'Campus Director' AND
+                                Auth::User()->role == 'Department Head')
                                             <a href="ipcrfulladmin" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Fulltime Admin</p>
+                                                <p style="color: black;">Fulltime Admin</p>
                                             </a>
                                         @endif
                                     @endforeach
@@ -483,7 +489,7 @@
                                                     || Auth::User()->role == 'Division Head')
                                                 <a href="opcrcampusdirector" class="nav-link">
                                                     <i class="far fa-circle navbar-icon"></i>
-                                                    <p>Campus Director</p>
+                                                    <p style="color: black;">Campus Director</p>
                                                 </a>
                                             @endif
                                     </li>
@@ -492,7 +498,7 @@
                                              || Auth::User()->role == 'Division Head')
                                             <a href="opcradaa" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>ADAA</p>
+                                                <p style="color: black;">ADAA</p>
                                             </a>
                                         @endif
                                     </li>
@@ -501,7 +507,7 @@
                                                 || Auth::User()->role == 'Division Head')
                                             <a href="opcradaf" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>ADAF</p>
+                                                <p style="color: black;">ADAF</p>
                                             </a>
                                         @endif
                                     </li>
@@ -510,7 +516,7 @@
                                            || Auth::User()->role == 'Division Head')
                                             <a href="opcradre" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>ADRE</p>
+                                                <p style="color: black;">ADRE</p>
                                             </a>
                                         @endif
                                     </li>
@@ -519,7 +525,7 @@
                                             || Auth::User()->role == 'Division Head')
                                             <a href="opcracademics" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Academics Department</p>
+                                                <p style="color: black;">Academics Department</p>
                                             </a>
                                         @endif
                                     </li>
@@ -528,7 +534,7 @@
                                         || Auth::User()->role == 'Division Head')
                                             <a href="opcraccounting" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Accounting</p>
+                                                <p style="color: black;">Accounting</p>
                                             </a>
                                         @endif
                                     </li>
@@ -537,7 +543,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrbudget" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Budget</p>
+                                                <p style="color: black;">Budget</p>
                                             </a>
                                         @endif
                                     </li>
@@ -546,7 +552,7 @@
                                           OR Auth::User()->role == 'Division Head')
                                             <a href="opcrcashier" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Cashier</p>
+                                                <p style="color: black;">Cashier</p>
                                             </a>
                                         @endif
                                     </li>
@@ -555,7 +561,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrido" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>IDO</p>
+                                                <p style="color: black;">IDO</p>
                                             </a>
                                         @endif
                                     </li>
@@ -564,7 +570,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrindustrybased" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Industry Based</p>
+                                                <p style="color: black;">Industry Based</p>
                                             </a>
                                         @endif
                                     </li>
@@ -573,7 +579,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrmedicalserv" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Medical Services</p>
+                                                <p style="color: black;">Medical Services</p>
                                             </a>
                                         @endif
                                     </li>
@@ -582,7 +588,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrpdo" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>PDO</p>
+                                                <p style="color: black;">PDO</p>
                                             </a>
                                         @endif
                                     </li>
@@ -591,7 +597,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrprocurement" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Procurement</p>
+                                                <p style="color: black;">Procurement</p>
                                             </a>
                                         @endif
                                     </li>
@@ -600,7 +606,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrqaa" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>QAA</p>
+                                                <p style="color: black;">QAA</p>
                                             </a>
                                         @endif
                                     </li>
@@ -609,7 +615,7 @@
                                          OR Auth::User()->role == 'Division Head')
                                             <a href="opcrrecords" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>Records</p>
+                                                <p style="color: black;">Records</p>
                                             </a>
                                         @endif
                                     </li>
@@ -618,7 +624,7 @@
                                         OR Auth::User()->role == 'Division Head')
                                             <a href="opcruitc" class="nav-link">
                                                 <i class="far fa-circle navbar-icon"></i>
-                                                <p>UITC</p>
+                                                <p style="color: black;">UITC</p>
                                             </a>
                                         @endif
                                     </li>
@@ -653,7 +659,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
                                 <p style="font-weight: bold"> Welcome to Technological University of the Philippines - Taguig Strategic Performance Management System (SPMS)</p>
@@ -703,13 +709,12 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="card">
                             <p style="font-weight: bold">Done using the system?</p>
                             <div>
-                            Help us by answering the Post Survey form. By clicking this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform"><u style="font-size: 12pt; font-weight: bolder">Link</u></a>
-                            <br>
+                                Help us by answering the Post Survey form. By clicking this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform"><u style="font-size: 12pt; font-weight: bolder">Link</u></a>
+                                <br>
                             </div>
                         </div>
 
@@ -785,14 +790,21 @@
                             <br>
                         </div>
                     </div>
-                    </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 <!-- /.content -->
             </div>
+        </div>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
+    </div>
+</div>
 </body>
-
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
     $(document).ready(function() {

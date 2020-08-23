@@ -244,7 +244,7 @@
                         </div>
 
                         <div>
-                            <center>Division</center>
+                            <center>Sector/Division</center>
                             <select class="form-control form-control-sm" name="division_id"  id="divisions" required autocomplete="division_id">
                                 <option value="0" selected disabled>Select a Division</option>
                                 @foreach($divisions as $key => $value)
@@ -258,7 +258,7 @@
                         </div>
 
                         <div>
-                            <center>Department</center>
+                            <center>College/Department/Office</center>
                             <select class="form-control form-control-sm" name="dept_id"  id="depts" required autocomplete="dept_id">
                                 <option value="0" selected disabled>Select a Department</option>
                             </select>

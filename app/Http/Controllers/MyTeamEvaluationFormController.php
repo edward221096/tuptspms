@@ -26,18 +26,19 @@ class MyTeamEvaluationFormController extends Controller
             ->join('sections', 'sections.id', '=', 'ratings.section_id')
             ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                 'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
             ->where('sections.id', '=', $mysectionid)
             ->where('role', '!=', 'Department Head')
             ->where('role', '!=', 'Division Head')
             ->where('users.id', '!=', $myuserid)
             ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                'departments.dept_name', 'sections.section_name', 'evaluation_startdate',
+                'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
             ->orderBy('ratings.evaluation_startdate', 'desc')
             ->orderByRaw("CASE evaluationform_status
-                           WHEN 'For Review and Approval' THEN 1
-                           WHEN 'For Re-evaluation' THEN 2
-                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'For Evaluation (Immediate/Commitee)' THEN 1
+                           WHEN 'For Verification' THEN 2
+                           WHEN 'For Validation/Audit' THEN 3
                            WHEN 'Approved (Cannot be edited)' THEN 4 END DESC")
             ->get();
         }
@@ -50,17 +51,17 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id',  'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('ratings.dept_id', '=', $mydeptid)
                 ->where('role', '!=', 'Division Head')
                 ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluation_startdate', 'desc')
                 ->orderByRaw("CASE evaluationform_status
-                           WHEN 'For Review and Approval' THEN 1
-                           WHEN 'For Re-evaluation' THEN 2
-                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'For Evaluation (Immediate/Commitee)' THEN 1
+                           WHEN 'For Verification' THEN 2
+                           WHEN 'For Validation/Audit' THEN 3
                            WHEN 'Approved (Cannot be edited)' THEN 4 END DESC")
                 ->get();
         }elseif (Auth::User()->role == 'Division Head') {
@@ -72,16 +73,16 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('divisions.id', '=', $mydivisionid)
                 ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluation_startdate', 'desc')
                 ->orderByRaw("CASE evaluationform_status
-                           WHEN 'For Review and Approval' THEN 1
-                           WHEN 'For Re-evaluation' THEN 2
-                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'For Evaluation (Immediate/Commitee)' THEN 1
+                           WHEN 'For Verification' THEN 2
+                           WHEN 'For Validation/Audit' THEN 3
                            WHEN 'Approved (Cannot be edited)' THEN 4 END DESC")
                 ->get();
         }elseif (Auth::User()->role == 'Super Admin' || Auth::User()->role == 'Campus Director'){
@@ -93,16 +94,16 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('users.id', '!=', $myuserid)
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluation_startdate', 'desc')
                 ->orderBy('ratings.evaluation_startdate', 'desc')
                 ->orderByRaw("CASE evaluationform_status
-                           WHEN 'For Review and Approval' THEN 1
-                           WHEN 'For Re-evaluation' THEN 2
-                           WHEN 'Approved by Head' THEN 3
+                           WHEN 'For Evaluation (Immediate/Commitee)' THEN 1
+                           WHEN 'For Verification' THEN 2
+                           WHEN 'For Validation/Audit' THEN 3
                            WHEN 'Approved (Cannot be edited)' THEN 4 END DESC")
                 ->get();
         }
@@ -129,13 +130,14 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('sections.id', '=', $mysectionid)
                 ->where('role', '!=', 'Department Head')
                 ->where('role', '!=', 'Division Head')
                 ->where('users.name', 'like', '%'.$search.'%')
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status',
+                    'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluationform_status')
                 ->get();
 
@@ -149,12 +151,13 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('ratings.dept_id', '=', $mydeptid)
                 ->where('role', '!=', 'Division Head')
                 ->where('users.name', 'like', '%'.$search.'%')
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate',
+                    'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluationform_status')
                 ->get();
             return view('sidebar.myteamevaluationforms', ['myteamevaluationform' => $myteamevaluationform]);
@@ -168,11 +171,12 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('divisions.id', '=', $mydivisionid)
                 ->Where('users.name', 'like', '%'.$search.'%')
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate',
+                    'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluationform_status')
                 ->get();
             return view('sidebar.myteamevaluationforms', ['myteamevaluationform' => $myteamevaluationform]);
@@ -186,10 +190,11 @@ class MyTeamEvaluationFormController extends Controller
                 ->join('sections', 'sections.id', '=', 'ratings.section_id')
                 ->select('ratings.form_sequence_id as id', 'users.id as user_id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                     'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name')
+                    'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->where('users.name', 'like', '%'.$search.'%')
                 ->groupBy('form_sequence_id', 'users.id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
-                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name')
+                    'departments.dept_name', 'sections.section_name', 'evaluation_startdate',
+                    'evaluation_enddate', 'evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
                 ->orderBy('ratings.evaluationform_status')
                 ->get();
 

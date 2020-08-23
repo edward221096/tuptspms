@@ -81,12 +81,12 @@ class IpcrDashboardController extends Controller
             ->join('evaluationperiods', 'ratings.evaluation_startdate', '=', 'evaluationperiods.evaluation_startdate')
             ->select('users.name', 'departments.dept_name', DB::raw('concat(LEFT(MONTHNAME(UPPER(ratings.evaluation_startdate)), 3)," ",
                 YEAR(ratings.evaluation_startdate), " ", "to", " ", LEFT(MONTHNAME(UPPER(ratings.evaluation_enddate)),3), " ",
-                YEAR(ratings.evaluation_enddate)) as evaluation_period'))
+                YEAR(ratings.evaluation_enddate)) as evaluation_period'), 'ratings.total_weighted_score')
             ->where('form_type', '=', 'IPCR')
             ->where('evaluationperiods.evaluation_period_status', '=', 'Open')
             ->where('evaluationform_status', '=', 'Approved (Cannot be edited)')
             ->where('users.name', '!=', 'Super Admin')
-            ->groupBy('departments.dept_name', 'users.name', 'ratings.evaluation_startdate', 'ratings.evaluation_enddate')
+            ->groupBy('departments.dept_name', 'users.name', 'ratings.evaluation_startdate', 'ratings.evaluation_enddate', 'ratings.total_weighted_score')
             ->orderBy('users.name')
             ->get();
 

@@ -68,7 +68,7 @@
                 <input type="search" class="form-control form-control-sm" name="search"
                        placeholder="Search">
                 <span class="input-group-prepend">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">
                             Search
                         </button>
                     <a href="{{route('manageorganization.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
@@ -77,7 +77,7 @@
         </form>
 
         <!--ADD DEPARTMENT BUTTON -->
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addorganization">
+        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#addorganization">
             Add
         </button>
         <div>
@@ -86,16 +86,16 @@
         <table class="table table-striped">
             <thead>
             <tr style="font-size: 11pt;">
-                <th>DIVISION NAME</th>
-                <th>DEPARTMENT NAME</th>
-                <th>AREA/SECTION NAME</th>
+                <th>SECTOR/DIVISION</th>
+                <th>COLLEGE/DEPARTMENT/OFFICE</th>
+                <th>AREA/SECTION</th>
                 <th>TYPE</th>
                 <th>ACTIONS</th>
             </tr>
             </thead>
             <tbody>
             @foreach($organizations as $row)
-                <tr>
+                <tr style="font-size: 11pt;">
                     <td>{{$row->division_name}}</td>
                     <td>{{$row->dept_name}}</td>
                     <td>{{$row->section_name}}</td>
@@ -139,7 +139,7 @@
                         <!-- Division Name-->
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="division">Division Name</label>
+                                <label for="division">Sector/Division Name</label>
                                 <input type="text" class="form-control form-control-sm" name="division_name"
                                        placeholder="Division Name"  required autocomplete="division_name">
                             </div>
@@ -147,7 +147,7 @@
                         <!-- Department Name-->
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="department">Department Name</label>
+                                <label for="department">College/Department/Office Name</label>
                                 <input type="text" class="form-control form-control-sm" name="dept_name"
                                        placeholder="Department Name"  required autocomplete="dept_name">
                             </div>
@@ -189,7 +189,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Edit Department Name</h5>
+                    <h5 class="modal-title" id="myModalLabel">Edit Organization</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -202,7 +202,7 @@
                         <input type="hidden" name="section_id" id="section_id">
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="division">Division Name</label>
+                                <label for="division">Sector/Division Name</label>
                                 <input type="text" class="form-control form-control-sm" name="division_name"
                                       id="division_name" placeholder="Division Name" required autocomplete="division_name">
                             </div>
@@ -210,7 +210,7 @@
                         <!-- Department Name-->
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label for="department">Department Name</label>
+                                <label for="department">College/Department/Office Name</label>
                                 <input type="text" class="form-control form-control-sm" name="dept_name"
                                       id="dept_name" placeholder="Department Name"  required autocomplete="dept_name">
                             </div>

@@ -83,8 +83,9 @@
                         <table class="table table-responsive">
                             <thead>
                             <tr>
-                                <th style="vertical-align: center; text-align: center; width: 50%;">Name</th>
-                                <th style="vertical-align: center; text-align: center; width: 50%;">Department</th>
+                                <th style="vertical-align: center; text-align: center; width: 40%;">Name</th>
+                                <th style="vertical-align: center; text-align: center; width: 40%;">Department</th>
+                                <th style="vertical-align: center; text-align: center; width: 20%;">Rating</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -92,8 +93,9 @@
                             <tbody>
                             @foreach($getevaluated as $row)
                                 <tr>
-                                    <td style="vertical-align: center; text-align: center; width: 50%;">{{$row->name}}</td>
-                                    <td style="vertical-align: center; text-align: center; width: 50%;">{{$row->dept_name}}</td>
+                                    <td style="vertical-align: center; text-align: center; width: 40%;">{{$row->name}}</td>
+                                    <td style="vertical-align: center; text-align: center; width: 40%;">{{$row->dept_name}}</td>
+                                    <td style="vertical-align: center; text-align: center; width: 20%;">{{$row->total_weighted_score}}</td>
                                 </tr>
                             @endforeach
                             </tbody>

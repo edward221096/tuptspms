@@ -54,7 +54,7 @@
         <h3 class="mt-4">Evaluation Period</h3>
         <p>Manage Evaluation Period</p>
 
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addevaluationperiod">
+        <button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#addevaluationperiod">
             Add
         </button>
 
@@ -66,16 +66,16 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Evaluation Period Start Date</th>
-                <th>Evaluation Period End Date</th>
-                <th>Evaluation Period Status</th>
-                <th>Actions</th>
+                <th>EVALUATION PERIOD START DATE</th>
+                <th>EVALUATION PERIOD END DATE</th>
+                <th>EVALUATION PERIOD STATUS</th>
+                <th>ACTIONS</th>
             </tr>
             </thead>
 
             <tbody>
             @foreach($evaluationperiod as $row)
-                <tr>
+                <tr style="font-size: 11pt;">
                     <td>{{$row->evaluation_startdate}}</td>
                     <td>{{$row->evaluation_enddate}}</td>
                     <td>{{$row->evaluation_period_status}}</td>

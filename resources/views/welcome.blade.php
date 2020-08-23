@@ -223,6 +223,28 @@
     </div>
 </section>
 
+<!-- TESTIMONIAL -->
+<section class="testimonial section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-md-5 col-12">
+                <div class="contact-image" data-aos="fade-up">
+
+                    <img src="{{asset('welcomepageimages/accounts.png')}}" style="height: 225pt; width: 450pt;" class="img-fluid" alt="accounts">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-7 col-12">
+                <h4 class="my-5 pt-3" data-aos="fade-up" data-aos-delay="100" style="font-weight: bolder;">USER ACCOUNT FOR TESTING</h4>
+
+                <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Done with the Pre-Survey? Please choose a user account then Log-in <a href="{{url('login')}}" style="font-style: italic;"><u>here!</u></a></h2>
+            </div>
+
+        </div>
+    </div>
+</section>
+
 <footer class="site-footer" id="footer">
     <div class="container">
         <div class="row">

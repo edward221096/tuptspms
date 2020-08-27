@@ -630,6 +630,7 @@
       <change beforePath="$PROJECT_DIR$/../projectfoo/webpack.mix.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
 =======
@@ -640,6 +641,8 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrDashboardController.php" afterDir="false" />
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
+=======
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
@@ -1520,6 +1523,7 @@
       <workItem from="1598062575152" duration="7823000" />
       <workItem from="1598094751324" duration="766000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1598146181894" duration="17243000" />
       <workItem from="1598183416738" duration="1375000" />
       <workItem from="1598505239379" duration="1781000" />
@@ -1527,6 +1531,10 @@
       <workItem from="1598146181894" duration="16868000" />
       <workItem from="1598508984021" duration="631000" />
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
+=======
+      <workItem from="1598146181894" duration="16868000" />
+      <workItem from="1598508984021" duration="1214000" />
+>>>>>>> master
     </task>
     <servers />
   </component>

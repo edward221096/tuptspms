@@ -96,7 +96,10 @@
                                 {{ __('Logout') }}
                             </a>
 
+<<<<<<< HEAD
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
+=======
+>>>>>>> master
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

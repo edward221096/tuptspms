@@ -804,6 +804,7 @@
     </div>
 </div>
 </body>
+<<<<<<< HEAD
 <!-- POST SURVEY MODAL CONFIRMATION -->
 <div class="modal fade" id="postsurveymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -830,6 +831,8 @@
     </div>
 </div>
 
+=======
+>>>>>>> 9b1f7ef... After logout redirect to post survey form
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
     $(document).ready(function() {

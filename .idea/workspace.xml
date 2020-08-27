@@ -44,6 +44,7 @@
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/owl.carousel.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/rellax.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/smoothscroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/accounts.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -630,11 +631,56 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IpcrDashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MyTeamEvaluationFormController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OpcrDashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OpcrDashboardController.php" afterDir="false" />
+>>>>>>> 9b1f7ef... After logout redirect to post survey form
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfafprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfassprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfassprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfastprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfastprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassisp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfassocp.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfinstructor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfinstructor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfprofessor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfqfprofessor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrfulladmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrfulladmin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcracademics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcracademics.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcraccounting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcraccounting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcradaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradaa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcradaf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradaf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcradre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcradre.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrbudget.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrbudget.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrcampusdirector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrcampusdirector.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrcashier.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrcashier.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrido.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrido.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrindustrybased.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrindustrybased.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrmedicalserv.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrmedicalserv.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrpdo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrpdo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrprocurement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrprocurement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrqaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrqaa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrrecords.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrrecords.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcruitc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcruitc.blade.php" afterDir="false" />
+>>>>>>> 9b1f7ef... After logout redirect to post survey form
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -655,14 +701,35 @@
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcracademics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcracademics.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradaf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrcampusdirector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrcampusdirector.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrcashier.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrcashier.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrfaculty.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrido.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrido.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrindustrybased.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrindustrybased.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrmedicalserv.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrmedicalserv.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrpdo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrpdo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrprocurement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrprocurement.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrqaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrqaa.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrrecords.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrrecords.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcruitc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcruitc.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editemployee.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/myevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/myevaluationforms.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/myteamevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/myteamevaluationforms.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/opcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/opcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
@@ -1452,9 +1519,14 @@
       <workItem from="1597977746148" duration="1140000" />
       <workItem from="1598062575152" duration="7823000" />
       <workItem from="1598094751324" duration="766000" />
+<<<<<<< HEAD
       <workItem from="1598146181894" duration="17243000" />
       <workItem from="1598183416738" duration="1375000" />
       <workItem from="1598505239379" duration="1781000" />
+=======
+      <workItem from="1598146181894" duration="16868000" />
+      <workItem from="1598508984021" duration="631000" />
+>>>>>>> 9b1f7ef... After logout redirect to post survey form
     </task>
     <servers />
   </component>

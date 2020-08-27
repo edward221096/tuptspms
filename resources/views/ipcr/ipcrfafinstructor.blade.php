@@ -31,7 +31,7 @@
     <label>
         Evaluation Form Status:
         <select name="evaluationform_status[]" class="form-control form-control-sm">
-            <option selected value="For Review and Approval">For Review and Approval</option>
+            <option selected value="For Evaluation (Immediate/Commitee)">For Evaluation (Immediate/Commitee)</option>
         </select>
     </label>
     <div>
@@ -68,7 +68,7 @@
             </tr>
             <tr style="background-color: rgb(255, 255, 255)">
                 <td style="width: 120px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><span style="font-family: Arial; font-size: 10pt">QAC No.</span></td>
-                <td style="border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><span style="font-family: Arial; font-size: 10pt">CC-10182019</span><span style="font-family: Arial; font-size: 10pt"><br></span></td>
+                <td style="border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171)"><span style="font-family: Arial; font-size: 10pt">CC-<?= date('mdY',time()) ;?></span><span style="font-family: Arial; font-size: 10pt"><br></span></td>
             </tr>
             </tbody>
         </table>
@@ -140,11 +140,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             <thead>
             <tr style="background-color: rgb(255, 255, 255);">
 {{--                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>FUNCTION NAME</b></span><b><br></b></td>--}}
-                <td style="text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
-                <td style="text-align: center; width: 341px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
-                <td style="text-align: center; width: 437px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
+                <td style="text-align: center; width: 10%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;">​</span><span style="font-family: Arial; font-size: 10pt;"><b>ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</b></span><b><br></b></td>
+                <td style="text-align: center; width: 40%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>QUALITY + OBJECTIVES</b></span><b><br></b><span style="font-family: Arial; font-size: 10pt;"><b>&nbsp;(TARGETS + MEASURES)</b></span></td>
+                <td style="text-align: center; width: 30%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>ACTUAL ACCOMPLISHMENTS</b></span></td>
                 <td style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" colspan="4"><span style="font-family: Arial; font-size: 10pt;"><b>RATING</b></span></td>
-                <td style="text-align: center; width: 366px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>REMARKS</b></span></td>
+                <td style="text-align: center; width: 20%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="2"><span style="font-family: Arial; font-size: 10pt;"><b>REMARKS</b></span></td>
             </tr>
             <tr style="background-color: rgb(255, 255, 255);">
                 <td style="text-align: center; width: 44px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);"><span style="font-family: Arial; font-size: 10pt;"><b>Q</b></span></td>

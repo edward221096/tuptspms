@@ -88,7 +88,7 @@
                 <input type="search" class="form-control form-control-sm" name="search"
                        placeholder="Search">
                 <span class="input-group-prepend">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">
                             Search
                         </button>
                     <a href="{{route('manageevaluationforms.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
@@ -96,7 +96,7 @@
             </div>
         </form>
         <br>
-        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#addmfo">
+        <button type="button" class="btn btn-sm btn-light" data-toggle="modal" data-target="#addmfo">
             Add
         </button>
         <div>
@@ -108,9 +108,9 @@
                 <thead>
                 <tr>
                     <th style="width: 10%;">FORM TYPE</th>
-                    <th style="width: 10%">DEPT NAME</th>
-                    <th style="width: 12%;">FUNCTION NAME</th>
-                    <th style="width: 10%;">ROLE NAME</th>
+                    <th style="width: 10%">DEPT</th>
+                    <th style="width: 12%;">FUNCTION</th>
+                    <th style="width: 10%;">ROLE</th>
                     <th style="width: 20%">ORGANIZATIONAL OUTCOMES/KEY RESULTS AREA</th>
                     <th style="width: 20%">QUALITY + OBJECTIVES
                         (TARGETS + MEASURES)</th>
@@ -121,10 +121,10 @@
                 <tbody>
                 @foreach($mfo as $row)
                     <tr>
-                        <td style="overflow-wrap: break-word;">{{$row->form_type}}</td>
-                        <td style="overflow-wrap: break-word;">{{$row->dept_name}}</td>
-                        <td style="overflow-wrap: break-word;">{{$row->function_name}}</td>
-                        <td style="overflow-wrap: break-word;">{{$row->role}}</td>
+                        <td style="overflow-wrap: break-word; font-size: 11pt;">{{$row->form_type}}</td>
+                        <td style="overflow-wrap: break-word; font-size: 11pt;">{{$row->dept_name}}</td>
+                        <td style="overflow-wrap: break-word; font-size: 11pt;">{{$row->function_name}}</td>
+                        <td style="overflow-wrap: break-word; font-size: 11pt;">{{$row->role}}</td>
                         <td style="overflow-wrap: break-word;">{!! $row->mfo_desc !!}</td>
                         <td style="overflow-wrap: break-word;">{!! $row->success_indicator_desc !!}</td>
                         <td>{!! $row->remarks !!}
@@ -295,8 +295,6 @@
                         </div>
 
                         <div class="modal-footer">
-
-                            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                             <!-- Add Information Button-->
                             <input class="btn btn-primary btn-sm" type="submit" value="Submit">
                         </div>

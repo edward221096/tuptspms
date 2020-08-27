@@ -85,6 +85,8 @@ class IpcrController extends Controller
     {
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -187,6 +189,8 @@ class IpcrController extends Controller
     public function getipcrcsassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -290,6 +294,8 @@ class IpcrController extends Controller
     public function getipcrcsprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -393,6 +399,8 @@ class IpcrController extends Controller
     public function getipcrcsinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -497,6 +505,8 @@ class IpcrController extends Controller
     public function getipcrfafassocp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -600,6 +610,8 @@ class IpcrController extends Controller
     public function getipcrfafassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -703,6 +715,8 @@ class IpcrController extends Controller
     public function getipcrfafprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -805,6 +819,8 @@ class IpcrController extends Controller
     public function getipcrfafinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -908,6 +924,8 @@ class IpcrController extends Controller
     public function getipcrfqfassocp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -1011,6 +1029,8 @@ class IpcrController extends Controller
     public function getipcrfqfassisp(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -1112,9 +1132,11 @@ class IpcrController extends Controller
 
     //IPCRCSfqfprofessor VIEW
     public function getipcrfqfprofessor(){
-            $get = DB::table('evaluationperiods')
-                ->select('evaluation_period_status')
-                ->get();
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
+            ->get();
 
             foreach($get as $evalstatus){
                 $evalstatus->evaluation_period_status;
@@ -1217,6 +1239,8 @@ class IpcrController extends Controller
     public function getipcrfqfinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -1318,9 +1342,11 @@ class IpcrController extends Controller
 
     //IPCRfulladmin VIEW
     public function getipcrfulladmin(){
-            $get = DB::table('evaluationperiods')
-                ->select('evaluation_period_status')
-                ->get();
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
+            ->get();
 
             foreach($get as $evalstatus){
                 $evalstatus->evaluation_period_status;
@@ -1424,6 +1450,8 @@ class IpcrController extends Controller
     public function getipcrfassprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -1525,9 +1553,11 @@ class IpcrController extends Controller
 
     //IPCRfastprofessor VIEW
     public function getipcrfastprofessor(){
-            $get = DB::table('evaluationperiods')
-                ->select('evaluation_period_status')
-                ->get();
+        $get = DB::table('evaluationperiods')
+            ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
+            ->get();
 
             foreach($get as $evalstatus){
                 $evalstatus->evaluation_period_status;
@@ -1630,6 +1660,8 @@ class IpcrController extends Controller
     public function getipcrfprofessor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){
@@ -1733,6 +1765,8 @@ class IpcrController extends Controller
     public function getipcrfinstructor(){
         $get = DB::table('evaluationperiods')
             ->select('evaluation_period_status')
+            ->orderBy('evaluation_period_status', 'desc')
+            ->limit(1)
             ->get();
 
         foreach($get as $evalstatus){

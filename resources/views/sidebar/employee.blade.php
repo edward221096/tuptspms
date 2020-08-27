@@ -62,7 +62,7 @@
                 <input type="search" class="form-control form-control-sm" name="search"
                        placeholder="Search">
                 <span class="input-group-prepend">
-                        <button type="submit" class="btn btn-primary btn-sm">
+                        <button type="submit" class="btn btn-outline-secondary btn-sm">
                             Search
                         </button>
                     <a href="{{route('employee.index')}}" class="btn btn-sm btn-outline-info">Clear Search</a>
@@ -70,17 +70,17 @@
             </div>
         </form>
         <!-- SHOW DATA IN A TABLE-->
-        <table class="table table-striped" style="font-size: 15px;">
+        <table class="table table-striped" style="font-size: 11pt;">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Role</th>
-                <th>Division Name</th>
-                <th>Department Name</th>
-                <th>Area/Section Name</th>
-                <th>Account Status</th>
-                <th>Actions</th>
+                <th>NAME</th>
+                <th>USERNAME</th>
+                <th>ROLE</th>
+                <th>SECTOR/DIVISION</th>
+                <th>COLLEGE /DEPARTMENT /OFFICE</th>
+                <th>AREA/SECTION</th>
+                <th>ACCOUNT STATUS</th>
+                <th>ACTIONS</th>
             </tr>
             </thead>
 

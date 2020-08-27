@@ -600,6 +600,23 @@
                                         </tr>
                                         </tbody>
                                     </table>
+
+                                    <table style="width: 100%; border-collapse: collapse; mso-yfti-tbllook: 1184;">
+                                        <tbody>
+                                        <tr style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; mso-yfti-lastrow: yes;">
+                                            <td width="1440" style="width: 1080pt; border: solid #ababab 1pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.75pt 0.75pt 0.75pt 0.75pt;">
+                                                <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
+                                                    <span style="font-size: 12pt; font-family: 'Times New Roman', serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;">&nbsp;</span>
+                                                    <b>
+                                                    <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
+                                                        REVISION HISTORY <textarea class="form-control" rows="5" name="" readonly></textarea>
+                                                    </span>
+                                                    </b>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                     <br />
                                     <div>
                                         @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')

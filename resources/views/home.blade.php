@@ -84,11 +84,10 @@
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="dropdown-item btn btn-primary" data-toggle="modal" data-target="#postsurveymodal">
+                            Logout
+                        </button>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
@@ -805,6 +804,32 @@
     </div>
 </div>
 </body>
+<!-- POST SURVEY MODAL CONFIRMATION -->
+<div class="modal fade" id="postsurveymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Post Survey Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>Did you already answer our Post Survey questions?</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform"
+                   class="btn btn-sm btn-outline-secondary">Not yet</a>
+                <a class="btn btn-sm btn-outline-danger" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Menu Toggle Script -->
 <script type="text/javascript">
     $(document).ready(function() {

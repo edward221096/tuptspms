@@ -44,7 +44,6 @@
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/owl.carousel.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/rellax.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../templatemo_538_digital_trend/templatemo_538_digital_trend/welcomepagejs/smoothscroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/welcomepageimages/accounts.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassisp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsinstructor.blade.php" afterDir="false" />
@@ -631,6 +630,7 @@
       <change beforePath="$PROJECT_DIR$" beforeDir="false" afterPath="$PROJECT_DIR$" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspms.rar" beforeDir="false" afterPath="$PROJECT_DIR$/../tuptspms.rar" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
 =======
@@ -643,10 +643,13 @@
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
 =======
 >>>>>>> master
+=======
+>>>>>>> 43f9969... change the logout redirect
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editipcr/editipcrcsassocp.blade.php" afterDir="false" />
 =======
@@ -684,6 +687,8 @@
       <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcrrecords.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcrrecords.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/editopcr/editopcruitc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/editopcr/editopcruitc.blade.php" afterDir="false" />
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
+=======
+>>>>>>> 43f9969... change the logout redirect
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassisp.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrcsassocp.blade.php" afterDir="false" />
@@ -704,35 +709,14 @@
       <change beforePath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/ipcr/ipcrfulladmin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcracademics.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcracademics.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcraccounting.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradaf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradaf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcradre.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrbudget.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrcampusdirector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrcampusdirector.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrcashier.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrcashier.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrfaculty.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrido.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrido.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrindustrybased.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrindustrybased.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrmedicalserv.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrmedicalserv.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrpdo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrpdo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrprocurement.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrprocurement.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrqaa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrqaa.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcrrecords.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcrrecords.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/opcr/opcruitc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/opcr/opcruitc.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editemployee.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/editevaluationforms.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/employee.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/ipcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageevaluationperiod.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageformtype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/managefunctionstype.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/manageorganization.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/myevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/myevaluationforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/myteamevaluationforms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/myteamevaluationforms.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sidebar/opcrdashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sidebar/opcrdashboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../tuptspmsbootstrap/Login_v14/Login_v14/css/main.css" beforeDir="false" />
@@ -1529,12 +1513,16 @@
       <workItem from="1598505239379" duration="1781000" />
 =======
       <workItem from="1598146181894" duration="16868000" />
+<<<<<<< HEAD
       <workItem from="1598508984021" duration="631000" />
 >>>>>>> 9b1f7ef... After logout redirect to post survey form
 =======
       <workItem from="1598146181894" duration="16868000" />
       <workItem from="1598508984021" duration="1214000" />
 >>>>>>> master
+=======
+      <workItem from="1598508984021" duration="1214000" />
+>>>>>>> 43f9969... change the logout redirect
     </task>
     <servers />
   </component>

@@ -1193,7 +1193,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         }
 
         //COMPUTE THE SALARY GRADE BASED ON SELECTED VALUE
-            $("#salarygrade").change(function(){
+        $("#salarygrade").change(function(){
                 let AClericalvalue = $("#clericalroutine").val()
                 let ATechnicalvalue = $("#technical").val()
                 let selectedsalarygrade = $(this).children("option:selected").val();
@@ -1202,7 +1202,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 let totalclericaltechnical = 0
 
                 if (selectedsalarygrade === '>20'){
-                    totalAclerical = Number(AClericalvalue * 0)
+                    totalAclerical = 0;
                     totalAtechnical = Number(ATechnicalvalue * 0.80)
                     totalclericaltechnical = totalAclerical + totalAtechnical
                 }
@@ -1220,12 +1220,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 }
 
                 if(selectedsalarygrade === '6-10'){
-                    totalAclerical = AClericalvalue * 0.30
-                    totalAtechnical = ATechnicalvalue * 0.50
+                    totalAclerical = Number(AClericalvalue * 0.30)
+                    totalAtechnical = Number(ATechnicalvalue * 0.50)
                     totalclericaltechnical = totalAclerical + totalAtechnical
                 }
-
                 $('#core-total-average').val(totalclericaltechnical)
+
 
                 computeAvg()
                 computeWeightedScore()
@@ -1242,8 +1242,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 
             weightedscore = Number(ACoreValue) + Number(ASuppValue)
 
-            $('#total-weighted-score').val(weightedscore)
-            $('#sgtotal').val(weightedscore)
+            $('#total-weighted-score, #sgtotal').val(weightedscore)
         }
 
         //ROUND OFF TO 4 PLACES INPUT TYPE NUMBER ON CHANGE

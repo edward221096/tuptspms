@@ -86,12 +86,12 @@
         //COUNT TOTAL OPCR BASED ON EVALUATION STATUS
         var mytotalopcrratings = $('#mytotalopcrratings');
 
-        // ctx.height(500);
-        var url2 = "{{url('/totalopcrweightedscore')}}";
-        var ratings2 = [];
-        var evalperiod2 = [];
+            // ctx.height(500);
+            var url2 = "{{url('/totalopcrweightedscore')}}";
+            var ratings2 = [];
+            var evalperiod2 = [];
 
-        $(document).ready(function(){
+            $(document).ready(function(){
             $.get(url2, function(response){
                 response.forEach(function(data){
                     ratings2.push(data.total_weighted_score);

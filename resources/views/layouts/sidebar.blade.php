@@ -485,8 +485,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 @foreach(\App\Http\Controllers\IpcrController::getUserDepartmentName() as $row)
-                                @if($row->dept_name == 'Campus Director' || Auth::User()->role == 'Super Admin'
-                                        || Auth::User()->role == 'Division Head')
+                                @if($row->dept_name == 'Campus Director' || Auth::User()->role == 'Super Admin')
                                     <a href="opcrcampusdirector" class="nav-link">
                                         <i class="far fa-circle navbar-icon"></i>
                                         <p style="color: black;">Campus Director</p>

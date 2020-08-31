@@ -21,17 +21,17 @@ class LoginController extends Controller
     |
     */
 
-//    use AuthenticatesUsers; //normal logout
+    use AuthenticatesUsers; //normal logout
 
-    use AuthenticatesUsers{
-        logout as performLogout;
-    }
-
-    public function logout(Request $request){
-        $url='https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform';
-        $this->performLogout($request);
-        return redirect()->away($url);
-    }
+//    use AuthenticatesUsers{
+//        logout as performLogout;
+//    }
+//
+//    public function logout(Request $request){
+//        $url='https://docs.google.com/forms/d/e/1FAIpQLSdlaG6t1LwNIegypZlSjWpst-___ui4Zp-bQoQPbThTHtrFTA/viewform';
+//        $this->performLogout($request);
+//        return redirect()->away($url);
+//    }
 
     /**
      * Where to redirect users after login.

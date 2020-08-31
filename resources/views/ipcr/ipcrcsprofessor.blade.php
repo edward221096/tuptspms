@@ -404,7 +404,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 <b>
             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;">
                 <br />
-                The above rating has been discussed with me by my immediate supervisor:
+                The above rating has been discussed with me by my immediate supervisor/evaluator/verifier/auditor:
             </span>
                 </b>
             </p>

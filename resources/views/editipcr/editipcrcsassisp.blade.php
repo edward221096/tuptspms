@@ -466,7 +466,7 @@
                                     <b>
                                 <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: EN-PH;">
                                     <br />
-                                    The above rating has been discussed with me by my immediate supervisor:
+                                    The above rating has been discussed with me by my immediate supervisor/evaluator/verifier/auditor:
                                 </span>
                                     </b>
                                 </p>
@@ -490,9 +490,9 @@
                                         <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                                                     <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                                                    @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                                    @if(Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Super Admin')
                                                             &nbsp;Name of Rater: <input type="text" class="form-control form-control-sm" readonly name="rater_esignature[]" value="{{$row->rater_esignature}}">
-                                                        @else
+                                                        @elseif(Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Super Admin')
                                                             Name of Rater: <input type="text" class="form-control form-control-sm" name="rater_esignature[]" value="{{$row->rater_esignature}}">
                                                         @endif
                                                 </span>
@@ -512,11 +512,12 @@
                                         <td width="800" style="width: 600pt; border: solid #ababab 1pt; border-left: none; mso-border-left-alt: solid #ababab 0.75pt; mso-border-alt: solid #ababab 0.75pt; background: white; padding: 0.6pt 0.6pt 0.6pt 0.6pt;">
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                                             <div style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">Signature of Rater:
-                                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                                @if(Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Super Admin')
                                                     <div>
                                                         <img src="data:{{$row->rater_esignature_file}}" style="width: 20%; height: auto;">
                                                     </div>
-                                                @else
+
+                                                @elseif(Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Super Admin')
                                                     @if($row->rater_esignature_file == '')
                                                         <div style="width: 30%; height: auto; border-style: solid; border-width: thin;" id="signature"></div>
                                                         <input type="button" class="btn btn-secondary btn-sm btn-reset" id="clearsignature" value="Clear">
@@ -551,9 +552,9 @@
                                         >
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                @if(Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Super Admin')
                                     &nbsp;Position: <input type="text" class="form-control form-control-sm" name="rater_role[]" readonly value="{{$row->rater_role}}"></span>
-                                                @else
+                                                @elseif(Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Super Admin')
                                                     Position:
                                                     <select name="rater_role[]" class="form-control form-control-sm">
                                                         <option selected value="{{ $row->rater_role }}">{{ $row->rater_role }}</option>
@@ -590,9 +591,9 @@
                                         >
                                             <p style="margin: 0cm 0cm 8pt; line-height: 107%; font-size: 11pt; font-family: Calibri, sans-serif; margin-bottom: 0cm; margin-bottom: 0.0001pt; line-height: normal;">
                             <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-color-alt: windowtext; mso-fareast-language: EN-PH;">
-                                @if(Auth::User()->role !== 'Super Admin' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Section Head' AND Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head')
+                                @if(Auth::User()->role !== 'Department Head' AND Auth::User()->role !== 'Division Head' AND Auth::User()->role !== 'Campus Director' AND Auth::User()->role !== 'Super Admin')
                                     &nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" readonly name="rater_date[]" value="{{$row->rater_date}}"></span>
-                                                @else
+                                                @elseif(Auth::User()->role == 'Section Head' || Auth::User()->role == 'Department Head' || Auth::User()->role == 'Division Head' || Auth::User()->role == 'Campus Director' || Auth::User()->role == 'Super Admin')
                                                     &nbsp;Date:&nbsp;<input type="date" class="form-control form-control-sm" name="rater_date[]" value="{{$row->rater_date}}">
                                                 @endif
                                                 <span style="font-size: 10pt; font-family: 'Arial', sans-serif; mso-fareast-font-family: 'Times New Roman'; mso-fareast-language: EN-PH;"></span>

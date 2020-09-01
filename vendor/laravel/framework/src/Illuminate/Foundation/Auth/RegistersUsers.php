@@ -24,13 +24,13 @@ trait RegistersUsers
     }
 
     public function divisions(){
-        $divisions = Division::all();
+        $divisions = Division::all()->whereNotIn('division_name', ['System Admin']);
         return view('auth.register', compact('divisions'));
     }
 
     public function departments(Request $request){
         $division_id = $request->Input('division_id');
-        $departments = Department::where('division_id', '=', $division_id)->get();
+        $departments = Department::where('division_id', '=', $division_id)->wherenotIn('dept_name', ['Academics Department'])->get();
         return response()->json($departments);
     }
 

@@ -58,7 +58,8 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
         $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
-        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'], 'status'=>'Account Approved')))
+        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
+//        , 'status'=>'Account Approved'
         {
             return redirect()->route('home');
         }else{

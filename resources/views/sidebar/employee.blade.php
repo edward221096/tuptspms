@@ -227,7 +227,7 @@
                                     @foreach(App\Department::orderBy('dept_name')
                                           ->whereIn('dept_name', ['Electrical and Allied Department',
                                           'Civil and Allied Department', 'Mechanical and Allied Department',
-                                          'Bachelors of Engineering Department', 'Basic Arts and Sciences Department (BASD)', 'ADAA'])->get() as $department)
+                                          'Bachelors of Engineering Department', 'Basic Arts and Sciences Department (BASD)', 'ADAA', 'Office of Student Affairs'])->get() as $department)
                                         <option value="{{$department->id}}">{{$department->dept_name}}</option>
                                     @endforeach
                                         <option disabled style="font-weight: bolder;">ADAF RELATED DEPARTMENTS</option>
@@ -252,7 +252,7 @@
                                         <option value="{{$section->id}}">{{$section->section_name}}</option>
                                     @endforeach
                                         <option disabled style="font-weight: bolder;">NON-TEACHING AREA/SECTIONS</option>
-                                    @foreach(App\Section::orderBy('section_name')->where('dept_id', '!=', [1,2,3,4,5])->get() as $section)
+                                    @foreach(App\Section::orderBy('section_name')->wherenotIn('dept_id', ['1','2','3','4','5'])->wherenotIn('section_name', ['Academics', 'Academics Section'])->get() as $section)
                                         <option value="{{$section->id}}">{{$section->section_name}}</option>
                                     @endforeach
                                 </select>

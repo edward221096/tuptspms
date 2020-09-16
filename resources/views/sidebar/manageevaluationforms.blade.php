@@ -249,20 +249,6 @@
                                 <div class="form-group col-md-6">
                                     <label for="function">Function</label>
                                     <select name="function_name" id="function_name" class="form-control form-control-sm">
-{{--                                        <option selected disabled>Select a Function</option>--}}
-{{--                                        <option disabled style="font-weight: bold;">IPCR RELATED FUNCTION</option>--}}
-{{--                                        @foreach(App\FunctionType::orderBy('id')->whereNotIn('function_name', ['Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical'])->get() as $functiontype)--}}
-{{--                                            <option>{{$functiontype->function_name}}</option>--}}
-{{--                                        @endforeach--}}
-{{--                                        <option disabled style="font-weight: bold;">IPCR FULLTIME ROLE RELATED FUNCTION</option>--}}
-{{--                                        @foreach(App\FunctionType::orderBy('id')->whereNotIn('function_name', ['Core Administrative Functions', 'Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical'])->get() as $functiontype)--}}
-{{--                                            <option>{{$functiontype->function_name}}</option>--}}
-{{--                                        @endforeach--}}
-
-{{--                                        <option disabled style="font-weight: bold;">IPCR FULLTIME - ADMIN RELATED FUNCTION</option>--}}
-{{--                                        @foreach(App\FunctionType::orderBy('id')->whereIn('function_name', ['Core Administrative Functions - Clerical/Routine', 'Core Administrative Functions - Technical', 'Support Functions'])->get() as $functiontype)--}}
-{{--                                            <option>{{$functiontype->function_name}}</option>--}}
-{{--                                        @endforeach--}}
                                     </select>
                                     <div class="note-group">
                                         *Choose what type of function for the question

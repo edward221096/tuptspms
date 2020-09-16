@@ -102,7 +102,12 @@ class OpcrController extends Controller
                            WHEN 'General Administration and Support' THEN 6 END ASC")
             ->get();
 
-        return view ('opcr.opcrcampusdirector', compact('opcrcampusdirector'));
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Campus Director')
+            ->get();
+
+        return view ('opcr.opcrcampusdirector', compact('opcrcampusdirector', 'getmultiplier'));
     }
 
     public function storeopcrcampusdirector(Request $request)
@@ -146,8 +151,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -190,7 +198,12 @@ class OpcrController extends Controller
                            WHEN 'Higher and Advanced Education Program' THEN 5 END ASC")
             ->get();
 
-        return view ('opcr.opcradaf', compact('opcradaf'));
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - ADAF')
+            ->get();
+
+        return view ('opcr.opcradaf', compact('opcradaf', 'getmultiplier'));
     }
 
     public function storeopcradaf(Request $request)
@@ -234,8 +247,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -277,7 +293,12 @@ class OpcrController extends Controller
                            WHEN 'General Administration and Support' THEN 4 END ASC")
             ->get();
 
-        return view ('opcr.opcradaa', compact('opcradaa'));
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - ADAA')
+            ->get();
+
+        return view ('opcr.opcradaa', compact('opcradaa', 'getmultiplier'));
     }
 
     public function storeopcradaa(Request $request)
@@ -321,8 +342,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -365,187 +389,13 @@ class OpcrController extends Controller
                            WHEN 'Higher and Advanced Education Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcradre', compact('opcradre'));
-    }
 
-    //OPCRACADEMICS VIEW
-    public function getopcracademics(){
-
-        $opcracademics = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
-                'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'OPCR')
-            ->Where('dept_name', '=', 'Academics Department')
-            ->orderByRaw("CASE function_name
-                           WHEN 'Higher and Advanced Education Program' THEN 1
-                           WHEN 'Research Program' THEN 2
-                           WHEN 'Technical Advisory Extension Program' THEN 3
-                           WHEN 'Core Administrative Functions' THEN 4
-                           WHEN 'General Administration and Support' THEN 5
-                           WHEN 'Support to Operations' THEN 6 END ASC")
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - ADRE')
             ->get();
 
-
-        return view ('opcr.opcracademics', compact('opcracademics'));
-    }
-
-    public function storeopcracademics(Request $request)
-    {
-        //to get the value of evaluation start date and store it
-        $evalstartdate = DB::table('evaluationperiods')
-            ->select('evaluation_startdate')
-            ->where('evaluation_period_status', '=', 'Open')
-            ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
-            ->get();
-
-        //to get the value of evaluation end date and store it
-        $evalenddate = DB::table('evaluationperiods')
-            ->select('evaluation_enddate')
-            ->where('evaluation_period_status', '=', 'Open')
-            ->orderBy('evaluation_enddate', 'desc')
-            ->limit('1')
-            ->get();
-
-        //to get the value of last value of ratings id then form_sequence_id + 1
-        $getlastratingid = Rating::pluck('id')->last();
-
-        $store = [];
-        for ($x = 0; $x < count($request->mfo_id); $x++) {
-            $store[] = [
-                'user_id' => $request->user_id[0],
-                'form_sequence_id' => $getlastratingid + 1,
-                'form_id' => $request->form_id[0],
-                'division_id' => $request->division_id[0],
-                'dept_id' => $request->dept_id[0],
-                'section_id' => $request->section_id[0],
-                'mfo_id' => $request->mfo_id[$x],
-                'mfo_desc' => $request->mfo_desc[$x],
-                'success_indicator_desc' => $request->success_indicator_desc[$x],
-                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
-                'remarks' => $request->remarks[$x],
-                'function_name' => $request->function_name[$x],
-                'Q1' => $request->Q[$x],
-                'E2' => $request->E[$x],
-                'T3' => $request->T[$x],
-                'A4' => $request->A[$x],
-                'core_total_average' => $request->core_total_average[0],
-                'support_total_average' => $request->support_total_average[0],
-                'research_total_average' => $request->research_total_average[0],
-                'ipcr_rating_average' => $request->ipcr_rating_average[0],
-                'total_weighted_score' => $request->total_weighted_score[0],
-                'evaluation_startdate' => $request->evaluation_startdate[0],
-                'evaluation_enddate' => $request->evaluation_enddate[0],
-                'ratee_esignature' => $request->ratee_esignature[0],
-                'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file,
-                'rater_esignature_file' => $request->rater_esignature_file,
-                'ratee_role' => $request->ratee_role[0],
-                'rater_role' => $request->rater_role[0],
-                'ratee_date' => $request->ratee_date[0],
-                'rater_date' => $request->rater_date[0],
-                'rater_comments' => $request->rater_comments[0],
-                'evaluationform_name' => $request->evaluationform_name[0],
-                'evaluationform_status' => $request->evaluationform_status[0],
-            ];
-        }
-        DB::table('ratings')->insert($store);
-
-        return redirect('/myevaluationforms');
-    }
-
-    //OPCRACCOUNTING VIEW
-    public function getopcraccounting(){
-
-        $opcraccounting = DB::table('mfos')
-            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
-            ->Join('forms', 'forms.id','=', 'mfos.form_id')
-            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
-            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
-            'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
-            'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
-            ->where('form_type', '=', 'OPCR')
-            ->Where('dept_name', '=', 'Accounting')
-            ->orderByRaw("CASE function_name
-                           WHEN 'Core Administrative Functions' THEN 1
-                           WHEN 'General Administration and Support' THEN 2
-                           WHEN 'Support to Operations' THEN 3
-                           WHEN 'Higher and Advanced Education Program' THEN 4
-                           WHEN 'Research Program' THEN 5
-                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
-            ->get();
-
-            // dd($opcraccounting);
-        return view ('opcr.opcraccounting', compact('opcraccounting'));
-    }
-
-    public function storeopcraccounting(Request $request)
-    {
-        //to get the value of evaluation start date and store it
-        $evalstartdate = DB::table('evaluationperiods')
-            ->select('evaluation_startdate')
-            ->where('evaluation_period_status', '=', 'Open')
-            ->orderBy('evaluation_startdate', 'desc')
-            ->limit('1')
-            ->get();
-
-        //to get the value of evaluation end date and store it
-        $evalenddate = DB::table('evaluationperiods')
-            ->select('evaluation_enddate')
-            ->where('evaluation_period_status', '=', 'Open')
-            ->orderBy('evaluation_enddate', 'desc')
-            ->limit('1')
-            ->get();
-
-        //to get the value of last value of ratings id then form_sequence_id + 1
-        $getlastratingid = Rating::pluck('id')->last();
-
-        $store = [];
-        for ($x = 0; $x < count($request->mfo_id); $x++) {
-            $store[] = [
-                'user_id' => $request->user_id[0],
-                'form_sequence_id' => $getlastratingid + 1,
-                'form_id' => $request->form_id[0],
-                'division_id' => $request->division_id[0],
-                'dept_id' => $request->dept_id[0],
-                'section_id' => $request->section_id[0],
-                'mfo_id' => $request->mfo_id[$x],
-                'mfo_desc' => $request->mfo_desc[$x],
-                'success_indicator_desc' => $request->success_indicator_desc[$x],
-                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
-                'remarks' => $request->remarks[$x],
-                'function_name' => $request->function_name[$x],
-                'Q1' => $request->Q[$x],
-                'E2' => $request->E[$x],
-                'T3' => $request->T[$x],
-                'A4' => $request->A[$x],
-                'core_total_average' => $request->core_total_average[0],
-                'support_total_average' => $request->support_total_average[0],
-                'research_total_average' => $request->research_total_average[0],
-                'ipcr_rating_average' => $request->ipcr_rating_average[0],
-                'total_weighted_score' => $request->total_weighted_score[0],
-                'evaluation_startdate' => $request->evaluation_startdate[0],
-                'evaluation_enddate' => $request->evaluation_enddate[0],
-                'ratee_esignature' => $request->ratee_esignature[0],
-                'rater_esignature' => $request->rater_esignature[0],
-                'ratee_esignature_file' => $request->ratee_esignature_file,
-                'rater_esignature_file' => $request->rater_esignature_file,
-                'ratee_role' => $request->ratee_role[0],
-                'rater_role' => $request->rater_role[0],
-                'ratee_date' => $request->ratee_date[0],
-                'rater_date' => $request->rater_date[0],
-                'rater_comments' => $request->rater_comments[0],
-                'evaluationform_name' => $request->evaluationform_name[0],
-                'evaluationform_status' => $request->evaluationform_status[0],
-            ];
-        }
-        DB::table('ratings')->insert($store);
-
-        return redirect('/myevaluationforms');
+        return view ('opcr.opcradre', compact('opcradre', 'getmultiplier'));
     }
 
     public function storeopcradre(Request $request)
@@ -589,8 +439,205 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/myevaluationforms');
+    }
+
+    //OPCRACADEMICS VIEW
+    public function getopcracademics(){
+
+        $opcracademics = DB::table('mfos')
+            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
+            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
+                'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+                'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('form_type', '=', 'OPCR')
+            ->Where('dept_name', '=', 'Academics Department')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Higher and Advanced Education Program' THEN 1
+                           WHEN 'Research Program' THEN 2
+                           WHEN 'Technical Advisory Extension Program' THEN 3
+                           WHEN 'Core Administrative Functions' THEN 4
+                           WHEN 'General Administration and Support' THEN 5
+                           WHEN 'Support to Operations' THEN 6 END ASC")
+            ->get();
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Academics Department')
+            ->get();
+
+        return view ('opcr.opcracademics', compact('opcracademics', 'getmultiplier'));
+    }
+
+    public function storeopcracademics(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for ($x = 0; $x < count($request->mfo_id); $x++) {
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request->remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
+                'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
+                'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
+                'ipcr_rating_average' => $request->ipcr_rating_average[0],
+                'total_weighted_score' => $request->total_weighted_score[0],
+                'evaluation_startdate' => $request->evaluation_startdate[0],
+                'evaluation_enddate' => $request->evaluation_enddate[0],
+                'ratee_esignature' => $request->ratee_esignature[0],
+                'rater_esignature' => $request->rater_esignature[0],
+                'ratee_esignature_file' => $request->ratee_esignature_file,
+                'rater_esignature_file' => $request->rater_esignature_file,
+                'ratee_role' => $request->ratee_role[0],
+                'rater_role' => $request->rater_role[0],
+                'ratee_date' => $request->ratee_date[0],
+                'rater_date' => $request->rater_date[0],
+                'rater_comments' => $request->rater_comments[0],
+                'evaluationform_name' => $request->evaluationform_name[0],
+                'evaluationform_status' => $request->evaluationform_status[0],
+            ];
+        }
+        DB::table('ratings')->insert($store);
+
+        return redirect('/myevaluationforms');
+    }
+
+    //OPCRACCOUNTING VIEW
+    public function getopcraccounting(){
+
+        $opcraccounting = DB::table('mfos')
+            ->Join('functions', 'functions.id', '=', 'mfos.function_id')
+            ->Join('forms', 'forms.id','=', 'mfos.form_id')
+            ->Join('departments', 'departments.id', '=', 'mfos.dept_id')
+            ->select('mfos.id', 'forms.form_type', 'forms.id as form_id', 'departments.dept_name',
+            'functions.id as function_id', 'functions.function_name', 'mfos.mfo_desc',
+            'mfos.success_indicator_desc', 'mfos.actual_accomplishment_desc', 'mfos.remarks')
+            ->where('form_type', '=', 'OPCR')
+            ->Where('dept_name', '=', 'Accounting')
+            ->orderByRaw("CASE function_name
+                           WHEN 'Core Administrative Functions' THEN 1
+                           WHEN 'General Administration and Support' THEN 2
+                           WHEN 'Support to Operations' THEN 3
+                           WHEN 'Higher and Advanced Education Program' THEN 4
+                           WHEN 'Research Program' THEN 5
+                           WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
+            ->get();
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Accounting')
+            ->get();
+
+        return view ('opcr.opcraccounting', compact('opcraccounting', 'getmultiplier'));
+    }
+
+    public function storeopcraccounting(Request $request)
+    {
+        //to get the value of evaluation start date and store it
+        $evalstartdate = DB::table('evaluationperiods')
+            ->select('evaluation_startdate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_startdate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of evaluation end date and store it
+        $evalenddate = DB::table('evaluationperiods')
+            ->select('evaluation_enddate')
+            ->where('evaluation_period_status', '=', 'Open')
+            ->orderBy('evaluation_enddate', 'desc')
+            ->limit('1')
+            ->get();
+
+        //to get the value of last value of ratings id then form_sequence_id + 1
+        $getlastratingid = Rating::pluck('id')->last();
+
+        $store = [];
+        for ($x = 0; $x < count($request->mfo_id); $x++) {
+            $store[] = [
+                'user_id' => $request->user_id[0],
+                'form_sequence_id' => $getlastratingid + 1,
+                'form_id' => $request->form_id[0],
+                'division_id' => $request->division_id[0],
+                'dept_id' => $request->dept_id[0],
+                'section_id' => $request->section_id[0],
+                'mfo_id' => $request->mfo_id[$x],
+                'mfo_desc' => $request->mfo_desc[$x],
+                'success_indicator_desc' => $request->success_indicator_desc[$x],
+                'actual_accomplishment_desc' => $request->actual_accomplishment_desc[$x],
+                'remarks' => $request->remarks[$x],
+                'function_name' => $request->function_name[$x],
+                'Q1' => $request->Q[$x],
+                'E2' => $request->E[$x],
+                'T3' => $request->T[$x],
+                'A4' => $request->A[$x],
+                'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
+                'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
+                'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -633,7 +680,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrbudget', compact('opcrbudget'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Budget')
+            ->get();
+
+        return view ('opcr.opcrbudget', compact('opcrbudget', 'getmultiplier'));
     }
 
     public function storeopcrbudget(Request $request)
@@ -677,8 +730,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -721,7 +777,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrcashier', compact('opcrcashier'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Cashier')
+            ->get();
+
+        return view ('opcr.opcrcashier', compact('opcrcashier', 'getmultiplier'));
     }
 
     public function storeopcrcashier(Request $request)
@@ -765,8 +827,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -808,7 +873,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrido', compact('opcrido'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - IDO')
+            ->get();
+
+        return view ('opcr.opcrido', compact('opcrido', 'getmultiplier'));
     }
 
     public function storeopcrido(Request $request)
@@ -852,8 +923,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -896,7 +970,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrindustrybased', compact('opcrindustrybased'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Industry Based')
+            ->get();
+
+        return view ('opcr.opcrindustrybased', compact('opcrindustrybased', 'getmultiplier'));
     }
 
     public function storeopcrindustrybased(Request $request)
@@ -940,8 +1020,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -984,7 +1067,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrmedicalserv', compact('opcrmedicalserv'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Medical Serv')
+            ->get();
+
+        return view ('opcr.opcrmedicalserv', compact('opcrmedicalserv', 'getmultiplier'));
     }
 
     public function storeopcrmedicalserv(Request $request)
@@ -1028,8 +1117,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -1072,7 +1164,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrpdo', compact('opcrpdo'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - PDO')
+            ->get();
+
+        return view ('opcr.opcrpdo', compact('opcrpdo', 'getmultiplier'));
     }
 
     public function storeopcrpdo(Request $request)
@@ -1116,8 +1214,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -1160,7 +1261,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrprocurement', compact('opcrprocurement'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Procurement')
+            ->get();
+
+        return view ('opcr.opcrprocurement', compact('opcrprocurement', 'getmultiplier'));
     }
 
     public function storeopcrprocurement(Request $request)
@@ -1204,8 +1311,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -1249,7 +1359,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrqaa', compact('opcrqaa'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - QAA')
+            ->get();
+
+        return view ('opcr.opcrqaa', compact('opcrqaa', 'getmultiplier'));
     }
 
     public function storeopcrqaa(Request $request)
@@ -1293,8 +1409,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -1337,7 +1456,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcrrecords', compact('opcrrecords'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - Records')
+            ->get();
+
+        return view ('opcr.opcrrecords', compact('opcrrecords', 'getmultiplier'));
     }
 
     public function storeopcrrecords(Request $request)
@@ -1381,8 +1506,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
@@ -1425,7 +1553,13 @@ class OpcrController extends Controller
                            WHEN 'Research Program' THEN 5
                            WHEN 'Technical Advisory Extension Program' THEN 6 END ASC")
             ->get();
-        return view ('opcr.opcruitc', compact('opcruitc'));
+
+        $getmultiplier = DB::table('formmultipliers')
+            ->select('form_name', 'function_name', 'multiplier')
+            ->where('form_name', '=', 'OPCR - UITC')
+            ->get();
+
+        return view ('opcr.opcruitc', compact('opcruitc', 'getmultiplier'));
     }
 
     public function storeopcruitc(Request $request)
@@ -1469,8 +1603,11 @@ class OpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'ipcr_rating_average' => $request->ipcr_rating_average[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],

@@ -148,6 +148,21 @@ Route::group(['middleware' => ['auth']], function () {
     //FOR UPDATE AND DELETE DATA EVALUATION PERIOD
     route::resource('/evaluationperiod', 'EvaluationPeriodController');
 
+    //------------------ EVALUATION FORM MULTIPLIER RELATED ROUTES---------------------------
+    Route::get('/managemultiplier', function () {
+        return view('sidebar.managemultiplier');
+    });
+
+    //FOR GET FORM MULTIPLIER
+    route::get('/managemultiplier', 'FormMultiplierController@index');
+
+    //FOR INSERT DATA FORM MULTIPLIER
+    route::post('/storemultiplier', 'FormMultiplierController@store');
+
+    //FOR UPDATE AND DELETE DATA FORM MULTIPLIER
+    route::resource('/formmultiplier', 'FormMultiplierController');
+
+
     //------------------MANAGE EVALUATION FORM (MFO) RELATED ROUTES---------------------------
     //FOR GET THE VALUES OF MFOS
     Route::get('/manageevaluationforms', 'MfoController@index');

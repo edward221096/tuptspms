@@ -112,7 +112,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - College Sec Associate Professor')
+                ->get();
+
+            return view('ipcr.ipcrcsassocp', compact('ipcrcsassocp', 'getmultiplier'));
         } else{
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
             return redirect('/myevaluationforms');
@@ -161,8 +167,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -216,7 +225,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrcsassisp', compact('ipcrcsassisp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - College Sec Assistant Professor')
+                ->get();
+
+            return view('ipcr.ipcrcsassisp', compact('ipcrcsassisp', 'getmultiplier'));
         } else{
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
                 return redirect('/myevaluationforms');
@@ -265,8 +280,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -321,7 +339,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - College Sec Professor')
+                ->get();
+
+            return view('ipcr.ipcrcsprofessor', compact('ipcrcsprofessor', 'getmultiplier'));
         }
         else{
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -371,8 +395,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -426,7 +453,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - College Sec Instructor')
+                ->get();
+
+            return view('ipcr.ipcrcsinstructor', compact('ipcrcsinstructor', 'getmultiplier'));
         }
         else{
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -477,8 +510,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -532,7 +568,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
             ->get();
-        return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Admin Function Associate Professor')
+                ->get();
+
+        return view ('ipcr.ipcrfafassocp', compact('ipcrfafassocp', 'getmultiplier'));
         }
         else{
         session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -582,8 +624,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -637,7 +682,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrfafassisp', compact('ipcrfafassisp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Admin Function Assistant Professor')
+                ->get();
+
+            return view('ipcr.ipcrfafassisp', compact('ipcrfafassisp', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -687,8 +738,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -742,7 +796,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Admin Function Professor')
+                ->get();
+
+            return view('ipcr.ipcrfafprofessor', compact('ipcrfafprofessor', 'getmultiplier'));
         } else {
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
                 return redirect('/myevaluationforms');
@@ -791,8 +851,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -846,7 +909,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Admin Function Instructor')
+                ->get();
+
+            return view('ipcr.ipcrfafinstructor', compact('ipcrfafinstructor', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -896,8 +965,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -951,7 +1023,13 @@ class IpcrController extends Controller
                            WHEN 'Core Administrative Functions' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
             ->get();
-        return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Quasi Function Associate Professor')
+                ->get();
+
+        return view ('ipcr.ipcrfqfassocp', compact('ipcrfqfassocp', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1001,8 +1079,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1056,7 +1137,13 @@ class IpcrController extends Controller
                            WHEN 'Core Administrative Functions' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Quasi Function Assistant Professor')
+                ->get();
+
+            return view('ipcr.ipcrfqfassisp', compact('ipcrfqfassisp', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1106,8 +1193,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1161,7 +1251,13 @@ class IpcrController extends Controller
                            WHEN 'Core Administrative Functions' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                     ->get();
-                return view('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Quasi Function Professor')
+                ->get();
+
+                return view('ipcr.ipcrfqfprofessor', compact('ipcrfqfprofessor', 'getmultiplier'));
             }
             else {
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1211,8 +1307,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1266,7 +1365,13 @@ class IpcrController extends Controller
                            WHEN 'Core Administrative Functions' THEN 4
                            WHEN 'Support Functions' THEN 5 END ASC")
                 ->get();
-            return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Faculty with Quasi Function Instructor')
+                ->get();
+
+            return view('ipcr.ipcrfqfinstructor', compact('ipcrfqfinstructor', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1316,8 +1421,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1369,7 +1477,13 @@ class IpcrController extends Controller
                            WHEN 'Core Administrative Functions - Technical' THEN 2
                            WHEN 'Support Functions' THEN 3 END ASC")
                     ->get();
-                return view('ipcr.ipcrfulladmin', compact('ipcrfulladmin'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Fulltime Admin')
+                ->get();
+
+                return view('ipcr.ipcrfulladmin', compact('ipcrfulladmin', 'getmultiplier'));
             }
             else {
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1419,8 +1533,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'clericalroutine' => $request->clericalroutine[0],
                 'technical' => $request->technical[0],
                 'salary_grade' => $request->salary_grade[0],
@@ -1477,7 +1594,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 3
                            WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
-            return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Fulltime Associate Professor')
+                ->get();
+
+            return view('ipcr.ipcrfassprofessor', compact('ipcrfassprofessor', 'getmultiplier'));
         }
         else {
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1527,8 +1650,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1582,7 +1708,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 3
                            WHEN 'Support Functions' THEN 4 END ASC")
                     ->get();
-                return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Fulltime Assistant Professor')
+                ->get();
+
+                return view('ipcr.ipcrfastprofessor', compact('ipcrfastprofessor', 'getmultiplier'));
             }
             else {
                 session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1632,8 +1764,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1687,7 +1822,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 3
                            WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
-            return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Fulltime Professor')
+                ->get();
+
+            return view('ipcr.ipcrfprofessor', compact('ipcrfprofessor', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1737,8 +1878,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],
@@ -1792,7 +1936,13 @@ class IpcrController extends Controller
                            WHEN 'Technical Advisory Extension Program' THEN 3
                            WHEN 'Support Functions' THEN 4 END ASC")
                 ->get();
-            return view('ipcr.ipcrfinstructor', compact('ipcrfinstructor'));
+
+            $getmultiplier = DB::table('formmultipliers')
+                ->select('form_name', 'function_name', 'multiplier')
+                ->where('form_name', '=', 'IPCR - Fulltime Instructor')
+                ->get();
+
+            return view('ipcr.ipcrfinstructor', compact('ipcrfinstructor', 'getmultiplier'));
         }
         else {
             session()->flash('denied', 'Evaluation is not yet Open. Wait for the announcement');
@@ -1842,8 +1992,11 @@ class IpcrController extends Controller
                 'T3' => $request->T[$x],
                 'A4' => $request->A[$x],
                 'core_total_average' => $request->core_total_average[0],
+                'core_multiplier' => $request->core_multiplier[0],
                 'support_total_average' => $request->support_total_average[0],
+                'support_multiplier' => $request->support_multiplier[0],
                 'research_total_average' => $request->research_total_average[0],
+                'research_multiplier' => $request->research_multiplier[0],
                 'total_weighted_score' => $request->total_weighted_score[0],
                 'evaluation_startdate' => $request->evaluation_startdate[0],
                 'evaluation_enddate' => $request->evaluation_enddate[0],

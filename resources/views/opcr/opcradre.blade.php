@@ -15,6 +15,11 @@
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
     <form method="POST" action="/storedataopcradre">
         {{ csrf_field() }}
+        @foreach($getmultiplier as $row)
+            @if($row->function_name == 'Research Program, Core Administrative Functions, General Administration and Support Functions')
+                <input type="hidden" value="{{$row->multiplier}}" id="coreadminfunctionmultiplier" name="core_multiplier[]">
+            @endif
+        @endforeach
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
@@ -274,7 +279,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     >
                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
-                            Research Program, Core Administrative Functions, General Administration and Support Functions  (80%)
+                            Research Program, Core Administrative Functions, General Administration and Support Functions
+                                @foreach($getmultiplier as $row)
+                                    @if($row->function_name == 'Research Program, Core Administrative Functions, General Administration and Support Functions')
+                                        <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->multiplier * 100}}%">
+                                    @endif
+                                @endforeach
                             </b>
                         </div>
                     </td>
@@ -557,35 +567,22 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         })
 
         //COMPUTE AVERAGE FOR EACH FUNCTION
-        function computeAvg() {
-            // For Core Functions
-            const corevalues = document.getElementsByClassName("a-value-core")
-            let avg = 0
-            let total = 0
-            let count = 0
-            for (let x = 0; x < corevalues.length; x++) {
-                if (corevalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(corevalues[x].value)
-                }
-            }
-            avg = (total / count) * 0.80
-            $('#core-total-average').val(isNaN(avg) ? "" : avg)
-
-            // For Support Functons
-            avg = 0
-            total = 0
-            count = 0
-            const supvalues = document.getElementsByClassName("a-value-support")
-            for (let x = 0; x < supvalues.length; x++) {
-                if (supvalues[x].value !== "") {
-                    count++
-                    total = total + parseFloat(supvalues[x].value)
-                }
-            }
-            avg = total / count * 0.20
-            $('#support-total-average').val(isNaN(avg) ? "" : avg)
-        }
+      function computeAvg() {
+          // For Core Functions
+          const corevalues = document.getElementsByClassName("a-value-core")
+          let formmultipliercore = $("#coreadminfunctionmultiplier").val()
+          let avg = 0
+          let total = 0
+          let count = 0
+          for (let x = 0; x < corevalues.length; x++) {
+              if (corevalues[x].value !== "") {
+                  count++
+                  total = total + parseFloat(corevalues[x].value)
+              }
+          }
+          avg = (total / count) * formmultipliercore
+          $('#core-total-average').val(isNaN(avg) ? "" : avg)
+      }
 
         //COMPUTE FOR TOTAL WEIGHTED AVERAGE. If there is incomplete value for function.
         // The weighted score will not do the computation

@@ -107,7 +107,8 @@
             <tbody>
             @foreach($myevaluationform as $row)
                 <tr style="font-size: 11pt;">
-                    <td style ="word-wrap: break-word;">{{$row->form_type}}</td>
+                    <td style ="word-wrap: break-word;">{{$row->evaluationform_name}}</td>
+{{--                    <td style ="word-wrap: break-word;">{{$row->form_type}}</td>--}}
                     <td style ="word-wrap: break-word;">{{$row->name}}</td>
                     <td style ="word-wrap: break-word;">{{$row->ratee_role}}</td>
                     <td style ="word-wrap: break-word;">{{$row->division_name}}</td>

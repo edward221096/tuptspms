@@ -217,19 +217,19 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
-//            ->where('user_id', '=', $getuserid->user_id)
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
             ->select('id', 'mfo_id', 'function_name', 'mfo_desc', 'success_indicator_desc', 'actual_accomplishment_desc', 'remarks', 'Q1', 'E2', 'T3', 'A4')
-//            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->get();
 
@@ -261,14 +261,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -305,14 +307,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -349,14 +353,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -393,14 +399,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -437,14 +445,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature','ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature','ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -481,14 +491,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature','ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature','ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -525,14 +537,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -569,14 +583,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -613,14 +629,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -657,14 +675,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -701,14 +721,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -745,14 +767,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -789,14 +813,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -833,14 +859,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -877,14 +905,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -922,7 +952,8 @@ class MyTeamEvaluationFormController extends Controller
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name', 'technical',
-                'clericalroutine', 'salary_grade')
+                'clericalroutine', 'salary_grade',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -930,7 +961,8 @@ class MyTeamEvaluationFormController extends Controller
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name', 'technical',
-                'clericalroutine', 'salary_grade')
+                'clericalroutine', 'salary_grade',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -967,14 +999,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1011,14 +1045,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1055,14 +1091,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1099,14 +1137,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1143,14 +1183,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1187,14 +1229,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1231,14 +1275,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1275,14 +1321,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1319,14 +1367,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1363,14 +1413,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1407,14 +1459,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1451,14 +1505,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1495,14 +1551,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1539,14 +1597,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1583,14 +1643,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1627,14 +1689,16 @@ class MyTeamEvaluationFormController extends Controller
                 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_esignature_file', 'rater_esignature_file', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
-                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name')
+                'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
+                'ratings.core_multiplier', 'ratings.support_multiplier', 'ratings.research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')

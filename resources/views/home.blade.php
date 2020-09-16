@@ -203,6 +203,12 @@
                                         </a>
                                 </li>
                                 <li class="nav-item">
+                                        <a href="managemultiplier" class="nav-link">
+                                            <i class="fa fa-superscript nav-icon"></i>
+                                            <p style="color: black;">Manage Form Multiplier</p>
+                                        </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="manageorganization" class="nav-link">
                                         <i class="fa fa-sitemap nav-icon"></i>
                                         <p style="color: black;">Manage Organization</p>
@@ -706,6 +712,7 @@
                                 @yield('ipcrdashboard')
                                 @yield('opcrdashboard')
                                 @yield('mydashboard')
+                                @yield('managemultiplier')
                             </div>
                         </div>
                     </div>

@@ -58,6 +58,9 @@
                         <form action="{{route('updatemyipcropcr.update', [$row->form_sequence_id])}}" method="post">
                             {{method_field('PATCH')}}
                             {{ csrf_field() }}
+                            <input type="hidden" value="{{$row->core_multiplier}}" id="coreadminfunctionmultiplier" name="core_multiplier[]">
+                            <input type="hidden" value="{{$row->support_multiplier}}" id="higherfunctionmultiplier" name="support_multiplier[]">
+                            <input type="hidden" value="{{$row->research_multiplier}}" id="researchfunctionmultiplier" name="research_multiplier[]">
                             <input type="hidden" value="{{ $row->user_id }}" name="user_id[]">
                             <input type="hidden" value="{{ $row->division_id}}" name="division_id[]">
                             <input type="hidden" value="{{ $row->dept_id }}" name="dept_id[]">
@@ -330,7 +333,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                                             <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
                                                 Higher and Advanced Education Programs and Support Functions&nbsp;<br style="box-sizing: border-box;" />
-                                                Weighted Average (48%)
+                                                Weighted Average
+                                                @foreach($ratingsinglevalue as $row)
+                                                    <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->support_multiplier * 100}}%">
+                                                @endforeach
                                             </b>
                                             <br />
                                         </div>
@@ -353,7 +359,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                                 <span style="box-sizing: border-box; color: black;"></span>
                                             </p>
                                             <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (40%)</span></b>
+                                                <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average
+                                                    @foreach($ratingsinglevalue as $row)
+                                                            <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->research_multiplier * 100}}%">
+                                                        @endforeach
+                                                    </span></b>
                                             </p>
                                         </div>
                                     </td>
@@ -378,7 +388,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                                             <span style="box-sizing: border-box; color: black;"></span>
                                         </p>
                                         <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (12%)</span></b>
+                                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average
+                                                @foreach($ratingsinglevalue as $row)
+                                                        <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->core_multiplier * 100}}%">
+                                                    @endforeach
+                                                </span></b>
                                             <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
                                         </p>
                                     </td>
@@ -702,6 +716,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     function computeAvg() {
         // For Core Functions
         const corevalues = document.getElementsByClassName("a-value-core")
+        let formmultipliercore = $("#coreadminfunctionmultiplier").val()
         let avg = 0
         let total = 0
         let count = 0
@@ -711,10 +726,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 total = total + parseFloat(corevalues[x].value)
             }
         }
-        avg = (total / count) * 0.12
+        avg = (total / count) * formmultipliercore
         $('#core-total-average').val(isNaN(avg) ? "" : avg)
 
         // For Support Functons
+        let formmultiplierhigher = $("#higherfunctionmultiplier").val()
         avg = 0
         total = 0
         count = 0
@@ -725,10 +741,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 total = total + parseFloat(supvalues[x].value)
             }
         }
-        avg = total / count * 0.48
+        avg = total / count * formmultiplierhigher
         $('#support-total-average').val(isNaN(avg) ? "" : avg)
 
         // For Research Services
+        let formmultiplierresearch = $("#researchfunctionmultiplier").val()
         avg = 0
         total = 0
         count = 0
@@ -739,7 +756,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 total = total + parseFloat(resvalues[x].value)
             }
         }
-        avg = total / count * 0.40
+        avg = total / count * formmultiplierresearch
         $('#research-total-average').val(isNaN(avg) ? "" : avg)
     }
 

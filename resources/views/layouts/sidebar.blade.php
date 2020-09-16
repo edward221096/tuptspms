@@ -203,6 +203,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                    <a href="managemultiplier" class="nav-link">
+                                        <i class="fa fa-superscript nav-icon"></i>
+                                        <p style="color: black;">Manage Form Multiplier</p>
+                                    </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="manageorganization" class="nav-link">
                                     <i class="fa fa-sitemap nav-icon"></i>
                                     <p style="color: black;">Manage Organization</p>
@@ -704,6 +710,7 @@
                             @yield('ipcrdashboard')
                             @yield('opcrdashboard')
                             @yield('mydashboard')
+                            @yield('managemultiplier')
                     </div>
                 </div>
             </div>
@@ -923,6 +930,32 @@
         var modal = $(this);
 
         modal.find('.modal-body #form_sequence_id').val(formseqid);
+    })
+
+    //EDIT MY EVALUATION PERIOD
+    $('#editformmultiplier').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var formmultiplierid = button.data('myformmultiplierid');
+        var formname = button.data('myformname');
+        var functionname = button.data('myfunctionname');
+        var multiplier = button.data('mymultiplier')
+        var modal = $(this);
+
+        modal.find('.modal-body #formmultiplierid').val(formmultiplierid);
+        modal.find('.modal-body #formname').val(formname);
+        modal.find('.modal-body #functionname').val(functionname);
+        modal.find('.modal-body #multiplier').val(multiplier);
+    })
+
+    //DELETE MY EVALUATION FORM RECORD
+    $('#deleteformmultiplier').on('show.bs.modal', function (event) {
+
+        var button = $(event.relatedTarget);
+        var formmultiplierid = button.data('myformmultiplierid');
+        var modal = $(this);
+
+        modal.find('.modal-body #formmultiplierid').val(formmultiplierid);
     })
 </script>
 </html>

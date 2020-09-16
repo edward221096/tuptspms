@@ -16,6 +16,15 @@
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
     <form method="POST" action="/storedataipcrcsassocp" enctype="multipart/form-data">
         {{ csrf_field() }}
+        @foreach($getmultiplier as $row)
+            @if($row->function_name == 'Core Administrative Functions')
+                <input type="hidden" value="{{$row->multiplier}}" id="coreadminfunctionmultiplier" name="core_multiplier[]">
+            @elseif($row->function_name == 'Higher and Advanced Education Programs and Support Functions')
+                <input type="hidden" value="{{$row->multiplier}}" id="higherfunctionmultiplier" name="support_multiplier[]">
+            @elseif($row->function_name == 'Research/Technical Advisory and Extension Programs')
+                <input type="hidden" value="{{$row->multiplier}}" id="researchfunctionmultiplier" name="research_multiplier[]">
+            @endif
+        @endforeach
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->id}}" name="user_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->division_id}}" name="division_id[]">
         <input type="hidden" value="{{\Illuminate\Support\Facades\Auth::User()->dept_id}}" name="dept_id[]">
@@ -168,12 +177,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 {{--                    <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>--}}
                     <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                     <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                        <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
+                        <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" id="actualaccomplishmentdesc" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
                     </tr>
                     <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
+                                <select name="Q[]" class="form-control form-control-sm q-value" id="qvalue" style="width: 50px">
                                     <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
@@ -185,7 +194,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="E[]" class="form-control form-control-sm e-value" style="width: 50px">
+                                <select name="E[]" class="form-control form-control-sm e-value" id="evalue" style="width: 50px">
                                     <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
@@ -197,7 +206,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
-                                <select name="T[]" class="form-control form-control-sm t-value" style="width: 50px">
+                                <select name="T[]" class="form-control form-control-sm t-value" id="tvalue" style="width: 50px">
                                     <option value=""></option>
                                     <option value="5">5</option>
                                     <option value="4">4</option>
@@ -279,9 +288,15 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                         <b style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
                             Core Administrative Functions&nbsp;<br style="box-sizing: border-box;" />
-                            Weighted Average (65%)
+                            Weighted Average
+                            @foreach($getmultiplier as $row)
+                                @if($row->function_name == 'Core Administrative Functions')
+                                    <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->multiplier * 100}}%">
+                                @endif
+                            @endforeach
                         </b>
                         <br />
+
                     </div>
                 </td>
                 <td width="25" style="box-sizing: border-box; border-top: none; border-left: none; border-bottom: 1pt solid rgb(191, 191, 191); border-right: 1pt solid rgb(191, 191, 191); padding: 0cm 5.4pt; width: 309px;" colspan="4">
@@ -302,7 +317,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                             <span style="box-sizing: border-box; color: black;"></span>
                         </p>
                         <p align="right" style="background-color: rgb(255, 255, 255); box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif;">
-                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (22.75%)</span></b>
+                            <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average @foreach($getmultiplier as $row)
+                                        @if($row->function_name == 'Higher and Advanced Education Programs and Support Functions')
+                                            <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->multiplier * 100}}%">
+                                        @endif
+                                    @endforeach
+                                </span></b>
                         </p>
                     </div>
                 </td>
@@ -327,7 +347,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         <span style="box-sizing: border-box; color: black;"></span>
                     </p>
                     <p align="right" style="box-sizing: border-box; margin: 0cm 0cm 0.0001pt; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
-                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average (12.25%)</span></b>
+                        <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif; color: black;">Weighted Average @foreach($getmultiplier as $row)
+                                    @if($row->function_name == 'Research/Technical Advisory and Extension Programs')
+                                        <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->multiplier * 100}}%">
+                                    @endif
+                                @endforeach</span></b>
                         <b style="box-sizing: border-box; font-weight: bolder;"><span style="box-sizing: border-box; font-size: 10pt; font-family: Arial, sans-serif;"></span></b>
                     </p>
                 </td>
@@ -513,7 +537,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             @foreach(\App\Http\Controllers\IpcrController::isEvaluationOpen() as $isevaluationopen)
                 @if($isevaluationopen->evaluation_period_status == 'Open')
                     <div>
-                        <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
+                        <input class="btn btn-primary btn-sm" id="reviewform" type="submit" value="Submit">
                     </div>
                 @endif
             @endforeach
@@ -596,6 +620,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         function computeAvg() {
             // For Core Functions
             const corevalues = document.getElementsByClassName("a-value-core")
+            let formmultipliercore = $("#coreadminfunctionmultiplier").val()
             let avg = 0
             let total = 0
             let count = 0
@@ -605,10 +630,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     total = total + parseFloat(corevalues[x].value)
                 }
             }
-            avg = (total / count) * 0.65
+            avg = (total / count) * formmultipliercore
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
 
             // For Support Functons
+            let formmultiplierhigher = $("#higherfunctionmultiplier").val()
             avg = 0
             total = 0
             count = 0
@@ -619,10 +645,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     total = total + parseFloat(supvalues[x].value)
                 }
             }
-            avg = total / count * 0.2275
+            avg = total / count * formmultiplierhigher
             $('#support-total-average').val(isNaN(avg) ? "" : avg)
 
             // For Research Services
+            let formmultiplierresearch = $("#researchfunctionmultiplier").val()
             avg = 0
             total = 0
             count = 0
@@ -633,7 +660,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     total = total + parseFloat(resvalues[x].value)
                 }
             }
-            avg = total / count * 0.1225
+            avg = total / count * formmultiplierresearch
             $('#research-total-average').val(isNaN(avg) ? "" : avg)
         }
 
@@ -654,6 +681,10 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         function setFourNumberDecimal(el) {
             el.value = parseFloat(el.value).toFixed(4);
         }
+
+        //FOCUS ON THE FORM ANSWERED VALUES
+
+
     </script>
 @endsection
 

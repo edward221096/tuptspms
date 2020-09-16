@@ -59,6 +59,9 @@
     <form method="POST" action="{{route('updatemyipcropcr.update', [$row->form_sequence_id])}}">
         {{method_field('PATCH')}}
         {{ csrf_field() }}
+        <input type="hidden" value="{{$row->core_multiplier}}" id="coreadminfunctionmultiplier" name="core_multiplier[]">
+        <input type="hidden" value="{{$row->support_multiplier}}" id="higherfunctionmultiplier" name="support_multiplier[]">
+        <input type="hidden" value="{{$row->research_multiplier}}" id="researchfunctionmultiplier" name="research_multiplier[]">
         <input type="hidden" value="{{ $row->user_id }}" name="user_id[]">
         <input type="hidden" value="{{ $row->division_id}}" name="division_id[]">
         <input type="hidden" value="{{ $row->dept_id }}" name="dept_id[]">
@@ -325,7 +328,10 @@
                         <div align="right" style="box-sizing: border-box; margin: 0px 0cm 0.000133333px; font-size: 11pt; font-family: Calibri, sans-serif; text-align: right;">
                             <b style="vertical-align: middle;  color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 13.3333px; box-sizing: border-box; font-weight: bolder;">
                                 Higher and Advanced Education Programs, Research and Technical Advisory Extension Programs, Core Administrative Functions,
-                                Support to Operations and General Administration Support (80%)
+                                Support to Operations and General Administration Support
+                                @foreach($ratingsinglevalue as $row)
+                                    <input type="text" class="form-control-sm" disabled style="font-weight: bold; font-size: 10pt; width: 65px;" readonly value="{{$row->core_multiplier * 100}}%">
+                                @endforeach
                             </b>
                         </div>
                     </td>
@@ -701,6 +707,7 @@
         function computeAvg() {
             // For Core Functions
             const corevalues = document.getElementsByClassName("a-value-core")
+            let formmultipliercore = $("#coreadminfunctionmultiplier").val()
             let avg = 0
             let total = 0
             let count = 0
@@ -710,7 +717,7 @@
                     total = total + parseFloat(corevalues[x].value)
                 }
             }
-            avg = (total / count) * 0.80
+            avg = (total / count) * formmultipliercore
             $('#core-total-average').val(isNaN(avg) ? "" : avg)
         }
 

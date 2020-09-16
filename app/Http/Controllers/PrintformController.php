@@ -23,7 +23,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -31,7 +31,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file' , 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -69,7 +69,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -77,7 +77,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -115,7 +115,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -123,7 +123,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -161,7 +161,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -169,7 +169,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -207,15 +207,14 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
-//            ->where('user_id', '=', $getuserid->user_id)
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
                 'dept_id', 'section_id', 'evaluation_startdate', 'evaluation_enddate', 'ratee_esignature',
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -253,7 +252,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -261,7 +260,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -299,7 +298,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -307,7 +306,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -345,7 +344,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -353,7 +352,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -391,7 +390,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -399,7 +398,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -437,7 +436,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -445,7 +444,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -483,7 +482,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -491,7 +490,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -529,7 +528,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -537,7 +536,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -575,7 +574,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -583,7 +582,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -621,7 +620,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -629,7 +628,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -667,7 +666,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -675,7 +674,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -713,7 +712,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -721,7 +720,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -760,7 +759,7 @@ class PrintformController extends Controller
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -769,7 +768,7 @@ class PrintformController extends Controller
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name', 'salary_grade',
                 'clericalroutine', 'technical',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -807,7 +806,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -815,7 +814,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -853,7 +852,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -861,7 +860,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -899,7 +898,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -907,7 +906,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -945,7 +944,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -953,7 +952,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -991,7 +990,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -999,7 +998,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1037,7 +1036,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1045,7 +1044,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1083,7 +1082,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1091,7 +1090,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1129,7 +1128,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1137,7 +1136,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1175,7 +1174,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1183,7 +1182,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1221,7 +1220,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1229,7 +1228,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1267,7 +1266,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1275,7 +1274,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1313,7 +1312,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1321,7 +1320,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1359,7 +1358,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1367,7 +1366,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1405,7 +1404,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1413,7 +1412,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1451,7 +1450,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1459,7 +1458,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')
@@ -1480,9 +1479,6 @@ class PrintformController extends Controller
 
         $snappy = PDF::loadView('editopcr.editopcrrecords', compact('ratingsinglevalue', 'ratingsmultiplevalue', 'userdata'));
         $snappy->setOption('enable-javascript', true);
-        $snappy->setOption('javascript-delay', 1000);
-        $snappy->setOption('enable-smart-shrinking', true);
-        $snappy->setOption('no-stop-slow-scripts', true);
         $snappy->setPaper('a4', 'landscape');
 
         return $snappy->download('evaluationform.pdf');
@@ -1500,7 +1496,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
 //            ->where('user_id', '=', $getuserid->user_id)
             ->where('form_sequence_id', '=', $id)
             ->groupby('form_sequence_id', 'user_id', 'form_id', 'division_id',
@@ -1508,7 +1504,7 @@ class PrintformController extends Controller
                 'rater_esignature', 'ratee_role', 'rater_role', 'ratee_date',
                 'rater_date', 'rater_comments', 'evaluationform_status', 'core_total_average', 'support_total_average',
                 'research_total_average', 'ipcr_rating_average', 'total_weighted_score', 'ratings.evaluationform_name',
-                'ratee_esignature_file', 'rater_esignature_file')
+                'ratee_esignature_file', 'rater_esignature_file', 'core_multiplier', 'support_multiplier', 'research_multiplier')
             ->get();
 
         $ratingsmultiplevalue = DB::table('ratings')

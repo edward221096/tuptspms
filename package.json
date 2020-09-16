@@ -25,7 +25,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "tinymce": "^5.2.0"
+    "tinymce": "^5.4.1"
   },
   "name": "tuptspms",
   "description": "<p align=\"center\"><img src=\"https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg\" width=\"400\"></p>",

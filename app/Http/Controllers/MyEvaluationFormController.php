@@ -22,8 +22,7 @@ class MyEvaluationFormController extends Controller
             ->join('sections', 'sections.id', '=', 'ratings.section_id')
             ->select('ratings.form_sequence_id as id', 'users.name', 'forms.form_type', 'ratings.ratee_role', 'divisions.division_name',
                 'departments.dept_name', 'sections.section_name', 'ratings.evaluation_startdate',
-                'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score',
-                'ratings.evaluationform_name')
+                'ratings.evaluation_enddate', 'ratings.evaluationform_status', 'ratings.evaluationform_name', 'ratings.total_weighted_score')
             ->where('user_id', '=', $myuserid)
             ->groupBy('form_sequence_id', 'forms.form_type', 'users.name', 'ratee_role', 'divisions.division_name',
                 'departments.dept_name', 'sections.section_name', 'evaluation_startdate', 'evaluation_enddate',

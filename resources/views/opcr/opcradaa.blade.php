@@ -10,6 +10,9 @@
             border-style: solid;
             border-width: thin;
         }
+        .hidden {
+            display: none;
+        }
     </style>
     <body>
     <!-- STORE ALL THE USER DATA TO RATING TABLE -->
@@ -33,7 +36,7 @@
         @foreach(\App\Http\Controllers\OpcrController::getEvaluationEndDate() as $getenddate)
             <input type="hidden" value="{{ $getenddate ->evaluation_enddate }}" name="evaluation_enddate[]">
         @endforeach
-        <div id="reviewformmessage">
+        <div class="hidden" id="reviewformmessage">
             <label style="font-size: 15pt; font-style: italic; font-family: Arial; color: indianred">Review the form again. Answered questions have asterisk (*) in the leftmost side.</label>
         </div>
         <label>
@@ -224,7 +227,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
 
                         <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
                         <td style="vertical-align: top; text-align: left; width: 5%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">
-                            <div class="divhasvalue">
+                            <div class="divhasvalue hidden">
                                 <label style="font-size: 20pt; color: red; font-weight: bold">*</label>
                             </div>
                         </td>
@@ -517,7 +520,7 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                     @if($isevaluationopen->evaluation_period_status == 'Open')
                         <div>
                             <input class="btn btn-primary btn-sm" id="btnreviewform" type="button" value="Review Form">
-                            <input class="btn btn-primary btn-sm" id="btnsubmitform" type="submit" value="Submit Form">
+                            <input class="btn btn-primary btn-sm hidden" id="btnsubmitform" type="submit" value="Submit Form">
                         </div>
                     @endif
                 @endforeach

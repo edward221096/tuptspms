@@ -33,6 +33,9 @@
         @foreach(\App\Http\Controllers\OpcrController::getEvaluationEndDate() as $getenddate)
             <input type="hidden" value="{{ $getenddate ->evaluation_enddate }}" name="evaluation_enddate[]">
         @endforeach
+        <div id="reviewformmessage">
+            <label style="font-size: 15pt; font-style: italic; font-family: Arial; color: indianred">Review the form again. Answered questions have asterisk (*) in the leftmost side.</label>
+        </div>
         <label>
             Evaluation Form Status:
             <select name="evaluationform_status[]" class="form-control form-control-sm">
@@ -171,9 +174,9 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         {{--                    <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->function_name !!}</td>--}}
                         <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->mfo_desc !!}</td>
                         <td style=" vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->success_indicator_desc !!}</td>
-                        <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
                     </tr>
                     <tr style="background-color: rgb(255, 255, 255); vertical-align: top;">
+                        <td style="position: relative; vertical-align: top; text-align: center; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0"><textarea style="position: absolute; height: 100%; width: 100%;" class="form-control form-control-sm actualaccomplishmentdesc" name="actual_accomplishment_desc[]" rows="15"></textarea></td>
                         <td rowspan="0" style="text-align: center; border-top: 1pt solid rgb(171, 171, 171); border-right: 1pt solid rgb(171, 171, 171); border-bottom: 1pt solid rgb(171, 171, 171); border-image: initial; border-left: none; background: white; padding: 0.6pt;">
                             <div class="form-label-group">
                                 <select name="Q[]" class="form-control form-control-sm q-value" style="width: 50px">
@@ -220,6 +223,11 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                         </td>
 
                         <td style="vertical-align: top; text-align: left; width: 316px; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">{!! $row->remarks !!}</td>
+                        <td style="vertical-align: top; text-align: left; width: 5%; border-width: 1px; border-style: solid; border-color: rgb(171, 171, 171);" rowspan="0">
+                            <div class="divhasvalue">
+                                <label style="font-size: 20pt; color: red; font-weight: bold">*</label>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 @endforeach
@@ -508,7 +516,8 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
                 @foreach(\App\Http\Controllers\OpcrController::isEvaluationOpen() as $isevaluationopen)
                     @if($isevaluationopen->evaluation_period_status == 'Open')
                         <div>
-                            <input class="btn btn-primary btn-sm btn-submit" type="submit" value="Submit">
+                            <input class="btn btn-primary btn-sm" id="btnreviewform" type="button" value="Review Form">
+                            <input class="btn btn-primary btn-sm" id="btnsubmitform" type="submit" value="Submit Form">
                         </div>
                     @endif
                 @endforeach
@@ -533,6 +542,20 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
     </script>
     </body>
     <script type="text/javascript">
+        //HIDE THE SUBMIT BUTTON FIRST
+        $(document).ready(function(){
+            $("#btnsubmitform").hide();
+            $(".divhasvalue").hide();
+            $("#reviewformmessage").hide();
+        });
+
+        //SHOW THE SUBMIT BUTTON CLICKING THE BUTTON REVIEW FORM
+        $("#btnreviewform").click(function(){
+            $('#btnreviewform').hide();
+            $("#reviewformmessage").show();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            $('#btnsubmitform').show();
+        })
         //CONDITIONAL FORMATTING COLORS
         $('.total-weighted-score-color').change(function(){
             let totalweightedscore = document.getElementById('total-weighted-score')
@@ -563,11 +586,12 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
         })
 
         //COMPUTE THE AVERAGE PER ROW
-        $(".q-value, .e-value, .t-value").change(function(){
+        $(".q-value, .e-value, .t-value, .actualaccomplishmentdesc").change(function(){
             let currentRow = $(this).closest('tr');
             let EValue = Number(currentRow.find('.e-value').val());
             let QValue = Number(currentRow.find('.q-value').val());
             let TValue = Number(currentRow.find('.t-value').val());
+            let actualaccomplishmentdesc = currentRow.find('.actualaccomplishmentdesc').val();
             let counter = 0
 
             if (QValue !== 0){
@@ -581,7 +605,23 @@ the indicated measures for the period </span><span style="font-family: Arial; fo
             }
 
             currentRow.find('.a-value-core').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-support').val((EValue  + QValue + TValue ) / Number(counter));
+            currentRow.find('.a-value-research').val((EValue  + QValue + TValue ) / Number(counter));
 
+            //ADDING AN ASTERISK IF THE VALUE CHANGED
+            if(QValue){
+                currentRow.find('.divhasvalue').show();
+            } else if(EValue) {
+                currentRow.find('.divhasvalue').show();
+            } else if(TValue) {
+                currentRow.find('.divhasvalue').show();
+            } else if(actualaccomplishmentdesc) {
+                currentRow.find('.divhasvalue').show();
+            } else {
+                currentRow.find('.divhasvalue').hide();
+            }
+
+            //AVERAGE COMPUTATIONS, ADDING AVERAGES, CHANGE DECIMAL VALUE
             computeAvg();
             computeWeightedScore();
             $(".a-value-core, .a-value-support, .a-value-research, #core-total-average, #support-total-average, #research-total-average, #total-weighted-score").trigger("change")

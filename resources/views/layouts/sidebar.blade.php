@@ -40,6 +40,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('css/sidebar/bootstrap.min.css') }}" rel="stylesheet">
+
     <style>
         .main-sidebar{
             width: 270px;

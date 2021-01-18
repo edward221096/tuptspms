@@ -36,12 +36,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edward221096/tuptspms.git"
+    "url": "git+https://github.com/gasufra/tuptspms.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/edward221096/tuptspms/issues"
+    "url": "https://github.com/gasufra/tuptspms/issues"
   },
-  "homepage": "https://github.com/edward221096/tuptspms#readme"
+  "homepage": "https://github.com/gasufra/tuptspms#readme"
 }
